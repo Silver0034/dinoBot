@@ -1,0 +1,53 @@
+//quote
+var quoteArray = [
+  "That's the illusion! **-Ellie Sattler**",
+  "Life uh.... finds a way **-Ian Malcolm**",
+  "Your scientists were so preoccupied with whether they could, they didn't stop to think if they should. **-Ian Malcolm**",
+  "Quiet, all of you! They're approaching the Tyrannosaur paddock. **-Robert Muldoon**",
+  "Clever girl. **-Robert Muldoon**",
+  "So, who's hungry? **-John Hammond**",
+  "Hold on to your butts. **-John 'Ray' Arnold**",
+  "You're well remembered to wash your hands before you eat anything. **-Ian Malcolm**",
+  "That is one big pile of sh*t. **-Ian Malcolm**",
+  "Big Tim, the human piece of toast. **-Dr. Alan Grant**",
+  "Clever girl. **-Robert Muldoon**",
+  "When you gotta go, you gotta go. **-Ian Malcolm**",
+  "Clever girl. **-Robert Muldoon**",
+  "Remind me to thank John for the wonderful weekend. **-Ian Malcolm**",
+  "I really hate that man. **-John Hammond**",
+  "What have they got in there, King Kong? **-Ian Malcolm**",
+  "That'll be a first - man and dinosaur all die together. **-Ian Malcolm**",
+  "Yeah, but, John, if The Pirates of the Caribbean breaks down, the pirates don't eat the tourists. **-Ian Malcolm**",
+  "All major theme parks have delays. When they opened Disneyland in 1956, nothing worked! **-John Hammond**",
+  "But again, how do you know they're all female? Does somebody go out into the park and pull up the dinosaurs' skirts? **-Ian Malcolm**",
+  "God creates dinosaurs. God destroys ... Man creates dinosaurs.. **-Ian Malcolm**",
+  "Dinosaurs eat man......woman inherits the earth. **-Dr. Ellie Sattler**",
+  "Welcome... to Jurassic Park. **-John Hammond**",
+  "Find Nedry! Check the vending machines! **-John Hammond**",
+  "Dennis, our lives are in your hands and you've got butterfingers? **-John Hammond**",
+  "I'm always on the lookout for the future ex-Mrs. Malcolm. **-Ian Malcolm**",
+  "I hate being right all the time. **-Ian Malcolm**",
+  "Ian Freeze! **-Alan Grant**",
+  "If you gotta go you gotta go. **-Ian Malcolm**",
+  "What's the matter, kid? You never had lamb chops? **-Donald Gennaro**",
+  "Shoot her! Shoot her! **-Robert Muldoon**",
+  "I hate this hacker crap! **-John 'Ray' Arnold**",
+  "Uh uh uh! You didn't say the magic word! Uh uh uh! Uh uh uh! **-Dennis Nedry**",
+  "Dr. Grant, my dear Dr. Sattler, welcome to Jurassic Park. **-John Hammond**",
+  "And now I'm sitting here, by myself, talking to myself. That's chaos theory. **-Ian Malcolm**",
+  "Hold onto your butts. **-John 'Ray' Arnold**",
+  "I bring scientists, you bring the rock star. **-John Hammond**",
+  "Creation is an act of sheer will. **-John Hammond**",
+  "It's... it's a dinosaur!! **-Alan Grant**",
+  "How can we sit in the light of discovery and not act? **-John Hammond**",
+  "All major changes are like death. You can't see what is on the other side until you get there. **-Ian Malcolm**",
+  "Life finds a way. **-Ian Malcolm**",
+  "Life, uhh,finds a way. **-Ian Malcolm**",
+  "Life found a way! **-Alan Grant**",
+  "Mr. Hammond, after careful consideration I've decided not to endorse your park.\brSo have I.\brAlan Grant and John Hammond"
+]
+       
+exports.generate = function() {
+  var quoteNum = Math.floor((Math.random() * quoteArray.length));
+  return quoteArray[quoteNum];
+}

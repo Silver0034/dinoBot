@@ -1,0 +1,10 @@
+{
+  "name": "DinoBot",
+  "version": "2.0.0",
+  "description": "A bot 65 million years in the making...",
+  "main": "bot.js",
+  "author": "Silver0034",
+  "dependencies": {
+      "discord.js": "^11.2.1",
+  }
+}
