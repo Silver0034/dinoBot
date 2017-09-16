@@ -1,6 +1,6 @@
 //establish constants and dependencies
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 var tokenReturn = require('./token.js');
 var roar = require('./commandFunctions/roar.js');
 var ball = require('./commandFunctions/ball.js');
@@ -9,190 +9,312 @@ var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
 
 //establish global variables and constants
-var TOKEN = tokenReturn.return();
-const BOTID = '229715466199891968';
+const TOKEN = tokenReturn.return();
 //make sure to put a space after. Ex:':smile: '
-var emojiDino = '<:sauropod:355738679211327488> ';
+const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
-
-//dictionary for all commands and information
-var commandDictionary = new Object();
-commandDictionary['8ball'] = {
-    name: '8ball',
-    emoji: ':8ball: ', //put space after emoji 
-    error: 'Use the command like this: `8ball [question]',
-    usage: '**Usage:** `8ball [question]',
-    function: function(message,messageArguments) {
-      if (messageArguments[1]) {
-        return responseHead() + ball.generate();
-      } else {
-        return error();  
-      }     
-      setUserTimeout(userID);
-        console.log(message.author.username + ' used 8ball');
-    }
-  };
-commandDictionary['attack'] = {
-    name: 'attack',
-    emoji: ':dagger: ',  //put space after emoji   
-    error: 'Use the command like this: `attack [@user OR name]',
-    usage: '**Usage:** `attack [@user OR name]',
-    function: ''     
-  }
-commandDictionary['choose'] = {
-    name: 'choose',
-    emoji: ':point_up: ',  //put space after emoji   
-    error: 'Use the command like this: `choose [choice1|choice2|etc]',
-    usage: '**Usage:** `choose [choice1|choice2|etc]',
-    function: ''     
-  };
-commandDictionary['coin'] = {
-    name: 'coin',  
-    emoji: ':moneybag: ',  //put space after emoji  
-    error: 'Use the command like this: `coin',
-    usage: '**Usage:** `coin',
-    function: ''   
-  };
-commandDictionary['cookie'] = {
-    name: 'cookie',
-    emoji: ':gift: ',  //put space after emoji  
-    error: 'Use the command like this: `cookie [@user OR name]',
-    usage: '**Usage:** `cookie [@user OR name]',
-    function: ''      
-  };
-commandDictionary['error'] = {
-    name: 'error',
-    emoji: ':no_entry_sign: ',  //put space after emoji 
-    error: 'Use the command like this: `error',
-    usage: '`error',
-    function: ''      
-  };
-commandDictionary['hello'] = {
-    name: 'hello',
-    emoji: '',  //put space after emoji 
-    error: 'Use the command like this: `hello',
-    usage: '`hello',
-    function: ''      
-  };   
-commandDictionary['help'] = {
-    name: 'help',
-    emoji: ':grey_question: ',  //put space after emoji 
-    error: 'Use the command like this: `help',
-    usage: '**Usage:** `help OR `help [command]',
-    function: ''      
-  }; 
-commandDictionary['ping'] = {
-    name: 'ping',
-    emoji: ':grey_exclamation: ',  //put space after emoji 
-    error: 'Use the command like this: `ping',
-    usage: '**Usage:** `ping',
-    function: ''      
-  };   
-commandDictionary['quote'] = {
-    name: 'quote',
-    emoji: ':speech_balloon: ',  //put space after emoji 
-    error: 'Use the command like this: `quote',
-    usage: '**Usage:** `quote',
-    function: ''      
-  };
-commandDictionary['roll'] = {
-    name: 'roll',
-    emoji: ':game_die: ',  //put space after emoji 
-    error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
-    usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
-    function: ''
-  };
-commandDictionary['taste'] = {
-    name: 'taste',
-    emoji: ':fork_and_knife: ',  //put space after emoji 
-    error: 'Use the command like this: `taste [@user OR name]',
-    usage: '**Usage:** `taste [@user OR name]',
-    function: ''
-  };
 
 //global functions
 function setUserTimeout(userID) {
   //put users userID in a timeout array
   timedOutUsers.push(userID);
+  //automatically remove the user from timeout after a set delay
   setTimeout(function() {
     timedOutUsers.splice(timedOutUsers.indexOf(userID), 1);
-  }, 000);
+  }, 8000);
 }
 function timeoutAlert(timeoutAlert) {
     //alert users to stop using commands
     //if they are in the timeout array
-    return emojiDino + ' ' + roar.generate() + ' *(Slow down, you' + "'" + 're scaring me!)*  :no_entry_sign:';
+  return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
+}
+function error(key) {
+  var errorMessage = emojiDino + ' ' + roar.generate() + ' ' + roar.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
+  console.log('[FAILED]');
+  return errorMessage;
+}
+function responseHead(message, key, extraContent) { //extraContent is optional
+    return emojiDino + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
+}
+function getTime(date) {
+  var time;
+  
+  if (date) time = date;
+  else time = new Date();
+  
+  var hours   = time.getHours();
+  var minutes = time.getMinutes();
+  var seconds = time.getSeconds();
+  
+  return '[' + hours + ':' + minutes + ':' + seconds + ']';
 }
 
-
+//dictionary for all commands and information
+var commandDictionary = new Object();
+commandDictionary['8ball'] = {
+  emoji: ':8ball: ', //put space after emoji 
+  error: 'Use the command like this: `8ball [question]',
+  usage: '**Usage:** `8ball [question]',
+  doCommand: function(message, key, args) {
+    if (args[0]) {
+      console.log(' used ' + key);
+      return responseHead(message, key) + ball.generate();
+    } else {
+      console.log(message.author.username + ' used ' + key);
+      return error(key);
+    }
+  }
+};
+commandDictionary['roll'] = {
+  emoji: ':game_die: ',  //put space after emoji 
+  error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
+  usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
+  doCommand: function (message, key, args) {
+    var rollSign = "";
+    var rollCount;
+    var rollSides;
+    var rollOperator;
+    var rollList = new Array(); // An array of dice roll values.
+    var rollSum = 0; // The sum of all rolls.
+    var rollMessageOutput = ""; // The final message to be printed.        
+    if (args[0]) {
+      if (args[0].includes("+")) {
+        rollSign = "+";
+      }
+      if (args[0].includes("-")) {
+        rollSign = "-";
+      }     
+    }              
+    if (args[0]) {
+      var rollStat = args[0].replace("+","d").replace("-","d").split("d");
+      rollCount = rollStat[0];
+      rollSides = rollStat[1];
+      rollOperator = rollStat[2];
+    } else {
+        return error(key);
+    }
+    // If our inputs are invalid, return an error.
+    if (isNaN(rollCount) || isNaN(rollSides) || rollCount <= 0 || rollCount >= 120  || rollSides <= 0 || rollSides >= 120 || rollOperator <= 0 || rollOperator >= 120) {
+      return error(key);
+    } else {
+      if (isNaN(rollOperator)) {
+        rollOperator = ""; 
+      }
+      // Base message.
+      var extraContent = '**' + rollCount + 'd' + rollSides + rollSign + rollOperator + '** '; 
+      rollMessageOutput += responseHead(message, key, extraContent);
+      // Roll each die.
+      for (var i = 0; i < rollCount; i++) {
+        var numGen = Math.floor((Math.random() * rollSides) + 1);
+        rollSum += numGen;
+        rollList.push(numGen);
+      }
+      rollOperator = Number(rollOperator);
+      if (args[0].includes("+")) {
+        rollSum = rollSum + rollOperator;
+      }
+      if (args[0].includes("-")) {
+        rollSum = rollSum - rollOperator;
+        }
+      if (rollCount > 1) {
+        // Print all of our rolls
+        rollMessageOutput += "```" + rollList.toString() + "```";
+      }                            
+      rollMessageOutput += " You rolled a total of **" + rollSum + "**";    
+      return rollMessageOutput;
+    }
+  }
+};
+commandDictionary['help'] = {
+  emoji: ':grey_question: ',  //put space after emoji 
+  error: 'Use the command like this: `help',
+  usage: '**Usage:** `help OR `help [command]',    
+  doCommand: function(message, key, args) {
+    var helpMessageBody;
+    if(args[0] in commandDictionary) {
+      helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
+    } else {
+      var helpList = new Array();
+    	for (var keyIter in commandDictionary) {
+      	helpList.push(keyIter);
+      }
+      helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
+    }
+    return responseHead(message, key) + roar.generate() + ' ' + roar.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*';
+  }
+}; 
+commandDictionary['coin'] = {
+  emoji: ':moneybag: ',  //put space after emoji  
+  error: 'Use the command like this: `coin',
+  usage: '**Usage:** `coin',
+  doCommand: function(message, key, args) {
+    const coinAnswers = [
+      'Heads',
+      'Tails'
+    ];
+    function coinGenerator() {
+      var coinNum = Math.floor((Math.random() * coinAnswers.length));
+      return coinAnswers[coinNum];
+    }
+    if (args[0]) {
+      return error(key);     
+    }    
+    return responseHead(message, key) + 'You flipped *' + coinGenerator() + '*';
+  }
+};
+commandDictionary['attack'] = {
+  emoji: ':dagger: ',  //put space after emoji   
+  error: 'Use the command like this: `attack [@user OR name]',
+  usage: '**Usage:** `attack [@user OR name]',
+  doCommand: function(message, key, args) {
+    if (args[0] === undefined || args[0] === '' ) {
+      return error(key);
+    } else {
+      return responseHead(message, key) + args[0] + attack.generate();
+    }
+  }
+};
+commandDictionary['choose'] = {
+  emoji: ':point_up: ',  //put space after emoji   
+  error: 'Use the command like this: `choose [choice1|choice2|etc]',
+  usage: '**Usage:** `choose [choice1|choice2|etc]',
+  doCommand: function(message, key, args) {
+    function chooseGenerator() {
+      var chooseNum = Math.floor((Math.random() * chooseArray.length));
+      return chooseArray[chooseNum];
+    } 
+    //looks to see if the user input includes string|string
+    //if it does not; stops the command and returns error
+    //if valid, split the strings into an array    
+    if (args[0] && args[0].substring(1, args[0].length - 1).includes('|')) {
+      var chooseArray = args[0].split('|');            
+    } else {
+      return error(key);    
+    }
+    //if the string|string is valid return output
+    //else return error    
+    if (chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
+      return error(key);
+    } else {
+      return responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)';
+    }            
+  }
+};
+commandDictionary['cookie'] = {
+  emoji: ':gift: ',  //put space after emoji  
+  error: 'Use the command like this: `cookie [@user OR name]',
+  usage: '**Usage:** `cookie [@user OR name]',
+  doCommand: function(message, key, args) {
+    if (!args[0]) {
+      return error(key);
+    } else {
+      return responseHead(message, key) + 'You gave ' + args[0] + ' a dino-cookie! :cookie:';
+    }
+  }  
+};
+commandDictionary['error'] = {
+  emoji: ':no_entry_sign: ',  //put space after emoji 
+  error: 'Use the command like this: `error',
+  usage: '`error',
+  doCommand: function(message, key, args) {
+    return error(key);
+  }  
+};
+commandDictionary['hello'] = {
+  emoji: '',  //put space after emoji
+  error: 'Use the command like this: `hello',
+  usage: '`hello',
+  doCommand: function(message, key, args) {
+    if (args[0]) {
+      return error(key);
+    } else {
+      return emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Hi ' + message.author.username + ')*';
+    }
+  }
+};
+commandDictionary['ping'] = {
+  emoji: ':grey_exclamation: ',  //put space after emoji 
+  error: 'Use the command like this: `ping',
+  usage: '**Usage:** `ping',
+  doCommand: function(message, key, args) {
+    if (args[0]) {
+      return error(key);
+    } else {
+      return emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*';
+    }
+  }      
+};
+commandDictionary['quote'] = {
+  emoji: ':speech_balloon: ',  //put space after emoji 
+  error: 'Use the command like this: `quote',
+  usage: '**Usage:** `quote',
+  doCommand: function(message, key, args) {
+    if (args[0]) {
+      return error(key);
+    } else {
+      return responseHead(message, key) + quote.generate();
+    }
+    setUserTimeout(userID);
+  }
+};
+commandDictionary['taste'] = {
+  emoji: ':fork_and_knife: ',  //put space after emoji 
+  error: 'Use the command like this: `taste [@user OR name]',
+  usage: '**Usage:** `taste [@user OR name]',
+  doCommand: function(message, key, args) {
+    if (!args[0]) {
+      return error(key);
+    } else {
+      return responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate();
+    }
+    setUserTimeout(userID);
+  }
+};
 // only reacts to Discord _after_ ready is emitted
-client.on('ready', () => {
+bot.on('ready', () => {
   console.log('Online and connected');
 });
 // Create an event listener for messages
-client.on('message', message => {   
-  var messageContent = message.content;    
+bot.on('message', message => {
+  var messageContent = message.content;
   var messageArguments = message.content.substring(1).split(' ');
-  var commandPrompt = messageArguments[0];    
+  var key = messageArguments[0];
+  var args = messageArguments.slice(1);
   var userID = message.author.id;
-  var extraContent = '';    
-  function responseHead() {
-    var responseHead = emojiDino + commandDictionary[messageArguments[0]].emoji + extraContent + '| **' + message.author.username + '** | ';
-    return responseHead;
-  }
-  function error() {
-    var errorMessage = emojiDino + ' ' + roar.generate() + ' ' + roar.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[messageArguments[0]].error;
-    console.log(message.author.username + ' used a failed command; ' + commandDictionary[messageArguments[0]].name);     
-    return errorMessage;  
-  }
-    
+
   //stop message from being processed
   //if from a bot
-  if (message.author.bot) { return; }    
+  if (message.author.bot) { return; }
   //listen for the ` to start a command
   //the bot only responds with things inside this if
   //if i want the bot to display something write it in here
-  
-    if (messageContent.substring(0, 1) === '`') {
-    //stop message from being processed
-    //if from a user in timeout
-    
-    if (timedOutUsers.indexOf(userID) > -1) {
-      message.channel.send(timeoutAlert());
-      console.log(message.author.username + ' was warned about spamming commands');    
-      return;   
+
+  if (messageContent.substring(0, 1) === '`') {
+  //stop message from being processed
+  //if from a user in timeout
+
+    if(key) {
+      if (timedOutUsers.indexOf(userID) > -1) {
+        message.channel.send(timeoutAlert());
+        console.log(message.author.username + ' was warned about spamming commands');
+        return;
+      }
+      console.log(getTime(), 'someone used: ' + key);
+      message.channel.send(commandDictionary[key].doCommand(message, key, args));
+      setUserTimeout(userID);
     }
-    
-    for (var key in commandDictionary) {
-      if (messageArguments[0] == commandDictionary[key].name) {
-        console.log("Command input recognized");
-        message.channel.send(commandDictionary[key].function());
-      }   
-    }
-                   
-    //begin searching for command prompts    
-    switch (messageArguments[0]) {          
-      case 'ping':
-        if (messageArguments[1]) {
-          message.channel.send(error());
-          return;
-        } else {
-          message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*');
-          console.log(message.author.username + ' used ping');     
-        }
-        setUserTimeout(userID);   
-        break;
-            
+    else {
+      //TODO: Consider sending the help message
+      console.log("Command input not recognized");
     }
   }
-    
-    if (message.content.includes('<@' + BOTID + '>')) {
+    if (message.isMentioned(bot.user)) {
       message.channel.send(emojiDino + roar.generate());
-      console.log(message.author.username + ' mentioned DinoBot');           
-        setUserTimeout(userID);
-    }
+      console.log(message.author.username + ' mentioned DinoBot');
+      setUserTimeout(userID);
+	}
 });
-client.login(TOKEN);
+bot.login(TOKEN);
 
 
 //to be implimented
