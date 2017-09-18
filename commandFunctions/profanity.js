@@ -1,7 +1,6 @@
 //profanity       
 exports.filter = function(messageCheck) {
   const profanityArray = [
-    "apple",
     "anal",
     "anus",
     "arse",
@@ -38,16 +37,13 @@ exports.filter = function(messageCheck) {
     "felching",
     "fuck",
     "fudgepacker",
-    "fudge packer",
     "flange",
-    "Goddamn",
-    "God damn",
+    "goddamn",
     "hell",
     "homo",
     "jerk",
     "jizz",
     "knobend",
-    "knob end",
     "labia",
     "lmao",
     "lmfao",
@@ -64,7 +60,6 @@ exports.filter = function(messageCheck) {
     "scrotum",
     "sex",
     "shit",
-    "s hit",
     "sh1t",
     "slut",
     "smegma",

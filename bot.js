@@ -11,7 +11,7 @@ var profanity = require('./commandFunctions/profanity.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
-const PROFANITY = profanity.filter();
+var profanity = profanity.filter();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
@@ -314,7 +314,10 @@ bot.on('message', message => {
     setUserTimeout(userID);
   } else {
     for (var i = 0; i < messageCheck.length; i++) {
-      if (PROFANITY.includes(messageCheck[i])) {
+      messageCheck[i] = messageCheck[i].toLowerCase();
+      messageCheck[i] = messageCheck[i].replace(/"/g, '');
+      messageCheck[i] = messageCheck[i].replace(/'/g, '');
+      if (profanity.includes(messageCheck[i])) {
         message.channel.send(emojiDino + 'Language!');  
         console.log(message.author.username + ' was warned about cursing.');
         message.author.send(emojiDino + '<@' + userID + '>, please keep the server profanity free--do not curse.'); 
