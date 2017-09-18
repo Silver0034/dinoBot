@@ -7,9 +7,11 @@ var ball = require('./commandFunctions/ball.js');
 var attack = require('./commandFunctions/attack.js');
 var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
+var profanity = require('./commandFunctions/profanity.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
+const PROFANITY = profanity.filter();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
@@ -278,45 +280,59 @@ bot.on('ready', () => {
 bot.on('message', message => {
   var messageContent = message.content;
   var messageArguments = message.content.substring(1).split(' ');
+  var messageCheck = message.content.split(' ');
   var key = messageArguments[0];
   var args = messageArguments.slice(1);
   var userID = message.author.id;
-
-  //stop message from being processed
-  //if from a bot
-  if (message.author.bot) { return; }
   //listen for the ` to start a command
   //the bot only responds with things inside this if
   //if i want the bot to display something write it in here
-
   if (messageContent.substring(0, 1) === '`') {
   //stop message from being processed
   //if from a user in timeout
-
-    if(key) {
+    //stop message from being processed
+    //if from a bot
+    if (message.author.bot) { return; }
+    if(commandDictionary[key]) {
       if (timedOutUsers.indexOf(userID) > -1) {
         message.channel.send(timeoutAlert());
         console.log(message.author.username + ' was warned about spamming commands');
         return;
       }
-      console.log(getTime(), 'someone used: ' + key);
+      console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args));
       setUserTimeout(userID);
     }
     else {
       //TODO: Consider sending the help message
-      console.log("Command input not recognized");
+      console.log(getTime(), message.author.username + "used an unrecognized command input");
     }
   }
-    if (message.isMentioned(bot.user)) {
-      message.channel.send(emojiDino + roar.generate());
-      console.log(message.author.username + ' mentioned DinoBot');
-      setUserTimeout(userID);
-	}
+  if (message.isMentioned(bot.user)) {
+    message.channel.send(emojiDino + roar.generate());
+    console.log(message.author.username + ' mentioned DinoBot');
+    setUserTimeout(userID);
+  } else {
+    for (var i = 0; i < messageCheck.length; i++) {
+      if (PROFANITY.includes(messageCheck[i])) {
+        message.channel.send(emojiDino + 'Language!');  
+        console.log(message.author.username + ' was warned about cursing.');
+        message.author.send(emojiDino + '<@' + userID + '>, please keep the server profanity free--do not curse.'); 
+        if (message.guild != null) {
+          message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed. ' + getTime() + '```' + '\n' + message.author.username + ': \"' + message + '\"```');    
+        }   
+        return;          
+      }      
+    }
+  }
+});
+// Create an event listener for new guild members
+bot.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find('name', 'member-log');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(emojiDino + roar.generate() + roar.generate() + roar.generate() + ` (Welcome to the server, ${member})`);
 });
 bot.login(TOKEN);
-
-
-//to be implimented
-//direct message player
-////message.author.send('hello');
