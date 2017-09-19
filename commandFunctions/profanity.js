@@ -1,6 +1,10 @@
 //profanity       
 exports.filter = function(messageCheck) {
   const profanityArray = [
+    "apple",
+    "banana",
+    "apples",
+    "bananas",
     "anal",
     "anus",
     "arse",
@@ -12,7 +16,6 @@ exports.filter = function(messageCheck) {
     "biatch",
     "bloody",
     "blowjob",
-    "blow job",
     "bollock",
     "bollok",
     "boner",
