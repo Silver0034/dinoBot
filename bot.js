@@ -368,7 +368,6 @@ bot.on('message', message => {
     messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
     messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
     messageCheck[i] = messageCheck[i].latinize();
-    console.log(messageCheck);  
     if (profanity.includes(messageCheck[i])) {
       if (message.guild != null) {
         message.channel.send(emojiDino + 'Language!');      
