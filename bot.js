@@ -8,10 +8,12 @@ var attack = require('./commandFunctions/attack.js');
 var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
+var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
 var profanity = profanity.filter();
+var profanityExceptions = cleanDictionary.filter();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
@@ -360,7 +362,7 @@ bot.on('message', message => {
     messageCheck.unshift(messageFirstLetters);
     messageCheck = messageCheck.concat(messageSpaceCheck);
     //check individual words for cursing
-  for (i = 0; i < messageCheck.length; i++) { 
+  for (var i = 0; i < messageCheck.length; i++) { 
     messageCheck[i] = messageCheck[i].toLowerCase();
     messageCheck[i] = messageCheck[i].replace(/"/g, '');
     messageCheck[i] = messageCheck[i].replace(/'/g, '');
@@ -368,20 +370,26 @@ bot.on('message', message => {
     messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
     messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
     messageCheck[i] = messageCheck[i].latinize();
-    if (profanity.includes(messageCheck[i])) {
-      if (message.guild != null) {
-        message.channel.send(emojiDino + 'Language!');      
-        console.log(message.author.username + ' was warned about cursing.');    
-        message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
-        message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + ' on ' + getDate());  
-        return;
-      } else {
-        console.log(message.author.username + ' was warned about cursing.');    
-        message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');     
-        return;
-      }         
-    }    
+    for(var j = 0; j < profanity.length; j++) {
+        if (messageCheck[i].indexOf(profanity[j]) != -1) {
+          for(var k = 0; k < profanityExceptions.length; k++) {
+              if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
+          }   
+          if (message.guild != null) {
+            message.channel.send(emojiDino + 'Language!');      
+            console.log(message.author.username + ' was warned about cursing.');    
+            message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
+            message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + ' on ' + getDate());  
+            return;
+          } else {
+            console.log(message.author.username + ' was warned about cursing.');    
+            message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');     
+            return;
+          }         
+        }    
+      }
   }
+  
 });
 // Create an event listener for new guild members
 bot.on('guildMemberAdd', member => {
