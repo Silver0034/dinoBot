@@ -208,7 +208,7 @@ commandDictionary['attack'] = {
   error: 'Use the command like this: `attack [@user OR name]',
   usage: '**Usage:** `attack [@user OR name]',
   doCommand: function(message, key, args) {
-    if (args[0] === undefined || args[0] === '' ) {
+    if (args.includes(bot.user) || args[0] === undefined || args[0] === '' ) {
       return error(key);
     } else {
       return responseHead(message, key) + args[0] + attack.generate();
@@ -234,7 +234,7 @@ commandDictionary['choose'] = {
     }
     //if the string|string is valid return output
     //else return error    
-    if (chooseArray.includes(bot.user) || chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
+    if (chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
       return error(key);
     } else {
       return responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)';
