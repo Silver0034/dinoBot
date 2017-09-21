@@ -1,6 +1,7 @@
 //establish constants and dependencies
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const mysql = require('mysql');
 var tokenReturn = require('./token.js');
 var roar = require('./commandFunctions/roar.js');
 var ball = require('./commandFunctions/ball.js');
@@ -18,7 +19,7 @@ var profanityExceptions = cleanDictionary.filter();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
-console.log(MYSQLCRED);
+var con = mysql.createConnection(MYSQLCRED);
 
 //global functions
 function setUserTimeout(userID) {
@@ -310,6 +311,13 @@ commandDictionary['taste'] = {
     setUserTimeout(userID);
   }
 };
+
+//SQL Database stuffs
+con.connect(function(err) {
+    if (err) throw err;
+    console.log('Connected!');
+});
+
 // only reacts to Discord _after_ ready is emitted
 bot.on('ready', () => {
   console.log('Online and connected');
