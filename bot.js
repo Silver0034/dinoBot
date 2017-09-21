@@ -234,7 +234,7 @@ commandDictionary['choose'] = {
     }
     //if the string|string is valid return output
     //else return error    
-    if (chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
+    if (chooseArray.includes(bot.user) || chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
       return error(key);
     } else {
       return responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)';
