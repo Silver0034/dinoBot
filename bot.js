@@ -389,7 +389,7 @@ bot.on('message', message => {
             message.channel.send(emojiDino + 'Language!');      
             console.log(message.author.username + ' was warned about cursing.');    
             message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
-            message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was' + profanity[j] + '/non ' + getDate());  
+            message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was' + profanity[j] + '\non ' + getDate());  
             return;
           } else {
             console.log(message.author.username + ' was warned about cursing.');    
