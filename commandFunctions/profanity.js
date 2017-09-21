@@ -1,7 +1,6 @@
 //profanity       
 exports.filter = function(messageCheck) {
   const profanityArray = [
-    "apple",
     "anal",
     "anus",
     "arse",

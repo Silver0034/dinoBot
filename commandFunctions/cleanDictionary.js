@@ -1,7 +1,7 @@
 //cleanDictionary       
 exports.filter = function(messageCheck) {
   const cleanWordDictionary = [
-    "apples"
+    "butit"
   ]
   return cleanWordDictionary;
 }
