@@ -1,7 +1,8 @@
 //cleanDictionary       
 exports.filter = function(messageCheck) {
   const cleanWordDictionary = [
-    "butit"
+    "butit",
+    "title",
   ]
   return cleanWordDictionary;
 }
