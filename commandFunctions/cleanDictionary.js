@@ -7,6 +7,8 @@ exports.filter = function(messageCheck) {
     "atit",
     "itit",
     "otit"
+    "analyz",
+    "analys"
   ]
   return cleanWordDictionary;
 }
