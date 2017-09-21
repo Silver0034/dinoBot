@@ -208,7 +208,7 @@ commandDictionary['attack'] = {
   error: 'Use the command like this: `attack [@user OR name]',
   usage: '**Usage:** `attack [@user OR name]',
   doCommand: function(message, key, args) {
-    if (args[0] === undefined || args[0] === '' || args[0] == bot.user || args[0] == bot.username) {
+    if (args[0] === undefined || args[0] === '' || args[0] == bot.user) {
       return error(key);
     } else {
       return responseHead(message, key) + args[0] + attack.generate();
