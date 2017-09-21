@@ -12,11 +12,13 @@ var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
+const MYSQLCRED = tokenReturn.sqlCredentials;
 var profanity = profanity.filter();
 var profanityExceptions = cleanDictionary.filter();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
+console.log(MYSQLCRED);
 
 //global functions
 function setUserTimeout(userID) {
