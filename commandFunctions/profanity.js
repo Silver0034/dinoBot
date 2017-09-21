@@ -17,8 +17,6 @@ exports.filter = function(messageCheck) {
     "boner",
     "boob",
     "bugger",
-    "bum",
-    "butt",
     "buttplug",
     "clitoris",
     "cock",
