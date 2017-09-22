@@ -37,7 +37,8 @@ exports.filter = function(messageCheck) {
     "assi",
     "asso",
     "assu",
-    "assi",  
+    "assi",
+    "chell",
   ]
   return cleanWordDictionary;
 }
