@@ -6,7 +6,7 @@ exports.filter = function(messageCheck) {
     "etit",
     "atit",
     "itit",
-    "otit"
+    "otit",
     "analyz",
     "analys"
   ]
