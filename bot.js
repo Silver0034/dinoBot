@@ -98,10 +98,8 @@ commandDictionary['8ball'] = {
   usage: '**Usage:** `8ball [question]',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      console.log(' used ' + key);
       return responseHead(message, key) + ball.generate();
     } else {
-      console.log(message.author.username + ' used ' + key);
       return error(key);
     }
   }
@@ -343,7 +341,7 @@ bot.on('message', message => {
     if(commandDictionary[key]) {
       if (timedOutUsers.indexOf(userID) > -1) {
         message.channel.send(timeoutAlert());
-        console.log(message.author.username + ' was warned about spamming commands');
+        console.log(getTime(), message.author.username + ' was warned about spamming commands');
         return;
       }
       console.log(getTime(), message.author.username + ' used: ' + key);
@@ -357,7 +355,7 @@ bot.on('message', message => {
   }
   if (message.isMentioned(bot.user)) {
     message.channel.send(emojiDino + roar.generate());
-    console.log(message.author.username + ' mentioned DinoBot');
+    console.log(getTime(), message.author.username + ' mentioned DinoBot');
     setUserTimeout(userID);
   }    
     //stop message from being processed
@@ -387,12 +385,12 @@ bot.on('message', message => {
           }   
           if (message.guild != null) {
             message.channel.send(emojiDino + 'Language!');      
-            console.log(message.author.username + ' was warned about cursing.');    
+            console.log(getTime(), message.author.username + ' was warned about cursing.');    
             message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
             message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanity[j] + '\non ' + getDate());  
             return;
           } else {
-            console.log(message.author.username + ' was warned about cursing.');    
+            console.log(getTime(), message.author.username + ' cursed at me in direct message');    
             message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');     
             return;
           }         
