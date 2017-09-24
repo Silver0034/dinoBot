@@ -28,7 +28,7 @@ function setUserTimeout(userID) {
   //automatically remove the user from timeout after a set delay
   setTimeout(function() {
     timedOutUsers.splice(timedOutUsers.indexOf(userID), 1);
-  }, 8000);
+  }, 4000);
 }
 function timeoutAlert(timeoutAlert) {
     //alert users to stop using commands
