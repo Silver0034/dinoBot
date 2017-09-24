@@ -49,6 +49,7 @@ exports.filter = function(messageCheck) {
     "lmao",
     "lmfao",
     "muff",
+    "maymay",  
     "nigger",
     "nigga",
     "omg",
