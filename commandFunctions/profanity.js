@@ -64,9 +64,7 @@ exports.filter = function(messageCheck) {
     "twat",
     "vagina",
     "wank",
-    "whore",
-    "wtf"
-
+    "whore"
   ]
   return profanityArray;
 }
