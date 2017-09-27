@@ -1,21 +1,8 @@
 //cleanDictionary       
 exports.filter = function(messageCheck) {
-  const cleanWordDictionary = [
-    "atit",
-    "etit",  
-    "itit",
-    "otit",
-    "utit",
-    "ntit",  
-    "tita",
-    "tite",
-    "titi",
-    "tito",
-    "titu",  
-    "tith",
-    "titl",  
+  const cleanWordDictionary = [ 
     "analy",
-    "analy",
+    "anali",
     "bass",  
     "cass",
     "dass",
