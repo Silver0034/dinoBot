@@ -334,12 +334,7 @@ bot.on('message', message => {
   var key = messageArguments[0];
   var args = messageArguments.slice(1);
   var userID = message.author.id;
-  
-  //delete bot messages    
-  if (message.author.bot) {
-      message.delete(2000); //Supposed to delete message
-      message.channel.send(message.content.slice(5, message.content.length));
-   }    
+    
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }    
@@ -408,7 +403,12 @@ bot.on('message', message => {
         }    
       }
   }
-  
+  //delete bot messages    
+  if (message.author.bot) {
+      message.delete(2000); //Supposed to delete message
+      message.channel.send(message.content.slice(5, message.content.length));
+      return;
+   }  
 });
 // Create an event listener for new guild members
 bot.on('guildMemberAdd', member => {
