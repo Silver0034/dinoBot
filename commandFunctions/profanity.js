@@ -35,7 +35,6 @@ exports.filter = function(messageCheck) {
     "fudgepacker",
     "flange",
     "goddamn",
-    "hell",
     "homo",
     "jerk",
     "jizz",
