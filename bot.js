@@ -35,6 +35,11 @@ function timeoutAlert(timeoutAlert) {
     //if they are in the timeout array
   return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
+function timeout(key, userID) {
+  if (commandDictionary[key].timeout === 1) {
+    setUserTimeout(userID);    
+  }
+}
 function error(key) {
   var errorMessage = emojiDino + ' ' + roar.generate() + ' ' + roar.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
   console.log('[FAILED]');
@@ -93,6 +98,7 @@ String.prototype.isLatin=function(){return this==this.latinise()}
 //dictionary for all commands and information
 var commandDictionary = new Object();
 commandDictionary['8ball'] = {
+  timeout: 1,    
   emoji: ':8ball: ', //put space after emoji 
   error: 'Use the command like this: `8ball [question]',
   usage: '**Usage:** `8ball [question]',
@@ -105,6 +111,7 @@ commandDictionary['8ball'] = {
   }
 };
 commandDictionary['roll'] = {
+  timeout: 1,    
   emoji: ':game_die: ',  //put space after emoji 
   error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
   usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
@@ -165,6 +172,7 @@ commandDictionary['roll'] = {
   }
 };
 commandDictionary['help'] = {
+  timeout: 1,    
   emoji: ':grey_question: ',  //put space after emoji 
   error: 'Use the command like this: `help',
   usage: '**Usage:** `help OR `help [command]',    
@@ -183,6 +191,7 @@ commandDictionary['help'] = {
   }
 }; 
 commandDictionary['coin'] = {
+  timeout: 1,
   emoji: ':moneybag: ',  //put space after emoji  
   error: 'Use the command like this: `coin',
   usage: '**Usage:** `coin',
@@ -202,6 +211,7 @@ commandDictionary['coin'] = {
   }
 };
 commandDictionary['attack'] = {
+  timeout: 1,    
   emoji: ':dagger: ',  //put space after emoji   
   error: 'Use the command like this: `attack [@user OR name]',
   usage: '**Usage:** `attack [@user OR name]',
@@ -214,6 +224,7 @@ commandDictionary['attack'] = {
   }
 };
 commandDictionary['choose'] = {
+  timeout: 1,
   emoji: ':point_up: ',  //put space after emoji   
   error: 'Use the command like this: `choose [choice1|choice2|etc]',
   usage: '**Usage:** `choose [choice1|choice2|etc]',
@@ -240,6 +251,7 @@ commandDictionary['choose'] = {
   }
 };
 commandDictionary['cookie'] = {
+  timeout: 1,
   emoji: ':gift: ',  //put space after emoji  
   error: 'Use the command like this: `cookie [@user OR name]',
   usage: '**Usage:** `cookie [@user OR name]',
@@ -252,6 +264,7 @@ commandDictionary['cookie'] = {
   }  
 };
 commandDictionary['error'] = {
+  timeout: 1,
   emoji: ':no_entry_sign: ',  //put space after emoji 
   error: 'Use the command like this: `error',
   usage: '`error',
@@ -260,6 +273,7 @@ commandDictionary['error'] = {
   }  
 };
 commandDictionary['hello'] = {
+  timeout: 1,
   emoji: '',  //put space after emoji
   error: 'Use the command like this: `hello',
   usage: '`hello',
@@ -272,6 +286,7 @@ commandDictionary['hello'] = {
   }
 };
 commandDictionary['ping'] = {
+  timeout: 1,
   emoji: ':grey_exclamation: ',  //put space after emoji 
   error: 'Use the command like this: `ping',
   usage: '**Usage:** `ping',
@@ -284,6 +299,7 @@ commandDictionary['ping'] = {
   }      
 };
 commandDictionary['quote'] = {
+  timeout: 1,
   emoji: ':speech_balloon: ',  //put space after emoji 
   error: 'Use the command like this: `quote',
   usage: '**Usage:** `quote',
@@ -293,10 +309,10 @@ commandDictionary['quote'] = {
     } else {
       return responseHead(message, key) + quote.generate();
     }
-    setUserTimeout(userID);
   }
 };
 commandDictionary['taste'] = {
+  timeout: 1,
   emoji: ':fork_and_knife: ',  //put space after emoji 
   error: 'Use the command like this: `taste [@user OR name]',
   usage: '**Usage:** `taste [@user OR name]',
@@ -306,15 +322,14 @@ commandDictionary['taste'] = {
     } else {
       return responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate();
     }
-    setUserTimeout(userID);
   }
 };
 commandDictionary['say'] = {
+  timeout: 0,
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
-    var sayMessage = emojiDino + message.content.substring(5);
-    message.delete(0); //deletes message       
+    var sayMessage = emojiDino + message.content.substring(5);     
     if (!args[0]) {
       return error(key);
     } else {
@@ -380,7 +395,7 @@ bot.on('message', message => {
   if (message.isMentioned(bot.user)) {
     message.channel.send(emojiDino + roar.generate());
     console.log(getTime(), message.author.username + ' mentioned DinoBot');     
-    //setUserTimeout(userID);
+    timeout();
   }    
     //stop message from being processed
     //if from a bot
