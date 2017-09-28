@@ -309,6 +309,19 @@ commandDictionary['taste'] = {
     setUserTimeout(userID);
   }
 };
+commandDictionary['say'] = {
+  emoji: '',  //put space after emoji 
+  error: 'Use the command like this: `say [message]',
+  usage: '**Usage:** `say [message]',
+  doCommand: function(message, key, args) {
+    if (!args[0]) {
+      return error(key);
+    } else {
+      return dinoEmoji + messageContent;
+    }
+    setUserTimeout(userID);
+  }
+};
 
 //SQL Database stuffs
 //This is commented out because
@@ -335,11 +348,9 @@ bot.on('message', message => {
   var args = messageArguments.slice(1);
   var userID = message.author.id;
   
-  //delete bot messages    
-  if (message.author.bot) {
-    if (messageContent.includes("Slow down, you\'re scaring me!")) {
-      message.delete(2000); //deletes message      
-    }
+  //delete bot messages that say to slow down   
+  if (message.author.bot && messageContent.includes("Slow down, you\'re scaring me!")) {
+    message.delete(6000); //deletes message      
     return;
    }    
   //stop message from being processed
