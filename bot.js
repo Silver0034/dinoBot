@@ -396,7 +396,7 @@ bot.on('message', message => {
   if (message.isMentioned(bot.user)) {
     message.channel.send(emojiDino + roar.generate());
     console.log(getTime(), message.author.username + ' mentioned DinoBot');     
-    timeout();
+    timeout(key, userID);
   }    
     //stop message from being processed
     //if from a bot
