@@ -43,6 +43,9 @@ function error(key) {
 function responseHead(message, key, extraContent) { //extraContent is optional
     return emojiDino + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
 }
+function altHead(message, key) {
+    return emojiDino + commandDictionary[key].emoji + '| ';
+}
 function getTime(date) {
   var time;
   
@@ -317,9 +320,8 @@ commandDictionary['say'] = {
     if (!args[0]) {
       return error(key);
     } else {
-      return emojiDino + message.content;
+      return altHead + message.content.substring(5);
     }
-    setUserTimeout(userID);
   }
 };
 
