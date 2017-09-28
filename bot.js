@@ -364,11 +364,11 @@ bot.on('message', message => {
   var userID = message.author.id;
   
   //delete bot messages that say to slow down   
-  if (message.author.bot && messageContent.includes("Slow down, you\'re scaring me!")) {
+  if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!"')) {
     message.delete(6000); //deletes message      
     return;
    }
-  if (messageContent.includes("`say")) {
+  if (messageContent.includes('`say')) {
     message.delete(0); //deletes message      
     return;
    }    
