@@ -312,11 +312,13 @@ commandDictionary['taste'] = {
 commandDictionary['say'] = {
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
-  doCommand: function(message, key, args) {  
+  doCommand: function(message, key, args) {
+    var sayMessage = emojiDino + message.content.substring(5);  
     if (!args[0]) {
       return error(key);
     } else {
-      return emojiDino + message.content.substring(5);
+      message.delete(0);
+      return sayMessage;    
     }
   }
 };
@@ -368,10 +370,6 @@ bot.on('message', message => {
       }
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args));
-      if (key.includes('say')) {
-        message.delete(1);
-        return;  
-      }
       setUserTimeout(userID);
     }
     else {
