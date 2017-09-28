@@ -37,7 +37,6 @@ function timeoutAlert(timeoutAlert) {
 }
 function timeout(key, userID) {
   if (commandDictionary[key].timeout == '1') {
-    console.log(commandDictionary[key].timeout)
     setUserTimeout(userID);    
   }
 }
@@ -367,6 +366,10 @@ bot.on('message', message => {
   //delete bot messages that say to slow down   
   if (message.author.bot && messageContent.includes("Slow down, you\'re scaring me!")) {
     message.delete(6000); //deletes message      
+    return;
+   }
+  if (key.includes("say")) {
+    message.delete(0); //deletes message      
     return;
    }    
   //stop message from being processed
