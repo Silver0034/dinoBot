@@ -369,7 +369,7 @@ bot.on('message', message => {
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args));
       if (key.includes('say')) {
-        message.delete(6000);
+        message.delete(1);
         return;  
       }
       setUserTimeout(userID);
