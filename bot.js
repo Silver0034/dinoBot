@@ -337,8 +337,10 @@ bot.on('message', message => {
   
   //delete bot messages    
   if (message.author.bot) {
-      message.delete(2000); //Supposed to delete message
-      return;
+    if (message.includes("Slow down, you\'re scaring me!")) {
+      message.delete(2000); //deletes message      
+    }
+    return;
    }    
   //stop message from being processed
   //if from a bot
