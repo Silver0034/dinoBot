@@ -43,9 +43,6 @@ function error(key) {
 function responseHead(message, key, extraContent) { //extraContent is optional
     return emojiDino + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
 }
-function altHead(message, key) {
-    return emojiDino + commandDictionary[key].emoji + '| ';
-}
 function getTime(date) {
   var time;
   
@@ -313,14 +310,13 @@ commandDictionary['taste'] = {
   }
 };
 commandDictionary['say'] = {
-  emoji: ':speech_left: ',  //put space after emoji 
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
-  doCommand: function(message, key, args) {
+  doCommand: function(message, key, args) {  
     if (!args[0]) {
       return error(key);
     } else {
-      return altHead(message, key) + message.content.substring(5);
+      return emojiDino + message.content.substring(5);
     }
   }
 };
@@ -372,6 +368,10 @@ bot.on('message', message => {
       }
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args));
+      if (key.includes('say')) {
+        message.delete(6000);
+        return;  
+      }
       setUserTimeout(userID);
     }
     else {
