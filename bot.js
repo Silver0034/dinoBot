@@ -36,7 +36,7 @@ function timeoutAlert(timeoutAlert) {
   return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
 function timeout(key, userID) {
-  if (commandDictionary[key].timeout == '1') {
+  if (commandDictionary[key].timeout === '1') {
     setUserTimeout(userID);    
   }
 }
@@ -330,10 +330,10 @@ commandDictionary['say'] = {
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
     var sayMessage = emojiDino + message.content.substring(5);     
+    message.delete(0); //deletes message  
     if (!args[0]) {
       return error(key);
-    } else {
-      message.delete(0); //deletes message      
+    } else {    
       return sayMessage;    
     }
   }
