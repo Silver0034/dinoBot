@@ -333,6 +333,7 @@ commandDictionary['say'] = {
     if (!args[0]) {
       return error(key);
     } else {
+      message.delete(0); //deletes message      
       return sayMessage;    
     }
   }
@@ -364,14 +365,10 @@ bot.on('message', message => {
   var userID = message.author.id;
   
   //delete bot messages that say to slow down   
-  if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!"')) {
+  if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
     message.delete(6000); //deletes message      
     return;
-   }
-  if (messageContent.includes('`say')) {
-    message.delete(0); //deletes message      
-    return;
-   }    
+   }  
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }    
