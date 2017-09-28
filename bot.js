@@ -37,6 +37,7 @@ function timeoutAlert(timeoutAlert) {
 }
 function timeout(key, userID) {
   if (commandDictionary[key].timeout == '1') {
+    console.log(commandDictionary[key].timeout)
     setUserTimeout(userID);    
   }
 }
