@@ -317,7 +317,7 @@ commandDictionary['say'] = {
     if (!args[0]) {
       return error(key);
     } else {
-      return dinoEmoji + messageContent;
+      return emojiDino + messageContent;
     }
     setUserTimeout(userID);
   }
