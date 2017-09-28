@@ -313,8 +313,8 @@ commandDictionary['say'] = {
   emoji: '',  //put space after emoji 
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
-  doCommand: function(message, key, args) {
-    var sayMessage = message.substring(5);
+  doCommand: function(message, messageContent, key, args) {
+    var sayMessage = messageContent.substring(5);
     if (!args[0]) {
       return error(key);
     } else {
