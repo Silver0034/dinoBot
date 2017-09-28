@@ -313,11 +313,11 @@ commandDictionary['say'] = {
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
-    var sayMessage = emojiDino + message.content.substring(5);  
+    var sayMessage = emojiDino + message.content.substring(5);
+    message.delete(0); //deletes message       
     if (!args[0]) {
       return error(key);
     } else {
-      message.delete(0);
       return sayMessage;    
     }
   }
@@ -379,8 +379,8 @@ bot.on('message', message => {
   }
   if (message.isMentioned(bot.user)) {
     message.channel.send(emojiDino + roar.generate());
-    console.log(getTime(), message.author.username + ' mentioned DinoBot');
-    setUserTimeout(userID);
+    console.log(getTime(), message.author.username + ' mentioned DinoBot');     
+    //setUserTimeout(userID);
   }    
     //stop message from being processed
     //if from a bot
