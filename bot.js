@@ -314,10 +314,11 @@ commandDictionary['say'] = {
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
+    var sayMessage = message.substring(5);
     if (!args[0]) {
       return error(key);
     } else {
-      return emojiDino + messageContent;
+      return emojiDino + sayMessage;
     }
     setUserTimeout(userID);
   }
