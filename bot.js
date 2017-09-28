@@ -386,7 +386,7 @@ bot.on('message', message => {
       }
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args));
-      setUserTimeout(userID);
+      timeout(key, userID);
     }
     else {
       //TODO: Consider sending the help message
