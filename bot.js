@@ -320,7 +320,7 @@ commandDictionary['say'] = {
     if (!args[0]) {
       return error(key);
     } else {
-      return altHead() + message.content.substring(5);
+      return altHead(message, key) + message.content.substring(5);
     }
   }
 };
