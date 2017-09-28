@@ -313,7 +313,7 @@ commandDictionary['taste'] = {
   }
 };
 commandDictionary['say'] = {
-  emoji: '',  //put space after emoji 
+  emoji: ':speech_left: ',  //put space after emoji 
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
