@@ -338,7 +338,6 @@ bot.on('message', message => {
   //delete bot messages    
   if (message.author.bot) {
       message.delete(2000); //Supposed to delete message
-      message.channel.send(message.content.slice(5, message.content.length));
       return;
    }    
   //stop message from being processed
