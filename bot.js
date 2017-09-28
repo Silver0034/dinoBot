@@ -368,7 +368,7 @@ bot.on('message', message => {
     message.delete(6000); //deletes message      
     return;
    }
-  if (key.includes("say")) {
+  if (messageContent.includes("`say")) {
     message.delete(0); //deletes message      
     return;
    }    
