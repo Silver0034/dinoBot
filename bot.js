@@ -356,6 +356,8 @@ con.connect(function(err) {
 bot.on('ready', () => {
   console.log('Online and connected');
 });
+//try to handle rejections
+process.on('unhandledRejection', console.error);
 // Create an event listener for messages
 bot.on('message', message => {
   var messageContent = message.content;
