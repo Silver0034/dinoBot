@@ -268,7 +268,7 @@ commandDictionary['error'] = {
   timeout: '1',
   emoji: ':no_entry_sign: ',  //put space after emoji 
   error: 'Use the command like this: `error',
-  usage: '`error',
+  usage: '**Usage:** `error',
   doCommand: function(message, key, args) {
     return error(key);
   }  
@@ -277,7 +277,7 @@ commandDictionary['hello'] = {
   timeout: '1',
   emoji: '',  //put space after emoji
   error: 'Use the command like this: `hello',
-  usage: '`hello',
+  usage: '**Usage:** `hello',
   doCommand: function(message, key, args) {
     if (args[0]) {
       return error(key);
