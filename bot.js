@@ -10,6 +10,7 @@ var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
 var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
+var languageResponse = require('./commandFunctions/languageResponse.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -424,7 +425,7 @@ bot.on('message', message => {
               if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
           }   
           if (message.guild != null) {
-            message.channel.send(emojiDino + 'Language!');      
+            message.channel.send(emojiDino + languageResponse.generate());      
             console.log(getTime(), message.author.username + ' was warned about cursing.');    
             //message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
             message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanity[j] + '\non ' + getDate());  
