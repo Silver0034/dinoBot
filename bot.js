@@ -11,7 +11,7 @@ var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
 var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
 var languageResponse = require('./commandFunctions/languageResponse.js');
-var $ = require('jQuery');
+var jQuery = require('./jquery-3.2.1.min.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -343,7 +343,7 @@ commandDictionary['say'] = {
 commandDictionary['dex'] = {
   timeout: '1',
   error: 'Use the command like this: `dex [thing]',
-  usage: '**Usage:** `say [message]',
+  usage: '**Usage:** `dex [thing]',
   doCommand: function(message, key, args) {
     var sayMessage = emojiDino + message.content.substring(5);     
     message.delete(0); //deletes message  
@@ -351,8 +351,8 @@ commandDictionary['dex'] = {
       return error(key);
     } else {    
       
-      $.get('https://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
-        alert($(text).find('.pokemon-number'));
+      jQuery.get('https://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
+        alert(jQuery(text).find('.pokemon-number'));
       });  
         
     }
