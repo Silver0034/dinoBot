@@ -11,6 +11,7 @@ var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
 var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
 var languageResponse = require('./commandFunctions/languageResponse.js');
+var jquery = require('./jquery-3.2.1.min.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -21,6 +22,7 @@ var profanityExceptions = cleanDictionary.filter();
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var con = mysql.createConnection(MYSQLCRED);
+script
 
 //global functions
 function setUserTimeout(userID) {
