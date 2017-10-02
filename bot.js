@@ -348,9 +348,10 @@ commandDictionary['avatar'] = {
     if (!args[0]) {
       return message.author.avatarURL;
     } else {
-      if (args[0].includes('@') && args[0].equals(user.id)) {
-        console.log('works');    
-        return 'works';   
+      if (args[0].includes('@')) {
+        var avatarTarget = args[0].substring(1); 
+        console.log('avatarTarget');    
+        return 'avatarTarget';   
       } else {
         return error(key);
       }   
@@ -405,6 +406,7 @@ bot.on('message', message => {
   var key = messageArguments[0];
   var args = messageArguments.slice(1);
   var userID = message.author.id;
+  var user = 
   
   //delete bot messages that say to slow down   
   if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
