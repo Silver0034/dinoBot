@@ -339,6 +339,24 @@ commandDictionary['say'] = {
     }
   }
 };
+commandDictionary['dex'] = {
+  timeout: '1',
+  error: 'Use the command like this: `dex [thing]',
+  usage: '**Usage:** `say [message]',
+  doCommand: function(message, key, args) {
+    var sayMessage = emojiDino + message.content.substring(5);     
+    message.delete(0); //deletes message  
+    if (!args[0]) {
+      return error(key);
+    } else {    
+      
+      $.get('https://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
+        alert($(text).find('.pokemon-number'));
+      });  
+        
+    }
+  }
+};
 
 //SQL Database stuffs
 //This is commented out because
