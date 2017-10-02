@@ -340,6 +340,20 @@ commandDictionary['say'] = {
     }
   }
 };
+commandDictionary['avatar'] = {
+  timeout: '1',
+  error: 'Use the command like this: `avatar [target]',
+  usage: '**Usage:** `avatar [target]',
+  doCommand: function(message, key, args) {
+    var sayMessage = emojiDino + message.content.substring(5);     
+    message.delete(0); //deletes message  
+    if (!args[0]) {
+      return message.author.avatarURL;
+    } else {    
+      return sayMessage;    
+    }
+  }
+};
 /*
 commandDictionary['dex'] = {
   timeout: '1',
