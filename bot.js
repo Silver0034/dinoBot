@@ -350,8 +350,8 @@ commandDictionary['avatar'] = {
     } else {
       if (args[0].includes('@')) {
         var avatarTarget = args[0];
-        console.log(avatarTarget);    
-        return avatarTarget.avatarURL;   
+        console.log(message.author);
+        return avatarTarget;   
       } else {
         return error(key);
       }       
