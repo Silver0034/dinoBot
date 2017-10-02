@@ -22,7 +22,6 @@ var profanityExceptions = cleanDictionary.filter();
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var con = mysql.createConnection(MYSQLCRED);
-script
 
 //global functions
 function setUserTimeout(userID) {
