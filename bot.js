@@ -340,6 +340,7 @@ commandDictionary['say'] = {
     }
   }
 };
+/*
 commandDictionary['dex'] = {
   timeout: '1',
   error: 'Use the command like this: `dex [thing]',
@@ -358,6 +359,7 @@ commandDictionary['dex'] = {
     }
   }
 };
+*/
 
 //SQL Database stuffs
 //This is commented out because
