@@ -348,8 +348,11 @@ commandDictionary['avatar'] = {
     if (!args[0]) {
       return message.author.avatarURL;
     } else {
-      console.log('works');    
-      return 'works';    
+      if (args[0].includes('@')) {
+        console.log('works');    
+        return 'works';    
+      }    
+          
     }
   }
 };
