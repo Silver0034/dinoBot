@@ -349,9 +349,13 @@ commandDictionary['avatar'] = {
       return message.author.avatarURL;
     } else {
       if (args[0].includes('@')) {
-        console.log('works');    
-        return 'works';    
-      }    
+        if (!args[0].avatarURL == null) {
+          console.log('works');    
+          return 'works';    
+        }   
+      } else {
+        return error(key);
+      }   
           
     }
   }
