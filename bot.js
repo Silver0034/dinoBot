@@ -344,13 +344,14 @@ commandDictionary['avatar'] = {
   timeout: '1',
   error: 'Use the command like this: `avatar [target]',
   usage: '**Usage:** `avatar [target]',
-  doCommand: function(message, key, args) {      
+  doCommand: function(message, key, args, user) {      
     if (!args[0]) {
       return message.author.avatarURL;
     } else {
-      if (args[0] == user.id) {
-        console.log('works');
+      if (args[0].includes('@')) {
+          console.log('works');
       }
+    }
       return;
     }
   }
