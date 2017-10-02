@@ -11,7 +11,7 @@ var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
 var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
 var languageResponse = require('./commandFunctions/languageResponse.js');
-var $ = require('./jquery-3.2.1.min.js');
+var $ = require('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
