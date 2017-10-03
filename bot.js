@@ -345,9 +345,29 @@ commandDictionary['avatar'] = {
   error: 'Use the command like this: `avatar [target]',
   usage: '**Usage:** `avatar [target]',
   doCommand: function(message, key, args) {
-    var avatarMention = message.mentions.users.array().length;  
+    var avatarMention = message.mentions.users.array();
+    var avatarReturn;
+    if (avatarMention.length < 1) {return message.author.avatarURL;}
+    if (avatarMention.length >= 1 && avatarMention.legnth <= 6) {
+      for (var i = 0; i < avatarMention.length; i++) {
+        avatarReturn = avatarReturn.push(avatarMention[i]);
+        return avatarReturn;    
+      }    
+    }
+    if (avatarMention.length > 6) {
+        return error(key) + '\nPlease mention 6 or fewer users.'
+    }
+    return error(key);
+    
+      
+      
+      
+      
+      
+      
+      
     if (!args[0]) {
-      return message.author.avatarURL;
+      
     } else {
       console.log(avatarMention);    
       if (avatarMention >= 1) {
