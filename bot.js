@@ -344,11 +344,12 @@ commandDictionary['avatar'] = {
   timeout: '1',
   error: 'Use the command like this: `avatar [target]',
   usage: '**Usage:** `avatar [target]',
-  doCommand: function(message, key, args) { 
+  doCommand: function(message, key, args) {
+    var avatarMention = message.mentions.users.toArray().length;  
     if (!args[0]) {
       return message.author.avatarURL;
     } else {
-      console.log(message.mentions.users.count());    
+      console.log(avatarMention);    
       if (message.mentions.users.count() >= 1) {
         return message.mentions.users.first().avatarURL;   
       } else {
