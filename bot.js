@@ -348,7 +348,7 @@ commandDictionary['avatar'] = {
     if (!args[0]) {
       return message.author.avatarURL;
     } else {
-      if (message.mentions.users >= 1) {
+      if (message.mentions.users.count() >= 1) {
         return message.mentions.users.first().avatarURL;   
       } else {
         return error(key);
