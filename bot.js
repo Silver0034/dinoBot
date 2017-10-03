@@ -347,6 +347,8 @@ commandDictionary['avatar'] = {
   doCommand: function(message, key, args) {
     var avatarMention = message.mentions.users.array();
     var avatarReturn;
+          console.log(avatarMention.length);
+  
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
       return message.author.avatarURL;
