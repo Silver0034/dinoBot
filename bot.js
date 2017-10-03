@@ -353,7 +353,7 @@ commandDictionary['avatar'] = {
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
-        avatarReturn += avatarMention.username + '\'s Avatar: ' + avatarMention[i].avatarURL + "\n";   
+        avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarMention[i].avatarURL + "\n";   
       } 
       return avatarReturn;     
     } else {
