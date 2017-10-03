@@ -350,32 +350,13 @@ commandDictionary['avatar'] = {
     if (avatarMention.length < 1) {return message.author.avatarURL;}
     if (avatarMention.length >= 1 && avatarMention.legnth <= 6) {
       for (var i = 0; i < avatarMention.length; i++) {
-        avatarReturn = avatarReturn.push(avatarMention[i]);
-        return avatarReturn;    
-      }    
-    }
-    if (avatarMention.length > 6) {
+        avatarReturn += avatarMention[i].avatarURL;   
+      } 
+      return avatarReturn;     
+    } else {
         return error(key) + '\nPlease mention 6 or fewer users.'
     }
-    return error(key);
-    
-      
-      
-      
-      
-      
-      
-      
-    if (!args[0]) {
-      
-    } else {
-      console.log(avatarMention);    
-      if (avatarMention >= 1) {
-        return message.mentions.users.first().avatarURL;   
-      } else {
-        return error(key);
-      }       
-    }
+    return error(key);       
   }
 };
 /*
