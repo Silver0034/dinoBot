@@ -30,6 +30,7 @@ exports.filter = function(messageCheck) {
     "assu",
     "assi",
     "chell",
+    "anall",  
   ]
   return cleanWordDictionary;
 }
