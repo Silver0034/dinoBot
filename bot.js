@@ -346,13 +346,11 @@ commandDictionary['avatar'] = {
   usage: '**Usage:** `avatar [target]',
   doCommand: function(message, key, args) {
     var avatarMention = message.mentions.users.array();
-    var avatarReturn;
-          console.log(avatarMention.length);
-  
+    var avatarReturn; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
       return message.author.avatarURL;
-    } else if (avatarMention.length >= 1 && avatarMention.legnth <= 6) {
+    } else if (avatarMention.length >= 1 && avatarMention.length <= 6) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
         avatarReturn += avatarMention[i].avatarURL;   
