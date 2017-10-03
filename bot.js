@@ -342,6 +342,7 @@ commandDictionary['say'] = {
 };
 commandDictionary['avatar'] = {
   timeout: '1',
+  emoji: ':busts_in_silhouette: ',    
   error: 'Use the command like this: `avatar [target]',
   usage: '**Usage:** `avatar [target]',
   doCommand: function(message, key, args) {
