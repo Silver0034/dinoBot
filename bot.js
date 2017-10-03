@@ -359,7 +359,7 @@ commandDictionary['avatar'] = {
       return avatarReturn;     
     } else {
       //if message range longer than 6 return error    
-      return error(key) + '\nPlease mention 6 or fewer users.'
+      return error(key) + '\nPlease mention 5 or fewer users.'
     }
     //if message formatted incorectly  
     return error(key);       
