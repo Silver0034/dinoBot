@@ -350,7 +350,7 @@ commandDictionary['avatar'] = {
       return message.author.avatarURL;
     } else {
       console.log(avatarMention);    
-      if (message.mentions.users.count() >= 1) {
+      if (avatarMention >= 1) {
         return message.mentions.users.first().avatarURL;   
       } else {
         return error(key);
