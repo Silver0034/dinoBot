@@ -348,9 +348,7 @@ commandDictionary['avatar'] = {
     if (!args[0]) {
       return message.author.avatarURL;
     } else {
-      if (args[0].includes('@')) {
-        var avatarTarget = args[0];
-        console.log(message.mentions.users);
+      if (message.mentions.users >= 1) {
         return message.mentions.users.first().avatarURL;   
       } else {
         return error(key);
