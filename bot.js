@@ -350,7 +350,7 @@ commandDictionary['avatar'] = {
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
-      return message.author.avatarURL;
+      return avatarMention[i].username + '\'s Avatar: ' + message.author.avatarURL;
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
@@ -436,10 +436,12 @@ bot.on('message', message => {
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args));
       timeout(key, userID);
+      return;      
     }
     else {
       //TODO: Consider sending the help message
       console.log(getTime(), message.author.username + "used an unrecognized command input");
+      return;    
     }
   }
   if (message.isMentioned(bot.user)) {
