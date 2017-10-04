@@ -387,16 +387,11 @@ commandDictionary['dex'] = {
 */
 
 //SQL Database stuffs
-//This is commented out because
-//it will time out every 4 hours
-//needs to be changed before I start
-//to acsess the databases
-/*
 con.connect(function(err) {
     if (err) throw err;
     console.log('Connected to the Database');
 });
-*/
+
 
 // only reacts to Discord _after_ ready is emitted
 bot.on('ready', () => {
