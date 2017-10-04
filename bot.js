@@ -440,7 +440,7 @@ bot.on('message', message => {
     }
     else {
       //TODO: Consider sending the help message
-      console.log(getTime(), message.author.username + "used an unrecognized command input");
+      console.log(getTime(), message.author.username + " used an unrecognized command input");
       return;    
     }
   }
