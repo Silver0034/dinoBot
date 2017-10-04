@@ -350,7 +350,7 @@ commandDictionary['avatar'] = {
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
-      return avatarMention[i].username + '\'s Avatar: ' + message.author.avatarURL;
+      return message.author.username + '\'s Avatar: ' + message.author.avatarURL;
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
