@@ -32,6 +32,7 @@ exports.filter = function(messageCheck) {
     "chell",
     "anall",
     "itcha",
+    "canuse",
   ]
   return cleanWordDictionary;
 }
