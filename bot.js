@@ -425,13 +425,13 @@ bot.on('message', message => {
       mysql.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username "', " + "NOW(), " + "1" + ")", function (error, results, fields) {
   			if (error) throw error;
         console.log(results);
-      }        
+      });    
       console.log('New user added to database');
     } else {
       mysql.query("UPDATE users SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (error, results, fields) {
   			if (error) throw error;
         console.log(results);
-      }
+      });
       console.log('Incremented messagesSent count');
       console.log('update lastSeen');
     }
