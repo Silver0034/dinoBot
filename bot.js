@@ -418,7 +418,7 @@ bot.on('message', message => {
   if (message.author.bot) { return; }
   //listen for the ` to start a command
   
-  //if new user sends a message
+  //if user sends a message
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
   	if (error) throw error;
     if (results.length == 0) {
@@ -439,7 +439,7 @@ bot.on('message', message => {
   //record message content
   sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              "'" + new Date(parseInt(message.createdTimestamp)).toString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
+              "'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
     if (error) throw error;
     console.log(results);
     console.log('Logged message by ' + message.author.username);
