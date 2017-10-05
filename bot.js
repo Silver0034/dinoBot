@@ -463,9 +463,11 @@ bot.on('message', message => {
   });
   
   //record message content
-  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
+  var sqlString = "INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              message.createdTimestamp + ", " + mysql_real_escape_string(message.content) + ")", function (error, results, fields) {
+              message.createdTimestamp + ", " + mysql_real_escape_string(message.content) + ")";
+  console.log(sqlString);
+  sqldb.query(sqlString, function (error, results, fields) {
     if (error) throw error;
     console.log(results);
     console.log('Logged message by ' + message.author.username);
@@ -557,3 +559,30 @@ bot.on('guildMemberAdd', member => {
   channel.send(emojiDino + roar.generate() + roar.generate() + roar.generate() + ` (Welcome to the server, ${member})`);
 });
 bot.login(TOKEN);
+
+/home/pi/dinoBot/node_modules/mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_BAD_FIELD_ERROR: Unknown column 'test' in 'field list'
+    at Query.Sequence._packetToError (/home/pi/dinoBot/node_modules/mysql/lib/protocol/sequences/Sequence.js:52:14)
+    at Query.ErrorPacket (/home/pi/dinoBot/node_modules/mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/home/pi/dinoBot/node_modules/mysql/lib/protocol/Protocol.js:279:23)
+    at Parser.write (/home/pi/dinoBot/node_modules/mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/home/pi/dinoBot/node_modules/mysql/lib/protocol/Protocol.js:39:16)
+    at Socket.<anonymous> (/home/pi/dinoBot/node_modules/mysql/lib/Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:266:12)
+    at readableAddChunk (_stream_readable.js:253:11)
+    --------------------
+    at Protocol._enqueue (/home/pi/dinoBot/node_modules/mysql/lib/protocol/Protocol.js:145:48)
+    at Connection.query (/home/pi/dinoBot/node_modules/mysql/lib/Connection.js:208:25)
+    at Client.bot.on.message (/home/pi/dinoBot/bot.js:466:9)
+    at emitOne (events.js:115:13)
+    at Client.emit (events.js:210:7)
+    at MessageCreateHandler.handle (/home/pi/dinoBot/node_modules/discord.js/src/client/websocket/packets/handlers/MessageCreate.js:9:34)
+    at WebSocketPacketManager.handle (/home/pi/dinoBot/node_modules/discord.js/src/client/websocket/packets/WebSocketPacketManager.js:103:65)
+    at WebSocketConnection.onPacket (/home/pi/dinoBot/node_modules/discord.js/src/client/websocket/WebSocketConnection.js:330:35)
+    at WebSocketConnection.onMessage (/home/pi/dinoBot/node_modules/discord.js/src/client/websocket/WebSocketConnection.js:293:17)
+    at WebSocketClient.internalOnMessage (/home/pi/dinoBot/node_modules/uws/uws.js:103:17)
