@@ -437,24 +437,13 @@ bot.on('message', message => {
   });
   
   //record message content
-  var sqlString = "INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
+  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              "'" + new Date(parseInt(message.createdTimestamp)).toISOString() + "', " + mysql.escape(message.content) + ")";
-  console.log(sqlString);
-  sqldb.query(sqlString, function (error, results, fields) {
+              "'" + new Date(parseInt(message.createdTimestamp)).toISOString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
     if (error) throw error;
     console.log(results);
     console.log('Logged message by ' + message.author.username);
   });
-  /*
-	message.id 								messageID		BIGINT NOT NULL
-	message.author.id 			  userID			BIGINT NOT NULL
-	message.guild.id 					guildID			BIGINT NOT NULL
-	message.channel.id 				channelID		BIGINT NOT NULL
-	message.createdTimestamp	date				DATETIME NOT NULL
-	message.content						content			TEXT
-	*/
-  
   
   //the bot only responds with things inside this if
   //if I want the bot to display something write it in here
