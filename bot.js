@@ -426,15 +426,13 @@ bot.on('message', message => {
   			if (error) throw error;
         console.log(results);
       });
-      console.log('New user added to database');
+      console.log(message.author.username + ' added to database');
     } else {
       sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (error, results, fields) {
   			if (error) throw error;
         console.log(results);
       });
-      console.log('Incremented messagesSent count');
-      console.log('update lastSeen');
-    	console.log('The solution is: ', results[0].messagesSent + 1);
+      console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + results[0].messagesSent + 1);
     }
   });
   
