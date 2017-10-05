@@ -419,16 +419,16 @@ bot.on('message', message => {
   //listen for the ` to start a command
   
   //if new user sends a message
-  mysql.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
+  sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
   	if (error) throw error;
     if (results[0].length == 0) {
-      mysql.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username + "', " + "NOW(), " + "1" + ")", function (error, results, fields) {
+      sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username + "', " + "NOW(), " + "1" + ")", function (error, results, fields) {
   			if (error) throw error;
         console.log(results);
       });
       console.log('New user added to database');
     } else {
-      mysql.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (error, results, fields) {
+      sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (error, results, fields) {
   			if (error) throw error;
         console.log(results);
       });
