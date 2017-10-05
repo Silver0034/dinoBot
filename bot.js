@@ -21,7 +21,7 @@ var profanityExceptions = cleanDictionary.filter();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
-var con = mysql.createConnection(MYSQLCRED);
+var sqldb = mysql.createConnection(MYSQLCRED);
 
 //global functions
 function setUserTimeout(userID) {
@@ -387,7 +387,7 @@ commandDictionary['dex'] = {
 */
 
 //SQL Database stuffs
-con.connect(function(err) {
+sqldb.connect(function(err) {
     if (err) throw err;
     console.log('Connected to the Database');
 });
@@ -417,10 +417,31 @@ bot.on('message', message => {
   //if from a bot
   if (message.author.bot) { return; }    
   //listen for the ` to start a command
+  
+  //if new user sends a message
+  mysql.query('SELECT * FROM users WHERE userID = ' + userID, function (error, results, fields) {
+  	if (error) throw error;
+    if (results[0].length == 0) {
+      mysql.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username "', " + "NOW(), " + "1" + ")", function (error, results, fields) {
+  			if (error) throw error;
+        console.log(results);
+      }        
+      console.log('New user added to database');
+    } else {
+      mysql.query("UPDATE users SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (error, results, fields) {
+  			if (error) throw error;
+        console.log(results);
+      }
+      console.log('Incremented messagesSent count');
+      console.log('update lastSeen');
+    }
+  	console.log('The solution is: ', results[0].messagesSent + 1);
+  });
+  
   //the bot only responds with things inside this if
   //if i want the bot to display something write it in here
   if (messageContent.substring(0, 1) === '`') {
-  //stop message from being processed
+  //stop message from being processed  
   //if from a user in timeout
     if(commandDictionary[key]) {
       if (timedOutUsers.indexOf(userID) > -1) {
