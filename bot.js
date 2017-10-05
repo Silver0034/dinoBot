@@ -437,7 +437,7 @@ bot.on('message', message => {
   });
   
   //record message content
-  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, channelID, date, content) VALUES (" + 
+  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
               message.createdTimestamp + ", '" + message.content + "')", function (error, results, fields) {
     if (error) throw error;
