@@ -434,8 +434,8 @@ bot.on('message', message => {
       });
       console.log('Incremented messagesSent count');
       console.log('update lastSeen');
+    	console.log('The solution is: ', results[0].messagesSent + 1);
     }
-  	console.log('The solution is: ', results[0].messagesSent + 1);
   });
   
   //the bot only responds with things inside this if
