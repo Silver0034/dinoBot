@@ -439,7 +439,7 @@ bot.on('message', message => {
   //record message content
   var sqlString = "INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              "'" + new Date(parseInt(message.createdTimestamp)).format("dd.mm.yyyy hh:MM:ss") + "', " + mysql.escape(message.content) + ")";
+              "'" + (new Date(parseInt(message.createdTimestamp))).format("dd.mm.yyyy hh:MM:ss") + "', " + mysql.escape(message.content) + ")";
   console.log(sqlString);
   sqldb.query(sqlString, function (error, results, fields) {
     if (error) throw error;
