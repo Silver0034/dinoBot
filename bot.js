@@ -410,16 +410,14 @@ bot.on('message', message => {
   
   //delete bot messages that say to slow down   
   if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
-    message.delete(6000); //deletes message      
+    message.delete(6000); //deletes message
     return;
-   }  
+  }
   //stop message from being processed
   //if from a bot
-  if (message.author.bot) { return; }    
+  if (message.author.bot) { return; }
   //listen for the ` to start a command
   
-  console.log(message);    
-    
   //if new user sends a message
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
   	if (error) throw error;
@@ -438,8 +436,26 @@ bot.on('message', message => {
     }
   });
   
+  //record message content
+  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, channelID, date, content) VALUES (" + 
+              message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
+              message.createdTimestamp + ", '" + message.content "')", function (error, results, fields) {
+    if (error) throw error;
+    console.log(results);
+    console.log('Logged message by ' + message.author.username);
+  });
+  /*
+	message.id 								messageID		BIGINT NOT NULL
+	message.author.id 			  userID			BIGINT NOT NULL
+	message.guild.id 					guildID			BIGINT NOT NULL
+	message.channel.id 				channelID		BIGINT NOT NULL
+	message.createdTimestamp	date				DATETIME NOT NULL
+	message.content						content			TEXT
+	*/
+  
+  
   //the bot only responds with things inside this if
-  //if i want the bot to display something write it in here
+  //if I want the bot to display something write it in here
   if (messageContent.substring(0, 1) === '`') {
   //stop message from being processed  
   //if from a user in timeout
