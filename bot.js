@@ -421,7 +421,7 @@ bot.on('message', message => {
   //if new user sends a message
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
   	if (error) throw error;
-    if (results[0].length == 0) {
+    if (results.length == 0) {
       sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username + "', " + "NOW(), " + "1" + ")", function (error, results, fields) {
   			if (error) throw error;
         console.log(results);
