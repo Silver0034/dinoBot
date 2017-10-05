@@ -418,7 +418,7 @@ bot.on('message', message => {
   if (message.author.bot) { return; }    
   //listen for the ` to start a command
   
-  console.log(mesage);    
+  console.log(message);    
     
   //if new user sends a message
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
