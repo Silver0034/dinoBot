@@ -438,7 +438,7 @@ bot.on('message', message => {
   
   //record message content
   var t = new Date(parseInt(message.createdTimestamp));
-	var formattedDate = t.format("dd.mm.yyyy hh:MM:ss");
+	var formattedDate = t.toISOString();
   var sqlString = "INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
               "'" + formattedDate + "', " + mysql.escape(message.content) + ")";
