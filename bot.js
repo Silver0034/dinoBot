@@ -432,14 +432,14 @@ bot.on('message', message => {
   			if (error) throw error;
         console.log(results);
       });
-      console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + results[0].messagesSent + 1);
+      console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + parseInt(results[0].messagesSent) + 1);
     }
   });
   
   //record message content
   var sqlString = "INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              "FROM_UNIXTIME(" + message.createdTimestampmysql + "), " + mysql.escape(message.content) + ")";
+              "'" + new Date(parseInt(message.createdTimestamp)).format("dd.mm.yyyy hh:MM:ss") + "', " + mysql.escape(message.content) + ")";
   console.log(sqlString);
   sqldb.query(sqlString, function (error, results, fields) {
     if (error) throw error;
