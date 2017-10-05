@@ -439,7 +439,7 @@ bot.on('message', message => {
   //record message content
   sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              "'" + new Date(parseInt(message.createdTimestamp)).toISOString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
+              "'" + new Date(parseInt(message.createdTimestamp)).toString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
     if (error) throw error;
     console.log(results);
     console.log('Logged message by ' + message.author.username);
@@ -471,18 +471,18 @@ bot.on('message', message => {
     message.channel.send(emojiDino + roar.generate());
     console.log(getTime(), message.author.username + ' mentioned DinoBot');     
   }    
-    //stop message from being processed
-    //if from a bot
-    if (message.author.bot) { return; }
-    //check if theres spaces in the middle of curse words
-    var messageSpaceCheck = spaceCheck(messageCheck);
-    
-    //arrange first letter of each word and put it as one
-    //arg for the array 'messageCheck'
-    var messageFirstLetters = combineFirstLetters(messageCheck);
-    messageCheck.unshift(messageFirstLetters);
-    messageCheck = messageCheck.concat(messageSpaceCheck);
-    //check individual words for cursing
+  //stop message from being processed
+  //if from a bot
+  if (message.author.bot) { return; }
+  //check if theres spaces in the middle of curse words
+  var messageSpaceCheck = spaceCheck(messageCheck);
+
+  //arrange first letter of each word and put it as one
+  //arg for the array 'messageCheck'
+  var messageFirstLetters = combineFirstLetters(messageCheck);
+  messageCheck.unshift(messageFirstLetters);
+  messageCheck = messageCheck.concat(messageSpaceCheck);
+  //check individual words for cursing
   for (var i = 0; i < messageCheck.length; i++) { 
     messageCheck[i] = messageCheck[i].toLowerCase();
     messageCheck[i] = messageCheck[i].replace(/"/g, '');
