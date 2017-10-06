@@ -16,7 +16,7 @@ var jQuery = require('./jquery-3.2.1.min.js');
 const TOKEN = tokenReturn.return();
 const MYSQLCRED = tokenReturn.sqlCredentials;
 var profanity = profanity.trigger();
-var profanityExceptions = profanity.exceptions();
+var profanityExceptions = profanity.trigger();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
