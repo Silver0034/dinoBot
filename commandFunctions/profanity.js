@@ -1,6 +1,5 @@
 //profanity       
-exports.trigger = function(messageCheck) {
-  const profanityArray = [
+exports.list = [
     "anal",
     "anus",
     "arse",
@@ -64,11 +63,9 @@ exports.trigger = function(messageCheck) {
     "wank",
     "whore"
   ]
-  return profanityArray;
-}
-exports.exceptions = function(messageCheck) {
-  const cleanWordDictionary = [ 
-    "analy",
+
+exports.exceptions = [
+		"analy",
     "anali",
     "assh",  
     "bass",  
@@ -103,7 +100,7 @@ exports.exceptions = function(messageCheck) {
     "itcha",
     "canuse",
   ]
-  return cleanWordDictionary;
+
 }
 exports.filter = function(message) {
 	//check if theres spaces in the middle of curse words
