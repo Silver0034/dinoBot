@@ -354,7 +354,7 @@ commandDictionary['avatar'] = {
       return avatarReturn;     
     } else {
       //if message range longer than 6 return error    
-      return error(key) + '\nPlease mention 5 or fewer users.'
+      return error(key) + '\nPlease mention 5 or fewer users.';
     }
     //if message formatted incorectly  
     return error(key);       
@@ -370,7 +370,7 @@ commandDictionary['admin'] = {
     if(message.author == message.guild.owner) {
      //put the fun stuff here      
     } else {
-      timeout(key, userID, 6000);
+      timeout(key, message.author.id, 6000);
       return emojiDino + 'You do not have access to this command.';
     }
   }
