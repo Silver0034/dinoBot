@@ -103,6 +103,7 @@ function profanityCheck (message) {
 	messageCheck = messageCheck.concat(messageSpaceCheck);
 	//check individual words for cursing
 	for (var i = 0; i < messageCheck.length; i++) { 
+		var messageCheck = message.content.split(' ');
 		messageCheck[i] = messageCheck[i].toLowerCase();
 		messageCheck[i] = messageCheck[i].replace(/"/g, '');
 		messageCheck[i] = messageCheck[i].replace(/'/g, '');
@@ -468,7 +469,6 @@ process.on('unhandledRejection', console.error);
 bot.on('message', message => {  
   var messageContent = message.content;
   var messageArguments = message.content.substring(1).split(' ');
-  var messageCheck = message.content.split(' ');
   var key = messageArguments[0];
   var args = messageArguments.slice(1);
   var userID = message.author.id;
