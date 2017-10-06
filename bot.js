@@ -388,7 +388,7 @@ commandDictionary['dex'] = {
 
 //SQL Database stuffs
 sqldb.connect(function(err) {
-    if (err) throw err;
+    if (error) throw error;
     console.log('Connected to the Database');
 });
 
@@ -479,7 +479,7 @@ bot.on('message', message => {
     
   //if message is in profanity enabled channel
   sqldb.query('SELECT * FROM channelProfanity WHERE channelID = ' + message.channel.id, function (error, results, fields) {
-    if (err) throw err;
+    if (error) throw error;
     if (results.length == 0) {
       //check if theres spaces in the middle of curse words
       var messageSpaceCheck = spaceCheck(messageCheck);
