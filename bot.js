@@ -24,6 +24,7 @@ var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
 
 //global functions
+//puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
   //put users userID in a timeout array
   timedOutUsers.push(userID);
@@ -37,9 +38,12 @@ function timeoutAlert(timeoutAlert) {
     //if they are in the timeout array
   return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
+// timoutDuration is optional. Allows manually passing in a length to time out
 function timeout(key, userID, timeoutDuration) {
   //if we have not explicitly set a timeout length in our dictionary, assume we should time out for 6 seconds
-  if(commandDictionary[key].timeout != undefined) {
+  if(timeoutDuration != undefined) {
+    setUserTimeout(userID, timeoutDuration);
+  } else if(commandDictionary[key].timeout != undefined) {
     setUserTimeout(userID, commandDictionary[key].timeout);
   } else {
     setUserTimeout(userID, 6000);
@@ -363,7 +367,12 @@ commandDictionary['admin'] = {
   doCommand: function(message, key, args) {
     //input: profanity nofilter
     //input: profanity filter
-
+    if(message.author == message.guild.owner) {
+     //put the fun stuff here      
+    } else {
+      timeout(key, userID, 6000);
+      return emojiDino + 'You do not have access to this command.';
+    }
   }
 };
 /*
@@ -418,7 +427,7 @@ bot.on('message', message => {
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }
- console.log(message.author); 
+  
   //if user sends a message
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
   	if (err) throw err;
@@ -533,3 +542,94 @@ bot.on('guildMemberAdd', member => {
   channel.send(emojiDino + roar.generate() + roar.generate() + roar.generate() + ` (Welcome to the server, ${member})`);
 });
 bot.login(TOKEN);
+
+
+
+
+/*
+User {
+  id: '227551093465415682',
+  username: 'Silver0034',
+  discriminator: '4220',
+  avatar: 'cfd65d259da890a9c5a6330896fc6fe7',
+  bot: false,
+  lastMessageID: '365720764931899392',
+  lastMessage:
+   Message {
+     channel:
+      TextChannel {
+        type: 'text',
+        id: '358264614200279050',
+        name: 'bot-test-channel',
+        position: 1,
+        permissionOverwrites: Collection {},
+        topic: null,
+        nsfw: false,
+        lastMessageID: '365720764931899392',
+        guild: [Object],
+        messages: [Object],
+        _typing: [Object],
+        lastMessage: [Object] },
+     id: '365720764931899392',
+     type: 'DEFAULT',
+     content: 'trdt',
+     author: [Circular],
+     member:
+      GuildMember {
+        guild: [Object],
+        user: [Object],
+        _roles: [],
+        serverDeaf: false,
+        serverMute: false,
+        selfMute: false,
+        selfDeaf: false,
+        voiceSessionID: '0530168f20d30cac8fa3bf5c609156ef',
+        voiceChannelID: '349379585462370305',
+        speaking: false,
+        nickname: null,
+        joinedTimestamp: 1503368984320,
+        lastMessageID: '365720764931899392',
+        lastMessage: [Object] },
+     pinned: false,
+     tts: false,
+     nonce: '365720768396394496',
+     system: false,
+     embeds: [],
+     attachments: Collection {},
+     createdTimestamp: 1507265025123,
+     editedTimestamp: null,
+     reactions: Collection {},
+     mentions:
+      MessageMentions {
+        everyone: false,
+        users: Collection {},
+        roles: Collection {},
+        _content: 'trdt',
+        _client: [Object],
+        _guild: [Object],
+        _members: null,
+        _channels: null },
+     webhookID: null,
+     hit: null,
+     _edits: [] } }
+Incremented messagesSent count for Silver0034 to 80
+OkPacket {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  serverStatus: 2,
+  warningCount: 0,
+  message: '',
+  protocol41: true,
+  changedRows: 0 }
+Logged message by Silver0034
+OkPacket {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 0,
+  serverStatus: 34,
+  warningCount: 0,
+  message: '(Rows matched: 1  Changed: 1  Warnings: 0',
+  protocol41: true,
+  changedRows: 1 }
+*/
