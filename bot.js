@@ -374,7 +374,7 @@ commandDictionary['admin'] = {
     }
   }
 };
-commandDictionary['admin'] = {
+commandDictionary['rps'] = {
   emoji: ':cop: ',
   error: 'Use the command like this: `rps',
   usage: '**Usage** `rps [rock OR paper OR scissors]',
