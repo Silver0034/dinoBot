@@ -38,12 +38,11 @@ function timeoutAlert(timeoutAlert) {
   return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
 function timeout(key, userID, timeoutDuration) {
+  //if we have not explicitly set a timeout length in our dictionary, assume we should time out for 6 seconds
   if(commandDictionary[key].timeout != undefined) {
     setUserTimeout(userID, commandDictionary[key].timeout);
-    console.log('Timed out for amount of time defined in dictionary');
   } else {
-    setUserTimeout(userID, 4000);
-    console.log('Timed out for default amount of time');
+    setUserTimeout(userID, 6000);
   }
 }
 function error(key) {
@@ -116,7 +115,6 @@ commandDictionary['8ball'] = {
   }
 };
 commandDictionary['roll'] = {
-  timeout: 4000,
   emoji: ':game_die: ',  //put space after emoji 
   error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
   usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
@@ -177,7 +175,6 @@ commandDictionary['roll'] = {
   }
 };
 commandDictionary['help'] = {
-  timeout: 4000,    
   emoji: ':grey_question: ',  //put space after emoji 
   error: 'Use the command like this: `help',
   usage: '**Usage:** `help OR `help [command]',    
@@ -196,7 +193,6 @@ commandDictionary['help'] = {
   }
 }; 
 commandDictionary['coin'] = {
-  timeout: 4000,
   emoji: ':moneybag: ',  //put space after emoji  
   error: 'Use the command like this: `coin',
   usage: '**Usage:** `coin',
@@ -216,7 +212,6 @@ commandDictionary['coin'] = {
   }
 };
 commandDictionary['attack'] = {
-  timeout: 4000,    
   emoji: ':dagger: ',  //put space after emoji   
   error: 'Use the command like this: `attack [@user OR name]',
   usage: '**Usage:** `attack [@user OR name]',
@@ -229,7 +224,6 @@ commandDictionary['attack'] = {
   }
 };
 commandDictionary['choose'] = {
-  timeout: 4000,
   emoji: ':point_up: ',  //put space after emoji   
   error: 'Use the command like this: `choose [choice1|choice2|etc]',
   usage: '**Usage:** `choose [choice1|choice2|etc]',
@@ -256,7 +250,6 @@ commandDictionary['choose'] = {
   }
 };
 commandDictionary['cookie'] = {
-  timeout: '1',
   emoji: ':gift: ',  //put space after emoji  
   error: 'Use the command like this: `cookie [@user OR name]',
   usage: '**Usage:** `cookie [@user OR name]',
@@ -269,7 +262,6 @@ commandDictionary['cookie'] = {
   }  
 };
 commandDictionary['error'] = {
-  timeout: '1',
   emoji: ':no_entry_sign: ',  //put space after emoji 
   error: 'Use the command like this: `error',
   usage: '**Usage:** `error',
@@ -278,7 +270,6 @@ commandDictionary['error'] = {
   }  
 };
 commandDictionary['hello'] = {
-  timeout: '1',
   emoji: '',  //put space after emoji
   error: 'Use the command like this: `hello',
   usage: '**Usage:** `hello',
@@ -291,7 +282,6 @@ commandDictionary['hello'] = {
   }
 };
 commandDictionary['ping'] = {
-  timeout: '1',
   emoji: ':grey_exclamation: ',  //put space after emoji 
   error: 'Use the command like this: `ping',
   usage: '**Usage:** `ping',
@@ -304,7 +294,6 @@ commandDictionary['ping'] = {
   }      
 };
 commandDictionary['quote'] = {
-  timeout: '1',
   emoji: ':speech_balloon: ',  //put space after emoji 
   error: 'Use the command like this: `quote',
   usage: '**Usage:** `quote',
@@ -317,7 +306,6 @@ commandDictionary['quote'] = {
   }
 };
 commandDictionary['taste'] = {
-  timeout: '1',
   emoji: ':fork_and_knife: ',  //put space after emoji 
   error: 'Use the command like this: `taste [@user OR name]',
   usage: '**Usage:** `taste [@user OR name]',
@@ -330,7 +318,7 @@ commandDictionary['taste'] = {
   }
 };
 commandDictionary['say'] = {
-  timeout: '0',
+  timeout: 0,
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
@@ -344,7 +332,7 @@ commandDictionary['say'] = {
   }
 };
 commandDictionary['avatar'] = {
-  timeout: '1',
+  timeout: 12000,
   emoji: ':busts_in_silhouette: ',    
   error: 'Use the command like this: `avatar [target]',
   usage: '**Usage:** `avatar [target]',
@@ -369,13 +357,13 @@ commandDictionary['avatar'] = {
   }
 };
 commandDictionary['admin'] = {
-  timeout: '0',
+  timeout: 0,
   error: 'Use the command like this: `admin',
   usage: '**Usage** `admin',
   doCommand: function(message, key, args) {
-    //input: `admin profanityfilter remove
-    //key: `admin
-    //args: "profanityfilter", "remove"
+    //input: profanity nofilter
+    //input: profanity filter
+
   }
 };
 /*
@@ -414,7 +402,7 @@ bot.on('ready', () => {
 process.on('unhandledRejection', console.error);
 
 // Create an event listener for messages
-bot.on('message', message => {
+bot.on('message', message => {  
   var messageContent = message.content;
   var messageArguments = message.content.substring(1).split(' ');
   var messageCheck = message.content.split(' ');
@@ -422,7 +410,7 @@ bot.on('message', message => {
   var args = messageArguments.slice(1);
   var userID = message.author.id;
   
-  //delete bot messages that say to slow down   
+   //delete bot messages that say to slow down   
   if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
     message.delete(6000); //deletes message
     return;
@@ -430,7 +418,7 @@ bot.on('message', message => {
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }
-  
+ console.log(message.author); 
   //if user sends a message
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
   	if (err) throw err;
