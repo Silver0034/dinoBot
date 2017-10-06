@@ -9,6 +9,7 @@ var attack = require('./commandFunctions/attack.js');
 var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
+var rps = require('./commandFunctions/rps.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 
 //establish global variables and constants
