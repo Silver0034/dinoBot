@@ -388,7 +388,7 @@ commandDictionary['dex'] = {
 
 //SQL Database stuffs
 sqldb.connect(function(err) {
-    if (error) throw error;
+    if (err) throw err;
     console.log('Connected to the Database');
 });
 
@@ -419,17 +419,17 @@ bot.on('message', message => {
   //listen for the ` to start a command
   
   //if user sends a message
-  sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (error, results, fields) {
-  	if (error) throw error;
+  sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
+  	if (err) throw err;
     if (results.length == 0) {
-      sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username + "', " + "NOW(), " + "1" + ")", function (error, results, fields) {
-  			if (error) throw error;
+      sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username + "', " + "NOW(), " + "1" + ")", function (err, results, fields) {
+  			if (err) throw err;
         console.log(results);
       });
       console.log(message.author.username + ' added to database');
     } else {
-      sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (error, results, fields) {
-  			if (error) throw error;
+      sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (err, results, fields) {
+  			if (err) throw err;
         console.log(results);
       });
       console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + parseInt(results[0].messagesSent) + 1);
@@ -440,8 +440,8 @@ bot.on('message', message => {
   //note: does not account for daylight savings time
   sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
-              "'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
-    if (error) throw error;
+              "'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (err, results, fields) {
+    if (err) throw err;
     console.log(results);
     console.log('Logged message by ' + message.author.username);
   });
@@ -478,8 +478,8 @@ bot.on('message', message => {
   
     
   //if message is in profanity enabled channel
-  sqldb.query('SELECT * FROM channelProfanity WHERE channelID = ' + message.channel.id, function (error, results, fields) {
-    if (error) throw error;
+  sqldb.query('SELECT * FROM channelProfanity WHERE channelID = ' + message.channel.id, function (err, results, fields) {
+    if (err) throw err;
     if (results.length == 0) {
       //check if theres spaces in the middle of curse words
       var messageSpaceCheck = spaceCheck(messageCheck);
