@@ -131,8 +131,8 @@ exports.filter = function(message) {
 		messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
 		messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
 		messageCheck[i] = messageCheck[i].latinize();
-		for(var j = 0; j < profanitylist.length; j++) {
-			if (messageCheck[i].indexOf(profanitylist[j]) != -1) {
+		for(var j = 0; j < profanityList.length; j++) {
+			if (messageCheck[i].indexOf(profanityList[j]) != -1) {
 				for(var k = 0; k < profanityExceptions.length; k++) {
 					if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
 				}   
@@ -140,7 +140,7 @@ exports.filter = function(message) {
 					message.channel.send(emojiDino + languageResponse.generate());      
 					console.log(getTime(), message.author.username + ' was warned about cursing.');    
 					//message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
-					message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanitylist[j] + '\non ' + getDate());  
+					message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanityList[j] + '\non ' + getDate());  
 					return;
 				} else {
 					console.log(getTime(), message.author.username + ' cursed at me in direct message');
