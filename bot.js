@@ -478,6 +478,7 @@ bot.on('message', message => {
     console.log('Logged message by ' + message.author.username);
   });
   
+  /*
   //add new channels to channel database
   sqldb.query("INSERT INTO channel (channelID, channelName, serverID) VALUES (" +
               message.channel.id  + ", " + mysql.escape(message.channel.name) + ", " + message.guild.id + ") ON DUPLICATE KEY UPDATE", function (err, results, fields) {
@@ -485,7 +486,7 @@ bot.on('message', message => {
     console.log(results);
     console.log('Edited channel table:' + message.channel.name);
   });
-  
+  */
   //listen for the ` to start a command
   //the bot only responds with things inside this if
   //if I want the bot to display something write it in here
@@ -663,3 +664,8 @@ OkPacket {
   protocol41: true,
   changedRows: 1 }
 */
+
+
+
+
+
