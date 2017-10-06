@@ -101,7 +101,6 @@ exports.exceptions = [
     "canuse",
   ]
 
-}
 exports.filter = function(message) {
 	//check if theres spaces in the middle of curse words
 	var messageCheck = message.content.split(' ');
