@@ -457,6 +457,8 @@ bot.on('message', message => {
 			if (err) throw err;
 			if (results.length == 1) {profanity.filter(message, emojiDino, getTime, getDate);}
 		}); 
+	} else {
+		profanity.filter(message, emojiDino, getTime, getDate);
 	}
   //listen for the ` to start a command
   //the bot only responds with things inside this if
