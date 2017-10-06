@@ -463,7 +463,7 @@ bot.on('message', message => {
   
   //record message content
   //note: does not account for daylight savings time
-	if (message.guild.id !=== null) {
+	if (message.guild.id !== null) {
 		sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" +
 								message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
 								"'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (err, results, fields) {
