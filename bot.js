@@ -374,6 +374,31 @@ commandDictionary['admin'] = {
     }
   }
 };
+commandDictionary['admin'] = {
+  emoji: ':cop: ',
+  error: 'Use the command like this: `rps',
+  usage: '**Usage** `rps [rock OR paper OR scissors]',
+  doCommand: function(message, key, args) {
+		
+		const rpsArray = ['rock', 'paper', 'scissors'];
+		var rpsResult = Math.floor((Math.random() * rpsArray.length));
+  		rpsResult = rpsArray[rpsResult];                      
+		
+		//check for correct input
+		switch(args[0]) {
+			case 'rock':
+				return 'I choose ' + rpsResult;
+				
+				break;
+			case 'paper':
+				//run command
+				break;
+			case 'scissors':
+				//run command
+				break;
+		}
+	}
+};
 /*
 commandDictionary['dex'] = {
   timeout: '1',
