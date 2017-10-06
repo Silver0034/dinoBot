@@ -81,13 +81,6 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
-var combineFirstLetters = function (letter, message) {
-  var firstLetters = '';    
-  for (var i = 0; i < letter.length; i += 1) {
-    firstLetters += letter[i].charAt(0);
-  }
-  return firstLetters;    
-}
 var spaceCheck = function (messageCheck) {
   var combineSpaces = new Array;
   for (var i = 0; i < messageCheck.length - 1; i += 1) {
@@ -103,6 +96,42 @@ String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,fu
 String.prototype.latinize=String.prototype.latinise;
 String.prototype.isLatin=function(){return this==this.latinise()}
 //the latinise functions are from http://semplicewebsites.com/removing-accents-javascript
+
+function profanityCheck (message) {
+	//check if theres spaces in the middle of curse words
+	var messageSpaceCheck = spaceCheck(messageCheck);
+	messageCheck = messageCheck.concat(messageSpaceCheck);
+	//check individual words for cursing
+	for (var i = 0; i < messageCheck.length; i++) { 
+		messageCheck[i] = messageCheck[i].toLowerCase();
+		messageCheck[i] = messageCheck[i].replace(/"/g, '');
+		messageCheck[i] = messageCheck[i].replace(/'/g, '');
+		messageCheck[i] = messageCheck[i].replace(/@/g, 'a');
+		messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
+		messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
+		messageCheck[i] = messageCheck[i].latinize();
+		for(var j = 0; j < profanity.length; j++) {
+			if (messageCheck[i].indexOf(profanity[j]) != -1) {
+				for(var k = 0; k < profanityExceptions.length; k++) {
+					if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
+				}   
+				if (message.guild) {
+					message.channel.send(emojiDino + languageResponse.generate());      
+					console.log(getTime(), message.author.username + ' was warned about cursing.');    
+					//message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
+					message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanity[j] + '\non ' + getDate());  
+					return;
+				} else {
+					console.log(getTime(), message.author.username + ' cursed at me in direct message');
+					message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');
+					return;
+				}
+			}
+		}
+	}
+}
+
+
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -482,43 +511,7 @@ bot.on('message', message => {
 		//if message is in profanity enabled channel
 		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
-			if (results.length == 1) {
-				//check if theres spaces in the middle of curse words
-				var messageSpaceCheck = spaceCheck(messageCheck);
-				//arrange first letter of each word and put it as one
-				//arg for the array 'messageCheck'
-				var messageFirstLetters = combineFirstLetters(messageCheck);
-				messageCheck.unshift(messageFirstLetters);
-				messageCheck = messageCheck.concat(messageSpaceCheck);
-				//check individual words for cursing
-				for (var i = 0; i < messageCheck.length; i++) { 
-					messageCheck[i] = messageCheck[i].toLowerCase();
-					messageCheck[i] = messageCheck[i].replace(/"/g, '');
-					messageCheck[i] = messageCheck[i].replace(/'/g, '');
-					messageCheck[i] = messageCheck[i].replace(/@/g, 'a');
-					messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
-					messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
-					messageCheck[i] = messageCheck[i].latinize();
-					for(var j = 0; j < profanity.length; j++) {
-						if (messageCheck[i].indexOf(profanity[j]) != -1) {
-							for(var k = 0; k < profanityExceptions.length; k++) {
-								if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
-							}   
-							if (message.guild != null) {
-								message.channel.send(emojiDino + languageResponse.generate());      
-								console.log(getTime(), message.author.username + ' was warned about cursing.');    
-								//message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
-								message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanity[j] + '\non ' + getDate());  
-								return;
-							} else {
-								console.log(getTime(), message.author.username + ' cursed at me in direct message');
-								message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');
-								return;
-							}
-						}
-					}
-				}
-			}
+			if (results.length == 1) {profanityCheck(message);}
 		}); 
 	}
   //listen for the ` to start a command
