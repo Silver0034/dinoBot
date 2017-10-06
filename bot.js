@@ -455,10 +455,10 @@ bot.on('message', message => {
 		//if message is in profanity enabled channel
 		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
-			if (results.length == 1) {profanity.filter(message, emojiDino, getTime, getDate);}
+			if (results.length == 1) {profanity.filter(message, emojiDino, getTime, getDate, userID);}
 		}); 
 	} else {
-		profanity.filter(message, emojiDino, getTime, getDate);
+		profanity.filter(message, emojiDino, getTime, getDate, userID);
 	}
   //listen for the ` to start a command
   //the bot only responds with things inside this if
