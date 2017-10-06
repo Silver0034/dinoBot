@@ -196,7 +196,7 @@ var spaceCheck = function (messageCheck) {
   return combineSpaces;    
 }
 
-exports.filter = function(message, emojiDino, getTime, getDate {
+exports.filter = function(message, emojiDino, getTime, getDate) {
 	//check if theres spaces in the middle of curse words
 	var messageCheck = message.content.split(' ');
 	var messageSpaceCheck = spaceCheck(messageCheck);
