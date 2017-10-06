@@ -368,7 +368,27 @@ commandDictionary['admin'] = {
     //input: profanity nofilter
     //input: profanity filter
     if(message.author.id == message.guild.owner.id) {
-     //put the fun stuff here      
+      switch(args[0]) {
+        case 'profanity':
+          if (args[1] == 'nofilter') {
+          	//remove profanity filter from channel
+          	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
+  						if (err) throw err;
+        			console.log(results);
+      			});
+      			console.log('Removed profanity filter from channel ' + message.channel.name));
+      		} else if (args[1] == 'filter') {
+          	//add profanity filter from channel
+          	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
+  						if (err) throw err;
+        			console.log(results);
+      			});
+      			console.log('Added profanity filter to channel ' + message.channel.name));  
+      		} else {
+          	return error(key); // TODO: append more description later
+      		}
+          break;
+      }
     } else {
       timeout(key, message.author.id, 6000);
       return emojiDino + 'You do not have access to this command.';
@@ -432,7 +452,7 @@ bot.on('message', message => {
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
   	if (err) throw err;
     if (results.length == 0) {
-      sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + "'" + message.author.username + "', " + "NOW(), " + "1" + ")", function (err, results, fields) {
+      sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + mysql.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")", function (err, results, fields) {
   			if (err) throw err;
         console.log(results);
       });
@@ -454,6 +474,14 @@ bot.on('message', message => {
     if (err) throw err;
     console.log(results);
     console.log('Logged message by ' + message.author.username);
+  });
+  
+  //add new channels to channel database
+  sqldb.query("INSERT INTO channel (channelID, channelName, serverID) VALUES (" +
+              message.channel.id  + ", " + mysql.escape(message.channel.name) + ", " + message.guild.id + ") ON DUPLICATE KEY UPDATE", function (err, results, fields) {
+    if (err) throw err;
+    console.log(results);
+    console.log('Edited channel table:' + message.channel.name);
   });
   
   //listen for the ` to start a command
