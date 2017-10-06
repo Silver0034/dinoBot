@@ -367,7 +367,7 @@ commandDictionary['admin'] = {
   doCommand: function(message, key, args) {
     //input: profanity nofilter
     //input: profanity filter
-    if(message.author == message.guild.owner) {
+    if(message.author.id == message.guild.owner.id) {
      //put the fun stuff here      
     } else {
       timeout(key, message.author.id, 6000);
