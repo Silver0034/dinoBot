@@ -360,6 +360,7 @@ commandDictionary['avatar'] = {
     return error(key);       
   }
 };
+/*
 commandDictionary['admin'] = {
   timeout: 0,
   error: 'Use the command like this: `admin',
@@ -395,6 +396,7 @@ commandDictionary['admin'] = {
     }
   }
 };
+/*
 /*
 commandDictionary['dex'] = {
   timeout: '1',
