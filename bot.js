@@ -416,9 +416,10 @@ bot.on('message', message => {
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }
-  //listen for the ` to start a command
   
   //if user sends a message
+  
+  //record message content
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
   	if (err) throw err;
     if (results.length == 0) {
@@ -428,7 +429,7 @@ bot.on('message', message => {
       });
       console.log(message.author.username + ' added to database');
     } else {
-      sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = NOW() WHERE userID = " + userID, function (err, results, fields) {
+      sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "' WHERE userID = " + userID, function (err, results, fields) {
   			if (err) throw err;
         console.log(results);
       });
@@ -436,10 +437,10 @@ bot.on('message', message => {
     }
   });
   
-  //record message content
+  //listen for the ` to start a command
   //note: does not account for daylight savings time
-  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
-              message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
+  sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" +
+              message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
               "'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (err, results, fields) {
     if (err) throw err;
     console.log(results);
@@ -478,9 +479,9 @@ bot.on('message', message => {
   
     
   //if message is in profanity enabled channel
-  sqldb.query('SELECT * FROM channelProfanity WHERE channelID = ' + message.channel.id, function (err, results, fields) {
+  sqldb.query('SELECT * FROM channel WHERE channelID = ' + message.channel.id + "AND profanityMonitor = 1", function (err, results, fields) {
     if (err) throw err;
-    if (results.length == 0) {
+    if (results.length == 1) {
       //check if theres spaces in the middle of curse words
       var messageSpaceCheck = spaceCheck(messageCheck);
       //arrange first letter of each word and put it as one
