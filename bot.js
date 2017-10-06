@@ -383,7 +383,7 @@ commandDictionary['admin'] = {
   						if (err) throw err;
         			console.log(results);
       			});
-      			console.log('Added profanity filter to channel ' + message.channel.name));  
+      			console.log('Added profanity filter to channel ' + message.channel.name);  
       		} else {
           	return error(key); // TODO: append more description later
       		}
