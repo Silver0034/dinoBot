@@ -15,8 +15,8 @@ var jQuery = require('./jquery-3.2.1.min.js');
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
 const MYSQLCRED = tokenReturn.sqlCredentials;
-var profanity = profanity.trigger();
-//var profanityExceptions = profanity.exceptions();
+var profanity = profanity.list;
+var profanityExceptions = profanity.exceptions;
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
