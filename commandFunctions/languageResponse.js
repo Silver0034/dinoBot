@@ -51,7 +51,7 @@ var languageResponseArray = [
     "just because you can cuss doesn't mean you should",
     "You make me sad. please refrain from foul language",
     "Now is not a good time for that",
-    "There's a time and place for everything, but now is not the time to curse."
+    "There's a time and place for everything, but now is not the time to curse.",
     "You shouldn't say that",
     "Please don't say that",
     "That's not safe for the little ears in the backseat",
