@@ -381,27 +381,43 @@ commandDictionary['rps'] = {
   usage: '**Usage** `rps [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
 		var rpsMessage = '';
-		var rpsWin = 'You win.';
-		var rpsLoose = 'You loose!';
-		var rpsTie = 'We tie.'
+		var rpsWin = '*You win.*';
+		var rpsLoose = '*You loose!*';
+		var rpsTie = '*We tie.*'
 		//check for correct input
 		switch(args[0]) {
 			case 'rock':
 				rpsResult = rps.generate();
-				rpsMessage += 'I choose ' + rpsResult + ' '
+				rpsMessage += 'I choose **' + rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-					return rpsMessage + ':right_facing_fist:\n' + rpsTie
+					return rpsMessage + ':right_facing_fist:\n' + rpsTie;
 				} else if (rpsResult == 'paper') {
-					return rpsMessage + ':raised_back_of_hand:\n' + rpsLoose
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsLoose;
 				} else if (rpsResult == 'scissors') {
-					return rpsMessage + ':v:\n' + rpsWin
+					return rpsMessage + ':v:\n' + rpsWin;
 				}	
 			 break;
 			case 'paper':
-				//run command
+				rpsResult = rps.generate();
+				rpsMessage += 'I choose **' + rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+					return rpsMessage + ':right_facing_fist:\n' + rpsWin;
+				} else if (rpsResult == 'paper') {
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsTie;
+				} else if (rpsResult == 'scissors') {
+					return rpsMessage + ':v:\n' + rpsLoose;
+				}	
 			 break;
 			case 'scissors':
-				//run command
+				rpsResult = rps.generate();
+				rpsMessage += 'I choose **' + rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+					return rpsMessage + ':right_facing_fist:\n' + rpsLoose;
+				} else if (rpsResult == 'paper') {
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsWin;
+				} else if (rpsResult == 'scissors') {
+					return rpsMessage + ':v:\n' + rpsTie;
+				}	
 			 break;
 		}
 	}
