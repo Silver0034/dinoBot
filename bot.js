@@ -374,6 +374,7 @@ commandDictionary['admin'] = {
           	//remove profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
+              return responseHead(message, key) + 'The profanity filter has been removed from this channel.'
         			console.log(results);
       			});
       			console.log('Removed profanity filter from channel ' + message.channel.name);
@@ -381,6 +382,7 @@ commandDictionary['admin'] = {
           	//add profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
+              return responseHead(message, key) + 'The profanity filter has been added to this channel.'
         			console.log(results);
       			});
       			console.log('Added profanity filter to channel ' + message.channel.name);  
@@ -388,6 +390,8 @@ commandDictionary['admin'] = {
           	return error(key); // TODO: append more description later
       		}
           break;
+        default:
+          return error(key); // TODO: Consider listing all valid commands
       }
     } else {
       timeout(key, message.author.id, 6000);
@@ -449,22 +453,12 @@ bot.on('message', message => {
   if (message.author.bot) { return; }
   
   //if user sends a message
-  sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
-  	if (err) throw err;
-    if (results.length == 0) {
-      sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + mysql.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")", function (err, results, fields) {
-  			if (err) throw err;
-        console.log(results);
-      });
-      console.log(message.author.username + ' added to database');
-    } else {
-      sqldb.query("UPDATE user SET messagesSent = messagesSent + 1, lastSeen = '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "' WHERE userID = " + userID, function (err, results, fields) {
-  			if (err) throw err;
-        console.log(results);
-      });
-      console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + (results[0].messagesSent + 1));
-    }
+  sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + mysql.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")" + 
+              "ON DUPLICATE KEY UPDATE messagesSent = messagesSent + 1, lastSeen = '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "'", function (err, results, fields) {
+    if (err) throw err;
+    console.log(results);
   });
+  console.log(message.author.username + ' updated in database');
   
   //record message content
   //note: does not account for daylight savings time
