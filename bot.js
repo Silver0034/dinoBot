@@ -380,7 +380,7 @@ commandDictionary['rps'] = {
   error: 'Use the command like this: `rps',
   usage: '**Usage** `rps [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
-		var rpsMessage = '';
+		var rpsMessage = emojiDino + 'I choose **';
 		var rpsWin = '*You win.*';
 		var rpsLoose = '*You loose!*';
 		var rpsTie = '*We tie.*'
@@ -388,7 +388,7 @@ commandDictionary['rps'] = {
 		switch(args[0]) {
 			case 'rock':
 				rpsResult = rps.generate();
-				rpsMessage += 'I choose **' + rpsResult.toUpperCase() + '** '
+				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
 					return rpsMessage + ':right_facing_fist:\n' + rpsTie;
 				} else if (rpsResult == 'paper') {
@@ -399,7 +399,7 @@ commandDictionary['rps'] = {
 			 break;
 			case 'paper':
 				rpsResult = rps.generate();
-				rpsMessage += 'I choose **' + rpsResult.toUpperCase() + '** '
+				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
 					return rpsMessage + ':right_facing_fist:\n' + rpsWin;
 				} else if (rpsResult == 'paper') {
@@ -410,7 +410,7 @@ commandDictionary['rps'] = {
 			 break;
 			case 'scissors':
 				rpsResult = rps.generate();
-				rpsMessage += 'I choose **' + rpsResult.toUpperCase() + '** '
+				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
 					return rpsMessage + ':right_facing_fist:\n' + rpsLoose;
 				} else if (rpsResult == 'paper') {
