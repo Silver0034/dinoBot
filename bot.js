@@ -9,15 +9,14 @@ var attack = require('./commandFunctions/attack.js');
 var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
-var cleanDictionary = require('./commandFunctions/cleanDictionary.js');
 var languageResponse = require('./commandFunctions/languageResponse.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
 const MYSQLCRED = tokenReturn.sqlCredentials;
-var profanity = profanity.filter();
-var profanityExceptions = cleanDictionary.filter();
+var profanity = profanity.trigger();
+var profanityExceptions = profanity.exceptions();
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
@@ -96,43 +95,6 @@ String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,fu
 String.prototype.latinize=String.prototype.latinise;
 String.prototype.isLatin=function(){return this==this.latinise()}
 //the latinise functions are from http://semplicewebsites.com/removing-accents-javascript
-
-function profanityCheck (message) {
-	//check if theres spaces in the middle of curse words
-	var messageCheck = message.content.split(' ');
-	var messageSpaceCheck = spaceCheck(messageCheck);
-	messageCheck = messageCheck.concat(messageSpaceCheck);
-	//check individual words for cursing
-	for (var i = 0; i < messageCheck.length; i++) { 
-		messageCheck[i] = messageCheck[i].toLowerCase();
-		messageCheck[i] = messageCheck[i].replace(/"/g, '');
-		messageCheck[i] = messageCheck[i].replace(/'/g, '');
-		messageCheck[i] = messageCheck[i].replace(/@/g, 'a');
-		messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
-		messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
-		messageCheck[i] = messageCheck[i].latinize();
-		for(var j = 0; j < profanity.length; j++) {
-			if (messageCheck[i].indexOf(profanity[j]) != -1) {
-				for(var k = 0; k < profanityExceptions.length; k++) {
-					if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
-				}   
-				if (message.guild) {
-					message.channel.send(emojiDino + languageResponse.generate());      
-					console.log(getTime(), message.author.username + ' was warned about cursing.');    
-					//message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
-					message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanity[j] + '\non ' + getDate());  
-					return;
-				} else {
-					console.log(getTime(), message.author.username + ' cursed at me in direct message');
-					message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');
-					return;
-				}
-			}
-		}
-	}
-}
-
-
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -511,7 +473,7 @@ bot.on('message', message => {
 		//if message is in profanity enabled channel
 		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
-			if (results.length == 1) {profanityCheck(message);}
+			if (results.length == 1) {profanity.filter(message);}
 		}); 
 	}
   //listen for the ` to start a command
