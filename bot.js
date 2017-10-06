@@ -389,9 +389,13 @@ commandDictionary['rps'] = {
 			case 'rock':
 				rpsResult = rps.generate();
 				rpsMessage += 'I choose ' + rpsResult + ' ';
-				if (rpsResult = 'rock') {return rpsMessage + ':right_facing_fist:\n' + rpsTie}
-				if (rpsResult = 'paper') {return rpsMessage + ':raised_back_of_hand:\n' + rpsLoose}
-				if (rpsResult = 'scissors') {return rpsMessage + ':v:\n' + rpsWin}	
+				if (rpsResult = 'rock') {
+					return rpsMessage + ':right_facing_fist:\n' + rpsTie
+				} else if (rpsResult = 'paper') {
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsLoose
+				} else if (rpsResult = 'scissors') {
+					return rpsMessage + ':v:\n' + rpsWin
+				}	
 			 break;
 			case 'paper':
 				//run command
