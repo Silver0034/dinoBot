@@ -378,24 +378,26 @@ commandDictionary['rps'] = {
   emoji: ':cop: ',
   error: 'Use the command like this: `rps',
   usage: '**Usage** `rps [rock OR paper OR scissors]',
-  doCommand: function(message, key, args) {
-		
-		const rpsArray = ['rock', 'paper', 'scissors'];
-		var rpsResult = Math.floor((Math.random() * rpsArray.length));
-  		rpsResult = rpsArray[rpsResult];                      
-		
+  doCommand: function(message, key, args) {               
+		var rpsMessage = '';
+		var rpsWin = 'You win.';
+		var rpsLoose = 'You loose!';
+		var rpsTie = 'We tie.'
 		//check for correct input
 		switch(args[0]) {
 			case 'rock':
-				return 'I choose ' + rpsResult;
-				
-				break;
+				rpsResult = rps.generate();
+				rpsMessage += 'I choose ' + rpsResult + ' ';
+				if (rpsResult = 'rock') {return rpsMessage + ':right_facing_fist: \n' + rpsTie}
+				if (rpsResult = 'paper') {return rpsMessage + ':raised_back_of_hand:' + rpsLoose}
+				if (rpsResult = 'scissors') {return rpsMessage + ':v:' + rpsWin}	
+			 break;
 			case 'paper':
 				//run command
-				break;
+			 break;
 			case 'scissors':
 				//run command
-				break;
+			 break;
 		}
 	}
 };
