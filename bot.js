@@ -433,7 +433,7 @@ bot.on('message', message => {
   			if (err) throw err;
         console.log(results);
       });
-      console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + parseInt(results[0].messagesSent) + 1);
+      console.log('Incremented messagesSent count for ' + results[0].username + ' to ' + (results[0].messagesSent + 1));
     }
   });
   
@@ -479,7 +479,7 @@ bot.on('message', message => {
   
     
   //if message is in profanity enabled channel
-  sqldb.query('SELECT * FROM channel WHERE channelID = ' + message.channel.id + "AND profanityMonitor = 1", function (err, results, fields) {
+  sqldb.query('SELECT * FROM channel WHERE channelID = ' + message.channel.id + "' AND profanityMonitor = 1", function (err, results, fields) {
     if (err) throw err;
     if (results.length == 1) {
       //check if theres spaces in the middle of curse words
