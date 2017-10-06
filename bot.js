@@ -99,11 +99,11 @@ String.prototype.isLatin=function(){return this==this.latinise()}
 
 function profanityCheck (message) {
 	//check if theres spaces in the middle of curse words
+	var messageCheck = message.content.split(' ');
 	var messageSpaceCheck = spaceCheck(messageCheck);
 	messageCheck = messageCheck.concat(messageSpaceCheck);
 	//check individual words for cursing
 	for (var i = 0; i < messageCheck.length; i++) { 
-		var messageCheck = message.content.split(' ');
 		messageCheck[i] = messageCheck[i].toLowerCase();
 		messageCheck[i] = messageCheck[i].replace(/"/g, '');
 		messageCheck[i] = messageCheck[i].replace(/'/g, '');
