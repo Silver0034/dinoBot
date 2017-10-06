@@ -49,7 +49,6 @@ exports.filter = function(messageCheck) {
     "omg",
     "penis",
     "piss",
-    "prick",
     "pube",
     "pussy",
     "queer",

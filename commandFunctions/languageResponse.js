@@ -29,7 +29,7 @@ var languageResponseArray = [
     "*in captain america's voice* language",
     "language.",
     "laaanguage!!",
-    ". . . *clears throat* LANGUAGE",
+    "*clears throat* . . . LANGUAGE",
     "please. No cursing.",
     "*cough* don't curse *cough*",
     "thanks. You're cursing is *not* appreciated",
@@ -43,7 +43,6 @@ var languageResponseArray = [
     "you sadden my heart. please don't curse",
     "=( please don't curse",
     "Roawr. =( cursing bad",
-    "Oh yeah. why not just curse and let the whole server turn to anarchy",
     "Hey could you not curse",
     "I would appreciate it if you didn't curse",
     "Please help keep the server clean",
@@ -52,17 +51,29 @@ var languageResponseArray = [
     "just because you can cuss doesn't mean you should",
     "You make me sad. please refrain from foul language",
     "Now is not a good time for that",
+    "There's a time and place for everything, but now is not the time to curse."
     "You shouldn't say that",
     "Please don't say that",
     "That's not safe for the little ears in the backseat",
     "Maybe that wasn't the best choice of words",
     "Helloooooooo nurse. Please don't curse",
     "Not gonna slide. No cursing",
-    "Your language is almost as strong as Ajax, the super sttrong bathroom cleaner. It is now avaialable scented in lemon or vanilla",
+    "Your language is almost as strong as Ajax, the super strong bathroom cleaner. It is now available scented in lemon or vanilla",
     "did you have to use those sentence enhancers?",
     "*sigh* language",
     "*language*",
-    "Grrr. No more bad words"
+    "Grrr. No more bad words",
+    "get that :poop: out of here",
+    "if you continue saying things like that you'll go extinct like my biological friends",
+    "Once there was a man who said 'Language!!!!'",
+    "Are you made of Sulfur, Tritium, Oxygen and Phosphorus? Because you need to stop",
+    "do you have alzheimer's? because I think you forgot the rules",
+    ":dog: thiss doggo thinks you've been a bad boi",
+    "bad language? thats gonna hit you like a asteriod in this good christain server",
+    "you keep talking like that and you are gonna get t-rekt",
+    "I hope you dont taste as foul as your language\n. . .\nyep you taste ugly just like your personality",
+    "I'd eat you but i dont like vegetables",
+    "I'd stomp on you for saying that but you're too big of a prick to fit"
 ];
 
 exports.generate = function() {

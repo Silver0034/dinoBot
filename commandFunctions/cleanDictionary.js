@@ -3,6 +3,7 @@ exports.filter = function(messageCheck) {
   const cleanWordDictionary = [ 
     "analy",
     "anali",
+    "assh",  
     "bass",  
     "cass",
     "dass",
@@ -29,6 +30,7 @@ exports.filter = function(messageCheck) {
     "asso",
     "assu",
     "assi",
+    "asst",
     "chell",
     "anall",
     "itcha",
