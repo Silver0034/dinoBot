@@ -437,6 +437,7 @@ bot.on('message', message => {
   });
   
   //record message content
+  //note: does not account for daylight savings time
   sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" + 
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," + 
               "'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (error, results, fields) {
@@ -474,27 +475,32 @@ bot.on('message', message => {
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }
-  //check if theres spaces in the middle of curse words
-  var messageSpaceCheck = spaceCheck(messageCheck);
-
-  //arrange first letter of each word and put it as one
-  //arg for the array 'messageCheck'
-  var messageFirstLetters = combineFirstLetters(messageCheck);
-  messageCheck.unshift(messageFirstLetters);
-  messageCheck = messageCheck.concat(messageSpaceCheck);
-  //check individual words for cursing
-  for (var i = 0; i < messageCheck.length; i++) { 
-    messageCheck[i] = messageCheck[i].toLowerCase();
-    messageCheck[i] = messageCheck[i].replace(/"/g, '');
-    messageCheck[i] = messageCheck[i].replace(/'/g, '');
-    messageCheck[i] = messageCheck[i].replace(/@/g, 'a');
-    messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
-    messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
-    messageCheck[i] = messageCheck[i].latinize();
-    for(var j = 0; j < profanity.length; j++) {
+  
+    
+  //if message is in profanity enabled channel
+  sqldb.query('SELECT * FROM channelProfanity WHERE channelID = ' + message.channel.id, function (error, results, fields) {
+    return;
+  } else {
+    //check if theres spaces in the middle of curse words
+    var messageSpaceCheck = spaceCheck(messageCheck);
+    //arrange first letter of each word and put it as one
+    //arg for the array 'messageCheck'
+    var messageFirstLetters = combineFirstLetters(messageCheck);
+    messageCheck.unshift(messageFirstLetters);
+    messageCheck = messageCheck.concat(messageSpaceCheck);
+    //check individual words for cursing
+    for (var i = 0; i < messageCheck.length; i++) { 
+      messageCheck[i] = messageCheck[i].toLowerCase();
+      messageCheck[i] = messageCheck[i].replace(/"/g, '');
+      messageCheck[i] = messageCheck[i].replace(/'/g, '');
+      messageCheck[i] = messageCheck[i].replace(/@/g, 'a');
+      messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
+      messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
+      messageCheck[i] = messageCheck[i].latinize();
+      for(var j = 0; j < profanity.length; j++) {
         if (messageCheck[i].indexOf(profanity[j]) != -1) {
           for(var k = 0; k < profanityExceptions.length; k++) {
-              if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
+            if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
           }   
           if (message.guild != null) {
             message.channel.send(emojiDino + languageResponse.generate());      
@@ -509,8 +515,9 @@ bot.on('message', message => {
           }
         }
       }
-  }
-  
+    }
+  });  
+
 });
 // Create an event listener for new guild members
 bot.on('guildMemberAdd', member => {
