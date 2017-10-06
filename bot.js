@@ -376,17 +376,17 @@ commandDictionary['admin'] = {
           	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
-              return responseHead(message, key) + 'The profanity filter has been removed from this channel.';
       			});
-      			console.log('Removed profanity filter from channel ' + message.channel.name);
+            console.log('Removed profanity filter from channel ' + message.channel.name);
+            return responseHead(message, key) + 'The profanity filter has been removed from this channel.';
       		} else if (args[1] == 'filter') {
           	//add profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
-              return responseHead(message, key) + 'The profanity filter has been added to this channel.';
       			});
-      			console.log('Added profanity filter to channel ' + message.channel.name);
+            console.log('Added profanity filter to channel ' + message.channel.name);
+            return responseHead(message, key) + 'The profanity filter has been added to this channel.';
       		} else {
           	return error(key); // TODO: append more description later
       		}
