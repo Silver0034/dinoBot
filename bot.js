@@ -361,6 +361,7 @@ commandDictionary['avatar'] = {
   }
 };
 commandDictionary['admin'] = {
+  emoji: ':cop: ',
   timeout: 0,
   error: 'Use the command like this: `admin',
   usage: '**Usage** `admin',
@@ -374,16 +375,16 @@ commandDictionary['admin'] = {
           	//remove profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
-              //return responseHead(message, key) + 'The profanity filter has been removed from this channel.';
-        			console.log(results);
+              console.log(results);
+              return responseHead(message, key) + 'The profanity filter has been removed from this channel.';
       			});
       			console.log('Removed profanity filter from channel ' + message.channel.name);
       		} else if (args[1] == 'filter') {
           	//add profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
-              //return responseHead(message, key) + 'The profanity filter has been added to this channel.';
-        			console.log(results);
+              console.log(results);
+              return responseHead(message, key) + 'The profanity filter has been added to this channel.';
       			});
       			console.log('Added profanity filter to channel ' + message.channel.name);
       		} else {
@@ -565,9 +566,6 @@ bot.on('guildMemberAdd', member => {
   channel.send(emojiDino + roar.generate() + roar.generate() + roar.generate() + ` (Welcome to the server, ${member})`);
 });
 bot.login(TOKEN);
-
-
-
 
 /*
 User {
