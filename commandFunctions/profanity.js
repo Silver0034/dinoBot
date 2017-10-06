@@ -1,5 +1,5 @@
 //profanity       
-exports.trigger = function() {
+exports.trigger = function(messageCheck) {
   const profanityArray = [
     "anal",
     "anus",
@@ -66,7 +66,7 @@ exports.trigger = function() {
   ]
   return profanityArray;
 }
-exports.exceptions = function() {
+exports.exceptions = function(messageCheck) {
   const cleanWordDictionary = [ 
     "analy",
     "anali",
