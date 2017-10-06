@@ -24,22 +24,26 @@ var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
 
 //global functions
-function setUserTimeout(userID) {
+function setUserTimeout(userID, timeoutDuration) {
   //put users userID in a timeout array
   timedOutUsers.push(userID);
   //automatically remove the user from timeout after a set delay
   setTimeout(function() {
     timedOutUsers.splice(timedOutUsers.indexOf(userID), 1);
-  }, 4000);
+  }, timeoutDuration);
 }
 function timeoutAlert(timeoutAlert) {
     //alert users to stop using commands
     //if they are in the timeout array
   return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
-function timeout(key, userID) {
-  if (commandDictionary[key].timeout === '1') {
-    setUserTimeout(userID);    
+function timeout(key, userID, timeoutDuration) {
+  if(commandDictionary[key].timeout != undefined) {
+    setUserTimeout(userID, commandDictionary[key].timeout);
+    console.log('Timed out for amount of time defined in dictionary');
+  } else {
+    setUserTimeout(userID, 4000);
+    console.log('Timed out for default amount of time');
   }
 }
 function error(key) {
@@ -100,7 +104,6 @@ String.prototype.isLatin=function(){return this==this.latinise()}
 //dictionary for all commands and information
 var commandDictionary = new Object();
 commandDictionary['8ball'] = {
-  timeout: '1',    
   emoji: ':8ball: ', //put space after emoji 
   error: 'Use the command like this: `8ball [question]',
   usage: '**Usage:** `8ball [question]',
@@ -113,7 +116,7 @@ commandDictionary['8ball'] = {
   }
 };
 commandDictionary['roll'] = {
-  timeout: '1',    
+  timeout: 4000,
   emoji: ':game_die: ',  //put space after emoji 
   error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
   usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
@@ -174,7 +177,7 @@ commandDictionary['roll'] = {
   }
 };
 commandDictionary['help'] = {
-  timeout: '1',    
+  timeout: 4000,    
   emoji: ':grey_question: ',  //put space after emoji 
   error: 'Use the command like this: `help',
   usage: '**Usage:** `help OR `help [command]',    
@@ -193,7 +196,7 @@ commandDictionary['help'] = {
   }
 }; 
 commandDictionary['coin'] = {
-  timeout: '1',
+  timeout: 4000,
   emoji: ':moneybag: ',  //put space after emoji  
   error: 'Use the command like this: `coin',
   usage: '**Usage:** `coin',
@@ -213,7 +216,7 @@ commandDictionary['coin'] = {
   }
 };
 commandDictionary['attack'] = {
-  timeout: '1',    
+  timeout: 4000,    
   emoji: ':dagger: ',  //put space after emoji   
   error: 'Use the command like this: `attack [@user OR name]',
   usage: '**Usage:** `attack [@user OR name]',
@@ -226,7 +229,7 @@ commandDictionary['attack'] = {
   }
 };
 commandDictionary['choose'] = {
-  timeout: '1',
+  timeout: 4000,
   emoji: ':point_up: ',  //put space after emoji   
   error: 'Use the command like this: `choose [choice1|choice2|etc]',
   usage: '**Usage:** `choose [choice1|choice2|etc]',
@@ -365,6 +368,16 @@ commandDictionary['avatar'] = {
     return error(key);       
   }
 };
+commandDictionary['admin'] = {
+  timeout: '0',
+  error: 'Use the command like this: `admin',
+  usage: '**Usage** `admin',
+  doCommand: function(message, key, args) {
+    //input: `admin profanityfilter remove
+    //key: `admin
+    //args: "profanityfilter", "remove"
+  }
+};
 /*
 commandDictionary['dex'] = {
   timeout: '1',
@@ -399,6 +412,7 @@ bot.on('ready', () => {
 });
 //try to handle rejections
 process.on('unhandledRejection', console.error);
+
 // Create an event listener for messages
 bot.on('message', message => {
   var messageContent = message.content;
@@ -418,8 +432,6 @@ bot.on('message', message => {
   if (message.author.bot) { return; }
   
   //if user sends a message
-  
-  //record message content
   sqldb.query('SELECT * FROM user WHERE userID = ' + userID, function (err, results, fields) {
   	if (err) throw err;
     if (results.length == 0) {
@@ -437,7 +449,7 @@ bot.on('message', message => {
     }
   });
   
-  //listen for the ` to start a command
+  //record message content
   //note: does not account for daylight savings time
   sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" +
               message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
@@ -447,6 +459,7 @@ bot.on('message', message => {
     console.log('Logged message by ' + message.author.username);
   });
   
+  //listen for the ` to start a command
   //the bot only responds with things inside this if
   //if I want the bot to display something write it in here
   if (messageContent.substring(0, 1) === '`') {
@@ -476,7 +489,6 @@ bot.on('message', message => {
   //stop message from being processed
   //if from a bot
   if (message.author.bot) { return; }
-  
     
   //if message is in profanity enabled channel
   sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
