@@ -177,7 +177,7 @@ var profanityResponseArray = [
 
 profanityResponseGenerate = function() {
   var profanityResponseMath = Math.floor((Math.random () * profanityResponseArray.length));
-  return profanityResponseArray[languageResponseMath];    
+  return profanityResponseArray[profanityResponseMath];    
 }
 
 //character latinization for for user input.
