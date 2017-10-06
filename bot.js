@@ -480,10 +480,10 @@ bot.on('message', message => {
   
   //add new channels to channel database
   sqldb.query("INSERT INTO channel (channelID, channelName, serverID) VALUES (" +
-              message.channel.id  + ", " + mysql.escape(message.channel.name) + ", " + message.guild.id + ")", function (err, results, fields) {
+              message.channel.id  + ", " + mysql.escape(message.channel.name) + ", " + message.guild.id + ") ON DUPLICATE KEY UPDATE channelName = " + mysql.escape(message.channel.name), function (err, results, fields) {
     if (err) throw err;
     console.log(results);
-    console.log('Edited channel table:' + message.channel.name);
+    console.log('Edited channel table: ' + message.channel.name);
   });
 
   //listen for the ` to start a command
