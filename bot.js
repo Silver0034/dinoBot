@@ -376,7 +376,7 @@ commandDictionary['admin'] = {
   						if (err) throw err;
         			console.log(results);
       			});
-      			console.log('Removed profanity filter from channel ' + message.channel.name));
+      			console.log('Removed profanity filter from channel ' + message.channel.name);
       		} else if (args[1] == 'filter') {
           	//add profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
