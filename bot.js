@@ -464,7 +464,7 @@ commandDictionary['rpg'] = {
 						}
 					],
 					footer: {
-							text: bot.user.username + '| RPG Assistant'
+							text: bot.user.username + ' | RPG Assistant'
 					}
 				}}
 				break;
