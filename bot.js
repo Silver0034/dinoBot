@@ -446,6 +446,11 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.';
 				break;
 		}
+		switch(args[0]) {
+			case 'bond':
+				return responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.';
+				break;
+		}
   }
 };
 /*
