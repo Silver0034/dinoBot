@@ -456,7 +456,7 @@ commandDictionary['rpg'] = {
 		if (args[0] == null || args[0] == undefined) {
 			return error(key) + '\n Options: name, character';
 		} else {
-			return responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw'; 
+			return responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc'; 
 		}
   }
 };
