@@ -448,6 +448,11 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.';
 				break;
 		}
+		switch(args[0]) {
+			case 'npc':
+				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.flaws() + ' and is driven by ' + rpg.bonds() + ' and ' + rpg.characteristics();
+				break;
+		}
 		if (args[0] == null || args[0] == undefined) {
 			return error(key) + '\n Options: name, character';
 		} else {
