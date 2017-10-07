@@ -104,3 +104,19 @@ exports.characteristics = function() {
   var characteristicReturn = Math.floor((Math.random() * rpgCharacteristics.length));   
   return rpgCharacteristics[characteristicReturn];    
 }
+var rpgBonds = [
+	'personal goals or achievements',
+	'family members',
+	'colleagues or compatriots',
+	'a benefactor, patron, or employer',
+	'a romantic interest',
+	'a special place',
+	'a keepsake',
+	'a valuable posession',
+	'revenge',
+];
+exports.bonds = function() {
+  //decide which answer to give
+  var bondsReturn = Math.floor((Math.random() * rpgBonds.length));   
+  return rpgBonds[bondsReturn];    
+}
