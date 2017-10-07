@@ -10,6 +10,7 @@ var quote = require('./commandFunctions/quote.js');
 var taste = require('./commandFunctions/taste.js');
 var profanity = require('./commandFunctions/profanity.js');
 var rps = require('./commandFunctions/rps.js');
+var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 
 //establish global variables and constants
@@ -436,7 +437,7 @@ commandDictionary['rpg'] = {
 					return error(key) + '\n `rpg name character';
 				}
 				if (args[1] == 'character') {
-					return responseHead(message, key) + 'NAME'
+					return responseHead(message, key) + rpg.name();
 				}
 				break;
 		}
