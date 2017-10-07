@@ -453,7 +453,7 @@ commandDictionary['rpg'] = {
 							name: bot.user.username,
 							icon_url: bot.user.avatarURL
 						},
-						title: args[1],
+						title: rpgConditionTitle,
 						description: "Note: this condition is for Dungeons and Dragons 5e.\n",
 						fields: [
 							{
