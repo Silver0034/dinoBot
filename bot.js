@@ -338,8 +338,8 @@ commandDictionary['avatar'] = {
 commandDictionary['admin'] = {
   emoji: ':cop: ',
   timeout: 0,
-  error: 'Use the command like this: `admin',
-  usage: '**Usage** `admin',
+  error: 'Use the command like this: `admin profanity [filter OR nofilter]',
+  usage: '**Usage** `admin profanity [filter OR nofilter]',
   doCommand: function(message, key, args) {
     //input: profanity nofilter
     //input: profanity filter
@@ -421,6 +421,26 @@ commandDictionary['rps'] = {
 			 break;
 		}
 	}
+};
+commandDictionary['rpg'] = {
+  emoji: ':map: ',
+  error: 'Use the command like this: `rpg name character',
+  usage: '**Usage:** `rpg name character',
+  doCommand: function(message, key, args) {
+		if (args[0] != null) {
+					return error(key) + '\n `rpg name character';
+				}
+  	switch(args[0]) {
+			case 'name':
+				if (args[1] != null) {
+					return error(key) + '\n `rpg name character';
+				}
+				if (args[1] == 'character') {
+					return responseHead(message, key) + 'NAME'
+				}
+				break;
+		}
+  }
 };
 /*
 commandDictionary['dex'] = {
@@ -532,8 +552,7 @@ bot.on('message', message => {
     }
   }
   if (message.isMentioned(bot.user)) {
-    message.channel.send(emojiDino + roar.generate());
-    console.log(getTime(), message.author.username + ' mentioned DinoBot');     
+    message.channel.send(emojiDino + roar.generate());     
   }    
   //stop message from being processed
   //if from a bot
