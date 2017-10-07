@@ -248,3 +248,10 @@ exports.conditionList = function() {
 	var rpgConditionsReturn = rpgConditionsList.sort().toString().replace(/,/g, ", ");
 	return rpgConditionsReturn;
 }
+export.conditions = function() {
+	var rpgConditionsList = new Array();
+	for (var keyIter in rpgConditions) {
+		rpgConditionsList.push(keyIter);
+  }
+	return rpgConditionsList;
+}
