@@ -237,7 +237,7 @@ rpgConditions['prone'] = {
 rpgConditions['stunned'] = {
   desc: 'A stunned creature is incapacitated (see the condition), can\'t move, and can speak only falteringly.\nThe creature automatically fails Strength and Dexterity saving throws.\nAttack rolls against the creature have advantage.'
 };
-rpgConditions['Unconscious'] = {
+rpgConditions['unconscious'] = {
   desc: 'An unconscious creature is **incapacitated**, can\'t move or speak, and is unaware of its surroundings.\nThe creature drops whatever it\'s holding and falls prone.\nThe creature automatically fails Strength and Dexterity saving throws.\nAttack rolls against the creature have advantage.\nAny attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.'
 };
 exports.conditionList = function() {
