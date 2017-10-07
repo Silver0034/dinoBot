@@ -450,7 +450,7 @@ commandDictionary['rpg'] = {
 		}
 		switch(args[0]) {
 			case 'npc':
-				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that is plagued by ' + rpg.flaws() + ' and is driven by ' + rpg.bonds() + ' and ' + rpg.characteristics();
+				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that is plagued by ' + rpg.flaws() + ' and is driven by ' + rpg.bonds() + ' but ' + rpg.characteristics();
 				break;
 		}
 		if (args[0] == null || args[0] == undefined) {
