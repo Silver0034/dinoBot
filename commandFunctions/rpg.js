@@ -132,7 +132,7 @@ var rpgFlaws = [
 	'a shameful or scandalous history',
 	'a secret crime or misdeed',
 	'a possession of forbidden lore',
-	'foolhardy bravery'
+	'foolhearted bravery'
 ];
 exports.flaws = function() {
   //decide which answer to give
