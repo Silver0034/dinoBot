@@ -432,23 +432,15 @@ commandDictionary['rpg'] = {
 			case 'name':
 				return responseHead(message, key) + rpg.name();
 				break;
-		}
-		switch(args[0]) {
 			case 'characteristic':
 				return responseHead(message, key) + 'The character ' + rpg.characteristics() + '.';
 				break;
-		}
-		switch(args[0]) {
 			case 'bond':
 				return responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.';
 				break;
-		}
-		switch(args[0]) {
 			case 'flaw':
 				return responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.';
 				break;
-		}
-		switch(args[0]) {
 			case 'npc':
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
@@ -460,17 +452,20 @@ commandDictionary['rpg'] = {
 						icon_url: bot.user.avatarURL
 					},
 					title: 'Conditions',
-					description: "Note: these conditions are for Dungeons and Dragons 5e.\n" + rpg.conditionList(),
+					description: "Note: these conditions are for Dungeons and Dragons 5e.\n"
 					fields: [
 						{
-							name: "Usage:",
+							name: 'Options',
+							value:  rpg.conditionList(),
+						},
+						{
+							name: 'Usage:',
 							value: 'type "`rpg condition" and then the condition you wish to learn more about.'
 						}
 					],
-					timeStamp: new Date(),
 					footer: {
 						icon_url: bot.user.avatarURL,
-						text: bot.user.username
+						text: bot.user.username + '| RPG Assistant'
 					}
 				}}
 				break;
