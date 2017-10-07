@@ -453,13 +453,13 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
 			case 'conditions':
-				return {embed: {
+				return emojiDino + {embed: {
 					color: 0x64FFDA,
 					author: {
 						name: bot.user.username,
 						icon_url: bot.user.avatarURL
 					},
-					title: emojiDino + 'Conditions',
+					title: 'Conditions',
 					description: "Note: these conditions are for Dungeons and Dragons 5e.",
 					fields: [
 						{
