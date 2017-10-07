@@ -99,7 +99,7 @@ var rpgCharacteristics = [
 	'uses colorful oaths and exclamations',
 	'uses flowery speech or long words'
 ];
-exports.name = function() {
+exports.characteristics = function() {
   //decide which answer to give
   var characteristicReturn = Math.floor((Math.random() * rpgCharacteristics.length));   
   return rpgCharacteristics[characteristicReturn];    
