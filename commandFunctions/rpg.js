@@ -121,16 +121,20 @@ exports.bonds = function() {
   return rpgBonds[bondsReturn];    
 }
 var rpgFlaws = [
-	'forbidden love or romantic susceptibility',
+	'forbidden love',
+	'romantic susceptibility',
 	'decadence',
 	'arrogance',
-	'envy of another person\'s possessions or station',
+	'envy of another person\'s possessions',
+	'envy of another person\'s station',
 	'overpowering greed',
-	'being prone to rage',
+	'rage',
 	'a powerful enemy',
 	'a specific phobia',
-	'a shameful or scandalous history',
-	'a secret crime or misdeed',
+	'a shameful history',
+	'a scandalous history',
+	'a secret crime',
+	'a secret misdeed',
 	'a possession of forbidden lore',
 	'foolhearted bravery'
 ];
@@ -168,7 +172,7 @@ var rpgFlavor = [
 	'a plus-sized model',
 	'a heavyset fellow',
 	'a hearty fellow',
-	'a thin charachter',
+	'a thin character',
 	'an odd character',
 	'a rather dark figure'
 ];
