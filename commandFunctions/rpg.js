@@ -5,22 +5,22 @@
 	"",
 	"",
 	"",
-	"A",
-	"Be",
-	"De",
-	"El",
-	"Fa",
-	"Jo",
-	"Ki",
-	"La",
-	"Ma",
-	"Na",
-	"O",
-	"Pa",
-	"Re",
-	"Si",
-	"Ta",
-	"Va"
+	"a",
+	"be",
+	"de",
+	"el",
+	"fa",
+	"jo",
+	"ki",
+	"la",
+	"ma",
+	"na",
+	"o",
+	"pa",
+	"re",
+	"si",
+	"ta",
+	"va"
 ]
 var nameMiddle = [
 	"bar",
@@ -75,5 +75,5 @@ exports.name = function() {
   nameReturn += nameMiddle[nameSecond]; 
 	var nameThird = Math.floor((Math.random() * nameEnd.length));   
   nameReturn += nameEnd[nameThird]; 
-	return nameReturn;
+	return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
 }
