@@ -456,10 +456,10 @@ commandDictionary['rpg'] = {
 				return {embed: {
 					color: 0x64FFDA,
 					author: {
-						name: bot.user.username + ' ' + emojiDino,
+						name: bot.user.username,
 						icon_url: bot.user.avatarURL
 					},
-					title: 'Conditions',
+					title: emojiDino + 'Conditions',
 					description: "Note: these conditions are for Dungeons and Dragons 5e.",
 					fields: [
 						{
