@@ -66,8 +66,8 @@ var nameEnd = [
 	"or",
 	"us"
 ]
-var nameReturn = '';
 exports.name = function() {
+	var nameReturn = '';
   //decide which answer to give
   var nameFirst = Math.floor((Math.random() * nameBeginning.length));   
   nameReturn += nameBeginning[nameFirst];    
