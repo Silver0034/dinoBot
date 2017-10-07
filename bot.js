@@ -429,16 +429,21 @@ commandDictionary['rpg'] = {
   usage: '**Usage:** `rpg name character',
   doCommand: function(message, key, args) {
 		if (args[0] == null || args[1] == undefined) {
-					return error(key) + '\n `rpg name character';
+					return error(key) + '\n `rpg name title';
 				}
   	switch(args[0]) {
 			case 'name':
-				if (args[1] == null || args[1] == undefined) {
-					return error(key) + '\n `rpg name character';
-				}
-				if (args[1] == 'character') {
-					return responseHead(message, key) + rpg.name();
-				}
+				return responseHead(message, key) + rpg.name();
+				break;
+		}
+		switch(args[0]) {
+			case 'characteristic':
+				return responseHead(message, key) + 'The character ' + rpg.characteristics();
+				break;
+		}
+		switch(args[0]) {
+			case 'desc':
+				return responseHead(message, key) + 'The character ' + rpg.characteristics();
 				break;
 		}
   }
