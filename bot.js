@@ -452,7 +452,7 @@ commandDictionary['rpg'] = {
 						icon_url: bot.user.avatarURL
 					},
 					title: 'Conditions',
-					description: "Note: these conditions are for Dungeons and Dragons 5e.\n"
+					description: "Note: these conditions are for Dungeons and Dragons 5e.\n",
 					fields: [
 						{
 							name: 'Options',
@@ -464,8 +464,7 @@ commandDictionary['rpg'] = {
 						}
 					],
 					footer: {
-						icon_url: bot.user.avatarURL,
-						text: bot.user.username + '| RPG Assistant'
+							text: bot.user.username + '| RPG Assistant'
 					}
 				}}
 				break;
