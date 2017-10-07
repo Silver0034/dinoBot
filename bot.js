@@ -445,28 +445,50 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
 			case 'conditions':
-				return {embed: {
-					color: 0x64FFDA,
-					author: {
-						name: bot.user.username,
-						icon_url: bot.user.avatarURL
-					},
-					title: 'Conditions',
-					description: "Note: these conditions are for Dungeons and Dragons 5e.\n",
-					fields: [
-						{
-							name: 'Options',
-							value:  rpg.conditionList(),
+				if (rpgConditions[args[1]]) {
+					return {embed: {
+						color: 0x64FFDA,
+						author: {
+							name: bot.user.username,
+							icon_url: bot.user.avatarURL
 						},
-						{
-							name: 'Usage:',
-							value: 'type "`rpg condition" and then the condition you wish to learn more about.'
+						title: args[1],
+						description: "Note: this condition is for Dungeons and Dragons 5e.\n",
+						fields: [
+							{
+								name: 'Description',
+								value: rpgConditions[args[1]].desc,
+							}
+						],
+						footer: {
+								text: bot.user.username + ' | RPG Assistant'
 						}
-					],
-					footer: {
-							text: bot.user.username + ' | RPG Assistant'
-					}
-				}}
+					}}
+				} else {
+					return {embed: {
+						color: 0x64FFDA,
+						author: {
+							name: bot.user.username,
+							icon_url: bot.user.avatarURL
+						},
+						title: 'Conditions',
+						description: "Note: these conditions are for Dungeons and Dragons 5e.\n",
+						fields: [
+							{
+								name: 'Options',
+								value:  rpg.conditionList(),
+							},
+							{
+								name: 'Usage:',
+								value: 'Type "`rpg condition" and then the condition you wish to learn more about.'
+							}
+						],
+						footer: {
+								text: bot.user.username + ' | RPG Assistant'
+						}
+					}}
+				}
+					
 				break;
 		}
 		if (args[0] == null || args[0] == undefined) {
