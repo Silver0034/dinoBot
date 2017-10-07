@@ -428,8 +428,8 @@ commandDictionary['rpg'] = {
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg name character',
   doCommand: function(message, key, args) {
-		if (args[0] == null || args[1] == undefined) {
-					return error(key) + '\n `rpg name title';
+		if (args[0] == null || args[0] == undefined) {
+					return error(key) + '\n Options: name, character';
 				}
   	switch(args[0]) {
 			case 'name':
