@@ -438,12 +438,12 @@ commandDictionary['rpg'] = {
 		}
 		switch(args[0]) {
 			case 'characteristic':
-				return responseHead(message, key) + 'The character ' + rpg.characteristics();
+				return responseHead(message, key) + 'The character ' + rpg.characteristics() + '.';
 				break;
 		}
 		switch(args[0]) {
-			case 'desc':
-				return responseHead(message, key) + 'The character ' + rpg.characteristics();
+			case 'bond':
+				return responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.';
 				break;
 		}
   }
