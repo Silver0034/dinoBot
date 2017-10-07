@@ -224,5 +224,5 @@ exports.conditionList = function() {
   	rpgConditionsList.push(keyIter);
   }
 	var rpgConditionsReturn = rpgConditionsList.sort().toString().replace(/,/g, ", ");
-	return rpgConditionsReturn;
+	return rpgConditionsReturn.toUpperCase();
 }
