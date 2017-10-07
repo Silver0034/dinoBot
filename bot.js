@@ -426,7 +426,7 @@ commandDictionary['rps'] = {
 commandDictionary['rpg'] = {
   emoji: ':map: ',
   error: 'Use the command like this: `rpg name character',
-  usage: '**Usage:** `rpg name character',
+  usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
   	switch(args[0]) {
 			case 'name':
@@ -445,6 +445,8 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
 			case 'conditions':
+			case 'con':
+			case 'c':
 				if (rpg.rpgConditions[args[1]]) {
 					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
 					return {embed: {
