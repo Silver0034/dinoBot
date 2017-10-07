@@ -139,3 +139,41 @@ exports.flaws = function() {
   var flawsReturn = Math.floor((Math.random() * rpgFlaws.length));   
   return rpgFlaws[flawsReturn];    
 }
+var rpgFlavor = [
+	'a shady-looking character',
+	'a goofy fellow',
+	'an oddball',
+	'a clumsy fellow',
+	'a strong fellow',
+	'a mysterious stranger',
+	'a bored-looking affiliate',
+	'a rather tough looking character',
+	'an unmet friend',
+	'a sad-looking peer',
+	'a seemingly oblivious crony',
+	'an old folk',
+	'an elderly stranger',
+	'a young character',
+	'a chummy fellow',
+	'a half-pint',
+	'a squirt of a character',
+	'a runt',
+	'a child',
+	'a small fry',
+	'a big fellow',
+	'a tall fellow',
+	'a slender fellow',
+	'a wide fellow',
+	'a big-boned character',
+	'a plus-sized model',
+	'a heavyset fellow',
+	'a hearty fellow',
+	'a thin charachter',
+	'an odd character',
+	'a rather dark figure'
+];
+exports.flavor = function() {
+  //decide which answer to give
+  var flavorReturn = Math.floor((Math.random() * rpgFlavor.length));   
+  return rpgFlavor[flavorReturn];    
+}
