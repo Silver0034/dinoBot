@@ -1,7 +1,7 @@
 // rpg
 //var exports = module.exports = {};
- var nameBeginning = [
-  "",
+var nameBeginning = [
+	"",
 	"",
 	"",
 	"",
@@ -21,7 +21,7 @@
 	"si",
 	"ta",
 	"va"
-]
+];
 var nameMiddle = [
 	"bar",
 	"ched",
@@ -43,7 +43,7 @@ var nameMiddle = [
 	"vash",
 	"yor",
 	"zen"
-]
+];
 var nameEnd = [
 	"",
 	"a",
@@ -65,7 +65,7 @@ var nameEnd = [
 	"is",
 	"or",
 	"us"
-]
+];
 exports.name = function() {
 	var nameReturn = '';
   //decide which answer to give
@@ -76,4 +76,31 @@ exports.name = function() {
 	var nameThird = Math.floor((Math.random() * nameEnd.length));   
   nameReturn += nameEnd[nameThird]; 
 	return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
+}
+var rpgCharacteristics = [
+	'is absentminded',
+	'is arrogant',
+	'is boorish',
+	'chews something',
+	'is clumsy',
+	'is curious',
+	'is dim-witted',
+	'fiddles and fidgets nervously',
+	'frequently uses the wrong word',
+	'is friendly',
+	'is irritable',
+	'is prone to predictions of certain doom',
+	'has a pronounced-scar',
+	'slurs words, lisps, or stutters',
+	'speaks loudly or whispers',
+	'squints',
+	'stares into distance',
+	'is suspicious',
+	'uses colorful oaths and exclamations',
+	'uses flowery speech or long words'
+];
+exports.name = function() {
+  //decide which answer to give
+  var characteristicReturn = Math.floor((Math.random() * rpgCharacteristics.length));   
+  return rpgCharacteristics[characteristicReturn];    
 }
