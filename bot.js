@@ -445,7 +445,7 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
 			case 'conditions':
-				if (args[1] == rpg.conditions()) {
+				if (conditions[args[1]]) {
 					return {embed: {
 						color: 0x64FFDA,
 						author: {
