@@ -189,9 +189,11 @@ exports.flavor = function() {
   var flavorReturn = Math.floor((Math.random() * rpgFlavor.length));   
   return rpgFlavor[flavorReturn];    
 }
+
+var rpgConditions = new Object();
 rpgConditions['blinded'] = {
   desc: 'A blinded creature can\'t see and automatically fails any ability check that requires sight\nAttack rolls against the creature have advantage, and the creature\'s attack rolls have disadvantage.'
-}
+};
 rpgConditions['charmed'] = {
   desc: 'A charmed creature can\'t attack the charmer or target the charmer with harmful abilities or magical effects.\n The charmer has advantage on any ability check to interact socially with the creature.'
 };
