@@ -205,13 +205,13 @@ rpgConditions['grappled'] = {
   desc: 'A grappled creature\'s speed becomes 0, and it can\'t benefit from any bonus to its speed.\nThe condition ends if hte grappler is incapacitated (see the condition).\nThe condition also ends if an efefct removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the *thunderwave* spell.'
 };
 rpgConditions['invisible'] = {
-  desc: 'An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature\'s location can be detected by any noise it makes or any tracks it leaves.\nAttack rolls against the creature have disadvantage, and the creature\'s attack rolls have advantage.
+  desc: 'An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature\'s location can be detected by any noise it makes or any tracks it leaves.\nAttack rolls against the creature have disadvantage, and the creature\'s attack rolls have advantage.'
 };
 rpgConditions['paralyzed'] = {
-  desc: 'A paralyzed creature is incapacitated (see the condition) and can\'t move or speak.\nThe creature automatically fails Strength and Dexterity saving thros.\nAttack rolls against the creature have advantage.\nAny attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.
+  desc: 'A paralyzed creature is incapacitated (see the condition) and can\'t move or speak.\nThe creature automatically fails Strength and Dexterity saving thros.\nAttack rolls against the creature have advantage.\nAny attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.'
 };
 rpgConditions['petrified'] = {
-  desc: 'A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases agin.\nThe creature is incapacitated (see the condition), can\'t move or speak, and it unaware of its surroundings.\nAttack rolls against the creature have advantage.\nThe creature automatically fails Strength and Dexterity saving throws.\nThe creature has resitance to all damage.\nThe creature is immune to poison and disease although a poison or disease already in its system is suspended, not neutralized.
+  desc: 'A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases agin.\nThe creature is incapacitated (see the condition), can\'t move or speak, and it unaware of its surroundings.\nAttack rolls against the creature have advantage.\nThe creature automatically fails Strength and Dexterity saving throws.\nThe creature has resitance to all damage.\nThe creature is immune to poison and disease although a poison or disease already in its system is suspended, not neutralized.'
 };
 rpgConditions['poisoned'] = {
   desc: 'A poisoned creature has disadvantage on attack rolls and ability checks.'
