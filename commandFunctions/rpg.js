@@ -91,13 +91,17 @@ var rpgCharacteristics = [
 	'is irritable',
 	'is prone to predictions of certain doom',
 	'has a pronounced-scar',
-	'slurs words, lisps, or stutters',
-	'speaks loudly or whispers',
+	'slurs words',
+	'lisps', 
+	'stutters',
+	'speaks loudly'
+	'whispers',
 	'squints',
 	'stares into distance',
 	'is suspicious',
 	'uses colorful oaths and exclamations',
-	'uses flowery speech or long words'
+	'uses flowery speech'
+	'uses long words'
 ];
 exports.characteristics = function() {
   //decide which answer to give
@@ -105,10 +109,14 @@ exports.characteristics = function() {
   return rpgCharacteristics[characteristicReturn];    
 }
 var rpgBonds = [
-	'personal goals or achievements',
+	'personal goals',
+	'achievements',
 	'family members',
-	'colleagues or compatriots',
-	'a benefactor, patron, or employer',
+	'colleagues',
+	'compatriots',
+	'a benefactor',
+	'a patron',
+	'an employer',
 	'a romantic interest',
 	'a special place',
 	'a keepsake',
