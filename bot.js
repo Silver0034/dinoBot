@@ -454,7 +454,7 @@ commandDictionary['rpg'] = {
 				break;
 			case 'conditions':
 				return {embed: {
-					color: rgb(100, 255, 218),
+					color: 1002552181,
 					description: "This embed works!!!"
 				}}
 				break;
