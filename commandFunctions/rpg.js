@@ -221,8 +221,9 @@ rpgConditions['poisoned'] = {
 exports.conditionList = function() {
 	var rpgConditionsList = new Array();
 	for (var keyIter in rpgConditions) {
-  	rpgConditionsList.push(keyIter);
+		keyIter.charAt(0).toUpperCase() + keyIter.slice(1);
+		rpgConditionsList.push(keyIter);
   }
 	var rpgConditionsReturn = rpgConditionsList.sort().toString().replace(/,/g, ", ");
-	return rpgConditionsReturn.toUpperCase();
+	return rpgConditionsReturn;
 }
