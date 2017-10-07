@@ -428,9 +428,6 @@ commandDictionary['rpg'] = {
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg name character',
   doCommand: function(message, key, args) {
-		if (args[0] == null || args[0] == undefined) {
-					return error(key) + '\n Options: name, character';
-				}
   	switch(args[0]) {
 			case 'name':
 				return responseHead(message, key) + rpg.name();
@@ -447,9 +444,14 @@ commandDictionary['rpg'] = {
 				break;
 		}
 		switch(args[0]) {
-			case 'bond':
+			case 'flaw':
 				return responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.';
 				break;
+		}
+		if (args[0] == null || args[0] == undefined) {
+			return error(key) + '\n Options: name, character';
+		} else {
+			return responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw'; 
 		}
   }
 };
