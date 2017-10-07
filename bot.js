@@ -453,19 +453,15 @@ commandDictionary['rpg'] = {
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
 			case 'conditions':
-				return emojiDino + {embed: {
+				return {embed: {
 					color: 0x64FFDA,
 					author: {
 						name: bot.user.username,
 						icon_url: bot.user.avatarURL
 					},
 					title: 'Conditions',
-					description: "Note: these conditions are for Dungeons and Dragons 5e.",
+					description: "Note: these conditions are for Dungeons and Dragons 5e.\n" + rpg.conditionList(),
 					fields: [
-						{
-							name: 'Types:',
-							value: 'Thing1, Thing2, Thing3...'
-						},
 						{
 							name: "Usage:",
 							value: 'type "`rpg condition" and then the condition you wish to learn more about.'
