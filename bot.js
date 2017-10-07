@@ -454,9 +454,9 @@ commandDictionary['rpg'] = {
 				break;
 			case 'conditions':
 				return {embed: {
-					color: 16777215,
+					color: 0x64FFDA,
 					author: {
-						name: bot.user.username,
+						name: bot.user.username + ' ' + emojiDino,
 						icon_url: bot.user.avatarURL
 					},
 					title: 'Conditions',
