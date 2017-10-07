@@ -120,3 +120,22 @@ exports.bonds = function() {
   var bondsReturn = Math.floor((Math.random() * rpgBonds.length));   
   return rpgBonds[bondsReturn];    
 }
+var rpgFlaws = [
+	'forbidden love or romantic susceptibility',
+	'decadence',
+	'arrogance',
+	'envy of another person\'s possessions or station',
+	'overpowering greed',
+	'being prone to rage',
+	'a powerful enemy',
+	'a specific phobia',
+	'a shameful or scandalous history',
+	'a secret crime or misdeed',
+	'a possession of forbidden lore',
+	'foolhardy bravery'
+];
+exports.flaws = function() {
+  //decide which answer to give
+  var flawsReturn = Math.floor((Math.random() * rpgFlaws.length));   
+  return rpgFlaws[flawsReturn];    
+}
