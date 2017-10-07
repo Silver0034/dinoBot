@@ -201,7 +201,7 @@ rpgConditions['deafened'] = {
   desc: 'A deafened creature can\'t hear and automatically fails any check that requires hearing.'
 };
 rpgConditions['exhaustion'] = {
-   desc: 'test'
+   desc: 'Some special abilities and enviromental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to a special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect\'s description.'
 };
 rpgConditions['frightened'] = {
   desc: 'A frightened creature has disadvantage on ability checks and attack rolls whil the source of its fear is within line of sight.\nThe creature can\'t willingly move closer to the source of its fear.'
