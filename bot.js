@@ -457,7 +457,7 @@ commandDictionary['rpg'] = {
 						fields: [
 							{
 								name: 'Description',
-								value: rpgConditions[args[1]].desc,
+								value: rpg.rpgConditions[args[1]].desc,
 							}
 						],
 						footer: {
