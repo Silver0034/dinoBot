@@ -452,6 +452,12 @@ commandDictionary['rpg'] = {
 			case 'npc':
 				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
 				break;
+			case 'conditions':
+				return {embed: {
+					color: rgb(100, 255, 218),
+					description: "This embed works!!!"
+				}}
+				break;
 		}
 		if (args[0] == null || args[0] == undefined) {
 			return error(key) + '\n Options: name, character';
