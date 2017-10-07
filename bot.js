@@ -455,7 +455,27 @@ commandDictionary['rpg'] = {
 			case 'conditions':
 				return {embed: {
 					color: 16777215,
-					description: "This embed works!!!"
+					author: {
+						name: bot.user.username,
+						icon_url: bot.user.avatarURL
+					},
+					title: 'Conditions',
+					description: "Note: these conditions are for Dungeons and Dragons 5e.",
+					fields: [
+						{
+							name: 'Types:',
+							value: 'Thing1, Thing2, Thing3...'
+						},
+						{
+							name: "Usage:",
+							value: 'type "`rpg condition" and then the condition you wish to learn more about.'
+						}
+					],
+					timeStamp: new Date(),
+					footer: {
+						icon_url: bot.user.avatarURL,
+						text: bot.user.username
+					}
 				}}
 				break;
 		}
