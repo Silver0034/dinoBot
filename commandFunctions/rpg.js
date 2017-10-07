@@ -100,8 +100,8 @@ var rpgCharacteristics = [
 	'stares into distance',
 	'is suspicious',
 	'uses colorful oaths and exclamations',
-	'uses flowery speech'
-	'uses long words'
+	'uses flowery speech',
+	'uses long words',
 ];
 exports.characteristics = function() {
   //decide which answer to give
