@@ -94,7 +94,7 @@ var rpgCharacteristics = [
 	'slurs words',
 	'lisps', 
 	'stutters',
-	'speaks loudly'
+	'speaks loudly',
 	'whispers',
 	'squints',
 	'stares into distance',
