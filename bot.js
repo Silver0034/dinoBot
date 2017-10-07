@@ -427,12 +427,12 @@ commandDictionary['rpg'] = {
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg name character',
   doCommand: function(message, key, args) {
-		if (args[0] != null) {
+		if (args[0] == null || args[1] == undefined) {
 					return error(key) + '\n `rpg name character';
 				}
   	switch(args[0]) {
 			case 'name':
-				if (args[1] != null) {
+				if (args[1] == null || args[1] == undefined) {
 					return error(key) + '\n `rpg name character';
 				}
 				if (args[1] == 'character') {
