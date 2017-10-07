@@ -446,6 +446,7 @@ commandDictionary['rpg'] = {
 				break;
 			case 'conditions':
 				if (rpg.rpgConditions[args[1]]) {
+					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
 					return {embed: {
 						color: 0x64FFDA,
 						author: {
