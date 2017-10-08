@@ -12,6 +12,7 @@ var profanity = require('./commandFunctions/profanity.js');
 var rps = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
+var jimp = require('jimp');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -499,6 +500,14 @@ commandDictionary['rpg'] = {
 		} else {
 			return responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc'; 
 		}
+  }
+};
+commandDictionary['profile'] = {
+  timeout: 0,
+  error: 'Use the command like this: `profile',
+  usage: '**Usage:** `profile',
+  doCommand: function(message, key, args) {
+  	jimp.read('./assets/profile.png')
   }
 };
 /*
