@@ -507,13 +507,9 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		Jimp.read('./assets.profile.png', functon (err, image) {
-			//do things to the picture
-		});
-  	Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
+		Jimp.read('./assets.profile.png', Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
     	image.print(font, 10, 10, "Hello world!");
-		});
-  }
+		}))}
 };
 /*
 commandDictionary['dex'] = {
