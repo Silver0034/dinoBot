@@ -13,6 +13,7 @@ var rps = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 var jimp = require('jimp');
+jimp.FONT_SANS_32_BLACK;
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
