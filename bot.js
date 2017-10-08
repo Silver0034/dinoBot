@@ -507,7 +507,13 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-  	jimp.read('./assets/profile.png')
+  	jimp.read('./assets/profile.png', function (err, profile) {
+			//do things to the image
+			if (err) throw err;
+			//To Print text:
+			//profile.print(font,x,y,str);
+			profile.print(FONT_SANS_32_BLACK, 20, 20, message.author.username);
+		});
   }
 };
 /*
