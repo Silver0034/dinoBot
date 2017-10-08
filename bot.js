@@ -13,7 +13,6 @@ var rps = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 var jimp = require('jimp');
-jimp.FONT_SANS_32_BLACK;
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -513,7 +512,7 @@ commandDictionary['profile'] = {
 			if (err) throw err;
 			//To Print text:
 			//profile.print(font,x,y,str);
-			profile.print(FONT_SANS_32_BLACK, 20, 20, message.author.username);
+			profile.print(jimp.FONT_SANS_32_BLACK, 20, 20, message.author.username);
 		});
   }
 };
