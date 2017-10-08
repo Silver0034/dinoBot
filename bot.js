@@ -12,7 +12,7 @@ var profanity = require('./commandFunctions/profanity.js');
 var rps = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
-var jimp = require('jimp');
+var Jimp = require('jimp');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -507,12 +507,8 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-  	jimp.read('./assets/profile.png', function (err, profile) {
-			//do things to the image
-			if (err) throw err;
-			//To Print text:
-			//profile.print(font,x,y,str);
-			profile.print(jimp.FONT_SANS_32_BLACK, 20, 20, message.author.username);
+  	Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
+    	image.print(font, 10, 10, "Hello world!");
 		});
   }
 };
