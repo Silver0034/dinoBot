@@ -509,8 +509,8 @@ commandDictionary['profile'] = {
   doCommand: function(message, key, args) {
 		message.channel.sendMessage('', {
 			file: './assets.profile.png'
-			return;
 		});
+		return;
 	}
 };
 /*
