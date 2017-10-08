@@ -507,7 +507,7 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		message.channel.sendMessage('', {
+		message.channel.sendMessage(emojiDino + ' ' + message.author.username + '\'s Profile:', {
 			file: './assets.profile.png'
 		});
 		return;
