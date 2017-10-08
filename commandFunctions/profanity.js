@@ -35,7 +35,6 @@ const profanityList = [
 	"flange",
 	"goddamn",
 	"homo",
-	"jerk",
 	"jizz",
 	"knobend",
 	"labia",
