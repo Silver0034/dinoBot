@@ -544,11 +544,11 @@ commandDictionary['profile'] = {
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
     var attachment = '';
-		Jimp.read("./assets/profile.png", function (err, image) {
+		Jimp.read('./assets/profile.png', function (err, image) {
     	if (err) throw err;
-      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // runs second
+      Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (title) {
         attachment = './assets/userProfile.' + image.getExtension();
-      	image.print(font, 10, 10, "Hello world!").write(attachment);
+      	image.print(title, 280, 160, message.author.username, 500).write(attachment);
         message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
           file: attachment
         });
