@@ -508,13 +508,13 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		Jimp.read("./assets/profile.png", function (err, profile) {
+		Jimp.read("./assets/profile.png", function (err, image) {
     	if (err) throw err;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
-          profile.print(font, 0, 0, 'Hello World');
-      });
-      attachment = './assets/userProfile.' + profile.getExtension();
-      profile.write(attachment);
+    		image = image.print(font, 10, 10, "Hello world!");
+			});
+      attachment = './assets/userProfile.' + image.getExtension();
+      image.greyscale().write(attachment);
 		});
     return emojiDino + ' ' + message.author.username + '\'s Profile';
 	}
@@ -622,7 +622,7 @@ bot.on('message', message => {
       var sendMsg = commandDictionary[key].doCommand(message, key, args);
       message.channel.send(sendMsg, {
         file: attachment
-      });      
+      });
 			attachment =  '';
       timeout(key, userID);
       return;      
