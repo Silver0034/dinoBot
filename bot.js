@@ -510,16 +510,16 @@ commandDictionary['profile'] = {
     var attachment = '';
 		Jimp.read("./assets/profile.png", function (err, image) {
     	if (err) throw err;
-      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
+      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // runs second
         attachment = './assets/userProfile.' + image.getExtension();
         console.log('attachment1 = ', attachment); //returns blank
       	image.print(font, 10, 10, "Hello world!").write(attachment);
+        console.log('attachment2 = ', attachment); //runs this first
+        message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+          file: attachment 
+        });
 			});
 		});
-    console.log('attachment2 = ', attachment); //returns correctly
-    message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-      file: attachment 
-    });
     return 'Dummy Message';
 	}
 };
