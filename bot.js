@@ -615,6 +615,7 @@ bot.on('message', message => {
       message.channel.send(commandDictionary[key].doCommand(message, key, args), {
         file: attatchment
       });      
+			attatchment =  '';
       timeout(key, userID);
       return;      
     }
