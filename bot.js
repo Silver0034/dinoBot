@@ -548,11 +548,11 @@ commandDictionary['profile'] = {
 		Jimp.read('./assets/profile.png', function (err, image) {
     	if (err) throw err;
       Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (title) {
-        var xp = new Jimp(2, 11, 0x64FFDAFF, function (err, xp) {
+        var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
           attachment = './assets/userProfile.' + image.getExtension();
           image
             .print(title, 280, 146, message.author.username, 500)
-            .composite(xp.resize(517,11), 247, 464)
+            .composite(xp, 247, 464)
             .write(attachment, function() {
             message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
               file: attachment
