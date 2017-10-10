@@ -21,6 +21,7 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
+var attatchment = './assets/profile.png';
 
 //global functions
 //puts user in timeout
@@ -610,12 +611,9 @@ bot.on('message', message => {
       }
       //returns command    
       console.log(getTime(), message.author.username + ' used: ' + key);
-      message.channel.send(commandDictionary[key].doCommand(message, key, args), './assets.profile.png');
-      
-      message.channel.sendMessage("some text", {
-        file: "./assets/profile.png" // Or replace with FileOptions object
-      });
-      
+      message.channel.send(commandDictionary[key].doCommand(message, key, args){
+        file: attatchment
+      });      
       timeout(key, userID);
       return;      
     }
