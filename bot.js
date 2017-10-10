@@ -510,12 +510,10 @@ commandDictionary['profile'] = {
   doCommand: function(message, key, args) {
 		Jimp.read("./assets/profile.png", function (err, image) {
     	if (err) throw err;
-      var font32;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
-        font32 = font;
+        attachment = './assets/userProfile.' + image.getExtension();
+      	image.print(font, 10, 10, "Hello world!").write(attachment);
 			});
-      attachment = './assets/userProfile.' + image.getExtension();
-      image.print(font32, 10, 10, "Hello world!").write(attachment);
 		});
     message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
       file: attachment
