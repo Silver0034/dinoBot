@@ -543,16 +543,21 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
+    bot.startTyping(message.channel);
     var attachment = '';
 		Jimp.read('./assets/profile.png', function (err, image) {
     	if (err) throw err;
       Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (title) {
-        attachment = './assets/userProfile.' + image.getExtension();
         var xp = new Jimp(2, 11, 0x64FFDAFF, function (err, xp) {
-          image.print(title, 280, 146, message.author.username, 500).composite(xp.resize(517,11), 247, 464).write(attachment, function() {
+          attachment = './assets/userProfile.' + image.getExtension();
+          image
+            .print(title, 280, 146, message.author.username, 500)
+            .composite(xp.resize(517,11), 247, 464)
+            .write(attachment, function() {
             message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
               file: attachment
             });
+            bot.stopTyping(message.channel);
           });
         });
       });
