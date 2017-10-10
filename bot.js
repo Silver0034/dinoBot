@@ -548,9 +548,11 @@ commandDictionary['profile'] = {
     	if (err) throw err;
       Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (title) {
         attachment = './assets/userProfile.' + image.getExtension();
-      	image.print(title, 280, 146, message.author.username, 500).write(attachment, function() {
-          message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-            file: attachment
+        var xp = new Jimp(2, 11, 0x64FFDAFF, function (err, xp) {
+          image.print(title, 280, 146, message.author.username, 500).composite(xp.resize(517,11), 247, 464).write(attachment, function() {
+            message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+              file: attachment
+            });
           });
         });
       });
