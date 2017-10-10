@@ -512,13 +512,13 @@ commandDictionary['profile'] = {
     	if (err) throw err;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
         attachment = './assets/userProfile.' + image.getExtension();
-        console.log('attachment = ', attachment);
+        console.log('attachment1 = ', attachment); //returns blank
       	image.print(font, 10, 10, "Hello world!").write(attachment);
 			});
 		});
-    console.log('attachment = ', attachment);
+    console.log('attachment2 = ', attachment); //returns correctly
     message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-      file: attachment
+      file: attachment 
     });
     return 'Dummy Message';
 	}
