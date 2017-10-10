@@ -619,7 +619,8 @@ bot.on('message', message => {
       }
       //returns command    
       console.log(getTime(), message.author.username + ' used: ' + key);
-      message.channel.send(commandDictionary[key].doCommand(message, key, args), {
+      var sendMsg = commandDictionary[key].doCommand(message, key, args);
+      message.channel.send(sendMsg, {
         file: attachment
       });      
 			attachment =  '';
