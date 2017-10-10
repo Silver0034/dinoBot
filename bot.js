@@ -189,8 +189,7 @@ commandDictionary['coin'] = {
     ];
     function coinGenerator() {
       var coinNum = Math.floor((Math.random() * coinAnswers.length));
-      message.channel.send(coinAnswers[coinNum]);
-      return;
+      return coinAnswers[coinNum];
     }
     if (args[0]) {
       message.channel.send(error(key));
@@ -221,7 +220,7 @@ commandDictionary['choose'] = {
   doCommand: function(message, key, args) {
     function chooseGenerator() {
       var chooseNum = Math.floor((Math.random() * chooseArray.length));
-      return chooseArray([chooseNum]);
+      return chooseArray[chooseNum];
     }
     //looks to see if the user input includes string|string
     //if it does not; stops the command and returns error
@@ -439,8 +438,8 @@ commandDictionary['rps'] = {
 					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsTie);
 				} else if (rpsResult == 'scissors') {
 					message.channel.send(rpsMessage + ':v:\n' + rpsLoose);
-				}	
-			 break;
+				}
+        break;
 			case 'scissors':
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
@@ -451,7 +450,9 @@ commandDictionary['rps'] = {
 				} else if (rpsResult == 'scissors') {
 					message.channel.send(rpsMessage + ':v:\n' + rpsTie);
 				}
-			 break;
+        break;
+      default:
+        message.channel.send(error(key));
 		}
     return;
 	}
@@ -565,7 +566,8 @@ commandDictionary['dex'] = {
     var sayMessage = emojiDino + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
-      return error(key);
+    	message.channel.send(error(key));
+      return;
     } else {    
       
       jQuery.get('https://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
