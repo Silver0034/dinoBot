@@ -508,7 +508,8 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		return;
+    attatchment = './assets/profile.png';      
+    return;
 	}
 };
 /*
