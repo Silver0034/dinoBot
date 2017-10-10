@@ -21,7 +21,7 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
-var attatchment = new String;
+var attatchment = '';
 
 //global functions
 //puts user in timeout
