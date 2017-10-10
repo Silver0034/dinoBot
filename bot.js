@@ -511,9 +511,9 @@ commandDictionary['profile'] = {
 		
 		Jimp.read("./assets/profile.png", function (err, profile) {
     	if (err) throw err;
-      
-      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK, font32);
-      profile.print(font32, 30, 30, message.author.username);
+      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
+          profile.print(font, 30, 30, message.author.username);
+      });
       attachment = "./assets/userProfile." + profile.getExtension();
       profile.write(attachment);
 		});
