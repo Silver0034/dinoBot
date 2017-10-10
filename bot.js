@@ -511,10 +511,9 @@ commandDictionary['profile'] = {
 		Jimp.read("./assets/profile.png", function (err, image) {
     	if (err) throw err;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
-    		image = image.print(font, 10, 10, "Hello world!");
+        attachment = './assets/userProfile.' + image.getExtension();
+    		image.print(font, 10, 10, "Hello world!").write(attachment);;
 			});
-      attachment = './assets/userProfile.' + image.getExtension();
-      image.greyscale().write(attachment);
 		});
     return emojiDino + ' ' + message.author.username + '\'s Profile';
 	}
