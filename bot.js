@@ -508,7 +508,17 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-    attachment = './assets/profile.png';      
+		
+		Jimp.read("./assets/profile.png", function (err, profile) {
+    	if (err) throw err;
+      
+      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK, font32);
+      profile.print(font32, 30, 30, message.author.username);
+      attachment = "./assets/userProfile." + profile.getExtension();
+      profile.write(attachment);
+		});
+		
+		
     return emojiDino + ' ' + message.author.username + '\'s Profile';
 	}
 };
