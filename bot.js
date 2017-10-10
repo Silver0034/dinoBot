@@ -21,7 +21,7 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
-var attatchment = '';
+var attachment = '';
 
 //global functions
 //puts user in timeout
@@ -508,7 +508,7 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-    attatchment = './assets/profile.png';      
+    attachment = './assets/profile.png';      
     return emojiDino + ' ' + message.author.username + '\'s Profile';
 	}
 };
@@ -613,9 +613,9 @@ bot.on('message', message => {
       //returns command    
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args), {
-        file: attatchment
+        file: attachment
       });      
-			attatchment =  '';
+			attachment =  '';
       timeout(key, userID);
       return;      
     }
