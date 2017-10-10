@@ -89,9 +89,11 @@ commandDictionary['8ball'] = {
   usage: '**Usage:** `8ball [question]',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      return responseHead(message, key) + ball.generate();
+      message.channel.send(responseHead(message, key) + ball.generate());
+      return;
     } else {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     }
   }
 };
@@ -121,11 +123,12 @@ commandDictionary['roll'] = {
       rollSides = rollStat[1];
       rollOperator = rollStat[2];
     } else {
-        return error(key);
+      message.channel.send(error(key));
     }
     // If our inputs are invalid, return an error.
     if (isNaN(rollCount) || isNaN(rollSides) || rollCount <= 0 || rollCount >= 120  || rollSides <= 0 || rollSides >= 120 || rollOperator <= 0 || rollOperator >= 120) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {
       if (isNaN(rollOperator)) {
         rollOperator = ""; 
@@ -150,8 +153,9 @@ commandDictionary['roll'] = {
         // Print all of our rolls
         rollMessageOutput += "```" + rollList.toString() + "```";
       }                            
-      rollMessageOutput += " You rolled a total of **" + rollSum + "**";    
-      return rollMessageOutput;
+      rollMessageOutput += " You rolled a total of **" + rollSum + "**"; 
+      message.channel.send(rollMessageOutput);
+      return;
     }
   }
 };
@@ -170,7 +174,8 @@ commandDictionary['help'] = {
       }
       helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
-    return responseHead(message, key) + roar.generate() + ' ' + roar.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*';
+    message.channel.send(responseHead(message, key) + roar.generate() + ' ' + roar.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
+    return;
   }
 }; 
 commandDictionary['coin'] = {
@@ -184,12 +189,15 @@ commandDictionary['coin'] = {
     ];
     function coinGenerator() {
       var coinNum = Math.floor((Math.random() * coinAnswers.length));
-      return coinAnswers[coinNum];
+      message.channel.send(coinAnswers[coinNum]);
+      return;
     }
     if (args[0]) {
-      return error(key);     
+      message.channel.send(error(key));
+      return;     
     }    
-    return responseHead(message, key) + 'You flipped *' + coinGenerator() + '*';
+    message.channel.send(responseHead(message, key) + 'You flipped *' + coinGenerator() + '*');
+    return;
   }
 };
 commandDictionary['attack'] = {
@@ -198,9 +206,11 @@ commandDictionary['attack'] = {
   usage: '**Usage:** `attack [@user OR name]',
   doCommand: function(message, key, args) {
     if (args[0] === undefined || args[0] === '' || args[0] == bot.user) {
-      return error(key);
+    	message.channel.send(error(key));
+      return;
     } else {
-      return responseHead(message, key) + args[0] + attack.generate();
+      message.channel.send(responseHead(message, key) + args[0] + attack.generate());
+      return;
     }
   }
 };
@@ -211,23 +221,26 @@ commandDictionary['choose'] = {
   doCommand: function(message, key, args) {
     function chooseGenerator() {
       var chooseNum = Math.floor((Math.random() * chooseArray.length));
-      return chooseArray[chooseNum];
-    } 
+      return chooseArray([chooseNum]);
+    }
     //looks to see if the user input includes string|string
     //if it does not; stops the command and returns error
     //if valid, split the strings into an array    
     if (args[0] && args[0].substring(1, args[0].length - 1).includes('|')) {
       var chooseArray = args[0].split('|');            
     } else {
-      return error(key);    
+      message.channel.send(error(key));
+      return;
     }
     //if the string|string is valid return output
     //else return error    
     if (chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {
-      return responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)';
-    }            
+      message.channel.send(responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)');
+      return;
+    }         
   }
 };
 commandDictionary['cookie'] = {
@@ -236,9 +249,11 @@ commandDictionary['cookie'] = {
   usage: '**Usage:** `cookie [@user OR name]',
   doCommand: function(message, key, args) {
     if (!args[0]) {
-      return error(key);
+  		message.channel.send(error(key));
+      return;
     } else {
-      return responseHead(message, key) + 'You gave ' + args[0] + ' a dino-cookie! :cookie:';
+      message.channel.send(responseHead(message, key) + 'You gave ' + args[0] + ' a dino-cookie! :cookie:');
+      return;
     }
   }  
 };
@@ -247,7 +262,7 @@ commandDictionary['error'] = {
   error: 'Use the command like this: `error',
   usage: '**Usage:** `error',
   doCommand: function(message, key, args) {
-    return error(key);
+    message.channel.send(error(key));
   }  
 };
 commandDictionary['hello'] = {
@@ -256,9 +271,11 @@ commandDictionary['hello'] = {
   usage: '**Usage:** `hello',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {
-      return emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Hi ' + message.author.username + ')*';
+      message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Hi ' + message.author.username + ')*');
+      return;
     }
   }
 };
@@ -268,9 +285,11 @@ commandDictionary['ping'] = {
   usage: '**Usage:** `ping',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {
-      return emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*';
+      message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*');
+      return;
     }
   }      
 };
@@ -280,9 +299,11 @@ commandDictionary['quote'] = {
   usage: '**Usage:** `quote',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {
-      return responseHead(message, key) + quote.generate();
+      message.channel.send(responseHead(message, key) + quote.generate());
+      return;
     }
   }
 };
@@ -292,9 +313,11 @@ commandDictionary['taste'] = {
   usage: '**Usage:** `taste [@user OR name]',
   doCommand: function(message, key, args) {
     if (!args[0]) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {
-      return responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate();
+      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate());
+      return;
     }
   }
 };
@@ -306,9 +329,11 @@ commandDictionary['say'] = {
     var sayMessage = emojiDino + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
-      return error(key);
+      message.channel.send(error(key));
+      return;
     } else {    
-      return sayMessage;    
+      message.channel.send(sayMessage);
+      return;
     }
   }
 };
@@ -322,19 +347,23 @@ commandDictionary['avatar'] = {
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
-      return message.author.username + '\'s Avatar: ' + message.author.avatarURL;
+      message.channel.send(message.author.username + '\'s Avatar: ' + message.author.avatarURL);
+      return;
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
         avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarMention[i].avatarURL + "\n";   
-      } 
-      return avatarReturn;     
+      }
+      message.channel.send(avatarReturn);
+      return;     
     } else {
-      //if message range longer than 6 return error    
-      return error(key) + '\nPlease mention 5 or fewer users.';
+      //if message range longer than 6 return error
+      message.channel.send(error(key) + '\nPlease mention 5 or fewer users.');
+      return;
     }
     //if message formatted incorectly  
-    return error(key);       
+    message.channel.send(error(key));
+    return;      
   }
 };
 commandDictionary['admin'] = {
@@ -355,7 +384,7 @@ commandDictionary['admin'] = {
               console.log(results);
       			});
             console.log('Removed profanity filter from channel ' + message.channel.name);
-            return responseHead(message, key) + 'The profanity filter has been removed from this channel.';
+            message.channel.send(responseHead(message, key) + 'The profanity filter has been removed from this channel.');
       		} else if (args[1] == 'filter') {
           	//add profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
@@ -363,17 +392,19 @@ commandDictionary['admin'] = {
               console.log(results);
       			});
             console.log('Added profanity filter to channel ' + message.channel.name);
-            return responseHead(message, key) + 'The profanity filter has been added to this channel.';
+            message.channel.send(responseHead(message, key) + 'The profanity filter has been added to this channel.');
       		} else {
-          	return error(key); // TODO: append more description later
+            message.channel.send(error(key)); // TODO: append more description later
       		}
-          break;
+          return;
         default:
-          return error(key); // TODO: Consider listing all valid commands
+          message.channel.send(error(key));
+          return; // TODO: Consider listing all valid commands
       }
     } else {
       timeout(key, message.author.id, 6000);
-      return emojiDino + 'You do not have access to this command.';
+      message.channel.send(emojiDino + 'You do not have access to this command.');
+      return;
     }
   }
 };
@@ -392,36 +423,37 @@ commandDictionary['rps'] = {
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-					return rpsMessage + ':right_facing_fist:\n' + rpsTie;
+					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsTie);
 				} else if (rpsResult == 'paper') {
-					return rpsMessage + ':raised_back_of_hand:\n' + rpsLoose;
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsLoose);
 				} else if (rpsResult == 'scissors') {
-					return rpsMessage + ':v:\n' + rpsWin;
-				}	
-			 break;
+					message.channel.send(rpsMessage + ':v:\n' + rpsWin);
+				}
+        break;
 			case 'paper':
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-					return rpsMessage + ':right_facing_fist:\n' + rpsWin;
+					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsWin);
 				} else if (rpsResult == 'paper') {
-					return rpsMessage + ':raised_back_of_hand:\n' + rpsTie;
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsTie);
 				} else if (rpsResult == 'scissors') {
-					return rpsMessage + ':v:\n' + rpsLoose;
+					message.channel.send(rpsMessage + ':v:\n' + rpsLoose);
 				}	
 			 break;
 			case 'scissors':
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-					return rpsMessage + ':right_facing_fist:\n' + rpsLoose;
+          message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsLoose);
 				} else if (rpsResult == 'paper') {
-					return rpsMessage + ':raised_back_of_hand:\n' + rpsWin;
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsWin);
 				} else if (rpsResult == 'scissors') {
-					return rpsMessage + ':v:\n' + rpsTie;
-				}	
+					message.channel.send(rpsMessage + ':v:\n' + rpsTie);
+				}
 			 break;
 		}
+    return;
 	}
 };
 commandDictionary['rpg'] = {
@@ -431,26 +463,26 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) {
 			case 'name':
-				return responseHead(message, key) + rpg.name();
-				break;
+        message.channel.send(responseHead(message, key) + rpg.name());
+				return;
 			case 'characteristic':
-				return responseHead(message, key) + 'The character ' + rpg.characteristics() + '.';
-				break;
+        message.channel.send(responseHead(message, key) + 'The character ' + rpg.characteristics() + '.');
+				return;
 			case 'bond':
-				return responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.';
-				break;
+        message.channel.send(responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.');
+				return;
 			case 'flaw':
-				return responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.';
-				break;
+        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.');
+				return;
 			case 'npc':
-				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
-				break;
-			case 'conditions':
+        message.channel.send(responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.');
+				return;
+      case 'conditions':
 			case 'con':
 			case 'c':
 				if (rpg.rpgConditions[args[1]]) {
 					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
-					return {embed: {
+          message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
 							name: bot.user.username,
@@ -467,9 +499,10 @@ commandDictionary['rpg'] = {
 						footer: {
 								text: bot.user.username + ' | RPG Assistant'
 						}
-					}}
+					}});
+					return;
 				} else {
-					return {embed: {
+          message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
 							name: bot.user.username,
@@ -490,15 +523,17 @@ commandDictionary['rpg'] = {
 						footer: {
 								text: bot.user.username + ' | RPG Assistant'
 						}
-					}}
+					}});
+					return;
 				}
-					
 				break;
 		}
 		if (args[0] == null || args[0] == undefined) {
-			return error(key) + '\n Options: name, character';
+      message.channel.send(error(key) + '\n Options: name, character');
+			return;
 		} else {
-			return responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc'; 
+      message.channel.send(responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc');
+			return; 
 		}
   }
 };
@@ -512,15 +547,13 @@ commandDictionary['profile'] = {
     	if (err) throw err;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // runs second
         attachment = './assets/userProfile.' + image.getExtension();
-        console.log('attachment1 = ', attachment); //returns blank
       	image.print(font, 10, 10, "Hello world!").write(attachment);
-        console.log('attachment2 = ', attachment); //runs this first
         message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-          file: attachment 
+          file: attachment
         });
 			});
 		});
-    return 'Dummy Message';
+    return;
 	}
 };
 /*
@@ -621,9 +654,10 @@ bot.on('message', message => {
         console.log(getTime(), message.author.username + ' was warned about spamming commands');
         return;
       }
-      //returns command    
+      //calls for the command function   
       console.log(getTime(), message.author.username + ' used: ' + key);
-      message.channel.send(commandDictionary[key].doCommand(message, key, args));
+      //runs function: be sure to message.channel.send in functions that need it
+      commandDictionary[key].doCommand(message, key, args);
       timeout(key, userID);
       return;      
     }
