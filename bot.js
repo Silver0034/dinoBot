@@ -611,7 +611,7 @@ bot.on('message', message => {
       }
       //returns command    
       console.log(getTime(), message.author.username + ' used: ' + key);
-      message.channel.send(commandDictionary[key].doCommand(message, key, args){
+      message.channel.send(commandDictionary[key].doCommand(message, key, args), {
         file: attatchment
       });      
       timeout(key, userID);
