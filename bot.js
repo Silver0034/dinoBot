@@ -547,7 +547,7 @@ commandDictionary['profile'] = {
     var attachment = '';
 		Jimp.read('./assets/profile.png', function (err, image) {
     	if (err) throw err;
-      Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (title) {
+      Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (title) {
         var xp = new Jimp(2, 11, 0x64FFDAFF, function (err, xp) {
           attachment = './assets/userProfile.' + image.getExtension();
           image
