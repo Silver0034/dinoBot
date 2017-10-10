@@ -548,7 +548,7 @@ commandDictionary['profile'] = {
     	if (err) throw err;
       Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (title) {
         attachment = './assets/userProfile.' + image.getExtension();
-      	image.print(title, 280, 148, message.author.username, 500).write(attachment, function() {
+      	image.print(title, 280, 146, message.author.username, 500).write(attachment, function() {
           message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
             file: attachment
           });
