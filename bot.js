@@ -519,7 +519,7 @@ commandDictionary['profile'] = {
     message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
       file: attachment
     });
-    return " ";
+    return 'Dummy Message';
 	}
 };
 /*
