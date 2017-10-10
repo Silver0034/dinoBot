@@ -509,7 +509,7 @@ commandDictionary['profile'] = {
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
     attatchment = './assets/profile.png';      
-    return;
+    return emojiDino + ' ' + message.author.username + '\'s Profile';
 	}
 };
 /*
