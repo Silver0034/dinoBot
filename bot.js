@@ -512,6 +512,7 @@ commandDictionary['profile'] = {
     	if (err) throw err;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
         attachment = './assets/userProfile.' + image.getExtension();
+        console.log('attachment = ', attachment);
       	image.print(font, 10, 10, "Hello world!").write(attachment);
 			});
 		});
