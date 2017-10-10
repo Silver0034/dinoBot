@@ -608,8 +608,12 @@ bot.on('message', message => {
         console.log(getTime(), message.author.username + ' was warned about spamming commands');
         return;
       }
+      //returns command    
       console.log(getTime(), message.author.username + ' used: ' + key);
       message.channel.send(commandDictionary[key].doCommand(message, key, args), './assets.profile.png');
+      message.channel.sendMessage("some text", {
+        file: "https://cdn.discordapp.com/attachments/349379585462370304/366338981064998914/profile.png" // Or replace with FileOptions object
+      });
       timeout(key, userID);
       return;      
     }
