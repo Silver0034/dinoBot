@@ -21,7 +21,7 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
-var attachment = './assets/userProfile.png';
+var attachment = '';
 
 //global functions
 //puts user in timeout
@@ -508,17 +508,14 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		
 		Jimp.read("./assets/profile.png", function (err, profile) {
     	if (err) throw err;
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) { // load font from .fnt file
-          profile.print(font, 30, 30, message.author.username);
+          profile.print(font, 0, 0, 'Hello World');
       });
-      attachment = "./assets/userProfile." + profile.getExtension();
+      attachment = './assets/userProfile.' + profile.getExtension();
       profile.write(attachment);
 		});
-		
-		
     return emojiDino + ' ' + message.author.username + '\'s Profile';
 	}
 };
