@@ -5,7 +5,7 @@ exports.profile = function() {
 		jimpUserCardBlank,
     userBackground,	
 		jimpFontMS16pt500Black,
-		jimpFontMS18pt900Black,
+		jimpFontMS18pt900White,
 		jimpFontMS24pt100Black,
 		jimpFontMS24pt700Black,
 		jimpFontMS36ptTitleBlack,
