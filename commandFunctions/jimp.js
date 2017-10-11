@@ -1,4 +1,14 @@
 //jimp
+// Jimp#getBuffer still doesn't return promise, this method helps us
+function encodeJimpImage(image, mime) {
+    return new Promise(function (fulfil, reject) {
+       image.getBuffer(mime, function (err, data) {
+           if (err) reject(err);
+           fulfil(data);
+       });
+    });
+}
+
 exports.profile = function(jimpUserCardBlank,
 								 userBackground,
 								 jimpFontMS16pt500Black,
@@ -32,12 +42,9 @@ exports.profile = function(jimpUserCardBlank,
 		
 		return baseImage.clone()
 										.print(FontMS36ptTitleWhite, 280, 146, message.author.username, 500)
-										.composite(baseImage, 0, 0)
-										.write(attachment, function() {
-											message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-												file: attachment
-											});
-											message.channel.stopTyping();
-										});
+										.composite(baseImage, 0, 0);
 	})	
+	.then(compositedImage => encodeJimpImage(compositedImage, Jimp.MIME_PNG))
+	// TODO: Move this elsewhere
+	.then(pngImage => channel.sendFile(pngImage, 'welcome.png', '', ''));
 }
