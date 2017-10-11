@@ -1,5 +1,16 @@
 //jimp
-exports.profile = function() {
+exports.profile = function(jimpUserCardBlank,
+								 userBackground,
+								 jimpFontMS16pt500Black,
+								 jimpFontMS18pt900White,
+								 jimpFontMS24pt100Black,
+								 jimpFontMS24pt700Black,
+								 jimpFontMS36ptTitleBlack,
+								 jimpFontMS36ptTitleWhite,
+								 jimpFontMS53ptTitleBlack,
+								 message,
+								 key,
+								 args) {
 	return Promise
 	.all([
 		jimpUserCardBlank,
