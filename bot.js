@@ -557,8 +557,7 @@ commandDictionary['profile'] = {
 		var userBackground = Jimp.read('./assets/userBackground/default.png');
 		message.channel.startTyping();
     var attachment = '';
-		jimp.returnBackground();
-		jimp.profile(jimpUserCardBlank,
+		jimpFunctions.profile(jimpUserCardBlank,
 								 userBackground,
 								 jimpFontMS16pt500Black,
 								 jimpFontMS18pt900White,
