@@ -13,6 +13,7 @@ var rps = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 var Jimp = require('jimp');
+var jimpFunctions =  require('./commandFunctions/jimp.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -21,7 +22,17 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
-
+//jimp constants
+//jimp fonts
+const jimpFontMS16pt500Black = Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
+const jimpFontMS18pt900Black = Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-black.fnt');
+const jimpFontMS24pt100Black = Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt');
+const jimpFontMS24pt700Black = Jimp.loadFont('./assets/fonts/museo-sans-700-24pt-black.fnt');
+const jimpFontMS36ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt');
+const jimpFontMS36ptTitleWhite = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt');
+const jimpFontMS53ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt');
+//jimp const images
+const jimpUserCardBlank = Jimp.read('./assets/profile.png');
 //global functions
 //puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
@@ -543,8 +554,28 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-    message.channel.startTyping();
+		var userBackground = Jimp.read('./assets/userBackground/default.png');
+		message.channel.startTyping();
     var attachment = '';
+		jimp.returnBackground();
+		jimp.profile(jimpUserCardBlank,
+								 userBackground,
+								 jimpFontMS16pt500Black,
+								 jimpFontMS18pt900Black,
+								 jimpFontMS24pt100Black,
+								 jimpFontMS24pt700Black,
+								 jimpFontMS36ptTitleBlack,
+								 jimpFontMS36ptTitleWhite,
+								 jimpFontMS53ptTitleBlack,
+								 message,
+								 key,
+								 args
+		);
+		
+		
+		//old jimp image composition
+		//not using preloaded assets
+		/*
 		Jimp.read('./assets/profile.png', function (err, image) {
     	if (err) throw err;
       Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (title) {
@@ -565,6 +596,9 @@ commandDictionary['profile'] = {
         });
       });
 		});
+		*/
+		
+		
     return;
 	}
 };
