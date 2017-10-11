@@ -1,5 +1,5 @@
 //jimp
-exports.profile = function(jimpUserCardBlank,
+exports.profile = function(Jimp,jimpUserCardBlank,
 								 userBackground,
 								 jimpFontMS16pt500Black,
 								 jimpFontMS18pt900White,
