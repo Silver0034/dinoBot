@@ -21,12 +21,12 @@ exports.profile = function() {
 		
 		return baseImage.clone()
 										.print(FontMS36ptTitleWhite, 280, 146, message.author.username, 500)
-										.composite(baseImage, 0, 0);
+										.composite(baseImage, 0, 0)
 										.write(attachment, function() {
 											message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
 												file: attachment
 											});
 											message.channel.stopTyping();
-										})
+										});
 	})	
 }
