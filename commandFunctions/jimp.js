@@ -1,14 +1,4 @@
 //jimp
-// Jimp#getBuffer still doesn't return promise, this method helps us
-function encodeJimpImage(image, mime) {
-    return new Promise(function (fulfil, reject) {
-       image.getBuffer(mime, function (err, data) {
-           if (err) reject(err);
-           fulfil(data);
-       });
-    });
-}
-
 exports.profile = function(jimpUserCardBlank,
 								 userBackground,
 								 jimpFontMS16pt500Black,
@@ -21,30 +11,21 @@ exports.profile = function(jimpUserCardBlank,
 								 message,
 								 key,
 								 args) {
-	return Promise
-	.all([
-		jimpUserCardBlank,
-    userBackground,	
-		jimpFontMS16pt500Black,
-		jimpFontMS18pt900White,
-		jimpFontMS24pt100Black,
-		jimpFontMS24pt700Black,
-		jimpFontMS36ptTitleBlack,
-		jimpFontMS36ptTitleWhite,
-		jimpFontMS53ptTitleBlack,
-	])
-	.then(function (results) {
-		const avatar = message.author.avatarURL;
-		const baseImage = results[0];
-		var userBackground = results[1]
-		const FontMS36ptTitleWhite = results[7];
-		attachment = './assets/userProfile.' + image.getExtension();
-		
-		return baseImage.clone()
-										.print(FontMS36ptTitleWhite, 280, 146, message.author.username, 500)
-										.composite(baseImage, 0, 0);
-	})	
-	.then(compositedImage => encodeJimpImage(compositedImage, Jimp.MIME_PNG))
-	// TODO: Move this elsewhere
-	.then(pngImage => channel.sendFile(pngImage, 'welcome.png', '', ''));
+	Jimp.read('./assets/profile.png', function (err, image) {
+		if (err) throw err;
+			//517 is the full xp bar. Pick a number between 1 and 517
+			var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
+				attachment = './assets/userProfile.' + image.getExtension();
+				image
+					.composite(userBackground, 0, 0)
+					.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 500)
+					.composite(xp, 247, 464)
+					.write(attachment, function() {
+					message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+						file: attachment
+					});
+					message.channel.stopTyping();
+					});
+			});
+	});
 }
