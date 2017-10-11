@@ -1,5 +1,6 @@
 //jimp
 exports.profile = function() {
+	return Promise
 	.all([
 		jimpUserCardBlank,
     userBackground,	
@@ -16,6 +17,7 @@ exports.profile = function() {
 		const baseImage = results[0];
 		var userBackground = results[1]
 		const FontMS36ptTitleWhite = results[7];
+		attachment = './assets/userProfile.' + image.getExtension();
 		
 		return baseImage.clone()
 										.print(FontMS36ptTitleWhite, 280, 146, message.author.username, 500)
