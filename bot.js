@@ -25,7 +25,7 @@ var sqldb = mysql.createConnection(MYSQLCRED);
 //jimp constants
 //jimp fonts
 const jimpFontMS16pt500Black = Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
-const jimpFontMS18pt900Black = Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt');
+const jimpFontMS18pt900White = Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt');
 const jimpFontMS24pt100Black = Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt');
 const jimpFontMS24pt700Black = Jimp.loadFont('./assets/fonts/museo-sans-700-24pt-black.fnt');
 const jimpFontMS36ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt');
