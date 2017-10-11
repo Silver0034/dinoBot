@@ -570,6 +570,7 @@ commandDictionary['profile'] = {
 								 key,
 								 args
 		);
+		message.channel.send('', './assets/userImage.png');
 		
 		
 		//old jimp image composition
