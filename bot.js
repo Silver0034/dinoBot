@@ -13,7 +13,6 @@ var rps = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 var Jimp = require('jimp');
-var jimpFunctions =  require('./commandFunctions/jimp.js');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -22,17 +21,7 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
-//jimp constants
-//jimp fonts
-const jimpFontMS16pt500Black = Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
-const jimpFontMS18pt900White = Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt');
-const jimpFontMS24pt100Black = Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt');
-const jimpFontMS24pt700Black = Jimp.loadFont('./assets/fonts/museo-sans-700-24pt-black.fnt');
-const jimpFontMS36ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt');
-const jimpFontMS36ptTitleWhite = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt');
-const jimpFontMS53ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt');
-//jimp const images
-const jimpUserCardBlank = Jimp.read('./assets/profile.png');
+
 //global functions
 //puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
@@ -100,11 +89,9 @@ commandDictionary['8ball'] = {
   usage: '**Usage:** `8ball [question]',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      message.channel.send(responseHead(message, key) + ball.generate());
-      return;
+      return responseHead(message, key) + ball.generate();
     } else {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     }
   }
 };
@@ -134,12 +121,11 @@ commandDictionary['roll'] = {
       rollSides = rollStat[1];
       rollOperator = rollStat[2];
     } else {
-      message.channel.send(error(key));
+        return error(key);
     }
     // If our inputs are invalid, return an error.
     if (isNaN(rollCount) || isNaN(rollSides) || rollCount <= 0 || rollCount >= 120  || rollSides <= 0 || rollSides >= 120 || rollOperator <= 0 || rollOperator >= 120) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
       if (isNaN(rollOperator)) {
         rollOperator = ""; 
@@ -164,9 +150,8 @@ commandDictionary['roll'] = {
         // Print all of our rolls
         rollMessageOutput += "```" + rollList.toString() + "```";
       }                            
-      rollMessageOutput += " You rolled a total of **" + rollSum + "**"; 
-      message.channel.send(rollMessageOutput);
-      return;
+      rollMessageOutput += " You rolled a total of **" + rollSum + "**";    
+      return rollMessageOutput;
     }
   }
 };
@@ -185,8 +170,7 @@ commandDictionary['help'] = {
       }
       helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
-    message.channel.send(responseHead(message, key) + roar.generate() + ' ' + roar.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
-    return;
+    return responseHead(message, key) + roar.generate() + ' ' + roar.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*';
   }
 }; 
 commandDictionary['coin'] = {
@@ -203,11 +187,9 @@ commandDictionary['coin'] = {
       return coinAnswers[coinNum];
     }
     if (args[0]) {
-      message.channel.send(error(key));
-      return;     
+      return error(key);     
     }    
-    message.channel.send(responseHead(message, key) + 'You flipped *' + coinGenerator() + '*');
-    return;
+    return responseHead(message, key) + 'You flipped *' + coinGenerator() + '*';
   }
 };
 commandDictionary['attack'] = {
@@ -216,11 +198,9 @@ commandDictionary['attack'] = {
   usage: '**Usage:** `attack [@user OR name]',
   doCommand: function(message, key, args) {
     if (args[0] === undefined || args[0] === '' || args[0] == bot.user) {
-    	message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(responseHead(message, key) + args[0] + attack.generate());
-      return;
+      return responseHead(message, key) + args[0] + attack.generate();
     }
   }
 };
@@ -232,25 +212,22 @@ commandDictionary['choose'] = {
     function chooseGenerator() {
       var chooseNum = Math.floor((Math.random() * chooseArray.length));
       return chooseArray[chooseNum];
-    }
+    } 
     //looks to see if the user input includes string|string
     //if it does not; stops the command and returns error
     //if valid, split the strings into an array    
     if (args[0] && args[0].substring(1, args[0].length - 1).includes('|')) {
       var chooseArray = args[0].split('|');            
     } else {
-      message.channel.send(error(key));
-      return;
+      return error(key);    
     }
     //if the string|string is valid return output
     //else return error    
     if (chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)');
-      return;
-    }         
+      return responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)';
+    }            
   }
 };
 commandDictionary['cookie'] = {
@@ -259,11 +236,9 @@ commandDictionary['cookie'] = {
   usage: '**Usage:** `cookie [@user OR name]',
   doCommand: function(message, key, args) {
     if (!args[0]) {
-  		message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(responseHead(message, key) + 'You gave ' + args[0] + ' a dino-cookie! :cookie:');
-      return;
+      return responseHead(message, key) + 'You gave ' + args[0] + ' a dino-cookie! :cookie:';
     }
   }  
 };
@@ -272,7 +247,7 @@ commandDictionary['error'] = {
   error: 'Use the command like this: `error',
   usage: '**Usage:** `error',
   doCommand: function(message, key, args) {
-    message.channel.send(error(key));
+    return error(key);
   }  
 };
 commandDictionary['hello'] = {
@@ -281,11 +256,9 @@ commandDictionary['hello'] = {
   usage: '**Usage:** `hello',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Hi ' + message.author.username + ')*');
-      return;
+      return emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Hi ' + message.author.username + ')*';
     }
   }
 };
@@ -295,11 +268,9 @@ commandDictionary['ping'] = {
   usage: '**Usage:** `ping',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*');
-      return;
+      return emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*';
     }
   }      
 };
@@ -309,11 +280,9 @@ commandDictionary['quote'] = {
   usage: '**Usage:** `quote',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(responseHead(message, key) + quote.generate());
-      return;
+      return responseHead(message, key) + quote.generate();
     }
   }
 };
@@ -323,11 +292,9 @@ commandDictionary['taste'] = {
   usage: '**Usage:** `taste [@user OR name]',
   doCommand: function(message, key, args) {
     if (!args[0]) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {
-      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate());
-      return;
+      return responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate();
     }
   }
 };
@@ -339,11 +306,9 @@ commandDictionary['say'] = {
     var sayMessage = emojiDino + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
-      message.channel.send(error(key));
-      return;
+      return error(key);
     } else {    
-      message.channel.send(sayMessage);
-      return;
+      return sayMessage;    
     }
   }
 };
@@ -357,23 +322,19 @@ commandDictionary['avatar'] = {
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
-      message.channel.send(message.author.username + '\'s Avatar: ' + message.author.avatarURL);
-      return;
+      return message.author.username + '\'s Avatar: ' + message.author.avatarURL;
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
         avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarMention[i].avatarURL + "\n";   
-      }
-      message.channel.send(avatarReturn);
-      return;     
+      } 
+      return avatarReturn;     
     } else {
-      //if message range longer than 6 return error
-      message.channel.send(error(key) + '\nPlease mention 5 or fewer users.');
-      return;
+      //if message range longer than 6 return error    
+      return error(key) + '\nPlease mention 5 or fewer users.';
     }
     //if message formatted incorectly  
-    message.channel.send(error(key));
-    return;      
+    return error(key);       
   }
 };
 commandDictionary['admin'] = {
@@ -394,7 +355,7 @@ commandDictionary['admin'] = {
               console.log(results);
       			});
             console.log('Removed profanity filter from channel ' + message.channel.name);
-            message.channel.send(responseHead(message, key) + 'The profanity filter has been removed from this channel.');
+            return responseHead(message, key) + 'The profanity filter has been removed from this channel.';
       		} else if (args[1] == 'filter') {
           	//add profanity filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
@@ -402,19 +363,17 @@ commandDictionary['admin'] = {
               console.log(results);
       			});
             console.log('Added profanity filter to channel ' + message.channel.name);
-            message.channel.send(responseHead(message, key) + 'The profanity filter has been added to this channel.');
+            return responseHead(message, key) + 'The profanity filter has been added to this channel.';
       		} else {
-            message.channel.send(error(key)); // TODO: append more description later
+          	return error(key); // TODO: append more description later
       		}
-          return;
+          break;
         default:
-          message.channel.send(error(key));
-          return; // TODO: Consider listing all valid commands
+          return error(key); // TODO: Consider listing all valid commands
       }
     } else {
       timeout(key, message.author.id, 6000);
-      message.channel.send(emojiDino + 'You do not have access to this command.');
-      return;
+      return emojiDino + 'You do not have access to this command.';
     }
   }
 };
@@ -433,39 +392,36 @@ commandDictionary['rps'] = {
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsTie);
+					return rpsMessage + ':right_facing_fist:\n' + rpsTie;
 				} else if (rpsResult == 'paper') {
-					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsLoose);
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsLoose;
 				} else if (rpsResult == 'scissors') {
-					message.channel.send(rpsMessage + ':v:\n' + rpsWin);
-				}
-        break;
+					return rpsMessage + ':v:\n' + rpsWin;
+				}	
+			 break;
 			case 'paper':
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsWin);
+					return rpsMessage + ':right_facing_fist:\n' + rpsWin;
 				} else if (rpsResult == 'paper') {
-					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsTie);
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsTie;
 				} else if (rpsResult == 'scissors') {
-					message.channel.send(rpsMessage + ':v:\n' + rpsLoose);
-				}
-        break;
+					return rpsMessage + ':v:\n' + rpsLoose;
+				}	
+			 break;
 			case 'scissors':
 				rpsResult = rps.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
-          message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsLoose);
+					return rpsMessage + ':right_facing_fist:\n' + rpsLoose;
 				} else if (rpsResult == 'paper') {
-					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsWin);
+					return rpsMessage + ':raised_back_of_hand:\n' + rpsWin;
 				} else if (rpsResult == 'scissors') {
-					message.channel.send(rpsMessage + ':v:\n' + rpsTie);
-				}
-        break;
-      default:
-        message.channel.send(error(key));
+					return rpsMessage + ':v:\n' + rpsTie;
+				}	
+			 break;
 		}
-    return;
 	}
 };
 commandDictionary['rpg'] = {
@@ -475,26 +431,26 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) {
 			case 'name':
-        message.channel.send(responseHead(message, key) + rpg.name());
-				return;
+				return responseHead(message, key) + rpg.name();
+				break;
 			case 'characteristic':
-        message.channel.send(responseHead(message, key) + 'The character ' + rpg.characteristics() + '.');
-				return;
+				return responseHead(message, key) + 'The character ' + rpg.characteristics() + '.';
+				break;
 			case 'bond':
-        message.channel.send(responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.');
-				return;
+				return responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.';
+				break;
 			case 'flaw':
-        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.');
-				return;
+				return responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.';
+				break;
 			case 'npc':
-        message.channel.send(responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.');
-				return;
-      case 'conditions':
+				return responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.';
+				break;
+			case 'conditions':
 			case 'con':
 			case 'c':
 				if (rpg.rpgConditions[args[1]]) {
 					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
-          message.channel.send({embed: {
+					return {embed: {
 						color: 0x64FFDA,
 						author: {
 							name: bot.user.username,
@@ -511,10 +467,9 @@ commandDictionary['rpg'] = {
 						footer: {
 								text: bot.user.username + ' | RPG Assistant'
 						}
-					}});
-					return;
+					}}
 				} else {
-          message.channel.send({embed: {
+					return {embed: {
 						color: 0x64FFDA,
 						author: {
 							name: bot.user.username,
@@ -535,17 +490,15 @@ commandDictionary['rpg'] = {
 						footer: {
 								text: bot.user.username + ' | RPG Assistant'
 						}
-					}});
-					return;
+					}}
 				}
+					
 				break;
 		}
 		if (args[0] == null || args[0] == undefined) {
-      message.channel.send(error(key) + '\n Options: name, character');
-			return;
+			return error(key) + '\n Options: name, character';
 		} else {
-      message.channel.send(responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc');
-			return; 
+			return responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc'; 
 		}
   }
 };
@@ -554,54 +507,10 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		var userBackground = Jimp.read('./assets/userBackground/default.png');
-		message.channel.startTyping();
-    var attachment = '';
-		jimpFunctions.profile(Jimp,
-													jimpUserCardBlank,
-												  userBackground,
-												  jimpFontMS16pt500Black,
-												  jimpFontMS18pt900White,
-												  jimpFontMS24pt100Black,
-												  jimpFontMS24pt700Black,
-												  jimpFontMS36ptTitleBlack,
-												  jimpFontMS36ptTitleWhite,
-												  jimpFontMS53ptTitleBlack,
-												  message,
-												  key,
-												  args
-		);
-		message.channel.send('', './assets/userImage.png');
-		
-		
-		//old jimp image composition
-		//not using preloaded assets
-		/*
-		Jimp.read('./assets/profile.png', function (err, image) {
-    	if (err) throw err;
-      Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (title) {
-				//517 is the full xp bar. Pick a number between 1 and 517
-        var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
-          attachment = './assets/userProfile.' + image.getExtension();
-          image
-						.composite('./assets/userBackground/default.png', 0, 0)
-						.composite('./assets/profile.png', 0, 0)
-            .print(title, 280, 146, message.author.username, 500)
-            .composite(xp, 247, 464)
-            .write(attachment, function() {
-            message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-              file: attachment
-            });
-            message.channel.stopTyping();
-          });
-        });
-      });
+  	Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
+    	image.print(font, 10, 10, "Hello world!");
 		});
-		*/
-		
-		
-    return;
-	}
+  }
 };
 /*
 commandDictionary['dex'] = {
@@ -612,8 +521,7 @@ commandDictionary['dex'] = {
     var sayMessage = emojiDino + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
-    	message.channel.send(error(key));
-      return;
+      return error(key);
     } else {    
       
       jQuery.get('https://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
@@ -702,10 +610,8 @@ bot.on('message', message => {
         console.log(getTime(), message.author.username + ' was warned about spamming commands');
         return;
       }
-      //calls for the command function   
       console.log(getTime(), message.author.username + ' used: ' + key);
-      //runs function: be sure to message.channel.send in functions that need it
-      commandDictionary[key].doCommand(message, key, args);
+      message.channel.send(commandDictionary[key].doCommand(message, key, args));
       timeout(key, userID);
       return;      
     }
