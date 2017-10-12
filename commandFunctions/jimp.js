@@ -19,6 +19,12 @@ exports.profile = function(Jimp,
 	*/
 	//Assembling the picture
 	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
+		image
+		.write(attachment, function() {
+			message.channel.send(emojiDino + ' Step 1:', {
+		   file: attachment
+		  });
+		}
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		if (err) throw err;
