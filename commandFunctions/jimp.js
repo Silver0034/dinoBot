@@ -28,7 +28,6 @@ exports.profile = function(Jimp,
 						});
 						message.channel.stopTyping();
 					});
-					*/
 			});
 	});
 }
