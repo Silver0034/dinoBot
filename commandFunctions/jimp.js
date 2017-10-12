@@ -34,12 +34,12 @@ exports.profile = function(Jimp,
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 					xp.composite(xp, 247, 464);
+					attachment = './assets/UserProfile.png';
 					//Write Username
 					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 						image.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
 						//Put this at the end of the final Jimp process
 						.write(attachment, function() {
-							attachment = './assets/UserProfile.png';
 							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
 								file: attachment
 							});
