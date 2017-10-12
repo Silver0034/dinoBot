@@ -31,9 +31,8 @@ exports.profile = function(Jimp,
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 					//Avatar Mask
-					Jimp.read('./assets/avatarCircleMast.png', function (err, avatarMask) {
+					Jimp.read('./assets/avatarCircleMask.png', function (err, avatarMask) {
 						//Avatar
-						console.log(message.author.avatarURL);
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
 							//Loads Fonts
 							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
