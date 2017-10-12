@@ -34,10 +34,12 @@ exports.profile = function(Jimp,
 					//Avatar Mask
 					//Set default if null
 					var avatarPath = './assets/avatarDefault.png';
-					
-					Jimp.read(avatarPath, function (err, mask) {
+					if (message.author.avatarURL != null) {
+						avatarPath = message.author.avatarURL;
+					}
+					Jimp.read('./assets/avatarCircleMask.png', function (err, mask) {
 						//Avatar
-						Jimp.read(message.author.avatarURL, function (err, avatar) {
+						Jimp.read(avatarPath, function (err, avatar) {
 							//Assemble Avatar
 							avatar.cover(193, 193)
 							.mask(mask, 0, 0);
