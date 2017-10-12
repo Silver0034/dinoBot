@@ -24,6 +24,7 @@ exports.profile = function(Jimp,
 		if (err) throw err;
 		// Put Plate over Background
 		Jimp.read('./assets/userBackground/default.png', function (err, background) {
+			background.cover(800, 198);
 			if (err) throw err;
 			Jimp.read('./assets/profile.png', function (err, plate) {
 				//XP BAR in image
@@ -31,7 +32,12 @@ exports.profile = function(Jimp,
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 					//Avatar Mask
-					Jimp.read('./assets/avatarCircleMask.png', function (err, mask) {
+					//Set default if null
+					var avatarPath = './assets/avatarDefault.png';
+					if (message.author.avatarURL != null) {
+						avatarPath = message.author.avatarURL;
+					}
+					Jimp.read(avatarPath, function (err, mask) {
 						//Avatar
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
 							//Assemble Avatar
