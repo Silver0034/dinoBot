@@ -40,7 +40,7 @@ exports.profile = function(Jimp,
 						.write(attachment, function() {
 							console.log('It gets to the function');
 							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-								file: attachment
+								file: './assets/userProfile.png'
 							});
 							message.channel.stopTyping();
 						});
