@@ -18,7 +18,7 @@ exports.profile = function(Jimp,
 	const jimpUserCardBlank = Jimp.read('./assets/profile.png');
 	*/
 	//Assembling the picture
-	var userCard = new Jimp(800, 500, function (err, image) {
+	var userCard = new Jimp(800, 500, 0xFFFFFF function (err, image) {
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		image
