@@ -39,8 +39,7 @@ exports.profile = function(Jimp,
 						image.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
 						//Put this at the end of the final Jimp process
 						.write(attachment, function() {
-							attachment = './assets/UserProfile.png'
-							console.log('It gets to the function');
+							attachment = './assets/UserProfile.png';
 							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
 								file: attachment
 							});
