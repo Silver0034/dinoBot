@@ -22,17 +22,6 @@ const MYSQLCRED = tokenReturn.sqlCredentials;
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = mysql.createConnection(MYSQLCRED);
-//jimp constants
-//jimp fonts
-const jimpFontMS16pt500Black = Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
-const jimpFontMS18pt900White = Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt');
-const jimpFontMS24pt100Black = Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt');
-const jimpFontMS24pt700Black = Jimp.loadFont('./assets/fonts/museo-sans-700-24pt-black.fnt');
-const jimpFontMS36ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt');
-const jimpFontMS36ptTitleWhite = Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt');
-const jimpFontMS53ptTitleBlack = Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt');
-//jimp const images
-const jimpUserCardBlank = Jimp.read('./assets/profile.png');
 //global functions
 //puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
@@ -558,6 +547,7 @@ commandDictionary['profile'] = {
 		message.channel.startTyping();
     var attachment = '';
 		jimpFunctions.profile(Jimp, 
+													/*
 													jimpUserCardBlank, 
 													userBackground,
 													jimpFontMS16pt500Black, 
@@ -567,6 +557,7 @@ commandDictionary['profile'] = {
 												  jimpFontMS36ptTitleBlack,
 													jimpFontMS36ptTitleWhite,
 												  jimpFontMS53ptTitleBlack, 
+													*/
 													message, 
 													key, 
 													args,
