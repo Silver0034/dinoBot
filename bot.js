@@ -571,6 +571,7 @@ commandDictionary['profile'] = {
 													key, 
 													args);				
     return;
+	}
 };
 /*
 commandDictionary['dex'] = {
