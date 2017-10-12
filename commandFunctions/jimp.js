@@ -12,8 +12,8 @@ exports.profile = function(Jimp,
 													 message,
 													 key,
 													 args) {
-	console.log('IT RUNS THE COMMAND');
 	Jimp.read('assets/profile.png', function (err, image) {
+		console.log('IT RUNS THE COMMAND');
 		if (err) throw err;
 			//517 is the full xp bar. Pick a number between 1 and 517
 			var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
