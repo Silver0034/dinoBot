@@ -23,27 +23,44 @@ exports.profile = function(Jimp,
 		attachment = './assets/UserProfile.png';
 		if (err) throw err;
 		// Put Plate over Background
-		Jimp.read('assets/userBackground/default.png', function (err, background) {
+		Jimp.read('./assets/userBackground/default.png', function (err, background) {
 			if (err) throw err;
 			Jimp.read('./assets/profile.png', function (err, plate) {
 				//XP BAR in image
 				//XP Bar Max Width = 517px
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
-					//Write Username
-					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
-						image.composite(background, 0, 0)
-						.composite(plate, 0, 0)
-						.composite(xp, 247, 464)
-						.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
-						//Save the Image
-						//Put this at the end of the final Jimp process
-						.write(attachment, function() {
-							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-								file: attachment
+					//Avatar Mask
+					Jimp.read('./assets/avatarCircleMast.png', function (err, avatarMask) {
+						//Avatar
+						Jimp.read(message.author.avatarURL, function (err, avatar) {
+							//Loads Fonts
+							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
+								Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt').then(function (jimpFontMS18pt900White) {
+									Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt').then(function (jimpFontMS24pt100Black) {
+										Jimp.loadFont('./assets/fonts/museo-sans-700-24pt-black.fnt').then(function (jimpFontMS24pt700Black) {
+											Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (jimpFontMS36ptTitleBlack) {
+												Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
+													Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
+														//Assemble Image
+														image.composite(background, 0, 0)
+														.composite(plate, 0, 0)
+														.composite(xp, 247, 464)
+														.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
+														.write(attachment, function() {
+															message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+																file: attachment
+															});
+															message.channel.stopTyping();
+															return;
+														});
+													});
+												});
+											});
+										});
+									});	
+								});
 							});
-							message.channel.stopTyping();
-							return;
 						});
 					});
 				});
@@ -51,3 +68,6 @@ exports.profile = function(Jimp,
 		});
 	});
 }
+/*Put in last function
+
+						/*
