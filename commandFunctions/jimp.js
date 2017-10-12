@@ -31,12 +31,12 @@ exports.profile = function(Jimp,
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 					//Avatar Mask
-					Jimp.read('./assets/avatarCircleMask.png', function (err, avatarMask) {
+					Jimp.read('./assets/avatarCircleMask.png', function (err, mask) {
 						//Avatar
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
 							//Assemble Avatar
 							avatar.cover(193, 193);
-							avatarMask.blit(avatar, 0, 0);
+							avatar.mask(mask, 0, 0);
 							//Loads Fonts
 							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
 								Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt').then(function (jimpFontMS18pt900White) {
