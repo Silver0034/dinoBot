@@ -22,7 +22,7 @@ exports.profile = function(Jimp,
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		if (err) throw err;
-		mess.channel.send(emojiDino + 'Step 1:', {
+		message.channel.send(emojiDino + 'Step 1:', {
 			file: attachment
 		});
 		// Put Plate over Background
