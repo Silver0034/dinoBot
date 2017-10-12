@@ -34,6 +34,9 @@ exports.profile = function(Jimp,
 					Jimp.read('./assets/avatarCircleMask.png', function (err, avatarMask) {
 						//Avatar
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
+							//Assemble Avatar
+							avatar.cover(193, 193)
+							.mask(avatarMask, 0, 0);
 							//Loads Fonts
 							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
 								Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt').then(function (jimpFontMS18pt900White) {
@@ -46,8 +49,6 @@ exports.profile = function(Jimp,
 														image.composite(background, 0, 0)
 														.composite(plate, 0, 0)
 														.composite(avatar, 0, 0)
-														.avatar.cover(193, 193)
-														.mask(avatarMask, 0, 0);
 														.composite(xp, 247, 464)
 														.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
 														.write(attachment, function() {
