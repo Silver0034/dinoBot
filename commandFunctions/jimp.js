@@ -27,7 +27,6 @@ exports.profile = function(Jimp,
 		   file: attachment
 		  });
 		});
-/*
 		if (err) throw err;
 		// Put Plate over Background
 		Jimp.read('assets/userBackground/default.png', function (err, image) {
@@ -62,6 +61,6 @@ exports.profile = function(Jimp,
 					});
 				});
 			});
-		}); */
+		});
 	});
 }
