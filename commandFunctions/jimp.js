@@ -68,6 +68,3 @@ exports.profile = function(Jimp,
 		});
 	});
 }
-/*Put in last function
-
-						/*
