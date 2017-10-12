@@ -552,10 +552,6 @@ commandDictionary['profile'] = {
 													args,
 												 	emojiDino,
 												 	attachment);		
-		message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-			file: attachment
-		});
-		message.channel.stopTyping();
     return;
 	}
 };
