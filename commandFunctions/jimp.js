@@ -21,7 +21,7 @@ exports.profile = function(Jimp,
 				attachment = './assets/userProfile.' + image.getExtension();
 				image
 					//.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 500)
-					//.composite(xp, 247, 464)
+					.composite(xp, 247, 464)
 					.write(attachment, function() {
 						console.log('It gets to the function');
 						message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
