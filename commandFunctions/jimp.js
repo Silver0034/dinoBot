@@ -3,7 +3,8 @@ exports.profile = function(Jimp,
 													 message,
 													 key,
 													 args,
-													 emojiDino) {
+													 emojiDino,
+													 attachment) {
 	/*
 	//jimp fonts
 	const jimpFontMS16pt500Black = new Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
@@ -38,9 +39,10 @@ exports.profile = function(Jimp,
 						image.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
 						//Put this at the end of the final Jimp process
 						.write(attachment, function() {
+							attachment = './assets/UserProfile.png'
 							console.log('It gets to the function');
 							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-								file: './assets/userProfile.png'
+								file: attachment
 							});
 							message.channel.stopTyping();
 						});
