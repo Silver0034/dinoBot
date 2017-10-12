@@ -11,7 +11,8 @@ exports.profile = function(Jimp,
 													 jimpFontMS53ptTitleBlack,
 													 message,
 													 key,
-													 args) {
+													 args,
+													 emojiDino) {
 	Jimp.read('assets/profile.png', function (err, image) {
 		if (err) throw err;
 			//517 is the full xp bar. Pick a number between 1 and 517
