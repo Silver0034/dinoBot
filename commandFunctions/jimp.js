@@ -24,15 +24,15 @@ exports.profile = function(Jimp,
 				attachment = './assets/userProfile.' + image.getExtension();
 				image
 					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (font) {
-    				image.print(font, 280, 146, message.author.username, 30);
-						.composite(xp, 247, 464)
-						.write(attachment, function() {
-							console.log('It gets to the function');
-							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-								file: attachment
-							});
-							message.channel.stopTyping();
-						})
+							image.print(font, 280, 146, message.author.username, 30)
+							.composite(xp, 247, 464)
+							.write(attachment, function() {
+								console.log('It gets to the function');
+								message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+									file: attachment
+								});
+								message.channel.stopTyping();
+							})
 					});
 			});
 	});
