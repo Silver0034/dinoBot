@@ -42,13 +42,12 @@ exports.profile = function(Jimp,
 											Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (jimpFontMS36ptTitleBlack) {
 												Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 													Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
-														//Assemble Avatar
-														avatar.cover(193, 193)
-														.mask(avatarMask, 0, 0);
 														//Assemble Image
 														image.composite(background, 0, 0)
 														.composite(plate, 0, 0)
 														.composite(avatar, 0, 0)
+														.avatar.cover(193, 193)
+														.mask(avatarMask, 0, 0);
 														.composite(xp, 247, 464)
 														.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
 														.write(attachment, function() {
