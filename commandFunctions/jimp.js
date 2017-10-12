@@ -19,7 +19,12 @@ exports.profile = function(Jimp,
 	*/
 	//Assembling the picture
 	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
+		//set where the picture will be saved at the end
+		attachment = './assets/UserProfile.png';
 		if (err) throw err;
+		mess.channel.send(emojiDino + 'Step 1:', {
+			file: attachment
+		});
 		// Put Plate over Background
 		Jimp.read('assets/userBackground/default.png', function (err, image) {
 			if (err) throw err;
@@ -34,7 +39,6 @@ exports.profile = function(Jimp,
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 					xp.composite(xp, 247, 464);
-					attachment = './assets/UserProfile.png';
 					//Write Username
 					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 						image.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
