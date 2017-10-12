@@ -23,7 +23,7 @@ exports.profile = function(Jimp,
 				console.log('IT RUNS THE COMMAND');
 				attachment = './assets/userProfile.' + image.getExtension();
 				image
-					.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username)
+					.print(jimpFontMS36ptTitleWhite, 280, 146, 'message.author.username')
 					.composite(xp, 247, 464)
 					.write(attachment, function() {
 						console.log('It gets to the function');
