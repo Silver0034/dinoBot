@@ -547,17 +547,6 @@ commandDictionary['profile'] = {
 		message.channel.startTyping();
     var attachment = '';
 		jimpFunctions.profile(Jimp, 
-													/*
-													jimpUserCardBlank, 
-													userBackground,
-													jimpFontMS16pt500Black, 
-													jimpFontMS18pt900White,
-												  jimpFontMS24pt100Black, 
-													jimpFontMS24pt700Black,
-												  jimpFontMS36ptTitleBlack,
-													jimpFontMS36ptTitleWhite,
-												  jimpFontMS53ptTitleBlack, 
-													*/
 													message, 
 													key, 
 													args,
