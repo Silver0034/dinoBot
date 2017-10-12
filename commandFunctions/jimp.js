@@ -19,18 +19,17 @@ exports.profile = function(Jimp,
 	*/
 	//Assembling the picture
 	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
+		//set where the picture will be saved at the end
+		attachment = './assets/UserProfile.png';
 		image
+		.blit('./assets/UserProfile.png', 0, 0)
 		.write(attachment, function() {
 			message.channel.send(emojiDino + ' Step 1:', {
 		   file: attachment
 		  });
 		});
-		//set where the picture will be saved at the end
-		attachment = './assets/UserProfile.png';
+
 		if (err) throw err;
-		message.channel.send(emojiDino + 'Step 1:', {
-			file: attachment
-		});
 		// Put Plate over Background
 		Jimp.read('assets/userBackground/default.png', function (err, image) {
 			if (err) throw err;
