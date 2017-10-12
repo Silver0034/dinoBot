@@ -25,8 +25,8 @@ exports.profile = function(Jimp,
 		// Put Plate over Background
 		Jimp.read('./assets/userBackground/default.png', function (err, background) {
 			background.cover(800, 198)
-			.blur(3)
-			.brightness(-0.2);
+			.blur(1)
+			.brightness(-0.4);
 			if (err) throw err;
 			Jimp.read('./assets/profile.png', function (err, plate) {
 				//XP BAR in image
