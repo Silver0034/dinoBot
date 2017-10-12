@@ -40,10 +40,7 @@ exports.profile = function(Jimp,
 						//Put this at the end of the final Jimp process
 						.write(attachment, function() {
 							attachment = './assets/UserProfile.png';
-							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-								file: attachment
-							});
-							message.channel.stopTyping();
+							return;
 						});
 					});
 				});
