@@ -17,6 +17,7 @@ exports.profile = function(Jimp,
 			//517 is the full xp bar. Pick a number between 1 and 517
 			var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 				console.log('IT RUNS THE COMMAND');
+				/*
 				attachment = './assets/userProfile.' + image.getExtension();
 				image
 					.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 500)
@@ -27,6 +28,7 @@ exports.profile = function(Jimp,
 						});
 						message.channel.stopTyping();
 					});
+					*/
 			});
 	});
 }
