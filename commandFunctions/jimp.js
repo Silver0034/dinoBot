@@ -33,6 +33,7 @@ exports.profile = function(Jimp,
 					//Avatar Mask
 					Jimp.read('./assets/avatarCircleMast.png', function (err, avatarMask) {
 						//Avatar
+						console.log(message.author.avatarURL);
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
 							//Loads Fonts
 							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
@@ -43,8 +44,7 @@ exports.profile = function(Jimp,
 												Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 													Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
 														//Assemble Avatar
-														avatar.cover(193, 193)
-														.mask(avatarMask, 0, 0);
+														avatar.cover(193, 193);
 														//Assemble Image
 														image.composite(background, 0, 0)
 														.composite(plate, 0, 0)
