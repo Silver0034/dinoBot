@@ -1,5 +1,6 @@
 //jimp
 exports.profile = function(Jimp,
+													/*	
 													 jimpUserCardBlank,
 													 userBackground,
 													 jimpFontMS16pt500Black,
@@ -8,7 +9,8 @@ exports.profile = function(Jimp,
 													 jimpFontMS24pt700Black,
 													 jimpFontMS36ptTitleBlack,
 													 jimpFontMS36ptTitleWhite,
-													 jimpFontMS53ptTitleBlack,
+													 jimpFontMS53ptTitleBlack, 
+													 */
 													 message,
 													 key,
 													 args,
@@ -16,6 +18,18 @@ exports.profile = function(Jimp,
 	Jimp.read('assets/profile.png', function (err, image) {
 		if (err) throw err;
 			//517 is the full xp bar. Pick a number between 1 and 517
+			//jimp fonts
+			const jimpFontMS16pt500Black = new Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
+			const jimpFontMS18pt900White = new Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt');
+			const jimpFontMS24pt100Black = new Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt');
+			const jimpFontMS24pt700Black = new Jimp.loadFont('./assets/fonts/museo-sans-700-24pt-black.fnt');
+			const jimpFontMS36ptTitleBlack = new Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt');
+			const jimpFontMS36ptTitleWhite = new Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt');
+			const jimpFontMS53ptTitleBlack = new Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt');
+			//jimp const images
+			const jimpUserCardBlank = Jimp.read('./assets/profile.png');
+			//XP Bar in Image
+			//the max width is 517px
 			var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 				console.log('IT RUNS THE COMMAND');
 				attachment = './assets/userProfile.' + image.getExtension();
