@@ -22,7 +22,7 @@ exports.profile = function(Jimp,
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		image
-		.blit('./assets/UserProfile.png', 0, 0)
+		.blit(userCard, 0, 0)
 		.write(attachment, function() {
 			message.channel.send(emojiDino + ' Step 1:', {
 		   file: attachment
