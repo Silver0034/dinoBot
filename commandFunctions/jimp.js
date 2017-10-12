@@ -24,7 +24,7 @@ exports.profile = function(Jimp,
 			message.channel.send(emojiDino + ' Step 1:', {
 		   file: attachment
 		  });
-		}
+		});
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		if (err) throw err;
@@ -40,6 +40,11 @@ exports.profile = function(Jimp,
 			Jimp.read('./assets/profile.png', function (err, plate) {
 				image
 				.composite(image, 0, 0);
+				.write(attachment, function() {
+					message.channel.send(emojiDino + ' Step 2:', {
+					 file: attachment
+					});
+				});
 				//XP BAR in image
 				//XP Bar Max Width = 517px
 				//TODO: Make Width Represent percentage to next level
