@@ -48,7 +48,7 @@ exports.profile = function(Jimp,
 														//Assemble Image
 														image.composite(background, 0, 0)
 														.composite(plate, 0, 0)
-														.composite(avatar, 25, 94)
+														.composite(avatar, 26, 94)
 														.composite(xp, 247, 464)
 														.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
 														.write(attachment, function() {
