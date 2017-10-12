@@ -550,7 +550,8 @@ commandDictionary['profile'] = {
 													message, 
 													key, 
 													args,
-												 	emojiDino);				
+												 	emojiDino,
+												 	attachment);				
     return;
 	}
 };
