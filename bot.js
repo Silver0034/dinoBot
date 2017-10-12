@@ -569,7 +569,8 @@ commandDictionary['profile'] = {
 												  jimpFontMS53ptTitleBlack, 
 													message, 
 													key, 
-													args);				
+													args,
+												 	emojiDino);				
     return;
 	}
 };
