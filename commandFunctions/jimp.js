@@ -18,17 +18,16 @@ exports.profile = function(Jimp,
 	const jimpUserCardBlank = Jimp.read('./assets/profile.png');
 	*/
 	//Assembling the picture
-	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
+	var userCard = new Jimp(800, 500, function (err, image) {
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		image
-		.blit(userCard, 0, 0)
 		.write(attachment, function() {
 			message.channel.send(emojiDino + ' Step 1:', {
 		   file: attachment
 		  });
 		});
-
+/*
 		if (err) throw err;
 		// Put Plate over Background
 		Jimp.read('assets/userBackground/default.png', function (err, image) {
@@ -63,6 +62,6 @@ exports.profile = function(Jimp,
 					});
 				});
 			});
-		});
+		}); */
 	});
 }
