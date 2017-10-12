@@ -34,8 +34,6 @@ exports.profile = function(Jimp,
 					Jimp.read('./assets/avatarCircleMast.png', function (err, avatarMask) {
 						//Avatar
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
-							avatar.cover(193, 193)
-							.mask(avatarMask, 0, 0);
 							//Loads Fonts
 							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
 								Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt').then(function (jimpFontMS18pt900White) {
@@ -44,6 +42,9 @@ exports.profile = function(Jimp,
 											Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-black.fnt').then(function (jimpFontMS36ptTitleBlack) {
 												Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 													Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
+														//Assemble Avatar
+														avatar.cover(193, 193)
+														.mask(avatarMask, 0, 0);
 														//Assemble Image
 														image.composite(background, 0, 0)
 														.composite(plate, 0, 0)
