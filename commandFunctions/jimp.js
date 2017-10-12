@@ -35,7 +35,7 @@ exports.profile = function(Jimp,
 						//Avatar
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
 							//Assemble Avatar
-							avatar.cover(193, 193)
+							avatar.cover(300, 193)
 							.mask(avatarMask, 0, 0);
 							//Loads Fonts
 							Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
