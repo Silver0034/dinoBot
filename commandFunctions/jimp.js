@@ -17,21 +17,22 @@ exports.profile = function(Jimp,
 	const jimpUserCardBlank = Jimp.read('./assets/profile.png');
 	*/
 	//Assembling the picture
-	var userCard = new Jimp(800, 500, 0x000000, function (err, userCard) {
+	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
 		if (err) throw err;
 		// Put Plate over Background
-		Jimp.read('assets/userBackground/default.png', function (err, background) {
+		Jimp.read('assets/userBackground/default.png', function (err, image) {
 			if (err) throw err;
-			background
+			image
 			.composite(background, 0, 0);
 			//TODO: Resize background to fit width and height
 			Jimp.read('./assets/profile.png', function (err, plate) {
-				plate.composite(plate, 0, 0);
+				image
+				.composite(plate, 0, 0);
 				//XP BAR in image
 				//XP Bar Max Width = 517px
 				//TODO: Make Width Represent percentage to next level
 				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
-					image.composite(xp, 247, 464);
+					xp.composite(xp, 247, 464);
 					//Write Username
 					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 						image.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
