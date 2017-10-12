@@ -17,7 +17,7 @@ exports.profile = function(Jimp,
 			//517 is the full xp bar. Pick a number between 1 and 517
 			var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
 				attachment = './assets/userProfile.' + image.getExtension();
-				image.composite(userBackground, 0, 0)
+				//image.composite(userBackground, 0, 0)
 					.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 500)
 					.composite(xp, 247, 464)
 					.write(attachment, function() {
