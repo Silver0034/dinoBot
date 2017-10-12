@@ -22,10 +22,11 @@ exports.profile = function(Jimp,
 		// Put Plate over Background
 		Jimp.read('assets/userBackground/default.png', function (err, background) {
 			if (err) throw err;
-			image
+			background
 			.composite(background, 0, 0);
 			//TODO: Resize background to fit width and height
 			Jimp.read('./assets/profile.png', function (err, plate) {
+				plate.composite(plate, 0, 0);
 				//XP BAR in image
 				//XP Bar Max Width = 517px
 				//TODO: Make Width Represent percentage to next level
