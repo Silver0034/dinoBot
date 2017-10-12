@@ -34,9 +34,7 @@ exports.profile = function(Jimp,
 					//Avatar Mask
 					//Set default if null
 					var avatarPath = './assets/avatarDefault.png';
-					if (message.author.avatarURL != null) {
-						avatarPath = message.author.avatarURL;
-					}
+					
 					Jimp.read(avatarPath, function (err, mask) {
 						//Avatar
 						Jimp.read(message.author.avatarURL, function (err, avatar) {
