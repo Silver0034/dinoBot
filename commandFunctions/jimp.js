@@ -32,7 +32,7 @@ exports.profile = function(Jimp,
 		Jimp.read('assets/userBackground/default.png', function (err, image) {
 			if (err) throw err;
 			image
-			.composite(image, 0, 0);
+			.blit(image, 0, 0);
 			//TODO: Resize background to fit width and height
 			Jimp.read('./assets/profile.png', function (err, plate) {
 				image
