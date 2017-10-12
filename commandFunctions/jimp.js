@@ -39,7 +39,7 @@ exports.profile = function(Jimp,
 			//TODO: Resize background to fit width and height
 			Jimp.read('./assets/profile.png', function (err, plate) {
 				image
-				.composite(image, 0, 0);
+				.composite(image, 0, 0)
 				.write(attachment, function() {
 					message.channel.send(emojiDino + ' Step 2:', {
 					 file: attachment
