@@ -4,6 +4,7 @@ exports.profile = function(Jimp,
 													 key,
 													 args,
 													 emojiDino) {
+	/*
 	//jimp fonts
 	const jimpFontMS16pt500Black = new Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt');
 	const jimpFontMS18pt900White = new Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt');
@@ -14,26 +15,36 @@ exports.profile = function(Jimp,
 	const jimpFontMS53ptTitleBlack = new Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt');
 	//jimp const images
 	const jimpUserCardBlank = Jimp.read('./assets/profile.png');
+	*/
 	//Assembling the picture
-	Jimp.read('assets/profile.png', function (err, image) {
+	var userCard = new Jimp(800, 500, 0x000000, function (err, userCard) {
 		if (err) throw err;
-			//XP Bar in Image
-			//the max width is 517px
-			var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
-				console.log('IT RUNS THE COMMAND');
-				attachment = './assets/userProfile.' + image.getExtension();
-				image
-					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (font) {
-							image.print(font, 280, 146, message.author.username, 30)
-							.composite(xp, 247, 464)
-							.write(attachment, function() {
-								console.log('It gets to the function');
-								message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
-									file: attachment
-								});
-								message.channel.stopTyping();
-							})
+		// Put Plate over Background
+		Jimp.read('assets/userBackground/default.png', function (err, background) {
+			if (err) throw err;
+			image
+			.composite(background, 0, 0);
+			//TODO: Resize background to fit width and height
+			Jimp.read('./assets/profile.png', function (err, plate) {
+				//XP BAR in image
+				//XP Bar Max Width = 517px
+				//TODO: Make Width Represent percentage to next level
+				var xp = new Jimp(517, 11, 0x64FFDAFF, function (err, xp) {
+					image.composite(xp, 247, 464);
+					//Write Username
+					Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
+						image.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username, 30)
+						//Put this at the end of the final Jimp process
+						.write(attachment, function() {
+							console.log('It gets to the function');
+							message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+								file: attachment
+							});
+							message.channel.stopTyping();
+						});
 					});
+				});
 			});
+		});
 	});
 }
