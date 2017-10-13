@@ -15,8 +15,6 @@ var jQuery = require('./jquery-3.2.1.min.js');
 var Jimp = require('jimp');
 var jimpFunctions =  require('./commandFunctions/jimp.js');
 var validURL = require('valid-url');
-//var readChunk = require('read-chunk');
-//var imageType = require('image-type');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -554,7 +552,7 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						//what to do if link is added
 						if (validURL.isUri(args[1])) {
-						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + ", WHERE userID = " + message.author.id, function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
   						});
