@@ -553,8 +553,8 @@ commandDictionary['profile'] = {
 				case 'b':
 					if (args[1] != undefined) {
 						//what to do if link is added
-						if ('THE LINK IS A' + validURL.isUri(args[1])) {
-							console.log(imageType(args[1]));
+						if (validURL.isUri(args[1])) {
+							console.log('THE LINK IS A' + imageType(args[1]));
 						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + " WHERE userID = " + message.author.id, function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
