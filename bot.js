@@ -547,7 +547,7 @@ commandDictionary['profile'] = {
 			switch(args[0]) {
 				case 'background':
 				case 'b':
-					message.channel.send(responseHead(message, key) + 'Please use the command as follows:```profile [background OR b] [url-to-picture]```Please note that images will be sized to fit over a 800px200px window.');
+					message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');
 				return;
 			}	
 		} else {
