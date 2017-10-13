@@ -89,6 +89,7 @@ const profanityExceptions = [
 	"anall",
 	"itcha",
 	"canuse",
+	"ustwat"
 ];
 var profanityResponseArray = [
 	"language!",
