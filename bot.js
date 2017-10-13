@@ -552,7 +552,7 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						//what to do if link is added
 						if (validURL.isUri(args[1])) {
-						  sqldb.query("INSERT INTO user (userBackground) VALUES('" + args[1] + "') WHERE userID = '" + message.author.id + "'", function (err, results, fields) {
+						  sqldb.query("INSERT INTO user (userBackground) VALUES(" + mysql.escape(args[1]) + ") WHERE userID = '" + message.author.id + "'", function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
   						});
