@@ -48,6 +48,20 @@ function timeout(key, userID, timeoutDuration) {
     setUserTimeout(userID, 6000);
   }
 }
+function validURL(str) {
+  var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
+    '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
+    '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
+    '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
+    '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
+    '(\#[-a-z\d_]*)?$','i'); // fragment locater
+  if(!pattern.test(str)) {
+    alert("Please enter a valid URL.");
+    return false;
+  } else {
+    return true;
+  }
+}
 function error(key) {
   var errorMessage = emojiDino + ' ' + roar.generate() + ' ' + roar.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
   console.log('[FAILED]');
@@ -547,7 +561,14 @@ commandDictionary['profile'] = {
 			switch(args[0]) {
 				case 'background':
 				case 'b':
-					message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');
+					if args[1] {
+						//what to do if link is added
+						if (validURL(args[1]) == true) {
+							message.channel.send(responseHead(message, key) + 'Your user background has been updated');
+						}
+					} else {
+						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');	
+					}
 				return;
 			}	
 		} else {
