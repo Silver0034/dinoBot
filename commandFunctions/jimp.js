@@ -4,7 +4,8 @@ exports.profile = function(Jimp,
 													 key,
 													 args,
 													 emojiDino,
-													 attachment) {
+													 attachment,
+													 sqldb) {
 
 	//Assembling the picture
 	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
