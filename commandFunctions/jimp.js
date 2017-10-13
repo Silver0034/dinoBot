@@ -11,8 +11,11 @@ exports.profile = function(Jimp,
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		if (err) throw err;
+		sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+			var userBackground = results[0].userBackground;
+		}
 		// Put Plate over Background
-		Jimp.read('./assets/userBackground/default.png', function (err, background) {
+		Jimp.read(userBackground, function (err, background) {
 			background.cover(800, 198)
 			.blur(1)
 			.brightness(-0.2);
