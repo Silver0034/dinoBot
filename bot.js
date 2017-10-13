@@ -543,23 +543,24 @@ commandDictionary['profile'] = {
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
-		switch(args[0]) {
-			case null:
-				message.channel.startTyping();
-				var attachment = '';
-				jimpFunctions.profile(Jimp, 
-															message, 
-															key, 
-															args,
-															emojiDino,
-															attachment,
-															sqldb);		
+		if (args[0]) {
+			switch(args[0]) {
+				case 'background':
+				case 'b':
+					message.channel.send(responseHead(message, key) + 'Please use the command as follows:```profile [background OR b] [url-to-picture]```Please note that images will be sized to fit over a 800px200px window.');
 				return;
-			case 'background':
-			case 'b':
-				message.chanel.send(responseHead(message, key) + 'Please use the command as follows:```profile [background OR b] [url-to-picture]```Please note that images will be sized to fit over a 800px200px window.');
-			return;
-		}
+			}	
+		} else {
+			message.channel.startTyping();
+					var attachment = '';
+					jimpFunctions.profile(Jimp, 
+																message, 
+																key, 
+																args,
+																emojiDino,
+																attachment,
+																sqldb);
+		}		
 	}
 };
 /*
