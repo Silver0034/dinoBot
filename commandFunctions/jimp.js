@@ -13,7 +13,7 @@ exports.profile = function(Jimp,
 		if (err) throw err;
 		sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 			var userBackground = results[0].userBackground;
-		}
+		})
 		// Put Plate over Background
 		Jimp.read(userBackground, function (err, background) {
 			background.cover(800, 198)
