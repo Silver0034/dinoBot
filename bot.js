@@ -14,6 +14,7 @@ var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 var Jimp = require('jimp');
 var jimpFunctions =  require('./commandFunctions/jimp.js');
+var validURL = require('valid-url');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -46,20 +47,6 @@ function timeout(key, userID, timeoutDuration) {
     setUserTimeout(userID, commandDictionary[key].timeout);
   } else {
     setUserTimeout(userID, 6000);
-  }
-}
-function validURL(str) {
-  var pattern = new RegExp('^(https?:\/\/)?'+ // protocol
-    '((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|'+ // domain name
-    '((\d{1,3}\.){3}\d{1,3}))'+ // OR ip (v4) address
-    '(\:\d+)?(\/[-a-z\d%_.~+]*)*'+ // port and path
-    '(\?[;&a-z\d%_.~+=-]*)?'+ // query string
-    '(\#[-a-z\d_]*)?$','i'); // fragment locater
-  if(!pattern.test(str)) {
-    alert("Please enter a valid URL.");
-    return false;
-  } else {
-    return true;
   }
 }
 function error(key) {
@@ -563,7 +550,7 @@ commandDictionary['profile'] = {
 				case 'b':
 					if (args[1] != undefined) {
 						//what to do if link is added
-						if (validURL(args[1]) == true) {
+						if (validURL.isUri(args[1])) {
 							message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
 						} else {
 							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
