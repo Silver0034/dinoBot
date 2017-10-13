@@ -559,7 +559,7 @@ commandDictionary['profile'] = {
 			case 'b':
 				message.chanel.send(responseHead(message, key) + 'Please use the command as follows:```profile [background OR b] [url-to-picture]```Please note that images will be sized to fit over a 800px200px window.');
 			return;
-
+		}
 	}
 };
 /*
