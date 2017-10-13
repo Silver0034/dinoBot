@@ -8,12 +8,14 @@ exports.profile = function(Jimp,
 													 sqldb) {
 
 	//Assembling the picture
+	var userBackground = '';
 	var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
 		//set where the picture will be saved at the end
 		attachment = './assets/UserProfile.png';
 		if (err) throw err;
 		sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
-			var userBackground = results[0].userBackground;
+			userBackground = results[0].userBackground;
+		})
 			// Put Plate over Background
 			Jimp.read(userBackground, function (err, background) {
 				background.cover(800, 198)
@@ -70,6 +72,5 @@ exports.profile = function(Jimp,
 					});
 				});
 			});
-		})
 	});
 }
