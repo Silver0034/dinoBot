@@ -409,7 +409,7 @@ commandDictionary['admin'] = {
 };
 commandDictionary['rps'] = {
   emoji: ':cop: ',
-  error: 'Use the command like this: `rps',
+  error: 'Use the command like this: `rps [rock OR paper OR scissors]',
   usage: '**Usage** `rps [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
 		var rpsMessage = emojiDino + 'I choose **';
@@ -551,7 +551,8 @@ commandDictionary['profile'] = {
 													key, 
 													args,
 												 	emojiDino,
-												 	attachment);		
+												 	attachment,
+												  sqldb);		
     return;
 	}
 };
