@@ -541,6 +541,7 @@ commandDictionary['rpg'] = {
 };
 commandDictionary['profile'] = {
   timeout: 0,
+	emoji: ':robot: ',
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
@@ -551,7 +552,10 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						//what to do if link is added
 						if (validURL.isUri(args[1])) {
-							message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
+						  sqldb.query("INSERT INTO user (userBackground) VALUES (" + args[1] + "), userID = '" + message.author.id + "'", function (err, results, fields) {
+								if (err) throw err;
+    						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
+  						});
 						} else {
 							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
 						}
