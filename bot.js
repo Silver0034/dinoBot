@@ -561,10 +561,12 @@ commandDictionary['profile'] = {
 			switch(args[0]) {
 				case 'background':
 				case 'b':
-					if args[1] {
+					if (args[1] != undefined) {
 						//what to do if link is added
 						if (validURL(args[1]) == true) {
-							message.channel.send(responseHead(message, key) + 'Your user background has been updated');
+							message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
+						} else {
+							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
 						}
 					} else {
 						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');	
