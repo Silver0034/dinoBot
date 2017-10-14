@@ -557,6 +557,7 @@ commandDictionary['profile'] = {
 							
 							//check if image
 							var url = args[1];
+							console.log('IT GETS THIS FAR');
 							http.get(url, res => {
 									res.once('data', chunk => {
 											res.destroy();
