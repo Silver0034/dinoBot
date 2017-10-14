@@ -560,7 +560,7 @@ commandDictionary['profile'] = {
 							http.get(url, res => {
 									res.once('data', chunk => {
 											res.destroy();
-											console.log(imageType(chunk));
+											console.log('LOOOK HEEERREE ' + imageType(chunk));
 											//=> {ext: 'gif', mime: 'image/gif'} 
 									});
 							});
