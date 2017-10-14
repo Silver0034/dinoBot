@@ -554,7 +554,6 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						//what to do if link is added
 						if (validURL.isUri(args[1])) {
-							
 							//check if image
 							var url = args[1];
 							console.log('IT GETS THIS FAR');
@@ -565,7 +564,6 @@ commandDictionary['profile'] = {
 											//=> {ext: 'gif', mime: 'image/gif'} 
 									});
 							});
-							
 						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + " WHERE userID = " + mysql.escape(message.author.id), function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
