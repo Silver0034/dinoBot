@@ -556,6 +556,14 @@ commandDictionary['profile'] = {
 						if (validURL.isUri(args[1])) {
 							
 							//check if image
+							var url = args[1];
+							http.get(url, res => {
+									res.once('data', chunk => {
+											res.destroy();
+											console.log(imageType(chunk));
+											//=> {ext: 'gif', mime: 'image/gif'} 
+									});
+							});
 							
 						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + " WHERE userID = " + mysql.escape(message.author.id), function (err, results, fields) {
 								if (err) throw err;
