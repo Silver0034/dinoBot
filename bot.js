@@ -1,28 +1,30 @@
 //establish constants and dependencies
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-const mysql = require('mysql');
-var tokenReturn = require('./token.js');
-var roar = require('./commandFunctions/roar.js');
-var ball = require('./commandFunctions/ball.js');
-var attack = require('./commandFunctions/attack.js');
-var quote = require('./commandFunctions/quote.js');
-var taste = require('./commandFunctions/taste.js');
-var profanity = require('./commandFunctions/profanity.js');
-var rps = require('./commandFunctions/rps.js');
-var rpg = require('./commandFunctions/rpg.js');
-var jQuery = require('./jquery-3.2.1.min.js');
-var Jimp = require('jimp');
-var jimpFunctions =  require('./commandFunctions/jimp.js');
-var validURL = require('valid-url');
+const DISCORD = require('discord.js');
+const BOT = new Discord.Client();
+const MYSQL = require('MYSQL');
+const TOKENRETURN = require('./token.js');
+const ROAR = require('./commandFunctions/roar.js');
+const BALL = require('./commandFunctions/ball.js');
+const ATTACK = require('./commandFunctions/attack.js');
+const QUOTE = require('./commandFunctions/quote.js');
+const TASTE = require('./commandFunctions/taste.js');
+const PROFANITY = require('./commandFunctions/profanity.js');
+const RPS = require('./commandFunctions/rps.js');
+const RPG = require('./commandFunctions/rpg.js');
+const JQUERY = require('./jquery-3.2.1.min.js');
+const JIMP = require('jimp');
+const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
+const VALIDURL = require('valid-url');
+const HTTP = require('http');
+const MJS = require('mongojs');
 
 //establish global variables and constants
-const TOKEN = tokenReturn.return();
-const MYSQLCRED = tokenReturn.sqlCredentials;
+const TOKEN = TOKENRETURN.return();
+const MYSQLCRED = TOKENRETURN.sqlCredentials;
 //make sure to put a space after. Ex:':smile: '
 const emojiDino = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
-var sqldb = mysql.createConnection(MYSQLCRED);
+var sqldb = MYSQL.createConnection(MYSQLCRED);
 //global functions
 //puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
@@ -36,7 +38,7 @@ function setUserTimeout(userID, timeoutDuration) {
 function timeoutAlert(timeoutAlert) {
     //alert users to stop using commands
     //if they are in the timeout array
-  return emojiDino + ' ' + roar.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
+  return emojiDino + ' ' + ROAR.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
 // timoutDuration is optional. Allows manually passing in a length to time out
 function timeout(key, userID, timeoutDuration) {
@@ -50,7 +52,7 @@ function timeout(key, userID, timeoutDuration) {
   }
 }
 function error(key) {
-  var errorMessage = emojiDino + ' ' + roar.generate() + ' ' + roar.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
+  var errorMessage = emojiDino + ' ' + ROAR.generate() + ' ' + ROAR.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
   console.log('[FAILED]');
   return errorMessage;
 }
@@ -84,13 +86,13 @@ function getDate(date) {
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
-commandDictionary['8ball'] = {
-  emoji: ':8ball: ', //put space after emoji 
-  error: 'Use the command like this: `8ball [question]',
-  usage: '**Usage:** `8ball [question]',
+commandDictionary['8BALL'] = {
+  emoji: ':8BALL: ', //put space after emoji 
+  error: 'Use the command like this: `8BALL [question]',
+  usage: '**Usage:** `8BALL [question]',
   doCommand: function(message, key, args) {
     if (args[0]) {
-      message.channel.send(responseHead(message, key) + ball.generate());
+      message.channel.send(responseHead(message, key) + BALL.generate());
       return;
     } else {
       message.channel.send(error(key));
@@ -175,7 +177,7 @@ commandDictionary['help'] = {
       }
       helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
-    message.channel.send(responseHead(message, key) + roar.generate() + ' ' + roar.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
+    message.channel.send(responseHead(message, key) + ROAR.generate() + ' ' + ROAR.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
     return;
   }
 }; 
@@ -200,16 +202,16 @@ commandDictionary['coin'] = {
     return;
   }
 };
-commandDictionary['attack'] = {
+commandDictionary['ATTACK'] = {
   emoji: ':dagger: ',  //put space after emoji   
-  error: 'Use the command like this: `attack [@user OR name]',
-  usage: '**Usage:** `attack [@user OR name]',
+  error: 'Use the command like this: `ATTACK [@user OR name]',
+  usage: '**Usage:** `ATTACK [@user OR name]',
   doCommand: function(message, key, args) {
-    if (args[0] === undefined || args[0] === '' || args[0] == bot.user) {
+    if (args[0] === undefined || args[0] === '' || args[0] == BOT.user) {
     	message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(responseHead(message, key) + args[0] + attack.generate());
+      message.channel.send(responseHead(message, key) + args[0] + ATTACK.generate());
       return;
     }
   }
@@ -274,7 +276,7 @@ commandDictionary['hello'] = {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Hi ' + message.author.username + ')*');
+      message.channel.send(emojiDino + ROAR.generate() + ' ' + ROAR.generate() + ' *(Hi ' + message.author.username + ')*');
       return;
     }
   }
@@ -288,35 +290,35 @@ commandDictionary['ping'] = {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(emojiDino + roar.generate() + ' ' + roar.generate() + ' *(Pong!)*');
+      message.channel.send(emojiDino + ROAR.generate() + ' ' + ROAR.generate() + ' *(Pong!)*');
       return;
     }
   }      
 };
-commandDictionary['quote'] = {
-  emoji: ':speech_balloon: ',  //put space after emoji 
-  error: 'Use the command like this: `quote',
-  usage: '**Usage:** `quote',
+commandDictionary['QUOTE'] = {
+  emoji: ':speech_BALLoon: ',  //put space after emoji 
+  error: 'Use the command like this: `QUOTE',
+  usage: '**Usage:** `QUOTE',
   doCommand: function(message, key, args) {
     if (args[0]) {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(responseHead(message, key) + quote.generate());
+      message.channel.send(responseHead(message, key) + QUOTE.generate());
       return;
     }
   }
 };
-commandDictionary['taste'] = {
+commandDictionary['TASTE'] = {
   emoji: ':fork_and_knife: ',  //put space after emoji 
-  error: 'Use the command like this: `taste [@user OR name]',
-  usage: '**Usage:** `taste [@user OR name]',
+  error: 'Use the command like this: `TASTE [@user OR name]',
+  usage: '**Usage:** `TASTE [@user OR name]',
   doCommand: function(message, key, args) {
     if (!args[0]) {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + taste.generate());
+      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' TASTEs ' + TASTE.generate());
       return;
     }
   }
@@ -369,30 +371,30 @@ commandDictionary['avatar'] = {
 commandDictionary['admin'] = {
   emoji: ':cop: ',
   timeout: 0,
-  error: 'Use the command like this: `admin profanity [filter OR nofilter]',
-  usage: '**Usage** `admin profanity [filter OR nofilter]',
+  error: 'Use the command like this: `admin PROFANITY [filter OR nofilter]',
+  usage: '**Usage** `admin PROFANITY [filter OR nofilter]',
   doCommand: function(message, key, args) {
-    //input: profanity nofilter
-    //input: profanity filter
+    //input: PROFANITY nofilter
+    //input: PROFANITY filter
     if(message.author.id == message.guild.owner.id) {
       switch(args[0]) {
-        case 'profanity':
+        case 'PROFANITY':
           if (args[1] == 'nofilter') {
-          	//remove profanity filter from channel
-          	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
+          	//remove PROFANITY filter from channel
+          	sqldb.query("UPDATE channel SET PROFANITYMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
       			});
-            console.log('Removed profanity filter from channel ' + message.channel.name);
-            message.channel.send(responseHead(message, key) + 'The profanity filter has been removed from this channel.');
+            console.log('Removed PROFANITY filter from channel ' + message.channel.name);
+            message.channel.send(responseHead(message, key) + 'The PROFANITY filter has been removed from this channel.');
       		} else if (args[1] == 'filter') {
-          	//add profanity filter from channel
-          	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
+          	//add PROFANITY filter from channel
+          	sqldb.query("UPDATE channel SET PROFANITYMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
       			});
-            console.log('Added profanity filter to channel ' + message.channel.name);
-            message.channel.send(responseHead(message, key) + 'The profanity filter has been added to this channel.');
+            console.log('Added PROFANITY filter to channel ' + message.channel.name);
+            message.channel.send(responseHead(message, key) + 'The PROFANITY filter has been added to this channel.');
       		} else {
             message.channel.send(error(key)); // TODO: append more description later
       		}
@@ -408,48 +410,48 @@ commandDictionary['admin'] = {
     }
   }
 };
-commandDictionary['rps'] = {
+commandDictionary['RPS'] = {
   emoji: ':cop: ',
-  error: 'Use the command like this: `rps [rock OR paper OR scissors]',
-  usage: '**Usage** `rps [rock OR paper OR scissors]',
+  error: 'Use the command like this: `RPS [rock OR paper OR scissors]',
+  usage: '**Usage** `RPS [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
-		var rpsMessage = emojiDino + 'I choose **';
-		var rpsWin = '*You win.*';
-		var rpsLoose = '*You loose!*';
-		var rpsTie = '*We tie.*'
+		var RPSMessage = emojiDino + 'I choose **';
+		var RPSWin = '*You win.*';
+		var RPSLoose = '*You loose!*';
+		var RPSTie = '*We tie.*'
 		//check for correct input
 		switch(args[0]) {
 			case 'rock':
-				rpsResult = rps.generate();
-				rpsMessage += rpsResult.toUpperCase() + '** '
-				if (rpsResult == 'rock') {
-					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsTie);
-				} else if (rpsResult == 'paper') {
-					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsLoose);
-				} else if (rpsResult == 'scissors') {
-					message.channel.send(rpsMessage + ':v:\n' + rpsWin);
+				RPSResult = RPS.generate();
+				RPSMessage += RPSResult.toUpperCase() + '** '
+				if (RPSResult == 'rock') {
+					message.channel.send(RPSMessage + ':right_facing_fist:\n' + RPSTie);
+				} else if (RPSResult == 'paper') {
+					message.channel.send(RPSMessage + ':raised_back_of_hand:\n' + RPSLoose);
+				} else if (RPSResult == 'scissors') {
+					message.channel.send(RPSMessage + ':v:\n' + RPSWin);
 				}
         break;
 			case 'paper':
-				rpsResult = rps.generate();
-				rpsMessage += rpsResult.toUpperCase() + '** '
-				if (rpsResult == 'rock') {
-					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsWin);
-				} else if (rpsResult == 'paper') {
-					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsTie);
-				} else if (rpsResult == 'scissors') {
-					message.channel.send(rpsMessage + ':v:\n' + rpsLoose);
+				RPSResult = RPS.generate();
+				RPSMessage += RPSResult.toUpperCase() + '** '
+				if (RPSResult == 'rock') {
+					message.channel.send(RPSMessage + ':right_facing_fist:\n' + RPSWin);
+				} else if (RPSResult == 'paper') {
+					message.channel.send(RPSMessage + ':raised_back_of_hand:\n' + RPSTie);
+				} else if (RPSResult == 'scissors') {
+					message.channel.send(RPSMessage + ':v:\n' + RPSLoose);
 				}
         break;
 			case 'scissors':
-				rpsResult = rps.generate();
-				rpsMessage += rpsResult.toUpperCase() + '** '
-				if (rpsResult == 'rock') {
-          message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsLoose);
-				} else if (rpsResult == 'paper') {
-					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsWin);
-				} else if (rpsResult == 'scissors') {
-					message.channel.send(rpsMessage + ':v:\n' + rpsTie);
+				RPSResult = RPS.generate();
+				RPSMessage += RPSResult.toUpperCase() + '** '
+				if (RPSResult == 'rock') {
+          message.channel.send(RPSMessage + ':right_facing_fist:\n' + RPSLoose);
+				} else if (RPSResult == 'paper') {
+					message.channel.send(RPSMessage + ':raised_back_of_hand:\n' + RPSWin);
+				} else if (RPSResult == 'scissors') {
+					message.channel.send(RPSMessage + ':v:\n' + RPSTie);
 				}
         break;
       default:
@@ -458,48 +460,48 @@ commandDictionary['rps'] = {
     return;
 	}
 };
-commandDictionary['rpg'] = {
+commandDictionary['RPG'] = {
   emoji: ':map: ',
-  error: 'Use the command like this: `rpg name character',
-  usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
+  error: 'Use the command like this: `RPG name character',
+  usage: '**Usage:** `RPG [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
   	switch(args[0]) {
 			case 'name':
-        message.channel.send(responseHead(message, key) + rpg.name());
+        message.channel.send(responseHead(message, key) + RPG.name());
 				return;
 			case 'characteristic':
-        message.channel.send(responseHead(message, key) + 'The character ' + rpg.characteristics() + '.');
+        message.channel.send(responseHead(message, key) + 'The character ' + RPG.characteristics() + '.');
 				return;
 			case 'bond':
-        message.channel.send(responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.');
+        message.channel.send(responseHead(message, key) + 'The character is driven by ' + RPG.bonds() + '.');
 				return;
 			case 'flaw':
-        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.');
+        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + RPG.flaws() + '.');
 				return;
 			case 'npc':
-        message.channel.send(responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.');
+        message.channel.send(responseHead(message, key) + RPG.name() + ' is ' + RPG.flavor() + ' that ' + RPG.characteristics() + ', is plagued by ' + RPG.flaws() + ', and is driven by ' + RPG.bonds() + '.');
 				return;
       case 'conditions':
 			case 'con':
 			case 'c':
-				if (rpg.rpgConditions[args[1]]) {
-					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
+				if (RPG.RPGConditions[args[1]]) {
+					var RPGConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
           message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
-							name: bot.user.username,
-							icon_url: bot.user.avatarURL
+							name: BOT.user.username,
+							icon_url: BOT.user.avatarURL
 						},
-						title: rpgConditionTitle,
+						title: RPGConditionTitle,
 						description: "Note: this condition is for Dungeons and Dragons 5e.\n",
 						fields: [
 							{
 								name: 'Description',
-								value: rpg.rpgConditions[args[1]].desc,
+								value: RPG.RPGConditions[args[1]].desc,
 							}
 						],
 						footer: {
-								text: bot.user.username + ' | RPG Assistant'
+								text: BOT.user.username + ' | RPG Assistant'
 						}
 					}});
 					return;
@@ -507,23 +509,23 @@ commandDictionary['rpg'] = {
           message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
-							name: bot.user.username,
-							icon_url: bot.user.avatarURL
+							name: BOT.user.username,
+							icon_url: BOT.user.avatarURL
 						},
 						title: 'Conditions',
 						description: "Note: these conditions are for Dungeons and Dragons 5e.\n",
 						fields: [
 							{
 								name: 'Options',
-								value:  rpg.conditionList(),
+								value:  RPG.conditionList(),
 							},
 							{
 								name: 'Usage:',
-								value: 'Type "`rpg condition" and then the condition you wish to learn more about.'
+								value: 'Type "`RPG condition" and then the condition you wish to learn more about.'
 							}
 						],
 						footer: {
-								text: bot.user.username + ' | RPG Assistant'
+								text: BOT.user.username + ' | RPG Assistant'
 						}
 					}});
 					return;
@@ -541,7 +543,7 @@ commandDictionary['rpg'] = {
 };
 commandDictionary['profile'] = {
   timeout: 0,
-	emoji: ':robot: ',
+	emoji: ':roBOT: ',
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
@@ -551,9 +553,9 @@ commandDictionary['profile'] = {
 				case 'b':
 					if (args[1] != undefined) {
 						//what to do if link is added
-						if (validURL.isUri(args[1])) {
+						if (VALIDURL.isUri(args[1])) {
 							//put thing here to check if image
-						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + " WHERE userID = " + mysql.escape(message.author.id), function (err, results, fields) {
+						  sqldb.query("UPDATE user SET userBackground = "+ MYSQL.escape(args[1]) + " WHERE userID = " + MYSQL.escape(message.author.id), function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
   						});
@@ -568,7 +570,7 @@ commandDictionary['profile'] = {
 		} else {
 			message.channel.startTyping();
 					var attachment = '';
-					jimpFunctions.profile(Jimp, 
+					JIMPFUNCTIONS.profile(JIMP, 
 																message, 
 																key, 
 																args,
@@ -591,8 +593,8 @@ commandDictionary['dex'] = {
       return;
     } else {    
       
-      jQuery.get('https://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
-        alert(jQuery(text).find('.pokemon-number'));
+      JQUERY.get('HTTPs://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
+        alert(JQUERY(text).find('.pokemon-number'));
       });  
         
     }
@@ -608,31 +610,31 @@ sqldb.connect(function(err) {
 
 
 // only reacts to Discord _after_ ready is emitted
-bot.on('ready', () => {
+BOT.on('ready', () => {
   console.log('Online and connected');
 });
 //try to handle rejections
 process.on('unhandledRejection', console.error);
 
 // Create an event listener for messages
-bot.on('message', message => {  
+BOT.on('message', message => {  
   var messageContent = message.content;
   var messageArguments = message.content.substring(1).split(' ');
   var key = messageArguments[0];
   var args = messageArguments.slice(1);
   var userID = message.author.id;
   
-   //delete bot messages that say to slow down   
-  if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
+   //delete BOT messages that say to slow down   
+  if (message.author.BOT && messageContent.includes('Slow down, you\'re scaring me!')) {
     message.delete(6000); //deletes message
     return;
   }
   //stop message from being processed
-  //if from a bot
-  if (message.author.bot) { return; }
+  //if from a BOT
+  if (message.author.BOT) { return; }
   
   //if user sends a message
-  sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + mysql.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")" + 
+  sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + MYSQL.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")" + 
               "ON DUPLICATE KEY UPDATE messagesSent = messagesSent + 1, lastSeen = '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "'", function (err, results, fields) {
     if (err) throw err;
     console.log(results);
@@ -644,30 +646,30 @@ bot.on('message', message => {
   	//note: does not account for daylight savings time
 		sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" +
 								message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
-								"'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + mysql.escape(message.content) + ")", function (err, results, fields) {
+								"'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + MYSQL.escape(message.content) + ")", function (err, results, fields) {
 			if (err) throw err;
 			console.log(results);
 			console.log('Logged message by ' + message.author.username);
 		});
   //add new channels to channel database
 		sqldb.query("INSERT INTO channel (channelID, channelName, serverID) VALUES (" +
-								message.channel.id  + ", " + mysql.escape(message.channel.name) + ", " + message.guild.id + ")" +
-								"ON DUPLICATE KEY UPDATE channelName = " + mysql.escape(message.channel.name), function (err, results, fields) {
+								message.channel.id  + ", " + MYSQL.escape(message.channel.name) + ", " + message.guild.id + ")" +
+								"ON DUPLICATE KEY UPDATE channelName = " + MYSQL.escape(message.channel.name), function (err, results, fields) {
 			if (err) throw err;
 			console.log(results);
 			console.log('Edited channel table: ' + message.channel.name);
 		});
-		//if message is in profanity enabled channel
-		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
+		//if message is in PROFANITY enabled channel
+		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND PROFANITYMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
-			if (results.length == 1) {profanity.filter(message, emojiDino, getTime, getDate, userID);}
+			if (results.length == 1) {PROFANITY.filter(message, emojiDino, getTime, getDate, userID);}
 		}); 
 	} else {
-		profanity.filter(message, emojiDino, getTime, getDate, userID);
+		PROFANITY.filter(message, emojiDino, getTime, getDate, userID);
 	}
   //listen for the ` to start a command
-  //the bot only responds with things inside this if
-  //if I want the bot to display something write it in here
+  //the BOT only responds with things inside this if
+  //if I want the BOT to display something write it in here
   if (messageContent.substring(0, 1) === '`') {
   //stop message from being processed  
   //if from a user in timeout
@@ -690,21 +692,21 @@ bot.on('message', message => {
       return;    
     }
   }
-  if (message.isMentioned(bot.user)) {
-    message.channel.send(emojiDino + roar.generate());     
+  if (message.isMentioned(BOT.user)) {
+    message.channel.send(emojiDino + ROAR.generate());     
   }    
   //stop message from being processed
-  //if from a bot
-  if (message.author.bot) { return; }  
+  //if from a BOT
+  if (message.author.BOT) { return; }  
 
 });
 // Create an event listener for new guild members
-bot.on('guildMemberAdd', member => {
+BOT.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
   const channel = member.guild.channels.find('name', 'member-log');
   // Do nothing if the channel wasn't found on this server
   if (!channel) return;
   // Send the message, mentioning the member
-  channel.send(emojiDino + roar.generate() + roar.generate() + roar.generate() + ` (Welcome to the server, ${member})`);
+  channel.send(emojiDino + ROAR.generate() + ROAR.generate() + ROAR.generate() + ` (Welcome to the server, ${member})`);
 });
-bot.login(TOKEN);
+BOT.login(TOKEN);
