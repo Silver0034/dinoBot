@@ -1,6 +1,6 @@
 //establish constants and dependencies
 const DISCORD = require('discord.js');
-const BOT = new Discord.Client();
+const BOT = new DISCORD.Client();
 const MYSQL = require('MYSQL');
 const TOKENRETURN = require('./token.js');
 const ROAR = require('./commandFunctions/roar.js');
