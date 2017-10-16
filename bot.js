@@ -15,8 +15,8 @@ const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
 const VALIDURL = require('valid-url');
 const HTTP = require('http');
 const MJS = require('mongojs');
-var rpg = require('./commandFunctions/rps.js');
-var rps = require('./commandFunctions/rpg.js');
+var rps = require('./commandFunctions/rps.js');
+var rpg = require('./commandFunctions/rpg.js');
 
 //establish global variables and constants
 const TOKEN = TOKENRETURN.return();
