@@ -14,9 +14,6 @@ var rpg = require('./commandFunctions/rpg.js');
 var jQuery = require('./jquery-3.2.1.min.js');
 var Jimp = require('jimp');
 var jimpFunctions =  require('./commandFunctions/jimp.js');
-var validURL = require('valid-url');
-const http = require('http');
-var imageType = require('image-type');
 
 //establish global variables and constants
 const TOKEN = tokenReturn.return();
@@ -554,16 +551,8 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						//what to do if link is added
 						if (validURL.isUri(args[1])) {
-							//check if image
-							var url = args[1];
-							console.log('IT GETS THIS FAR');
-							http.get(url, res => {
-									res.once('data', chunk => {
-											res.destroy();
-											console.log('LOOOK HEEERREE ');
-											//=> {ext: 'gif', mime: 'image/gif'} 
-									});
-							});
+							//put code here to check
+							//if url is image
 						  sqldb.query("UPDATE user SET userBackground = "+ mysql.escape(args[1]) + " WHERE userID = " + mysql.escape(message.author.id), function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
