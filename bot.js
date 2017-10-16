@@ -1,7 +1,7 @@
 //establish constants and dependencies
 const DISCORD = require('discord.js');
 const BOT = new DISCORD.Client();
-const MYSQL = require('MYSQL');
+const MYSQL = require('mysql');
 const TOKENRETURN = require('./token.js');
 const ROAR = require('./commandFunctions/roar.js');
 const BALL = require('./commandFunctions/ball.js');
