@@ -22,7 +22,7 @@ const MJS = require('mongojs');
 const TOKEN = TOKENRETURN.return();
 const MYSQLCRED = TOKENRETURN.sqlCredentials;
 //make sure to put a space after. Ex:':smile: '
-const emojiDino = '<:sauropod:355738679211327488> ';
+const EMOJIDINO = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
 //global functions
@@ -38,7 +38,7 @@ function setUserTimeout(userID, timeoutDuration) {
 function timeoutAlert(timeoutAlert) {
     //alert users to stop using commands
     //if they are in the timeout array
-  return emojiDino + ' ' + ROAR.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
+  return EMOJIDINO + ' ' + ROAR.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
 // timoutDuration is optional. Allows manually passing in a length to time out
 function timeout(key, userID, timeoutDuration) {
@@ -52,12 +52,12 @@ function timeout(key, userID, timeoutDuration) {
   }
 }
 function error(key) {
-  var errorMessage = emojiDino + ' ' + ROAR.generate() + ' ' + ROAR.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
+  var errorMessage = EMOJIDINO + ' ' + ROAR.generate() + ' ' + ROAR.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
   console.log('[FAILED]');
   return errorMessage;
 }
 function responseHead(message, key, extraContent) { //extraContent is optional
-    return emojiDino + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
+    return EMOJIDINO + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
 }
 function getTime(date) {
   var time;
@@ -86,10 +86,10 @@ function getDate(date) {
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
-commandDictionary['8BALL'] = {
-  emoji: ':8BALL: ', //put space after emoji 
-  error: 'Use the command like this: `8BALL [question]',
-  usage: '**Usage:** `8BALL [question]',
+commandDictionary['8ball'] = {
+  emoji: ':8ball: ', //put space after emoji 
+  error: 'Use the command like this: `8ball [question]',
+  usage: '**Usage:** `8ball [question]',
   doCommand: function(message, key, args) {
     if (args[0]) {
       message.channel.send(responseHead(message, key) + BALL.generate());
@@ -276,7 +276,7 @@ commandDictionary['hello'] = {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(emojiDino + ROAR.generate() + ' ' + ROAR.generate() + ' *(Hi ' + message.author.username + ')*');
+      message.channel.send(EMOJIDINO + ROAR.generate() + ' ' + ROAR.generate() + ' *(Hi ' + message.author.username + ')*');
       return;
     }
   }
@@ -290,7 +290,7 @@ commandDictionary['ping'] = {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(emojiDino + ROAR.generate() + ' ' + ROAR.generate() + ' *(Pong!)*');
+      message.channel.send(EMOJIDINO + ROAR.generate() + ' ' + ROAR.generate() + ' *(Pong!)*');
       return;
     }
   }      
@@ -328,7 +328,7 @@ commandDictionary['say'] = {
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
-    var sayMessage = emojiDino + message.content.substring(5);     
+    var sayMessage = EMOJIDINO + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
       message.channel.send(error(key));
@@ -405,7 +405,7 @@ commandDictionary['admin'] = {
       }
     } else {
       timeout(key, message.author.id, 6000);
-      message.channel.send(emojiDino + 'You do not have access to this command.');
+      message.channel.send(EMOJIDINO + 'You do not have access to this command.');
       return;
     }
   }
@@ -415,7 +415,7 @@ commandDictionary['RPS'] = {
   error: 'Use the command like this: `RPS [rock OR paper OR scissors]',
   usage: '**Usage** `RPS [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
-		var RPSMessage = emojiDino + 'I choose **';
+		var RPSMessage = EMOJIDINO + 'I choose **';
 		var RPSWin = '*You win.*';
 		var RPSLoose = '*You loose!*';
 		var RPSTie = '*We tie.*'
@@ -574,7 +574,7 @@ commandDictionary['profile'] = {
 																message, 
 																key, 
 																args,
-																emojiDino,
+																EMOJIDINO,
 																attachment,
 																sqldb);
 		}		
@@ -586,7 +586,7 @@ commandDictionary['dex'] = {
   error: 'Use the command like this: `dex [thing]',
   usage: '**Usage:** `dex [thing]',
   doCommand: function(message, key, args) {
-    var sayMessage = emojiDino + message.content.substring(5);     
+    var sayMessage = EMOJIDINO + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
     	message.channel.send(error(key));
@@ -662,10 +662,10 @@ BOT.on('message', message => {
 		//if message is in PROFANITY enabled channel
 		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND PROFANITYMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
-			if (results.length == 1) {PROFANITY.filter(message, emojiDino, getTime, getDate, userID);}
+			if (results.length == 1) {PROFANITY.filter(message, EMOJIDINO, getTime, getDate, userID);}
 		}); 
 	} else {
-		PROFANITY.filter(message, emojiDino, getTime, getDate, userID);
+		PROFANITY.filter(message, EMOJIDINO, getTime, getDate, userID);
 	}
   //listen for the ` to start a command
   //the BOT only responds with things inside this if
@@ -693,7 +693,7 @@ BOT.on('message', message => {
     }
   }
   if (message.isMentioned(BOT.user)) {
-    message.channel.send(emojiDino + ROAR.generate());     
+    message.channel.send(EMOJIDINO + ROAR.generate());     
   }    
   //stop message from being processed
   //if from a BOT
@@ -707,6 +707,6 @@ BOT.on('guildMemberAdd', member => {
   // Do nothing if the channel wasn't found on this server
   if (!channel) return;
   // Send the message, mentioning the member
-  channel.send(emojiDino + ROAR.generate() + ROAR.generate() + ROAR.generate() + ` (Welcome to the server, ${member})`);
+  channel.send(EMOJIDINO + ROAR.generate() + ROAR.generate() + ROAR.generate() + ` (Welcome to the server, ${member})`);
 });
 BOT.login(TOKEN);
