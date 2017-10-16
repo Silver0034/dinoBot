@@ -9,14 +9,14 @@ const ATTACK = require('./commandFunctions/attack.js');
 const QUOTE = require('./commandFunctions/quote.js');
 const TASTE = require('./commandFunctions/taste.js');
 const PROFANITY = require('./commandFunctions/profanity.js');
-const RPS = require('./commandFunctions/rps.js');
-const RPG = require('./commandFunctions/rpg.js');
 const JQUERY = require('./jquery-3.2.1.min.js');
 const JIMP = require('jimp');
 const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
 const VALIDURL = require('valid-url');
 const HTTP = require('http');
 const MJS = require('mongojs');
+var rpg = require('./commandFunctions/rps.js');
+var rps = require('./commandFunctions/rpg.js');
 
 //establish global variables and constants
 const TOKEN = TOKENRETURN.return();
@@ -415,43 +415,43 @@ commandDictionary['rps'] = {
   error: 'Use the command like this: `rps [rock OR paper OR scissors]',
   usage: '**Usage** `rps [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
-		var RPSMessage = EMOJIDINO + 'I choose **';
-		var RPSWin = '*You win.*';
-		var RPSLoose = '*You loose!*';
-		var RPSTie = '*We tie.*'
+		var rpsMessage = EMOJIDINO + 'I choose **';
+		var rpsWin = '*You win.*';
+		var rpsLoose = '*You loose!*';
+		var rpsTie = '*We tie.*'
 		//check for correct input
 		switch(args[0]) {
 			case 'rock':
-				RPSResult = RPS.generate();
-				RPSMessage += RPSResult.toUpperCase() + '** '
-				if (RPSResult == 'rock') {
-					message.channel.send(RPSMessage + ':right_facing_fist:\n' + RPSTie);
-				} else if (RPSResult == 'paper') {
-					message.channel.send(RPSMessage + ':raised_back_of_hand:\n' + RPSLoose);
-				} else if (RPSResult == 'scissors') {
-					message.channel.send(RPSMessage + ':v:\n' + RPSWin);
+				rpsResult = rps.generate();
+				rpsMessage += rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsTie);
+				} else if (rpsResult == 'paper') {
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsLoose);
+				} else if (rpsResult == 'scissors') {
+					message.channel.send(rpsMessage + ':v:\n' + rpsWin);
 				}
         break;
 			case 'paper':
-				RPSResult = RPS.generate();
-				RPSMessage += RPSResult.toUpperCase() + '** '
-				if (RPSResult == 'rock') {
-					message.channel.send(RPSMessage + ':right_facing_fist:\n' + RPSWin);
-				} else if (RPSResult == 'paper') {
-					message.channel.send(RPSMessage + ':raised_back_of_hand:\n' + RPSTie);
-				} else if (RPSResult == 'scissors') {
-					message.channel.send(RPSMessage + ':v:\n' + RPSLoose);
+				rpsResult = rps.generate();
+				rpsMessage += rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsWin);
+				} else if (rpsResult == 'paper') {
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsTie);
+				} else if (rpsResult == 'scissors') {
+					message.channel.send(rpsMessage + ':v:\n' + rpsLoose);
 				}
         break;
 			case 'scissors':
-				RPSResult = RPS.generate();
-				RPSMessage += RPSResult.toUpperCase() + '** '
-				if (RPSResult == 'rock') {
-          message.channel.send(RPSMessage + ':right_facing_fist:\n' + RPSLoose);
-				} else if (RPSResult == 'paper') {
-					message.channel.send(RPSMessage + ':raised_back_of_hand:\n' + RPSWin);
-				} else if (RPSResult == 'scissors') {
-					message.channel.send(RPSMessage + ':v:\n' + RPSTie);
+				rpsResult = rps.generate();
+				rpsMessage += rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+          message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsLoose);
+				} else if (rpsResult == 'paper') {
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsWin);
+				} else if (rpsResult == 'scissors') {
+					message.channel.send(rpsMessage + ':v:\n' + rpsTie);
 				}
         break;
       default:
@@ -462,46 +462,46 @@ commandDictionary['rps'] = {
 };
 commandDictionary['rpg'] = {
   emoji: ':map: ',
-  error: 'Use the command like this: `RPG name character',
-  usage: '**Usage:** `RPG [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
+  error: 'Use the command like this: `rpg name character',
+  usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
   	switch(args[0]) {
 			case 'name':
-        message.channel.send(responseHead(message, key) + RPG.name());
+        message.channel.send(responseHead(message, key) + rpg.name());
 				return;
 			case 'characteristic':
-        message.channel.send(responseHead(message, key) + 'The character ' + RPG.characteristics() + '.');
+        message.channel.send(responseHead(message, key) + 'The character ' + rpg.characteristics() + '.');
 				return;
 			case 'bond':
-        message.channel.send(responseHead(message, key) + 'The character is driven by ' + RPG.bonds() + '.');
+        message.channel.send(responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.');
 				return;
 			case 'flaw':
-        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + RPG.flaws() + '.');
+        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.');
 				return;
 			case 'npc':
-        message.channel.send(responseHead(message, key) + RPG.name() + ' is ' + RPG.flavor() + ' that ' + RPG.characteristics() + ', is plagued by ' + RPG.flaws() + ', and is driven by ' + RPG.bonds() + '.');
+        message.channel.send(responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.');
 				return;
       case 'conditions':
 			case 'con':
 			case 'c':
-				if (RPG.RPGConditions[args[1]]) {
-					var RPGConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
+				if (rpg.rpgConditions[args[1]]) {
+					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
           message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
 							name: BOT.user.username,
 							icon_url: BOT.user.avatarURL
 						},
-						title: RPGConditionTitle,
+						title: rpgConditionTitle,
 						description: "Note: this condition is for Dungeons and Dragons 5e.\n",
 						fields: [
 							{
 								name: 'Description',
-								value: RPG.RPGConditions[args[1]].desc,
+								value: rpg.rpgConditions[args[1]].desc,
 							}
 						],
 						footer: {
-								text: BOT.user.username + ' | RPG Assistant'
+								text: BOT.user.username + ' | rpg Assistant'
 						}
 					}});
 					return;
@@ -517,15 +517,15 @@ commandDictionary['rpg'] = {
 						fields: [
 							{
 								name: 'Options',
-								value:  RPG.conditionList(),
+								value:  rpg.conditionList(),
 							},
 							{
 								name: 'Usage:',
-								value: 'Type "`RPG condition" and then the condition you wish to learn more about.'
+								value: 'Type "`rpg condition" and then the condition you wish to learn more about.'
 							}
 						],
 						footer: {
-								text: BOT.user.username + ' | RPG Assistant'
+								text: BOT.user.username + ' | rpg Assistant'
 						}
 					}});
 					return;
@@ -536,7 +536,7 @@ commandDictionary['rpg'] = {
       message.channel.send(error(key) + '\n Options: name, character');
 			return;
 		} else {
-      message.channel.send(responseHead(message, key) + 'Possible RPG commands are name, characteristic, bond, flaw, npc');
+      message.channel.send(responseHead(message, key) + 'Possible rpg commands are name, characteristic, bond, flaw, npc');
 			return; 
 		}
   }
