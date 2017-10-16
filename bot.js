@@ -371,8 +371,8 @@ commandDictionary['avatar'] = {
 commandDictionary['admin'] = {
   emoji: ':cop: ',
   timeout: 0,
-  error: 'Use the command like this: `admin PROFANITY [filter OR nofilter]',
-  usage: '**Usage** `admin PROFANITY [filter OR nofilter]',
+  error: 'Use the command like this: `admin profanity [filter OR nofilter]',
+  usage: '**Usage** `admin profanity [filter OR nofilter]',
   doCommand: function(message, key, args) {
     //input: PROFANITY nofilter
     //input: PROFANITY filter
@@ -381,7 +381,7 @@ commandDictionary['admin'] = {
         case 'PROFANITY':
           if (args[1] == 'nofilter') {
           	//remove PROFANITY filter from channel
-          	sqldb.query("UPDATE channel SET PROFANITYMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
+          	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
       			});
@@ -389,7 +389,7 @@ commandDictionary['admin'] = {
             message.channel.send(responseHead(message, key) + 'The PROFANITY filter has been removed from this channel.');
       		} else if (args[1] == 'filter') {
           	//add PROFANITY filter from channel
-          	sqldb.query("UPDATE channel SET PROFANITYMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
+          	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
       			});
@@ -660,7 +660,7 @@ BOT.on('message', message => {
 			console.log('Edited channel table: ' + message.channel.name);
 		});
 		//if message is in PROFANITY enabled channel
-		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND PROFANITYMonitor = 1", function (err, results, fields) {
+		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
 			if (results.length == 1) {PROFANITY.filter(message, EMOJIDINO, getTime, getDate, userID);}
 		}); 
