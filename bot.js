@@ -295,10 +295,10 @@ commandDictionary['ping'] = {
     }
   }      
 };
-commandDictionary['QUOTE'] = {
+commandDictionary['quote'] = {
   emoji: ':speech_BALLoon: ',  //put space after emoji 
-  error: 'Use the command like this: `QUOTE',
-  usage: '**Usage:** `QUOTE',
+  error: 'Use the command like this: `quote',
+  usage: '**Usage:** `quote',
   doCommand: function(message, key, args) {
     if (args[0]) {
       message.channel.send(error(key));
@@ -309,10 +309,10 @@ commandDictionary['QUOTE'] = {
     }
   }
 };
-commandDictionary['TASTE'] = {
+commandDictionary['taste'] = {
   emoji: ':fork_and_knife: ',  //put space after emoji 
-  error: 'Use the command like this: `TASTE [@user OR name]',
-  usage: '**Usage:** `TASTE [@user OR name]',
+  error: 'Use the command like this: `taste [@user OR name]',
+  usage: '**Usage:** `taste [@user OR name]',
   doCommand: function(message, key, args) {
     if (!args[0]) {
       message.channel.send(error(key));
@@ -410,10 +410,10 @@ commandDictionary['admin'] = {
     }
   }
 };
-commandDictionary['RPS'] = {
+commandDictionary['rps'] = {
   emoji: ':cop: ',
-  error: 'Use the command like this: `RPS [rock OR paper OR scissors]',
-  usage: '**Usage** `RPS [rock OR paper OR scissors]',
+  error: 'Use the command like this: `rps [rock OR paper OR scissors]',
+  usage: '**Usage** `rps [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
 		var RPSMessage = EMOJIDINO + 'I choose **';
 		var RPSWin = '*You win.*';
@@ -460,7 +460,7 @@ commandDictionary['RPS'] = {
     return;
 	}
 };
-commandDictionary['RPG'] = {
+commandDictionary['rpg'] = {
   emoji: ':map: ',
   error: 'Use the command like this: `RPG name character',
   usage: '**Usage:** `RPG [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
@@ -543,7 +543,7 @@ commandDictionary['RPG'] = {
 };
 commandDictionary['profile'] = {
   timeout: 0,
-	emoji: ':roBOT: ',
+	emoji: ':robot: ',
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
