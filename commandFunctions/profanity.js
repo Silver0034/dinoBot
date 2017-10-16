@@ -1,5 +1,5 @@
 //profanity       
-const profanityList = [
+const PROFANITYLIST = [
 	"anal",
 	"anus",
 	"arse",
@@ -54,7 +54,7 @@ const profanityList = [
 	"wank",
 	"whore"
 ];
-const profanityExceptions = [
+const PROFANITYEXCEPTIONS = [
 	"analy",
 	"anali",
 	"assh",  
@@ -91,7 +91,7 @@ const profanityExceptions = [
 	"canuse",
 	"ustwat"
 ];
-var profanityResponseArray = [
+const PROFANITYRESPONSEARRAY = [
 	"language!",
 	"quit that cursing!",
 	"hey, no cursing",
@@ -168,8 +168,8 @@ var profanityResponseArray = [
 ];
 
 profanityResponseGenerate = function() {
-  var profanityResponseMath = Math.floor((Math.random () * profanityResponseArray.length));
-  return profanityResponseArray[profanityResponseMath];    
+  var profanityResponseMath = Math.floor((Math.random () * PROFANITYRESPONSEARRAY.length));
+  return PROFANITYRESPONSEARRAY[profanityResponseMath];    
 }
 
 //character latinization for for user input.
@@ -188,7 +188,7 @@ var spaceCheck = function (messageCheck) {
   return combineSpaces;    
 }
 
-exports.filter = function(message, emojiDino, getTime, getDate, userID) {
+exports.filter = function(message, EMOJIDINO, getTime, getDate, userID) {
 	//check if theres spaces in the middle of curse words
 	var messageCheck = message.content.split(' ');
 	var messageSpaceCheck = spaceCheck(messageCheck);
@@ -202,20 +202,20 @@ exports.filter = function(message, emojiDino, getTime, getDate, userID) {
 		messageCheck[i] = messageCheck[i].replace(/\$/g, 's');
 		messageCheck[i] = messageCheck[i].replace(/[\u200B-\u200D\uFEFF]/g, '');
 		messageCheck[i] = messageCheck[i].latinize();
-		for(var j = 0; j < profanityList.length; j++) {
-			if (messageCheck[i].indexOf(profanityList[j]) != -1) {
-				for(var k = 0; k < profanityExceptions.length; k++) {
-					if(messageCheck[i].indexOf(profanityExceptions[k]) != -1) {return;} 
+		for(var j = 0; j < PROFANITYLIST.length; j++) {
+			if (messageCheck[i].indexOf(PROFANITYLIST[j]) != -1) {
+				for(var k = 0; k < PROFANITYEXCEPTIONS.length; k++) {
+					if(messageCheck[i].indexOf(PROFANITYEXCEPTIONS[k]) != -1) {return;} 
 				}   
 				if (message.guild) {
-					message.channel.send(emojiDino + profanityResponseGenerate());      
+					message.channel.send(EMOJIDINO + profanityResponseGenerate());      
 					console.log(getTime(), message.author.username + ' was warned about cursing.');    
-					//message.author.send(emojiDino + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
-					message.guild.owner.send(emojiDino + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + profanityList[j] + '\non ' + getDate());  
+					//message.author.send(EMOJIDINO + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.');     
+					message.guild.owner.send(EMOJIDINO + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + PROFANITYLIST[j] + '\non ' + getDate());  
 					return;
 				} else {
 					console.log(getTime(), message.author.username + ' cursed at me in direct message');
-					message.author.send(emojiDino + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');
+					message.author.send(EMOJIDINO + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');
 					return;
 				}
 			}

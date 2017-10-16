@@ -3,9 +3,10 @@ exports.profile = function(Jimp,
 													 message,
 													 key,
 													 args,
-													 emojiDino,
+													 EMOJIDINO,
 													 attachment,
 													 sqldb) {
+	
 	sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		var userBackground = results[0].userBackground;
 		//Assembling the picture
@@ -51,7 +52,7 @@ exports.profile = function(Jimp,
 															.composite(xp, 247, 464)
 															.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username)
 															.write(attachment, function() {
-																message.channel.send(emojiDino + ' ' + message.author.username + '\'s Profile', {
+																message.channel.send(EMOJIDINO + ' ' + message.author.username + '\'s Profile', {
 																	file: attachment
 																});
 																message.channel.stopTyping();
