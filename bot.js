@@ -296,7 +296,7 @@ commandDictionary['ping'] = {
   }      
 };
 commandDictionary['quote'] = {
-  emoji: ':speech_BALLoon: ',  //put space after emoji 
+  emoji: ':speech_balloon: ',  //put space after emoji 
   error: 'Use the command like this: `quote',
   usage: '**Usage:** `quote',
   doCommand: function(message, key, args) {
