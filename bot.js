@@ -378,23 +378,23 @@ commandDictionary['admin'] = {
     //input: PROFANITY filter
     if(message.author.id == message.guild.owner.id) {
       switch(args[0]) {
-        case 'PROFANITY':
+        case 'profanity':
           if (args[1] == 'nofilter') {
           	//remove PROFANITY filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 0 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
       			});
-            console.log('Removed PROFANITY filter from channel ' + message.channel.name);
-            message.channel.send(responseHead(message, key) + 'The PROFANITY filter has been removed from this channel.');
+            console.log('Removed profanity filter from channel ' + message.channel.name);
+            message.channel.send(responseHead(message, key) + 'The profanity filter has been removed from this channel.');
       		} else if (args[1] == 'filter') {
           	//add PROFANITY filter from channel
           	sqldb.query("UPDATE channel SET profanityMonitor = 1 WHERE channelID = " + message.channel.id, function (err, results, fields) {
   						if (err) throw err;
               console.log(results);
       			});
-            console.log('Added PROFANITY filter to channel ' + message.channel.name);
-            message.channel.send(responseHead(message, key) + 'The PROFANITY filter has been added to this channel.');
+            console.log('Added profanity filter to channel ' + message.channel.name);
+            message.channel.send(responseHead(message, key) + 'The profanity filter has been added to this channel.');
       		} else {
             message.channel.send(error(key)); // TODO: append more description later
       		}
