@@ -202,10 +202,10 @@ commandDictionary['coin'] = {
     return;
   }
 };
-commandDictionary['ATTACK'] = {
+commandDictionary['attack'] = {
   emoji: ':dagger: ',  //put space after emoji   
-  error: 'Use the command like this: `ATTACK [@user OR name]',
-  usage: '**Usage:** `ATTACK [@user OR name]',
+  error: 'Use the command like this: `attack [@user OR name]',
+  usage: '**Usage:** `attack [@user OR name]',
   doCommand: function(message, key, args) {
     if (args[0] === undefined || args[0] === '' || args[0] == BOT.user) {
     	message.channel.send(error(key));
