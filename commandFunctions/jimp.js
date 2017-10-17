@@ -10,6 +10,7 @@ exports.profile = function(JIMP,
 	sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		var userBackground = results[0].userBackground;
 		console.log('2');
+		console.log(userBackground);
 		//Assembling the picture
 		var userCard = new JIMP(800, 500, 0x000000, function (err, image) {
 			console.log('2.1');
