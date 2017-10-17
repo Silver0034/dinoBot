@@ -5,7 +5,7 @@ const BOT = new DISCORD.Client();
 //npm dependencies
 const fs = require('fs');
 const HTTP = require('http');
-const jimp = require('jimp');
+var jimp = require('jimp');
 const MYSQL = require('mysql');
 const VALIDURL = require('valid-url');
 // commandFunctions dependencies
