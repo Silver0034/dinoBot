@@ -557,14 +557,13 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						
 						//turn https into http
-						var imageInputURL = '';
-						var imageUrlSplit = args[1].split(':');
-						if (imageUrlSplit[0] == 'https') {
-							//remove the s
-							imageInputURL = args[1].slice(0, 4) + args[1].slice(5);
-						} else {
-						  imageInputURL = args[1];	
+            var imageInputURL = '';
+            var imageUrlSplit = args[1].split(':');
+            if (imageUrlSplit[0] == 'https') {
+							imageUrlSplit[0] = 'http';
 						}
+						imageInputURL = imageUrlSplit.join('');
+					}
 						//what to do if link is added
 						if (VALIDURL.isUri(imageInputURL)) {
 							//check if image is a png
