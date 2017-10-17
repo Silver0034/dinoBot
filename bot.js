@@ -16,7 +16,7 @@ const VALIDURL = require('valid-url');
 const HTTP = require('http');
 const MJS = require('mongojs');
 const RPS = require('./commandFunctions/rps.js');
-var rpg = require('./commandFunctions/rpg.js');
+var RPG = require('./commandFunctions/rpg.js');
 
 //establish global variables and constants
 const TOKEN = TOKENRETURN.return();
@@ -467,24 +467,24 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) {
 			case 'name':
-        message.channel.send(responseHead(message, key) + rpg.name());
+        message.channel.send(responseHead(message, key) + RPG.name());
 				return;
 			case 'characteristic':
-        message.channel.send(responseHead(message, key) + 'The character ' + rpg.characteristics() + '.');
+        message.channel.send(responseHead(message, key) + 'The character ' + RPG.characteristics() + '.');
 				return;
 			case 'bond':
-        message.channel.send(responseHead(message, key) + 'The character is driven by ' + rpg.bonds() + '.');
+        message.channel.send(responseHead(message, key) + 'The character is driven by ' + RPG.bonds() + '.');
 				return;
 			case 'flaw':
-        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + rpg.flaws() + '.');
+        message.channel.send(responseHead(message, key) + 'The character\'s flaw is ' + RPG.flaws() + '.');
 				return;
 			case 'npc':
-        message.channel.send(responseHead(message, key) + rpg.name() + ' is ' + rpg.flavor() + ' that ' + rpg.characteristics() + ', is plagued by ' + rpg.flaws() + ', and is driven by ' + rpg.bonds() + '.');
+        message.channel.send(responseHead(message, key) + RPG.name() + ' is ' + RPG.flavor() + ' that ' + RPG.characteristics() + ', is plagued by ' + RPG.flaws() + ', and is driven by ' + RPG.bonds() + '.');
 				return;
       case 'conditions':
 			case 'con':
 			case 'c':
-				if (rpg.rpgConditions[args[1]]) {
+				if (RPG.rpgConditions[args[1]]) {
 					var rpgConditionTitle = args[1].charAt(0).toUpperCase() + args[1].slice(1);
           message.channel.send({embed: {
 						color: 0x64FFDA,
@@ -497,7 +497,7 @@ commandDictionary['rpg'] = {
 						fields: [
 							{
 								name: 'Description',
-								value: rpg.rpgConditions[args[1]].desc,
+								value: RPG.rpgConditions[args[1]].desc,
 							}
 						],
 						footer: {
@@ -517,7 +517,7 @@ commandDictionary['rpg'] = {
 						fields: [
 							{
 								name: 'Options',
-								value:  rpg.conditionList(),
+								value:  RPG.conditionList(),
 							},
 							{
 								name: 'Usage:',
