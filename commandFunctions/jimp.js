@@ -55,7 +55,8 @@ exports.profile = function(jimp,
 														jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
 															//Assemble Image
 															console.log('7');
-						//									image.composite(background, 0, 0)
+															image
+															//.composite(background, 0, 0)
 															.composite(plate, 0, 0)
 															.composite(avatar, 27, 94)
 															.composite(xp, 247, 464)
