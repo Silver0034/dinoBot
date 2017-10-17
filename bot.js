@@ -1,22 +1,24 @@
-//establish constants and dependencies
-const DISCORD = require('discord.js');
+//establish constants
+//discord.js dependencies
 const BOT = new DISCORD.Client();
+const DISCORD = require('discord.js');
+//npm dependencies
 const MYSQL = require('mysql');
-const TOKENRETURN = require('./token.js');
-const ROAR = require('./commandFunctions/roar.js');
-const BALL = require('./commandFunctions/ball.js');
-const ATTACK = require('./commandFunctions/attack.js');
-const QUOTE = require('./commandFunctions/quote.js');
-const TASTE = require('./commandFunctions/taste.js');
-const PROFANITY = require('./commandFunctions/profanity.js');
-const JQUERY = require('./jquery-3.2.1.min.js');
 const JIMP = require('jimp');
-const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
 const VALIDURL = require('valid-url');
 const HTTP = require('http');
 const MJS = require('mongojs');
+// commandFunctions dependencies
+const ATTACK = require('./commandFunctions/attack.js');
+const BALL = require('./commandFunctions/ball.js');
+const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
+const PROFANITY = require('./commandFunctions/profanity.js');
+const QUOTE = require('./commandFunctions/quote.js');
+const ROAR = require('./commandFunctions/roar.js');
+const RPG = require('./commandFunctions/rpg.js');
 const RPS = require('./commandFunctions/rps.js');
-var RPG = require('./commandFunctions/rpg.js');
+const TASTE = require('./commandFunctions/taste.js');
+const TOKENRETURN = require('./token.js');
 
 //establish global variables and constants
 const TOKEN = TOKENRETURN.return();
@@ -25,6 +27,7 @@ const MYSQLCRED = TOKENRETURN.sqlCredentials;
 const EMOJIDINO = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
+
 //global functions
 //puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
@@ -602,13 +605,13 @@ commandDictionary['dex'] = {
 };
 */
 
-//SQL Database stuffs
+//Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
     console.log('Connected to the Database');
 });
 
-
+//Connect to Discord
 // only reacts to Discord _after_ ready is emitted
 BOT.on('ready', () => {
   console.log('Online and connected');
@@ -700,13 +703,6 @@ BOT.on('message', message => {
   if (message.author.BOT) { return; }  
 
 });
-// Create an event listener for new guild members
-BOT.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find('name', 'member-log');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(EMOJIDINO + ROAR.generate() + ROAR.generate() + ROAR.generate() + ` (Welcome to the server, ${member})`);
-});
+
+//define token in the login function
 BOT.login(TOKEN);
