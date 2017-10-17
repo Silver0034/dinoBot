@@ -587,7 +587,7 @@ commandDictionary['profile'] = {
 										if (err) throw err;
 									});
 									//Generate path and save path to users
-									sqldb.query("UPDATE user SET userBackground = " + './userContent/userBackground/' + message.author.id + '.png' + " WHERE userID = " + MYSQL.escape(message.author.id), function (err, results, fields) {
+									sqldb.query("UPDATE user SET userBackground = " + "./userContent/userBackground/" + message.author.id + ".png" + " WHERE userID = " + message.author.id, function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
   						});
