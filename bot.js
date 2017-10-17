@@ -562,7 +562,7 @@ commandDictionary['profile'] = {
             if (imageUrlSplit[0] == 'https') {
 							imageUrlSplit[0] = 'http';
 						}
-						imageInputURL = imageUrlSplit.join('');
+						imageInputURL = imageUrlSplit.join(':');
 						console.log(imageUrlSplit);
 						//what to do if link is added
 						if (VALIDURL.isUri(imageInputURL)) {
