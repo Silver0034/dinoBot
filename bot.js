@@ -586,12 +586,13 @@ commandDictionary['profile'] = {
 									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', image, function (err) {
 										if (err) throw err;
 									});
-								});
-							});
-						  sqldb.query("UPDATE user SET userBackground = "+ MYSQL.escape(args[1]) + " WHERE userID = " + MYSQL.escape(message.author.id), function (err, results, fields) {
+									//Generate path and save path to users
+									sqldb.query("UPDATE user SET userBackground = " + './userContent/userBackground/' + message.author.id + '.png' + " WHERE userID = " + MYSQL.escape(message.author.id), function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
   						});
+								});
+							});
 						} else {
 							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
 						}
