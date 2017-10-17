@@ -572,7 +572,7 @@ commandDictionary['profile'] = {
 									var image = Buffer.concat(imgCheckBuffer);
 									//determine if the image is png
 									var type = 'image/png';
-									if (res.headers['content-type'] !== undefinded)
+									if (res.headers['content-type'] !== undefined)
 										type = res.headers[content-type];
 									//download the image
 									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', image, function (err) {
