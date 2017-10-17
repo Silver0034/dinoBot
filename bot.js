@@ -555,11 +555,20 @@ commandDictionary['profile'] = {
 				case 'background':
 				case 'b':
 					if (args[1] != undefined) {
-						var image_url = args[1];
+						
+						//turn https into http
+						var imageInputURL = '';
+						var imageUrlSplit = args[1].split(':');
+						if (imageUrlSplit[0] == 'https') {
+							//remove the s
+							imageInputURL = args[1].slice(0, 4) + args[1].slice(5);
+						} else {
+						  imageInputURL = args[1];	
+						}
 						//what to do if link is added
-						if (VALIDURL.isUri(args[1])) {
+						if (VALIDURL.isUri(imageInputURL)) {
 							//check if image is a png
-							HTTP.get(image_url, function(res) {
+							HTTP.get(imageInputURL, function(res) {
 								var imgCheckBuffer = [];
 								var imgCheckLength = 0;
 								res.on('data', function(chunk) {
