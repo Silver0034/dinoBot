@@ -7,7 +7,6 @@ const MYSQL = require('mysql');
 const JIMP = require('jimp');
 const VALIDURL = require('valid-url');
 const HTTP = require('http');
-const MJS = require('mongojs');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
 const BALL = require('./commandFunctions/ball.js');
