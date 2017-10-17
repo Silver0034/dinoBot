@@ -6,9 +6,10 @@ exports.profile = function(Jimp,
 													 EMOJIDINO,
 													 attachment,
 													 sqldb) {
-	
+	console.log('1');
 	sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		var userBackground = results[0].userBackground;
+		console.log('2');
 		//Assembling the picture
 		var userCard = new Jimp(800, 500, 0x000000, function (err, image) {
 			//set where the picture will be saved at the end
@@ -16,11 +17,13 @@ exports.profile = function(Jimp,
 			if (err) throw err;
 			// Put Plate over Background
 			Jimp.read(userBackground, function (err, background) {
+				console.log('3');
 				background.cover(800, 198)
 				.blur(1)
 				.brightness(-0.2);
 				if (err) throw err;
 				Jimp.read('./assets/profile.png', function (err, plate) {
+					console.log('4');
 					//XP BAR in image
 					//XP Bar Max Width = 517px
 					//TODO: Make Width Represent percentage to next level
@@ -32,12 +35,14 @@ exports.profile = function(Jimp,
 							avatarPath = message.author.avatarURL;
 						}
 						Jimp.read('./assets/avatarCircleMask.png', function (err, mask) {
+							console.log('5');
 							//Avatar
 							Jimp.read(avatarPath, function (err, avatar) {
 								//Assemble Avatar
 								avatar.cover(193, 193)
 								.mask(mask, 0, 0);
 								//Loads Fonts
+								console.log('6');
 								Jimp.loadFont('./assets/fonts/museo-sans-500-16pt-black.fnt').then(function (jimpFontMS16pt500Black) {
 									Jimp.loadFont('./assets/fonts/museo-sans-900-18pt-white.fnt').then(function (jimpFontMS18pt900White) {
 										Jimp.loadFont('./assets/fonts/museo-sans-100-24pt-black.fnt').then(function (jimpFontMS24pt100Black) {
@@ -46,6 +51,7 @@ exports.profile = function(Jimp,
 													Jimp.loadFont('./assets/fonts/museo-sans-title-36pt-white.fnt').then(function (jimpFontMS36ptTitleWhite) {
 														Jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
 															//Assemble Image
+															console.log('7');
 															image.composite(background, 0, 0)
 															.composite(plate, 0, 0)
 															.composite(avatar, 27, 94)
