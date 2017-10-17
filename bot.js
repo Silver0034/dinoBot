@@ -583,7 +583,7 @@ commandDictionary['profile'] = {
 									if (res.headers['content-type'] !== undefined)
 										type = res.headers['content-type'];
 									//download the image
-									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', image, function (err) {
+									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', 'image', function (err) {
 										if (err) throw err;
 									});
 									//Generate path and save path to users
