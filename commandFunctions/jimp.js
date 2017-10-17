@@ -12,6 +12,7 @@ exports.profile = function(JIMP,
 		console.log('2');
 		//Assembling the picture
 		var userCard = new JIMP(800, 500, 0x000000, function (err, image) {
+			console.log('2.1');
 			//set where the picture will be saved at the end
 			attachment = './assets/UserProfile.png';
 			if (err) throw err;
