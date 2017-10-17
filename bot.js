@@ -3,10 +3,11 @@
 const BOT = new DISCORD.Client();
 const DISCORD = require('discord.js');
 //npm dependencies
-const MYSQL = require('mysql');
-const JIMP = require('jimp');
-const VALIDURL = require('valid-url');
+const fs = require('fs');
 const HTTP = require('http');
+const JIMP = require('jimp');
+const MYSQL = require('mysql');
+const VALIDURL = require('valid-url');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
 const BALL = require('./commandFunctions/ball.js');
@@ -556,7 +557,28 @@ commandDictionary['profile'] = {
 					if (args[1] != undefined) {
 						//what to do if link is added
 						if (VALIDURL.isUri(args[1])) {
-							//put thing here to check if image
+							//check if image is a png
+							HTTP.get(image_url, function(res) {
+								var imgCheckBuffer = [];
+								var imgCheckLength = 0;
+								res.on('data', function(chunk) {
+									//store each block of data in imgCheckbuffer
+									imgCheckLength += chunk.length;
+									imgCheckBuffer.push(chunk);
+								})
+								res.on('end', function () {
+									//puts image from array into single buffer
+									var image = Buffer.concat(imgCheckBuffer);
+									//determine if the image is png
+									var type = 'image/png';
+									if (res.headers['content-type'] !== undefinded)
+										type = res.headers[content-type];
+									//download the image
+									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', image, function (err) {
+										if (err) throw err;
+									});
+								});
+							});
 						  sqldb.query("UPDATE user SET userBackground = "+ MYSQL.escape(args[1]) + " WHERE userID = " + MYSQL.escape(message.author.id), function (err, results, fields) {
 								if (err) throw err;
     						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
