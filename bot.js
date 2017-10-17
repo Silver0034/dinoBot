@@ -15,7 +15,7 @@ const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
 const VALIDURL = require('valid-url');
 const HTTP = require('http');
 const MJS = require('mongojs');
-var rps = require('./commandFunctions/rps.js');
+const RPS = require('./commandFunctions/rps.js');
 var rpg = require('./commandFunctions/rpg.js');
 
 //establish global variables and constants
@@ -422,7 +422,7 @@ commandDictionary['rps'] = {
 		//check for correct input
 		switch(args[0]) {
 			case 'rock':
-				rpsResult = rps.generate();
+				rpsResult = RPS.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
 					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsTie);
@@ -433,7 +433,7 @@ commandDictionary['rps'] = {
 				}
         break;
 			case 'paper':
-				rpsResult = rps.generate();
+				rpsResult = RPS.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
 					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsWin);
@@ -444,7 +444,7 @@ commandDictionary['rps'] = {
 				}
         break;
 			case 'scissors':
-				rpsResult = rps.generate();
+				rpsResult = RPS.generate();
 				rpsMessage += rpsResult.toUpperCase() + '** '
 				if (rpsResult == 'rock') {
           message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsLoose);
