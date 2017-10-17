@@ -3,7 +3,6 @@
 const DISCORD = require('discord.js');
 const BOT = new DISCORD.Client();
 //npm dependencies
-const DOWNLOAD = require('download-file');
 const fs = require('fs');
 const HTTP = require('http');
 var jimp = require('jimp');
@@ -28,6 +27,13 @@ const MYSQLCRED = TOKENRETURN.sqlCredentials;
 const EMOJIDINO = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
+var download = function(uri, filename, callback){
+  request.head(uri, function(err, res, body){
+    console.log('content-type:', res.headers['content-type']);
+    console.log('content-length:', res.headers['content-length']);
+    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+  });
+};
 
 //global functions
 //puts user in timeout
@@ -567,7 +573,7 @@ commandDictionary['profile'] = {
 						imageInputURL = imageUrlSplit.join(':');
 						//check if the argument is a url
 						if (VALIDURL.isUri(imageInputURL)) {
-							DOWNLOAD(imageInputURL, './userContent/userBackground/temp.png');
+							download(imageInputURL, './userContent/userBackground/temp.png');
 							//put stuff here
 						} else {
 							//if the argument is not a url
