@@ -16,6 +16,7 @@ exports.profile = function(JIMP,
 			//set where the picture will be saved at the end
 			attachment = './assets/UserProfile.png';
 			if (err) throw err;
+			console.log('2.2');
 			// Put Plate over Background
 			JIMP.read(userBackground, function (err, background) {
 				console.log('3');
