@@ -563,7 +563,6 @@ commandDictionary['profile'] = {
 							imageUrlSplit[0] = 'http';
 						}
 						imageInputURL = imageUrlSplit.join('');
-					}
 						//what to do if link is added
 						if (VALIDURL.isUri(imageInputURL)) {
 							//check if image is a png
