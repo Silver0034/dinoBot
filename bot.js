@@ -3,10 +3,11 @@
 const DISCORD = require('discord.js');
 const BOT = new DISCORD.Client();
 //npm dependencies
-const fs = require('fs');
+const FS = require('fs');
 const HTTP = require('http');
 var jimp = require('jimp');
 const MYSQL = require('mysql');
+const REQUEST = require('request');
 const VALIDURL = require('valid-url');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
@@ -28,10 +29,10 @@ const EMOJIDINO = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
 var download = function(uri, filename, callback){
-  request.head(uri, function(err, res, body){
+  REQUEST.head(uri, function(err, res, body){
     console.log('content-type:', res.headers['content-type']);
     console.log('content-length:', res.headers['content-length']);
-    request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+    REQUEST(uri).pipe(FS.createWriteStream(filename)).on('close', callback);
   });
 };
 
