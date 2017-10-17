@@ -551,31 +551,33 @@ commandDictionary['profile'] = {
   usage: '**Usage:** `profile',
   doCommand: function(message, key, args) {
 		if (args[0]) {
+			//if there is a first argument
 			switch(args[0]) {
 				case 'background':
 				case 'b':
 					if (args[1] != undefined) {
+						//if there is a second argument
 						//turn https into http
             var imageInputURL = '';
             var imageUrlSplit = args[1].split(':');
             if (imageUrlSplit[0] == 'https') {
 							imageUrlSplit[0] = 'http';
 						}
+						//check if the argument is a url
 						if (VALIDURL.isUri(imageInputURL)) {
-							download('args[1]', './userContent/userBackground/temp.png', function(){
-  							//anything else i wanna do?
-							});
+							download('args[1]', './userContent/userBackground/temp.png');
+							//put stuff here
+						} else {
+							//if the argument is not a url
+							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
 						}
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+						break;
+					} else {
+						//if there is no argument
+						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px'); 
+						break;
+					}
+			}						
 						/*
 						//turn https into http
             var imageInputURL = '';
@@ -624,6 +626,7 @@ commandDictionary['profile'] = {
 				return;
 			}	*/
 		} else {
+			//if there is no first argument
 			message.channel.startTyping();
 					var attachment = '';
 					JIMPFUNCTIONS.profile(jimp, 
