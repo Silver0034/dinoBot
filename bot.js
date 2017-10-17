@@ -1,7 +1,7 @@
 //establish constants
 //discord.js dependencies
-const BOT = new DISCORD.Client();
 const DISCORD = require('discord.js');
+const BOT = new DISCORD.Client();
 //npm dependencies
 const fs = require('fs');
 const HTTP = require('http');
