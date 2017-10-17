@@ -3,6 +3,7 @@
 const DISCORD = require('discord.js');
 const BOT = new DISCORD.Client();
 //npm dependencies
+const DOWNLOAD = require('download-file');
 const fs = require('fs');
 const HTTP = require('http');
 var jimp = require('jimp');
@@ -566,7 +567,7 @@ commandDictionary['profile'] = {
 						imageInputURL = imageUrlSplit.join(':');
 						//check if the argument is a url
 						if (VALIDURL.isUri(imageInputURL)) {
-							download(imageInputURL, './userContent/userBackground/temp.png');
+							DOWNLOAD(imageInputURL, './userContent/userBackground/temp.png');
 							//put stuff here
 						} else {
 							//if the argument is not a url
