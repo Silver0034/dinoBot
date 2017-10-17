@@ -560,10 +560,9 @@ commandDictionary['profile'] = {
             var imageInputURL = '';
             var imageUrlSplit = args[1].split(':');
             if (imageUrlSplit[0] == 'https') {
-							imageUrlSplit[0] = 'http';
+							imageUrlSplit[0] = 'http:';
 						}
 						imageInputURL = imageUrlSplit.join('');
-						console.log(imageInputURL);
 						//what to do if link is added
 						if (VALIDURL.isUri(imageInputURL)) {
 							//check if image is a png
