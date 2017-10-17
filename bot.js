@@ -555,6 +555,7 @@ commandDictionary['profile'] = {
 				case 'background':
 				case 'b':
 					if (args[1] != undefined) {
+						var image_url = args[1];
 						//what to do if link is added
 						if (VALIDURL.isUri(args[1])) {
 							//check if image is a png
