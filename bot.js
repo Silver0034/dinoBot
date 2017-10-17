@@ -555,7 +555,28 @@ commandDictionary['profile'] = {
 				case 'background':
 				case 'b':
 					if (args[1] != undefined) {
+						//turn https into http
+            var imageInputURL = '';
+            var imageUrlSplit = args[1].split(':');
+            if (imageUrlSplit[0] == 'https') {
+							imageUrlSplit[0] = 'http';
+						}
+						if (VALIDURL.isUri(imageInputURL)) {
+							download('args[1]', './userContent/userBackground/temp.png', function(){
+  							//anything else i wanna do?
+							});
+						}
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						/*
 						//turn https into http
             var imageInputURL = '';
             var imageUrlSplit = args[1].split(':');
@@ -567,7 +588,7 @@ commandDictionary['profile'] = {
 						if (VALIDURL.isUri(imageInputURL)) {
 							//check if image is a png
 							HTTP.get(imageInputURL, function(res) {
-								var imgCheckBuffer = new Array;
+								var imgCheckBuffer = [];
 								var imgCheckLength = 0;
 								res.on('data', function(chunk) {
 									//store each block of data in imgCheckbuffer
@@ -601,7 +622,7 @@ commandDictionary['profile'] = {
 						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');	
 					}
 				return;
-			}	
+			}	*/
 		} else {
 			message.channel.startTyping();
 					var attachment = '';
