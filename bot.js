@@ -563,12 +563,11 @@ commandDictionary['profile'] = {
 							imageUrlSplit[0] = 'http';
 						}
 						imageInputURL = imageUrlSplit.join(':');
-						console.log(imageInputURL);
 						//what to do if link is added
 						if (VALIDURL.isUri(imageInputURL)) {
 							//check if image is a png
 							HTTP.get(imageInputURL, function(res) {
-								var imgCheckBuffer = [];
+								var imgCheckBuffer = new Array;
 								var imgCheckLength = 0;
 								res.on('data', function(chunk) {
 									//store each block of data in imgCheckbuffer
