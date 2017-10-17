@@ -578,6 +578,7 @@ commandDictionary['profile'] = {
 								res.on('end', function () {
 									//puts image from array into single buffer
 									console.log(imgCheckBuffer);
+									console.log('LOOOOOOK HEEEERRE -----------------------------------------------------------');
 									var image = Buffer.concat(imgCheckBuffer);
 									//determine if the image is png
 									var type = 'image/png';
