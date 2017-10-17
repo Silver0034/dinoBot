@@ -19,12 +19,12 @@ exports.profile = function(jimp,
 			if (err) throw err;
 			console.log('2.2');
 			// Put Plate over Background
-			jimp.read(userBackground, function (err, background) {
+			//jimp.read(userBackground, function (err, background) {
 				console.log('3');
-				background.cover(800, 198)
-				.blur(1)
-				.brightness(-0.2);
-				if (err) throw err;
+			//	background.cover(800, 198)
+			//	.blur(1)
+			//	.brightness(-0.2);
+			//	if (err) throw err;
 				jimp.read('./assets/profile.png', function (err, plate) {
 					console.log('4');
 					//XP BAR in image
@@ -55,7 +55,7 @@ exports.profile = function(jimp,
 														jimp.loadFont('./assets/fonts/museo-sans-title-53pt-black.fnt').then(function (jimpFontMS53ptTitleBlack) {
 															//Assemble Image
 															console.log('7');
-															image.composite(background, 0, 0)
+						//									image.composite(background, 0, 0)
 															.composite(plate, 0, 0)
 															.composite(avatar, 27, 94)
 															.composite(xp, 247, 464)
@@ -78,7 +78,7 @@ exports.profile = function(jimp,
 						});
 					});
 				});
-			});
+			//});
 		});
 	});
 }
