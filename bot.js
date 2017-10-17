@@ -577,13 +577,14 @@ commandDictionary['profile'] = {
 								})
 								res.on('end', function () {
 									//puts image from array into single buffer
+									console.log(imgCheckBuffer);
 									var image = Buffer.concat(imgCheckBuffer);
 									//determine if the image is png
 									var type = 'image/png';
 									if (res.headers['content-type'] !== undefined)
 										type = res.headers['content-type'];
 									//download the image
-									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', 'image', function (err) {
+									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', image, function (err) {
 										if (err) throw err;
 									});
 									//Generate path and save path to users
