@@ -30,8 +30,6 @@ var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
 var download = function(uri, filename, callback){
   REQUEST.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length']);
     REQUEST(uri).pipe(FS.createWriteStream(filename)).on('close', callback);
   });
 };
