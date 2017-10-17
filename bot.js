@@ -563,9 +563,10 @@ commandDictionary['profile'] = {
             if (imageUrlSplit[0] == 'https') {
 							imageUrlSplit[0] = 'http';
 						}
+						imageInputURL = imageUrlSplit.join(':');
 						//check if the argument is a url
 						if (VALIDURL.isUri(imageInputURL)) {
-							download('args[1]', './userContent/userBackground/temp.png');
+							download(imageInputURL, './userContent/userBackground/temp.png');
 							//put stuff here
 						} else {
 							//if the argument is not a url
