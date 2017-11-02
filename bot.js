@@ -491,9 +491,6 @@ commandDictionary['rpg'] = {
 			case 'npc':
         message.channel.send(responseHead(message, key) + RPG.name() + ' is ' + RPG.flavor() + ' that ' + RPG.characteristics() + ', is plagued by ' + RPG.flaws() + ', and is driven by ' + RPG.bonds() + '.');
 				return;
-      case 'scrape':
-        message.channel.send(responseHead(message, key) + 'I\'m not yet functioning');
-        return;
       case 'conditions':
 			case 'con':
 			case 'c':
@@ -542,7 +539,11 @@ commandDictionary['rpg'] = {
 						}
 					}});
 				return;
-				}			
+				}
+		  case 'scrape':
+        message.channel.send(responseHead(message, key) + 'I\'m not yet functioning');
+        return;
+			
 		}
 		if (args[0] == null || args[0] == undefined) {
       message.channel.send(error(key) + '\n Options: name, character');
