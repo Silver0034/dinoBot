@@ -479,17 +479,9 @@ commandDictionary['rpg'] = {
       case 'scrape':
         
         SCRAPEIT("https://ionicabizau.net", {
-            articles : {
-                listItem: ".article"
-              , data: {
-                    createdAt: {
-                        selector: ".date"
-                      , convert: x => new Date(x)
-                    }
-                  , title: "a.article-title"
-                  
-                }
-            }
+          
+          title: ".header h1"
+        
         }, (err, page) => {
             console.log(err || page);
         });
