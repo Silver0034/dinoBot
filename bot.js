@@ -480,14 +480,13 @@ commandDictionary['rpg'] = {
         
         var scrapeTitle = 'Title';
         
-        SCRAPEIT("https://ionicabizau.net", {
+        SCRAPEIT("https://www.dndbeyond.com/monsters/aboleth", {
           
-          title: ".header h1"
+          title: ".monster-name h2"
         
         }, (err, page) => {
-          scrapeTitle = page;
           
-            console.log(err || page);
+          console.log(err || page);
         });
         
         message.channel.send(responseHead(message, key) + scrapeTitle);
