@@ -483,10 +483,12 @@ commandDictionary['rpg'] = {
           title: ".header h1"
         
         }, (err, page) => {
+          var scrapeTitle = page;
+          
             console.log(err || page);
         });
         
-        message.channel.send(responseHead(message, key) + 'scape!');
+        message.channel.send(responseHead(message, key) + scrapeTitle);
 				return;  
 			case 'name':
         message.channel.send(responseHead(message, key) + RPG.name());
