@@ -480,7 +480,8 @@ commandDictionary['rpg'] = {
                 
         SCRAPEIT("https://www.dndbeyond.com/monsters/adult-blue-dragon", {
           
-          title: ".monster-name"
+          title: ".monster-name",
+          descShort: ".details-item"
         
         }, (err, page) => {
           console.log(err || page);
