@@ -496,7 +496,7 @@ commandDictionary['rpg'] = {
 							icon_url: BOT.user.avatarURL
 						},
 						title: page['title'],
-						description: "Note: this condition is for Dungeons and Dragons 5e.\n",
+						description: page['descShort'],
 						fields: [
 							{
 								name: 'Description',
