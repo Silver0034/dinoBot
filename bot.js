@@ -492,7 +492,7 @@ commandDictionary['rpg'] = {
         message.channel.send(responseHead(message, key) + RPG.name() + ' is ' + RPG.flavor() + ' that ' + RPG.characteristics() + ', is plagued by ' + RPG.flaws() + ', and is driven by ' + RPG.bonds() + '.');
 				return;
       case 'scrape':
-        message.channel.send(responseHead(message, key) + 'I\'m not yet functioning';
+        message.channel.send(responseHead(message, key) + 'I\'m not yet functioning');
         return;
       case 'conditions':
 			case 'con':
