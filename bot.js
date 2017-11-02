@@ -478,7 +478,7 @@ commandDictionary['rpg'] = {
   	switch(args[0]) { 
       case 'scrape':
                 
-        SCRAPEIT("https://www.dndbeyond.com/monsters/aboleth", {
+        SCRAPEIT("https://www.dndbeyond.com/monsters/aarakocra", {
           
           title: ".monster-name"
         
