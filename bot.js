@@ -478,7 +478,7 @@ commandDictionary['rpg'] = {
   	switch(args[0]) { 
       case 'scrape':
         
-        scrapeIt("https://ionicabizau.net", {
+        SCRAPEIT("https://ionicabizau.net", {
             articles : {
                 listItem: ".article"
               , data: {
