@@ -487,21 +487,14 @@ commandDictionary['rpg'] = {
                       , convert: x => new Date(x)
                     }
                   , title: "a.article-title"
-                  , tags: {
-                        selector: ".tags"
-                      , convert: x => x.split("|").map(c => c.trim()).slice(1)
-                    }
-                  , content: {
-                        selector: ".article-content"
-                      , how: "html"
-                    }
+                  
                 }
             }
         }, (err, page) => {
             console.log(err || page);
         });
         
-        message.channel.send(responseHead(message, key) + page);
+        message.channel.send(responseHead(message, key) + 'scape!');
 				return;  
 			case 'name':
         message.channel.send(responseHead(message, key) + RPG.name());
