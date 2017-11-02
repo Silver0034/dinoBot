@@ -484,6 +484,8 @@ commandDictionary['rpg'] = {
         
         }, (err, page) => {
           console.log(err || page);
+          
+          
           message.channel.send(responseHead(message, key) + page['title']);
           
           message.channel.send({embed: {
@@ -503,7 +505,7 @@ commandDictionary['rpg'] = {
 						footer: {
 								text: BOT.user.username + ' | rpg Assistant'
 						}
-					}
+					}});
           
           
         });   
