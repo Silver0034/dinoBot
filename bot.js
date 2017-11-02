@@ -482,8 +482,8 @@ commandDictionary['rpg'] = {
           
           title: ".monster-name",
           descShort: ".details-item",
-          abilities: ".abilities",
-          //monsterImage: ".mosnter-image",
+          //abilities: ".abilities",
+          monsterImage: ".mosnter-image",
         
         }, (err, page) => {
           console.log(err || page);
@@ -499,10 +499,10 @@ commandDictionary['rpg'] = {
 						},
 						title: page['title'],
 						description: page['descShort'],
-            //thumbnail: page[monsterImage],
+            thumbnail: page[monsterImage],
 						fields: [
 							{
-								name: page['abilities'],
+								name: 'filler abilities',//page['abilities'],
 								value: 'The content goes here',
 							}
 						],
