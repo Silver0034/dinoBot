@@ -478,12 +478,14 @@ commandDictionary['rpg'] = {
   	switch(args[0]) { 
       case 'scrape':
         
+        var scrapeTitle = 'Title';
+        
         SCRAPEIT("https://ionicabizau.net", {
           
           title: ".header h1"
         
         }, (err, page) => {
-          var scrapeTitle = page;
+          scrapeTitle = page;
           
             console.log(err || page);
         });
