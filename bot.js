@@ -477,19 +477,16 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) { 
       case 'scrape':
-        
-        var scrapeTitle = 'Title';
-        
+                
         SCRAPEIT("https://www.dndbeyond.com/monsters/aboleth", {
           
           title: ".monster-name"
         
         }, (err, page) => {
-          
           console.log(err || page);
-        });
+          message.channel.send(responseHead(message, key) + page[1]);
+        });   
         
-        message.channel.send(responseHead(message, key) + scrapeTitle);
 				return;  
 			case 'name':
         message.channel.send(responseHead(message, key) + RPG.name());
