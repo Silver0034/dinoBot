@@ -8,6 +8,7 @@ const HTTP = require('http');
 var jimp = require('jimp');
 const MYSQL = require('mysql');
 const REQUEST = require('request');
+const SCRAPEIT = require("scrape-it")
 const VALIDURL = require('valid-url');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
@@ -481,7 +482,7 @@ commandDictionary['rpg'] = {
 			case 'characteristic':
         message.channel.send(responseHead(message, key) + 'The character ' + RPG.characteristics() + '.');
 				return;
-			case 'bond':
+			c
         message.channel.send(responseHead(message, key) + 'The character is driven by ' + RPG.bonds() + '.');
 				return;
 			case 'flaw':
@@ -515,7 +516,7 @@ commandDictionary['rpg'] = {
 					}});
 					return;
 				} else {
-          message.channel.send({embed: {
+          			message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
 							name: BOT.user.username,
@@ -537,9 +538,12 @@ commandDictionary['rpg'] = {
 								text: BOT.user.username + ' | rpg Assistant'
 						}
 					}});
-					return;
+				return;
 				}
-				break;
+		  case 'scrape':
+        message.channel.send(responseHead(message, key) + 'I\'m not yet functioning';
+        return;
+			
 		}
 		if (args[0] == null || args[0] == undefined) {
       message.channel.send(error(key) + '\n Options: name, character');
