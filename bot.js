@@ -501,7 +501,7 @@ commandDictionary['rpg'] = {
             console.log(err || page);
         });
         
-        message.channel.send(responseHead(message, key) + 'scape!');
+        message.channel.send(responseHead(message, key) + page);
 				return;  
 			case 'name':
         message.channel.send(responseHead(message, key) + RPG.name());
