@@ -485,6 +485,27 @@ commandDictionary['rpg'] = {
         }, (err, page) => {
           console.log(err || page);
           message.channel.send(responseHead(message, key) + page['title']);
+          
+          message.channel.send({embed: {
+						color: 0x64FFDA,
+						author: {
+							name: BOT.user.username,
+							icon_url: BOT.user.avatarURL
+						},
+						title: page['title'],
+						description: "Note: this condition is for Dungeons and Dragons 5e.\n",
+						fields: [
+							{
+								name: 'Description',
+								value: RPG.rpgConditions[args[1]].desc,
+							}
+						],
+						footer: {
+								text: BOT.user.username + ' | rpg Assistant'
+						}
+					}
+          
+          
         });   
         
 				return;  
