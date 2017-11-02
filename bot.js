@@ -482,7 +482,7 @@ commandDictionary['rpg'] = {
         
         SCRAPEIT("https://www.dndbeyond.com/monsters/aboleth", {
           
-          title: ".monster-name h2"
+          title: ".monster-name"
         
         }, (err, page) => {
           
