@@ -477,6 +477,30 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) { 
       case 'scrape':
+        
+        scrapeIt("https://ionicabizau.net", {
+            articles : {
+                listItem: ".article"
+              , data: {
+                    createdAt: {
+                        selector: ".date"
+                      , convert: x => new Date(x)
+                    }
+                  , title: "a.article-title"
+                  , tags: {
+                        selector: ".tags"
+                      , convert: x => x.split("|").map(c => c.trim()).slice(1)
+                    }
+                  , content: {
+                        selector: ".article-content"
+                      , how: "html"
+                    }
+                }
+            }
+        }, (err, page) => {
+            console.log(err || page);
+        });
+        
         message.channel.send(responseHead(message, key) + 'scape!');
 				return;  
 			case 'name':
