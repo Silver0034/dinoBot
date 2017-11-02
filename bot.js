@@ -8,7 +8,7 @@ const HTTP = require('http');
 var jimp = require('jimp');
 const MYSQL = require('mysql');
 const REQUEST = require('request');
-const SCRAPEIT = require("scrape-it")
+const SCRAPEIT = require("scrape-it");
 const VALIDURL = require('valid-url');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
