@@ -484,7 +484,7 @@ commandDictionary['rpg'] = {
         
         }, (err, page) => {
           console.log(err || page);
-          message.channel.send(responseHead(message, key) + page[title]);
+          message.channel.send(responseHead(message, key) + page['title']);
         });   
         
 				return;  
