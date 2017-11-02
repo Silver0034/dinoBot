@@ -500,7 +500,7 @@ commandDictionary['rpg'] = {
 						description: page['descShort'],
 						fields: [
 							{
-								name: 'Description',
+								name: page['abilities'],
 								value: 'The content goes here',
 							}
 						],
