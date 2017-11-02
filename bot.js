@@ -8,6 +8,7 @@ const HTTP = require('http');
 var jimp = require('jimp');
 const MYSQL = require('mysql');
 const REQUEST = require('request');
+const SCRAPEIT = require("scrape-it");
 const VALIDURL = require('valid-url');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
@@ -474,14 +475,17 @@ commandDictionary['rpg'] = {
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
-  	switch(args[0]) {
+  	switch(args[0]) { 
+      case 'scrape':
+        message.channel.send(responseHead(message, key) + 'scape!');
+				return;  
 			case 'name':
         message.channel.send(responseHead(message, key) + RPG.name());
 				return;
 			case 'characteristic':
         message.channel.send(responseHead(message, key) + 'The character ' + RPG.characteristics() + '.');
 				return;
-			case 'bond':
+			c
         message.channel.send(responseHead(message, key) + 'The character is driven by ' + RPG.bonds() + '.');
 				return;
 			case 'flaw':
@@ -515,7 +519,7 @@ commandDictionary['rpg'] = {
 					}});
 					return;
 				} else {
-          message.channel.send({embed: {
+          			message.channel.send({embed: {
 						color: 0x64FFDA,
 						author: {
 							name: BOT.user.username,
@@ -537,9 +541,8 @@ commandDictionary['rpg'] = {
 								text: BOT.user.username + ' | rpg Assistant'
 						}
 					}});
-					return;
-				}
-				break;
+				return;
+				}			
 		}
 		if (args[0] == null || args[0] == undefined) {
       message.channel.send(error(key) + '\n Options: name, character');
