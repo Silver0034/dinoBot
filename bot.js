@@ -491,6 +491,7 @@ commandDictionary['rpg'] = {
           scores: {
             abilityScore: ".score > span"
           },
+        },
           (err, page) => {
           console.log(err || page);
           console.log("Look hereeeee" + page["scores"]);
