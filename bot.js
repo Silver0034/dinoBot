@@ -852,6 +852,7 @@ commandDictionary['name'] = {
 		      var nicknameToggleState = results[0].nicknameToggle;
           var nicknameOne = results[0].nicknameOne;
           var nicknameTwo = results[0].nicknameTwo;
+          console.log(nicknameOne + nicknameTwo + nicknameToggleState);
           if (nicknameToggleState = 0) {
             if (message.guild) {
               //check BOT has permissions to change nicknames
