@@ -483,7 +483,10 @@ commandDictionary['rpg'] = {
           title: ".monster-name",
           descShort: ".details-item",
           //abilities: ".abilities",
-          monsterImage: ".mosnter-image",
+          monsterImage: {
+            selector: ".mosnter-image img",
+            attr: "src"
+          },
         
         }, (err, page) => {
           console.log(err || page);
