@@ -510,7 +510,7 @@ commandDictionary['rpg'] = {
     },
     "thumbnail": {
       "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg"
-    }
+    },
     "author": {
       "name": "author name",
       "url": "https://discordapp.com",
