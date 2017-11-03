@@ -495,6 +495,37 @@ commandDictionary['rpg'] = {
           message.channel.send(responseHead(message, key) + page['title']);
           console.log(page['monsterImage']);
           
+          
+          message.channel.send({
+  "content": "this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```",
+  "embed": {
+    "title": "title ~~(did you know you can have markdown here too?)~~",
+    "description": "this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```",
+    "url": "https://discordapp.com",
+    "color": 6186015,
+    "timestamp": "2017-11-03T14:29:34.765Z",
+    "footer": {
+      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+      "text": "footer text"
+    },
+    "thumbnail": {
+      "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg"
+    }
+    "author": {
+      "name": "author name",
+      "url": "https://discordapp.com",
+      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+    },
+    "fields": [
+      {
+        "name": " _",
+        "value": "some of these properties have certain limits..."
+      },
+      
+    ]
+  }
+})
+          
           message.channel.send({
   "content": "Monster Encyclopedia",
   "embed": {
