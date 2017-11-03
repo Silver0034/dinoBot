@@ -853,13 +853,18 @@ commandDictionary['name'] = {
           var nicknameOne = results[0].nicknameOne;
           var nicknameTwo = results[0].nicknameTwo;
           console.log(nicknameOne + nicknameTwo + nicknameToggleState);
+          
+          
+          
+          
+          
           if (nicknameToggleState = 0) {
             if (message.guild) {
               //check BOT has permissions to change nicknames
               if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
                 //change nickname
                 console.log("did it change the nickname?");
-                message.guild.members.get(BOT.user.id).setNickname(nicknameOne);
+                message.author.setNickname(nicknameOne);
               } else {
                 //If does not have permission
                 message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
