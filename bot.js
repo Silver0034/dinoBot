@@ -528,27 +528,27 @@ commandDictionary['rpg'] = {
         "inline": true
       },
       {
-        "name": "**DEX**",
+        "name": "<:dexterity:376009689348964352> **DEX**",
         "value": "10 (+0)",
         "inline": true
       },
       {
-        "name": "**CON**",
+        "name": "<:constitution:376009689214877707> **CON**",
         "value": "23 (+6)",
         "inline": true
       },
       {
-        "name": "**INT**",
+        "name": "<:intelligence:376009689445564426> **INT**",
         "value": "16 (+3)",
         "inline": true
       },
       {
-        "name": "**WIS**",
+        "name": "<:wisdom:376009690796261377> **WIS**",
         "value": "15 (+2)",
         "inline": true
       },
       {
-        "name": "**CHA**",
+        "name": "<:charisma:376009688988516353> **CHA**",
         "value": "19 (+4)",
         "inline": true
       },
