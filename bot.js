@@ -519,8 +519,8 @@ commandDictionary['rpg'] = {
     },
     "fields": [
       {
-        "name": "__Abilities __",
-        "value": "----------------------------------------"
+        "name": "<:blank:376016058248724480>",
+        "value": "__**Abilities**__"
       },
       {
         "name": "<:strength:376009689864994820> **STR**",
@@ -553,12 +553,8 @@ commandDictionary['rpg'] = {
         "inline": true
       },
       {
-        "name": "----------------------------------------",
-        "value": "<:blank:376016058248724480>"
-      },
-      {
-        "name": "__Quick Information__",
-        "value": "----------------------------------------"
+        "name": "<:blank:376016058248724480>",
+        "value": "__**Quick Information**__"
       },
       {
         "name": "**Challenge**",
@@ -581,8 +577,8 @@ commandDictionary['rpg'] = {
         "inline": true
       },
       {
-        "name": "__Proficiencies__",
-        "value": "----------------------------------------"
+        "name": "<:blank:376016058248724480>",
+        "value": "__**Proficiencies**__"
       },
       {
         "name": "**Saving Throws**",
@@ -610,8 +606,8 @@ commandDictionary['rpg'] = {
         "inline": true
       },
       {
-        "name": "__Special Abilities__",
-        "value": "----------------------------------------",
+        "name": "<:blank:376016058248724480>",
+        "value": "__**Special Abilities**__",
       },
       {
         "name": "__Legendary Resistance (3/Day).__",
@@ -619,8 +615,8 @@ commandDictionary['rpg'] = {
         "inline": true
       },
       {
-        "name": "__Actions__",
-        "value": "----------------------------------------"
+        "name": "<:blank:376016058248724480>",
+        "value": "__**Actions**__"
       },
       {
         "name": "**Multiattack.**",
