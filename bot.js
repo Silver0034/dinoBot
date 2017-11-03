@@ -491,13 +491,14 @@ commandDictionary['rpg'] = {
           abilityScore: {
             listItem: ".score"
           },
+          abilityModifier: {
+            listItem: ".modifier"
+          },
         },
           (err, page) => {
           console.log(err || page);
           var abilityScoreArray = page["abilityScore"];
-          console.log("Look hereeeee" + page["abilityScore"]);
-          console.log("The variable" + abilityScoreArray);
-          console.log("tryna call the first one" + abilityScoreArray[0]);
+          var abilityModifierArray = page["abilityModifier"];
                 
           message.channel.send({
             "embed": {
@@ -527,32 +528,32 @@ commandDictionary['rpg'] = {
               },
               {
                 "name": "<:strength:376009689864994820> **STR**",
-                "value": abilityScoreArray[0] + " ",
+                "value": abilityScoreArray[0] + " " + abilityModifierArray[0],
                 "inline": true
               },
               {
                 "name": "<:dexterity:376009689348964352> **DEX**",
-                "value": abilityScoreArray[1] + " ",
+                "value": abilityScoreArray[1] + " " + abilityModifierArray[1],
                 "inline": true
               },
               {
                 "name": "<:constitution:376009689214877707> **CON**",
-                "value": abilityScoreArray[2] + " ",
+                "value": abilityScoreArray[2] + " " + abilityModifierArray[2],
                 "inline": true
               },
               {
                 "name": "<:intelligence:376009689445564426> **INT**",
-                "value": abilityScoreArray[3] + " ",
+                "value": abilityScoreArray[3] + " " + abilityModifierArray[3],
                 "inline": true
               },
               {
                 "name": "<:wisdom:376009690796261377> **WIS**",
-                "value": abilityScoreArray[4] + " ",
+                "value": abilityScoreArray[4] + " " + abilityModifierArray[4],
                 "inline": true
               },
               {
                 "name": "<:charisma:376009688988516353> **CHA**",
-                "value": abilityScoreArray[5] + " ",
+                "value": abilityScoreArray[5] + " " + abilityModifierArray[5],
                 "inline": true
               },
               {
