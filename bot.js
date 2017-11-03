@@ -865,7 +865,10 @@ commandDictionary['name'] = {
               try {
                 message.member.setNickname(nickname);
               } catch(error) {
+                message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of people with a lower rank than me.');
                 console.log(error);
+              } else {
+               message.channel.sendMessage(responseHead(message, key) + 'Your nickname has been changed to ' + nickname;  
               }
             } else {
               //If does not have permission
