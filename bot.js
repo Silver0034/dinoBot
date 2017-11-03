@@ -842,13 +842,15 @@ commandDictionary['name'] = {
           return;
         } else {
           //if there is no number selected
-          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name [set OR toggle]');
+          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name set [1 OR 2] [nickname]');
         }
         return;
       case 'toggle':
         //Switch between two usernames
         return;
     }
+    message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name [set OR toggle]');
+    return;
   }
 }
 /*
