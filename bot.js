@@ -850,45 +850,26 @@ commandDictionary['name'] = {
         //Pull toggle number from database
         sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		      var nicknameToggleState = results[0].nicknameToggle;
-          var nicknameOne = results[0].nicknameOne;
-          var nicknameTwo = results[0].nicknameTwo;
-          console.log(nicknameOne + nicknameTwo + nicknameToggleState);
-          
-          
-          
-          
-          
-          if (nicknameToggleState = 0) {
-            if (message.guild) {
-              //check BOT has permissions to change nicknames
-              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
-                //change nickname
-                console.log("did it change the nickname?");
-                message.author.id.setNickname(nicknameOne);
-              } else {
-                //If does not have permission
-                message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
-              }  
-            } else {
-              //not in a server (in a DM)
-              message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
-            }
+          var nickname = ''; 
+          if (nicknameToggleState == 0) {
+            nickname = results[0].nicknameOne;
+          } else if (nicknameToggleState == 1) {
+            nickname = results[0].nicknameTwo;
           }
-          if (nicknameToggleState = 1) {
-            if (message.guild) {
-              //check BOT has permissions to change nicknames
-              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
-                //change nickname
-                console.log("did it change the nickname?");
-                message.guild.members.get(BOT.user.id).setNickname(nicknameTwo);
-              } else {
-                //If does not have permission
-                message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
-              }  
+          
+          if (message.guild) {
+            //check BOT has permissions to change nicknames
+            if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
+              //change nickname
+              console.log("did it change the nickname?");
+              message.author.id.setNickname(nickname);
             } else {
-              //not in a server (in a DM)
-              message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
-            }
+              //If does not have permission
+              message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
+            }  
+          } else {
+            //not in a server (in a DM)
+            message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
           }
         });
         //
