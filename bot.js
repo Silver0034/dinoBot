@@ -505,11 +505,11 @@ commandDictionary['rpg'] = {
     "color": 6186015,
     "timestamp": "2017-11-03T14:29:34.765Z",
     "footer": {
-      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "text": "footer text"
+      "icon_url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg",
+      "text": "© 2017 D&D Beyond | Scraped by DinoBot"
     },
     "thumbnail": {
-      "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg"
+      "url": "https://cdn.discordapp.com/embed/avatars/0.png"
     },
     "author": {
       "name": "author name",
