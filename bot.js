@@ -882,7 +882,7 @@ commandDictionary['name'] = {
         //
         return;
     }
-    message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name [set OR toggle]');
+    message.channel.send(responseHead(message, key) + 'Please use the command as follows:\n`name toggle\n`name set [1 OR 2] [nickname]');
     return;
   }
 }
