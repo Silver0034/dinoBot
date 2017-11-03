@@ -490,173 +490,136 @@ commandDictionary['rpg'] = {
         
         }, (err, page) => {
           console.log(err || page);
-          
-          
-          message.channel.send(responseHead(message, key) + page['title']);
-          console.log(page['monsterImage']);
-          
-          
+                
           message.channel.send({
-  "content": "this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```",
-  "embed": {
-    "title": "title ~~(did you know you can have markdown here too?)~~",
-    "description": "this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```",
-    "url": "https://discordapp.com",
-    "color": 6186015,
-    "timestamp": "2017-11-03T14:29:34.765Z",
-    "footer": {
-      "icon_url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg",
-      "text": "© 2017 D&D Beyond | Scraped by DinoBot"
-    },
-    "thumbnail": {
-      "url": "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png"
-    },
-    "author": {
-      "name": "author name",
-      "url": "https://discordapp.com",
-      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
-    },
-    "fields": [
-      {
-        "name": " _",
-        "value": "some of these properties have certain limits..."
-      },
-      
-    ]
-  }
-})
-          
-          message.channel.send({
-  "content": "Monster Encyclopedia",
-  "embed": {
-    "title": "Adult Blue Dragon",
-    "description": "*Huge dragon, lawful evil*",
-    "url": "https://www.dndbeyond.com/monsters/adult-blue-dragon",
-    "color": 0x64FFDA,
-    "footer": {
-      "icon_url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg",
-      "text": "© 2017 D&D Beyond | Scraped by DinoBot"
-    },
-    "thumbnail": {
-      "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg"
-    },
-    "image": {
-      "url": "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg"
-    },
-    "author": {
-      "name": "DinoBot",
-      "url": "https://discordapp.com",
-      "icon_url": "https://cdn.discordapp.com/avatars/366052866424569860/0076d17a6955d26d541b4941f055ad6e.png?size=2048"
-    },
-    "fields": [
-      {
-        "name": "<:blank:376016058248724480>",
-        "value": "__**Abilities**__"
-      },
-      {
-        "name": "<:strength:376009689864994820> **STR**",
-        "value": "25 (+7)",
-        "inline": true
-      },
-      {
-        "name": "<:dexterity:376009689348964352> **DEX**",
-        "value": "10 (+0)",
-        "inline": true
-      },
-      {
-        "name": "<:constitution:376009689214877707> **CON**",
-        "value": "23 (+6)",
-        "inline": true
-      },
-      {
-        "name": "<:intelligence:376009689445564426> **INT**",
-        "value": "16 (+3)",
-        "inline": true
-      },
-      {
-        "name": "<:wisdom:376009690796261377> **WIS**",
-        "value": "15 (+2)",
-        "inline": true
-      },
-      {
-        "name": "<:charisma:376009688988516353> **CHA**",
-        "value": "19 (+4)",
-        "inline": true
-      },
-      {
-        "name": "<:blank:376016058248724480>",
-        "value": "__**Quick Information**__"
-      },
-      {
-        "name": "**Challenge**",
-        "value": "16 (15,000 XP)",
-        "inline": true
-      },
-      {
-        "name": "**Armor Class**",
-        "value": "19 (Natural Armor)",
-        "inline": true
-      },
-      {
-        "name": "**Hit Points**",
-        "value": "225 (18d12 + 108)",
-        "inline": true
-      },
-      {
-        "name": "**Speed**",
-        "value": "40 ft. (burrow 30 ft., fly 80 ft.)",
-        "inline": true
-      },
-      {
-        "name": "<:blank:376016058248724480>",
-        "value": "__**Proficiencies**__"
-      },
-      {
-        "name": "**Saving Throws**",
-        "value": "DEX +5, CON +11, WIS +7, CHA +9",
-        "inline": true
-      },
-      {
-        "name": "**Skills**",
-        "value": "Perception +12, Stealth +5",
-        "inline": true
-      },
-      {
-        "name": "**Damage Immunities**",
-        "value": "Lightning",
-        "inline": true
-      },
-      {
-        "name": "**Senses**",
-        "value": "Blindsight 60ft., Darkvision 120 ft., Passive Perception 22",
-        "inline": true
-      },
-      {
-        "name": "**Languages**",
-        "value": "Common, Draconic",
-        "inline": true
-      },
-      {
-        "name": "<:blank:376016058248724480>",
-        "value": "__**Special Abilities**__",
-      },
-      {
-        "name": "__Legendary Resistance (3/Day).__",
-        "value": "If the dragon fails a saving throw, it can choose to succeed instead.",
-        "inline": true
-      },
-      {
-        "name": "<:blank:376016058248724480>",
-        "value": "__**Actions**__"
-      },
-      {
-        "name": "**Multiattack.**",
-        "value": "Actions of the Adult Blue Dragon:",
-        "inline": true
-      }
-    ]
-  }
-});
+            "embed": {
+            "title": "Adult Blue Dragon",
+            "description": "*Huge dragon, lawful evil*",
+            "url": "https://www.dndbeyond.com/monsters/adult-blue-dragon",
+            "color": 0x64FFDA,
+            "footer": {
+              "icon_url": "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png",
+              "text": "© 2017 D&D Beyond | Scraped by DinoBot"
+            },
+            "thumbnail": {
+              "url": "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png"
+            },
+            "image": {
+              "url": "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg"
+            },
+            "author": {
+              "name": "DinoBot",
+              "url": "https://discordapp.com",
+              "icon_url": "https://cdn.discordapp.com/avatars/366052866424569860/0076d17a6955d26d541b4941f055ad6e.png?size=2048"
+            },
+            "fields": [
+              {
+                "name": "<:blank:376016058248724480>",
+                "value": "__**Abilities**__"
+              },
+              {
+                "name": "<:strength:376009689864994820> **STR**",
+                "value": "25 (+7)",
+                "inline": true
+              },
+              {
+                "name": "<:dexterity:376009689348964352> **DEX**",
+                "value": "10 (+0)",
+                "inline": true
+              },
+              {
+                "name": "<:constitution:376009689214877707> **CON**",
+                "value": "23 (+6)",
+                "inline": true
+              },
+              {
+                "name": "<:intelligence:376009689445564426> **INT**",
+                "value": "16 (+3)",
+                "inline": true
+              },
+              {
+                "name": "<:wisdom:376009690796261377> **WIS**",
+                "value": "15 (+2)",
+                "inline": true
+              },
+              {
+                "name": "<:charisma:376009688988516353> **CHA**",
+                "value": "19 (+4)",
+                "inline": true
+              },
+              {
+                "name": "<:blank:376016058248724480>",
+                "value": "__**Quick Information**__"
+              },
+              {
+                "name": "**Challenge**",
+                "value": "16 (15,000 XP)",
+                "inline": true
+              },
+              {
+                "name": "**Armor Class**",
+                "value": "19 (Natural Armor)",
+                "inline": true
+              },
+              {
+                "name": "**Hit Points**",
+                "value": "225 (18d12 + 108)",
+                "inline": true
+              },
+              {
+                "name": "**Speed**",
+                "value": "40 ft. (burrow 30 ft., fly 80 ft.)",
+                "inline": true
+              },
+              {
+                "name": "<:blank:376016058248724480>",
+                "value": "__**Proficiencies**__"
+              },
+              {
+                "name": "**Saving Throws**",
+                "value": "DEX +5, CON +11, WIS +7, CHA +9",
+                "inline": true
+              },
+              {
+                "name": "**Skills**",
+                "value": "Perception +12, Stealth +5",
+                "inline": true
+              },
+              {
+                "name": "**Damage Immunities**",
+                "value": "Lightning",
+                "inline": true
+              },
+              {
+                "name": "**Senses**",
+                "value": "Blindsight 60ft., Darkvision 120 ft., Passive Perception 22",
+                "inline": true
+              },
+              {
+                "name": "**Languages**",
+                "value": "Common, Draconic",
+                "inline": true
+              },
+              {
+                "name": "<:blank:376016058248724480>",
+                "value": "__**Special Abilities**__",
+              },
+              {
+                "name": "__Legendary Resistance (3/Day).__",
+                "value": "If the dragon fails a saving throw, it can choose to succeed instead.",
+                "inline": true
+              },
+              {
+                "name": "<:blank:376016058248724480>",
+                "value": "__**Actions**__"
+              },
+              {
+                "name": "**Multiattack.**",
+                "value": "Actions of the Adult Blue Dragon:",
+                "inline": true
+              }
+            ]}
+          });
         });   
         
 				return;  
