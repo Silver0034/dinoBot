@@ -497,12 +497,16 @@ commandDictionary['rpg'] = {
           quickPrimary: {
             listItem: ".primary"
           },
+          quickSecondary: {
+            listItem: ".secondary"
+          },
         },
           (err, page) => {
           console.log(err || page);
           var abilityScoreArray = page["abilityScore"];
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
+          var quickSecondaryArray = page["quickSecondary"];
                 
           message.channel.send({
             "embed": {
@@ -566,22 +570,22 @@ commandDictionary['rpg'] = {
               },
               {
                 "name": "**Challenge**",
-                "value": quickPrimaryArray[0] + " ",
+                "value": quickPrimaryArray[0] + " " + quicksecondaryArray[0],
                 "inline": true
               },
               {
                 "name": "**Armor Class**",
-                "value": quickPrimaryArray[0] + " ",
+                "value": quickPrimaryArray[1] + " " + quicksecondaryArray[1],
                 "inline": true
               },
               {
                 "name": "**Hit Points**",
-                "value": quickPrimaryArray[0] + " ",
+                "value": quickPrimaryArray[2] + " " + quicksecondaryArray[2],
                 "inline": true
               },
               {
                 "name": "**Speed**",
-                "value": quickPrimaryArray[0] + " ",
+                "value": quickPrimaryArray[3] + " " + quicksecondaryArray[3],
                 "inline": true
               },
               {
