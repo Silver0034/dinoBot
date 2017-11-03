@@ -93,6 +93,9 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
+function nameChangeError(nicknameResponse) {
+  nicknameResponse = 'I\'m sorry, I can only change the nickname of people with a lower rank than me.';
+}
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -868,7 +871,7 @@ commandDictionary['name'] = {
                 message.member.setNickname(nickname);
               } catch(error) {
                 console.log(error);
-                nicknameResponse = 'I\'m sorry, I can only change the nickname of people with a lower rank than me.';
+                nameChangeError(nicknameResponse);
               }
               message.channel.sendMessage(responseHead(message, key) + nicknameResponse);
               return;
