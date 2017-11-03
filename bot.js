@@ -523,7 +523,7 @@ commandDictionary['rpg'] = {
         "value": "Ability Scores of the Adult Blue Dragon:"
       },
       {
-        "name": "**STR**",
+        "name": ":stength:**STR**",
         "value": "25 (+7)",
         "inline": true
       },
