@@ -810,6 +810,47 @@ commandDictionary['profile'] = {
 		}		
 	}
 };
+commandDictionary['name'] = {
+  timeout: 0,
+	emoji: ':name_badge: ',
+  error: 'Use the command like this: `name [set OR toggle]',
+  usage: '**Usage:** `name',
+  doCommand: function(message, key, args) {
+    switch(args[0]) { 
+      case 'set':
+        if (args[2]) {
+          switch(args[1]) {
+            case '1':
+            case 'one':
+              //save args[2] in nickname slot 1
+              sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(args[2]) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+                  if (err) throw err;
+                  message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 1.\nTo toggle between your two saved nicknames use "`name toggle"');
+                });
+              return;
+            case '2':
+            case 'two':
+              //save args[2] in nickname slot 2
+              sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(args[2]) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+                  if (err) throw err;
+                  message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 2.\nTo toggle between your two saved nicknames use "`name toggle"');
+                });
+              return;
+          }
+          //if there is no nickname given
+          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name set [1 OR 2] [nickname]');
+          return;
+        } else {
+          //if there is no number selected
+          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name [set OR toggle]');
+        }
+        return;
+      case 'toggle':
+        //Switch between two usernames
+        return;
+    }
+  }
+}
 /*
 commandDictionary['dex'] = {
   timeout: '1',
