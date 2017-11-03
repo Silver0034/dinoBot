@@ -499,10 +499,10 @@ commandDictionary['rpg'] = {
 						},
 						title: page['title'],
 						description: page['descShort'],
-            thumbnail: page['monsterImage'],
+            image: page['monsterImage'],
 						fields: [
 							{
-								name: 'filler abilities',//page['abilities'],
+								name: 'filler abilities' + page['image'],
 								value: 'The content goes here',
 							}
 						],
