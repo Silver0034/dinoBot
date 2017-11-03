@@ -509,7 +509,7 @@ commandDictionary['rpg'] = {
       "text": "© 2017 D&D Beyond | Scraped by DinoBot"
     },
     "thumbnail": {
-      "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+      "url": "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png"
     },
     "author": {
       "name": "author name",
