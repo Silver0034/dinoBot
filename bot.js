@@ -490,7 +490,7 @@ commandDictionary['rpg'] = {
           
           
           message.channel.send(responseHead(message, key) + page['title']);
-          console.log('page[monsterImage]');
+          console.log(page['monsterImage']);
           
           message.channel.send({embed: {
 						color: 0x64FFDA,
