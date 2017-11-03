@@ -520,7 +520,7 @@ commandDictionary['rpg'] = {
     "fields": [
       {
         "name": "__Abilities __",
-        "value": &zwnj + &zwnj
+        "value": "--------------------"
       },
       {
         "name": "<:strength:376009689864994820> **STR**",
@@ -549,7 +549,7 @@ commandDictionary['rpg'] = {
       },
       {
         "name": "<:charisma:376009688988516353> **CHA**",
-        "value": "19 (+4)",
+        "value": "19 (+4)\n--------------------",
         "inline": true
       },
       {
