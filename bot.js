@@ -507,9 +507,7 @@ commandDictionary['rpg'] = {
       "text": "© 2017 D&D Beyond | Scraped by DinoBot"
     },
     "thumbnail": {
-      "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg",
-      "height": 10,
-      "width": 10
+      "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg"
     },
     "image": {
       "url": "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg"
