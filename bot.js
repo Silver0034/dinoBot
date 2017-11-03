@@ -862,7 +862,7 @@ commandDictionary['name'] = {
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               console.log("did it change the nickname?");
-              message.author.id.setNickname(nickname);
+              message.member.setNickname(nickname);
             } else {
               //If does not have permission
               message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
