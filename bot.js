@@ -494,11 +494,15 @@ commandDictionary['rpg'] = {
           abilityModifier: {
             listItem: ".modifier"
           },
+          quickPrimary: {
+            listItem: ".primary"
+          },
         },
           (err, page) => {
           console.log(err || page);
           var abilityScoreArray = page["abilityScore"];
           var abilityModifierArray = page["abilityModifier"];
+          var quickPrimaryArray = page["quickPrimary"];
                 
           message.channel.send({
             "embed": {
@@ -562,22 +566,22 @@ commandDictionary['rpg'] = {
               },
               {
                 "name": "**Challenge**",
-                "value": "16 (15,000 XP)",
+                "value": quickPrimaryArray[0] + " ",
                 "inline": true
               },
               {
                 "name": "**Armor Class**",
-                "value": "19 (Natural Armor)",
+                "value": quickPrimaryArray[0] + " ",
                 "inline": true
               },
               {
                 "name": "**Hit Points**",
-                "value": "225 (18d12 + 108)",
+                "value": quickPrimaryArray[0] + " ",
                 "inline": true
               },
               {
                 "name": "**Speed**",
-                "value": "40 ft. (burrow 30 ft., fly 80 ft.)",
+                "value": quickPrimaryArray[0] + " ",
                 "inline": true
               },
               {
