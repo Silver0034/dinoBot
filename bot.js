@@ -823,7 +823,7 @@ commandDictionary['name'] = {
             case '1':
             case 'one':
               //save args[2] in nickname slot 1
-              sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(args[2]) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+              sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
                   if (err) throw err;
                   message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 1.\nTo toggle between your two saved nicknames use "`name toggle"');
                 });
@@ -831,7 +831,7 @@ commandDictionary['name'] = {
             case '2':
             case 'two':
               //save args[2] in nickname slot 2
-              sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(args[2]) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+              sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
                   if (err) throw err;
                   message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 2.\nTo toggle between your two saved nicknames use "`name toggle"');
                 });
@@ -861,7 +861,6 @@ commandDictionary['name'] = {
             //check BOT has permissions to change nicknames
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
-              console.log("did it change the nickname?");
               message.member.setNickname(nickname);
             } else {
               //If does not have permission
