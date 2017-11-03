@@ -495,27 +495,133 @@ commandDictionary['rpg'] = {
           message.channel.send(responseHead(message, key) + page['title']);
           console.log(page['monsterImage']);
           
-          message.channel.send({embed: {
-						color: 0x64FFDA,
-						author: {
-							name: BOT.user.username,
-							icon_url: BOT.user.avatarURL
-						},
-						title: page['title'],
-						description: page['descShort'],
-            image: page['monsterImage'],
-						fields: [
-							{
-								name: 'filler abilities' + page['monsterImage'],
-								value: 'The content goes here',
-							}
-						],
-						footer: {
-								text: BOT.user.username + ' | rpg Assistant'
-						}
-					}});
-          
-          
+          message.channel.send({
+  "content": "Monster Encyclopedia",
+  "embed": {
+    "title": "Adult Blue Dragon",
+    "description": "*Huge dragon, lawful evil*",
+    "url": "https://www.dndbeyond.com/monsters/adult-blue-dragon",
+    "color": 7695532,
+    "footer": {
+      "icon_url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg",
+      "text": "© 2017 D&D Beyond | Scraped by DinoBot"
+    },
+    "thumbnail": {
+      "url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg"
+    },
+    "image": {
+      "url": "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg"
+    },
+    "author": {
+      "name": "DinoBot",
+      "url": "https://discordapp.com",
+      "icon_url": "https://cdn.discordapp.com/avatars/366052866424569860/0076d17a6955d26d541b4941f055ad6e.png?size=2048"
+    },
+    "fields": [
+      {
+        "name": "__Abilities __",
+        "value": "Ability Scores of the Adult Blue Dragon:"
+      },
+      {
+        "name": "STR",
+        "value": "25 (+7)",
+        "inline": true
+      },
+      {
+        "name": "DEX",
+        "value": "10 (+0)",
+        "inline": true
+      },
+      {
+        "name": "CON",
+        "value": "23 (+6)",
+        "inline": true
+      },
+      {
+        "name": "INT",
+        "value": "16 (+3)",
+        "inline": true
+      },
+      {
+        "name": "WIS",
+        "value": "15 (+2)",
+        "inline": true
+      },
+      {
+        "name": "CHA",
+        "value": "19 (+4)",
+        "inline": true
+      },
+      {
+        "name": "__Quick Information__",
+        "value": "Stats of the Adult Blue Dragon:"
+      },
+      {
+        "name": "Challenge",
+        "value": "16 (15,000 XP)",
+        "inline": true
+      },
+      {
+        "name": "Armor Class",
+        "value": "19 (Natural Armor)",
+        "inline": true
+      },
+      {
+        "name": "Hit Points",
+        "value": "225 (18d12 + 108)",
+        "inline": true
+      },
+      {
+        "name": "Speed",
+        "value": "40 ft. (burrow 30 ft., fly 80 ft.)",
+        "inline": true
+      },
+      {
+        "name": "__Proficiencies__",
+        "value": "Skills of the Adult Blue Dragon:"
+      },
+      {
+        "name": "Saving Throws",
+        "value": "DEX +5, CON +11, WIS +7, CHA +9",
+        "inline": true
+      },
+      {
+        "name": "Skills",
+        "value": "Perception +12, Stealth +5",
+        "inline": true
+      },
+      {
+        "name": "Damage Immunities",
+        "value": "Lightning",
+        "inline": true
+      },
+      {
+        "name": "Senses",
+        "value": "Blindsight 60ft., Darkvision 120 ft., Passive Perception 22",
+        "inline": true
+      },
+      {
+        "name": "Languages",
+        "value": "Common, Draconic",
+        "inline": true
+      },
+      {
+        "name": "__Special Abilities__",
+        "value": "Legendary Resistance (3/Day). If the dragon fails a saving throw, it can choose to succeed instead.",
+        "inline": true
+      },
+      {
+        "name": "__Actions__",
+        "value": "Actions of the Adult Blue Dragon:"
+      },
+      {
+        "name": "Multiattack.",
+        "value": "Actions of the Adult Blue Dragon:",
+        "inline": true
+      }
+    ]
+  }
+});
         });   
         
 				return;  
