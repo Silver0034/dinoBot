@@ -501,7 +501,7 @@ commandDictionary['rpg'] = {
     "title": "Adult Blue Dragon",
     "description": "*Huge dragon, lawful evil*",
     "url": "https://www.dndbeyond.com/monsters/adult-blue-dragon",
-    "color": 7695532,
+    "color": 0x64FFDA,
     "footer": {
       "icon_url": "https://static-waterdeep.cursecdn.com/1-0-6515-21827/Skins/Waterdeep/images/dnd-beyond-logo.svg",
       "text": "© 2017 D&D Beyond | Scraped by DinoBot"
