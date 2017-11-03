@@ -486,10 +486,14 @@ commandDictionary['rpg'] = {
           monsterImage: {
             selector: ".mosnter-image img",
             attr: "src"
+          }, 
+          // Nested list
+          scores: {
+            abilityScore: ".score > span"
           },
-        
-        }, (err, page) => {
+          (err, page) => {
           console.log(err || page);
+          console.log("Look hereeeee" + page["scores"]);
                 
           message.channel.send({
             "embed": {
