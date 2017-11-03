@@ -493,8 +493,8 @@ commandDictionary['rpg'] = {
                 
           message.channel.send({
             "embed": {
-            "title": "Adult Blue Dragon",
-            "description": "*Huge dragon, lawful evil*",
+            "title": page["title"],
+            "description": "*" + page["descShort"] + "*",
             "url": "https://www.dndbeyond.com/monsters/adult-blue-dragon",
             "color": 0x64FFDA,
             "footer": {
