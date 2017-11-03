@@ -519,8 +519,7 @@ commandDictionary['rpg'] = {
     },
     "fields": [
       {
-        "name": "__Abilities __",
-        "value": "Ability Scores of the Adult Blue Dragon:"
+        "name": "__Abilities __"
       },
       {
         "name": "<:strength:376009689864994820> **STR**",
