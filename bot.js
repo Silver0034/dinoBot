@@ -854,10 +854,10 @@ commandDictionary['name'] = {
           var nicknameTwo = results[0].nicknameTwo;
           if (nicknameToggleState = 0) {
             if (message.guild) {
-              //check bot has permissions to change nicknames
-              if (message.guild.members.get(bot.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(bot.user.id).hasPermission("CHANGE_NICKNAME")) {
+              //check BOT has permissions to change nicknames
+              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
                 //change nickname
-                message.guild.members.get(bot.user.id).setNickname(nicknameOne);
+                message.guild.members.get(BOT.user.id).setNickname(nicknameOne);
               } else {
                 //If does not have permission
                 message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
@@ -869,10 +869,10 @@ commandDictionary['name'] = {
           }
           if (nicknameToggleState = 1) {
             if (message.guild) {
-              //check bot has permissions to change nicknames
-              if (message.guild.members.get(bot.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(bot.user.id).hasPermission("CHANGE_NICKNAME")) {
+              //check BOT has permissions to change nicknames
+              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
                 //change nickname
-                message.guild.members.get(bot.user.id).setNickname(nicknameTwo);
+                message.guild.members.get(BOT.user.id).setNickname(nicknameTwo);
               } else {
                 //If does not have permission
                 message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
