@@ -520,7 +520,7 @@ commandDictionary['rpg'] = {
     "fields": [
       {
         "name": "__Abilities __",
-        "value": "--------------------"
+        "value": "----------------------------------------"
       },
       {
         "name": "<:strength:376009689864994820> **STR**",
@@ -549,12 +549,12 @@ commandDictionary['rpg'] = {
       },
       {
         "name": "<:charisma:376009688988516353> **CHA**",
-        "value": "19 (+4)\n--------------------",
+        "value": "19 (+4)",
         "inline": true
       },
       {
         "name": "__Quick Information__",
-        "value": "Stats of the Adult Blue Dragon:"
+        "value": "----------------------------------------"
       },
       {
         "name": "**Challenge**",
@@ -578,7 +578,7 @@ commandDictionary['rpg'] = {
       },
       {
         "name": "__Proficiencies__",
-        "value": "Skills of the Adult Blue Dragon:"
+        "value": "----------------------------------------"
       },
       {
         "name": "**Saving Throws**",
@@ -607,12 +607,16 @@ commandDictionary['rpg'] = {
       },
       {
         "name": "__Special Abilities__",
-        "value": "Legendary Resistance (3/Day). If the dragon fails a saving throw, it can choose to succeed instead.",
+        "value": "----------------------------------------",
+      },
+      {
+        "name": "__Legendary Resistance (3/Day).__",
+        "value": "If the dragon fails a saving throw, it can choose to succeed instead.",
         "inline": true
       },
       {
         "name": "__Actions__",
-        "value": "Actions of the Adult Blue Dragon:"
+        "value": "----------------------------------------"
       },
       {
         "name": "**Multiattack.**",
