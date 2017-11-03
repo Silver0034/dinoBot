@@ -523,32 +523,32 @@ commandDictionary['rpg'] = {
         "value": "Ability Scores of the Adult Blue Dragon:"
       },
       {
-        "name": "STR",
+        "name": "**STR**",
         "value": "25 (+7)",
         "inline": true
       },
       {
-        "name": "DEX",
+        "name": "**DEX**",
         "value": "10 (+0)",
         "inline": true
       },
       {
-        "name": "CON",
+        "name": "**CON**",
         "value": "23 (+6)",
         "inline": true
       },
       {
-        "name": "INT",
+        "name": "**INT**",
         "value": "16 (+3)",
         "inline": true
       },
       {
-        "name": "WIS",
+        "name": "**WIS**",
         "value": "15 (+2)",
         "inline": true
       },
       {
-        "name": "CHA",
+        "name": "**CHA**",
         "value": "19 (+4)",
         "inline": true
       },
@@ -557,22 +557,22 @@ commandDictionary['rpg'] = {
         "value": "Stats of the Adult Blue Dragon:"
       },
       {
-        "name": "Challenge",
+        "name": "**Challenge**",
         "value": "16 (15,000 XP)",
         "inline": true
       },
       {
-        "name": "Armor Class",
+        "name": "**Armor Class**",
         "value": "19 (Natural Armor)",
         "inline": true
       },
       {
-        "name": "Hit Points",
+        "name": "**Hit Points**",
         "value": "225 (18d12 + 108)",
         "inline": true
       },
       {
-        "name": "Speed",
+        "name": "**Speed**",
         "value": "40 ft. (burrow 30 ft., fly 80 ft.)",
         "inline": true
       },
@@ -581,27 +581,27 @@ commandDictionary['rpg'] = {
         "value": "Skills of the Adult Blue Dragon:"
       },
       {
-        "name": "Saving Throws",
+        "name": "**Saving Throws**",
         "value": "DEX +5, CON +11, WIS +7, CHA +9",
         "inline": true
       },
       {
-        "name": "Skills",
+        "name": "**Skills**",
         "value": "Perception +12, Stealth +5",
         "inline": true
       },
       {
-        "name": "Damage Immunities",
+        "name": "**Damage Immunities**",
         "value": "Lightning",
         "inline": true
       },
       {
-        "name": "Senses",
+        "name": "**Senses**",
         "value": "Blindsight 60ft., Darkvision 120 ft., Passive Perception 22",
         "inline": true
       },
       {
-        "name": "Languages",
+        "name": "**Languages**",
         "value": "Common, Draconic",
         "inline": true
       },
@@ -615,7 +615,7 @@ commandDictionary['rpg'] = {
         "value": "Actions of the Adult Blue Dragon:"
       },
       {
-        "name": "Multiattack.",
+        "name": "**Multiattack.**",
         "value": "Actions of the Adult Blue Dragon:",
         "inline": true
       }
