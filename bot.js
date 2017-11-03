@@ -882,7 +882,7 @@ commandDictionary['name'] = {
               message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
             }
           }
-        }
+        });
         //
         return;
     }
