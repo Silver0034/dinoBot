@@ -490,6 +490,7 @@ commandDictionary['rpg'] = {
           
           
           message.channel.send(responseHead(message, key) + page['title']);
+          console.log('page[monsterImage'])
           
           message.channel.send({embed: {
 						color: 0x64FFDA,
@@ -502,7 +503,7 @@ commandDictionary['rpg'] = {
             image: page['monsterImage'],
 						fields: [
 							{
-								name: 'filler abilities' + page['image'],
+								name: 'filler abilities' + page['monsterImage'],
 								value: 'The content goes here',
 							}
 						],
