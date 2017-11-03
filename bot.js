@@ -851,11 +851,13 @@ commandDictionary['name'] = {
         sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		      var nicknameToggleState = results[0].nicknameToggle;
           var nickname = ''; 
+          
           if (nicknameToggleState == 0) {
             nickname = results[0].nicknameOne;
           } else if (nicknameToggleState == 1) {
             nickname = results[0].nicknameTwo;
           }
+          var nicknameResponse = 'Your nickname has been changed to ' + nickname;
           
           if (message.guild) {
             //check BOT has permissions to change nicknames
@@ -865,11 +867,12 @@ commandDictionary['name'] = {
               try {
                 message.member.setNickname(nickname);
               } catch(error) {
-                message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of people with a lower rank than me.');
+                nicknameResponse = 'I\'m sorry, I can only change the nickname of people with a lower rank than me.';
                 console.log(error);
-              } else {
-               message.channel.sendMessage(responseHead(message, key) + 'Your nickname has been changed to ' + nickname;  
               }
+              message.channel.sendMessage(responseHead(message, key) + nicknameResponse);
+              return;
+            
             } else {
               //If does not have permission
               message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
