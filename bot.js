@@ -570,22 +570,22 @@ commandDictionary['rpg'] = {
               },
               {
                 "name": "**Challenge**",
-                "value": quickPrimaryArray[0] + " " + quicksecondaryArray[0],
+                "value": quickPrimaryArray[0] + " " + quickSecondaryArray[0],
                 "inline": true
               },
               {
                 "name": "**Armor Class**",
-                "value": quickPrimaryArray[1] + " " + quicksecondaryArray[1],
+                "value": quickPrimaryArray[1] + " " + quickSecondaryArray[1],
                 "inline": true
               },
               {
                 "name": "**Hit Points**",
-                "value": quickPrimaryArray[2] + " " + quicksecondaryArray[2],
+                "value": quickPrimaryArray[2] + " " + quickSecondaryArray[2],
                 "inline": true
               },
               {
                 "name": "**Speed**",
-                "value": quickPrimaryArray[3] + " " + quicksecondaryArray[3],
+                "value": quickPrimaryArray[3] + " " + quickSecondaryArray[3],
                 "inline": true
               },
               {
