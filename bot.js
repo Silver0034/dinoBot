@@ -488,8 +488,8 @@ commandDictionary['rpg'] = {
             attr: "src"
           }, 
           // Nested list
-          scores: {
-            abilityScore: ".score > span"
+          abilityScore: {
+            listItem: ".score > span"
           },
         },
           (err, page) => {
