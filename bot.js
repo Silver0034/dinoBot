@@ -520,7 +520,7 @@ commandDictionary['rpg'] = {
     "fields": [
       {
         "name": "__Abilities __",
-        "value": "   "
+        "value": &zwnj + &zwnj
       },
       {
         "name": "<:strength:376009689864994820> **STR**",
