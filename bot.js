@@ -494,7 +494,7 @@ commandDictionary['rpg'] = {
         },
           (err, page) => {
           console.log(err || page);
-          console.log("Look hereeeee" + page["scores"]);
+          console.log("Look hereeeee" + page["abilityScore"]);
                 
           message.channel.send({
             "embed": {
