@@ -858,6 +858,7 @@ commandDictionary['name'] = {
               //check BOT has permissions to change nicknames
               if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
                 //change nickname
+                console.log("did it change the nickname?");
                 message.guild.members.get(BOT.user.id).setNickname(nicknameOne);
               } else {
                 //If does not have permission
@@ -873,6 +874,7 @@ commandDictionary['name'] = {
               //check BOT has permissions to change nicknames
               if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
                 //change nickname
+                console.log("did it change the nickname?");
                 message.guild.members.get(BOT.user.id).setNickname(nicknameTwo);
               } else {
                 //If does not have permission
