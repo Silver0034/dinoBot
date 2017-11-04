@@ -529,6 +529,7 @@ commandDictionary['rpg'] = {
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
           var moreInfoContent = page["moreInfoContent"] + "";
+          var moreInfoContentPlaceholder = page["moreInfoContent"];
           
           var featsValue = '';
           var attackValue = '';
@@ -586,7 +587,8 @@ commandDictionary['rpg'] = {
           
           //Break moreInfoContent at each strongArray entry.
           for (j = 0; j < strongArray.length; j++) {
-            attackValue[j] = str.substring(0,str.indexOf(strongArray[j]));
+            attackValue[j] = moreInfoContentPlaceholder.substring(0,moreInfoContent.indexOf(strongArray[j]));
+            moreInfoContentPlaceholder = moreInfoContent.substring(1,moreInfoContent.indexOf(attackValue[j]))
           }
           console.log("---------------------------------------------------------------------------------");
           console.log(attackValue);
