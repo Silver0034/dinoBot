@@ -591,15 +591,15 @@ commandDictionary['rpg'] = {
           
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsSplit = actionsLoopArray[1].replace('Legendary', BOT.user.id);
+          var actionsSplit = actionsLoopArray[1].replace('Description', BOT.user.id).replace('Legendary', BOT.user.id);
           console.log('--------------------------------------------------------------\n' + actionsSplit);
           actionsSplit = actionsSplit.split(BOT.user.id); 
           console.log('--------------------------------------------------------------\n' + actionsSplit);
-          var actionsLoopPlaceholder = actionsSplit;
+          var actionsLoopPlaceholder = actionsSplit[0];
           
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
-              actionsLoopPlaceholder = '' + actionsLoopPlaceholder.replace(strongArray[m], BOT.user.id);
+              actionsLoopPlaceholder = actionsLoopPlaceholder.replace(strongArray[m], BOT.user.id);
               
             }
           }
