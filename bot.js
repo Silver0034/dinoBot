@@ -529,8 +529,7 @@ commandDictionary['rpg'] = {
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
           var moreInfoContent = page["moreInfoContent"] + "";
-          var moreInfoContentPlaceholder = page["moreInfoContent"] + "";
-          
+                    
           var featsValue = '';
           var attackValue = [];
           var proficiencyValue = '';
@@ -586,12 +585,15 @@ commandDictionary['rpg'] = {
             */
           
           //Break moreInfoContent at each strongArray entry.
+          
+          moreInfoContent = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3.  Actions\r\n Four. Filler section 4.";
+          strongArray = ['One.', 'Two.', 'Three.']
+          var featsValue = '';
+          var featsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[0];
+          message.channel.send(featsLoopPlaceholder);
+          
           for (j = 0; j < strongArray.length; j++) {
-            attackValue.push(moreInfoContentPlaceholder.substring(0,moreInfoContent.indexOf(strongArray[j])));
-            moreInfoContentPlaceholder = moreInfoContent.substring(1,moreInfoContent.indexOf(attackValue[j]))
-            console.log("----------");
-            console.log(attackValue[j]);
-            console.log("----------");
+            
           }
           console.log("---------------------------------------------------------------------------------");
           console.log(attackValue);
