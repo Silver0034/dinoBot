@@ -599,12 +599,10 @@ commandDictionary['rpg'] = {
           for (j = 0; j < strongArray.length; j++) {  
             if (featsLoopPlaceholder.includes(strongArray[j])) {
               featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
-              message.channel.send("In For-Loop " + j + ": " + featsLoopPlaceholder);
             }
           }
           
           featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
-          console.log(featsValue);
           
           for (k = 1; k < featsValueArray.length; k++) {  
             l = k - 1;
@@ -615,7 +613,8 @@ commandDictionary['rpg'] = {
           
           //Actions Section
           var actionsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[1];
-          
+          message.channel.send(actionsLoopPlaceholder);
+          /*
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
               actionsLoopPlaceholder = actionsLoopPlaceholderLoopPlaceholder.replace(strongArray[m], BOT.user.id);
