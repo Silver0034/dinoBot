@@ -673,13 +673,10 @@ commandDictionary['rpg'] = {
                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
                      , false);
           
-          statsTitleSplice = statsTitle.splice(0, 10);
-        
             //Proficiency Fields
-            for (i = 0; i < statsTitleSplice.length; i++) { 
-              embed.addField('**' + statsTitleSplice[i] + '**', statsDescription[i], true);
+            for (i = 10; i < proficienciesTitle.length; i++) { 
+              embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
             }
-          
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
