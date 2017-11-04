@@ -865,34 +865,30 @@ commandDictionary['name'] = {
               console.log('nickname toggled');
             });
           }
-          
-          if (message.guild) {
-            //check BOT has permissions to change nicknames
-            if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
-              //change nickname
-              //if error make log
-              console.log("HERE IS THE NEW LOG " + key + " | " + message + " | " + message.channel + " | " + responseHead);
-              message.member.setNickname(nickname, function(error) {
-                if (error) {
-                  console.log(error);
-                   message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
-                  return;
-                } else {
-                  message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
-                  return;
-                }
-              });
+  
+          try {
+            if (message.guild) {
+              //check BOT has permissions to change nicknames
+              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
+                //change nickname
+                //if error make log
+                message.member.setNickname(nickname);
+                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
+              } else {
+                //If does not have permission
+                message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
+              }
             } else {
-              //If does not have permission
-              message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
-            }  
-          } else {
-            //not in a server (in a DM)
-            message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
+              //not in a server (in a DM)
+              message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
+            }
+          } catch(err) {
+            console.log(error);
+            message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
           }
+          return;
         });
-        //
-        return;
+        
     }
     message.channel.send(responseHead(message, key) + 'Please use the command as follows:\nname toggle\nname set [1 OR 2] [nickname]');
     return;
