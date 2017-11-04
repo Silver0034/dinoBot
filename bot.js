@@ -612,7 +612,7 @@ commandDictionary['rpg'] = {
           
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsLoopPlaceholder = actionsLoopArray[0];
+          var actionsLoopPlaceholder = actionsLoopArray[1];
           message.channel.send(actionsLoopPlaceholder);
           message.channel.send("Before For-Loop: " + actionsLoopPlaceholder);
           /*
