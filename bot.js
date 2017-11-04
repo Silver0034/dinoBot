@@ -528,6 +528,7 @@ commandDictionary['rpg'] = {
           var statsDescription = page["statsDescription"];
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
+          var moreInfoContent = page["moreInfoContent"];
           
           var featsValue = '';
           var proficiencyValue = '';
@@ -567,7 +568,7 @@ commandDictionary['rpg'] = {
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
           
           //Feats Fields
-          featsValue= page["moreInfoContent"].split('Actions\r\n', 1)[0];
+          featsValue = moreInfoContent.split('Actions\r\n', 1)[0];
           embed.addField("__**Feats**__", featsValue, false);
           
           //Attack Fields
