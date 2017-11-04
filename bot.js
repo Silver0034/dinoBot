@@ -529,9 +529,14 @@ commandDictionary['rpg'] = {
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
           var moreInfoContent = page["moreInfoContent"] + "";
-                    
-          var featsValue = '';
+                
           var proficiencyValue = '';
+          var featsLoopArray = moreInfoContent.split('Actions\r\n');
+          var featsLoopPlaceholder = featsLoopArray[0];
+          var featsValueArray = [];
+          var featsValueString = '';
+          var actionsValueArray = [];
+          var actionsValueString = '';
                   
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
@@ -565,38 +570,8 @@ commandDictionary['rpg'] = {
             proficiencyValue += '**' + statsTitle[z] + '**: ' + statsDescription[i] + "\n"
           }
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
-          
-          /*
-          //Feats Fields
-          featsValue = "**" + moreInfoContent.split('Actions\r\n', 1)[0].replace(".", ":**");
-          embed.addField("__**Feats**__", featsValue, false);
-          
-          //Attack Fields
-          for (j = 0; j < strongArray.length; j++) { 
-            l = j + 4;
-            attackValue += '**' + strongArray[j].replace(".", ":") + '** ' + statsDescription[l] + "\n"
-          }
-          embed.addField("__**Feats and Attacks**__", attackValue, false);
-            //----------
-            /* Don't forget i can make blank fields
-            .addBlankField(true)
-            .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
-            */
-          
-          //Break moreInfoContent at each strongArray entry.
-          
-          //Feats section
-          //TODO: rememeber to remove these strings from moreInfoContent and strongArray
-          moreInfoContent = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3.  Actions\r\n Four. Filler section 4. Five. Filler section 5. Six. Filler section 6.";
-          strongArray = ['One.', 'Two.', 'Three.', 'Four.', 'Five.', 'Six.'];
-          var featsLoopArray = moreInfoContent.split('Actions\r\n');
-          var featsLoopPlaceholder = featsLoopArray[0];
-          //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
-          var featsValueArray = [];
-          var featsValueString = '';
-          var actionsValueArray = [];
-          var actionsValueString = '';
                     
+          //Feats section                    
           for (j = 0; j < strongArray.length; j++) {  
             if (featsLoopPlaceholder.includes(strongArray[j])) {
               featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
@@ -609,7 +584,7 @@ commandDictionary['rpg'] = {
             l = k - 1;
             featsValueString += '**' + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
           }
-          embed.addField("__**Feats**__", featsValueString, true);
+          embed.addField("__**Feats**__", featsValueString, false);
           
           
           //Actions Section
@@ -630,7 +605,7 @@ commandDictionary['rpg'] = {
             o = featsValueArray.length - 1;
             actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
           }
-          embed.addField("__**Actions**__", actionsValueString, true);
+          embed.addField("__**Actions**__", actionsValueString, false);
           
           console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
