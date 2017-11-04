@@ -532,6 +532,7 @@ commandDictionary['rpg'] = {
           
           var featsValue = '';
           var attackValue = '';
+          var proficiencyValue = '';
                   
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
