@@ -666,7 +666,7 @@ commandDictionary['rpg'] = {
             .addField("**Hit Points**", quickPrimaryArray[2] + " " + quickSecondaryArray[2], true)
             .addField("**Speed**", quickPrimaryArray[3] + " " + quickSecondaryArray[3], true)
             //Proficiency Title
-            .addField("__**Proficiencies**__", "Proficiencies of the " + page["title"]);
+            .addField("__**Proficiencies**__", "Proficiencies of the " + page["title"], false);
             /*
             //Proficiency Fields
             for (i = 0; i < proficienciesTitle.length; i++) { 
