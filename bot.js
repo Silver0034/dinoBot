@@ -510,6 +510,9 @@ commandDictionary['rpg'] = {
           paragraph: {
             listItem: "p",
           },
+          moreInfoContent: {
+            listItem: ".more-info-content",
+          },
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
@@ -573,7 +576,7 @@ commandDictionary['rpg'] = {
             .addBlankField(true)
             .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
             */
-          
+          console.log(page["moreInfoContent"]);
           message.channel.send({embed});
           
         });   
