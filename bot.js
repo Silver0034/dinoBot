@@ -607,7 +607,7 @@ commandDictionary['rpg'] = {
           
           for (k = 1; k < featsValueArray.length; k++) {  
             l = k - 1;
-            featsValueString += "**" + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
+            featsValueString += '**' + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
           }
           embed.addField("__**Feats**__", featsValueString, true);
           
@@ -626,9 +626,9 @@ commandDictionary['rpg'] = {
           }
           actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
           
-          for (n = 1; k < actionsValueArray.length; n++) {  
+          for (n = 1; n < actionsValueArray.length; n++) {  
             o = featsValueArray.length - 1;
-            actionsValueString += "**" + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
+            actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
             message.channel.send("In Actions For-Loop " + m + ": " + actionsValueString);
           }
           //embed.addField("__**Actions**__", actionsValueString, true);
