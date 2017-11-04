@@ -681,7 +681,7 @@ commandDictionary['rpg'] = {
             z = i + 10;
             proficiencyValue += '**' + statsTitle[z] + '**: ' + statsDescription[i] + "\n"
           }
-          embed.addField("Proficiencies", proficiencyValue);
+          embed.addField("__**Proficiencies**__", proficiencyValue);
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
