@@ -528,7 +528,7 @@ commandDictionary['rpg'] = {
           var statsDescription = page["statsDescription"];
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
-          var moreInfoContent = page["moreInfoContent"];
+          var moreInfoContent = page["moreInfoContent"] + '';
           
           var featsValue = '';
           var proficiencyValue = '';
