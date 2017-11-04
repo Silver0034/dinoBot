@@ -529,6 +529,7 @@ commandDictionary['rpg'] = {
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
           
+          var featsValue = '';
           var proficiencyValue = '';
           var attackValue = '';
                   
@@ -563,14 +564,18 @@ commandDictionary['rpg'] = {
             z = i + 10;
             proficiencyValue += '**' + statsTitle[z] + '**: ' + statsDescription[i] + "\n"
           }
-          embed.addField("__**Proficiencies**__", proficiencyValue);
+          embed.addField("__**Proficiencies**__", proficiencyValue, false);
+          
+          //Feats Fields
+          featsValue= page["moreInfoContent"].split('Actions\r\n', 1)[0];
+          embed.addField("__**Feats**__", featsValue, false);
           
           //Attack Fields
           for (j = 0; j < strongArray.length; j++) { 
             z = j + 10;
             attackValue += '**' + strongArray[j] + '**: ' + statsDescription[j] + "\n"
           }
-          embed.addField("__**Attacks**__", attackValue);
+          embed.addField("__**Attacks**__", attackValue, false);
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
