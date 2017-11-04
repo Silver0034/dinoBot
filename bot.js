@@ -496,11 +496,13 @@ commandDictionary['rpg'] = {
             listItem: ".secondary"
           },
           proficienciesTitle: {
-            selector: ".title",
-            attr: "src"
+            listItem: ".title",
           },
           proficienciesDescription: {
-            selector: ".description",
+            listItem: ".description",
+          },
+          monsterImage: {
+            selector: ".monster-image",
             attr: "src"
           }
         },
