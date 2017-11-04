@@ -649,8 +649,7 @@ commandDictionary['rpg'] = {
             .setImage("https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg")
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL("https://www.dndbeyond.com/monsters/adult-blue-dragon")
-            .addField("This is a field title, it can hold 256 characters",
-              "This is a field value, it can hold 2048 characters.")
+            .addField("This is a field title, it can hold 256 characters")
             .addBlankField(true)
             .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
 
