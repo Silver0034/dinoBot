@@ -667,25 +667,11 @@ commandDictionary['rpg'] = {
                       , false)
             //Secondary Information
             .addField("__**Stats**__",
-                      "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + " | " +
-                      "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + " | " + "\n" +
-                      "**" + statsTitle[7] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + " | " +
-                      "**" + statsTitle[7] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3] + " | "
-                      /*
-                      + "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] +
-                      + "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] +
-                      + "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
-                      */
-                     )
-            .addField("__**Secondary Information**__", "Miscellaneous stats for the " + page["title"])
-            .addField("**Challenge**", quickPrimaryArray[0] + " " + quickSecondaryArray[0], true)
-            .addField("**Armor Class**", quickPrimaryArray[1] + " " + quickSecondaryArray[1], true)
-            .addField("**Hit Points**", quickPrimaryArray[2] + " " + quickSecondaryArray[2], true)
-            .addField("**Speed**", quickPrimaryArray[3] + " " + quickSecondaryArray[3], true)
-            //Proficiency Title
-            .addField("__**Proficiencies**__", "Proficiencies of the " + page["title"]);
-            
-          /*
+                      "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
+                      "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
+                      "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
+                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3] + "\n"
+              /*
             //Proficiency Fields
             for (i = 0; i < proficienciesTitle.length; i++) { 
               embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
