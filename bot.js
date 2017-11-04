@@ -501,6 +501,15 @@ commandDictionary['rpg'] = {
           statsDescription: {
             listItem: ".description",
           },
+          strong: {
+            listItem: "strong",
+          },
+          strong: {
+            listItem: "strong",
+          },
+          paragraph: {
+            listItem: "p",
+          },
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
@@ -514,146 +523,18 @@ commandDictionary['rpg'] = {
           var quickSecondaryArray = page["quickSecondary"];
           var statsTitle = page["statsTitle"];
           var statsDescription = page["statsDescription"];
+          var strongArray = page["strong"];
+          var paragraphArray = page["paragraph"];
+          
           var proficiencyValue = '';
-          
-          /*
-          message.channel.send({
-            "embed": {
-            "title": page["title"],
-            "description": "*" + page["descShort"] + "*",
-            "url": "https://www.dndbeyond.com/monsters/adult-blue-dragon",
-            "color": 0x64FFDA,
-            "footer": {
-              "icon_url": "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png",
-              "text": "© 2017 D&D Beyond | Scraped by DinoBot"
-            },
-            "thumbnail": {
-              "url": "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png"
-            },
-            "image": {
-              "url": "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg"
-            },
-            "author": {
-              "name": "DinoBot",
-              "url": "https://discordapp.com",
-              "icon_url": "https://cdn.discordapp.com/avatars/366052866424569860/0076d17a6955d26d541b4941f055ad6e.png?size=2048"
-            },
-            "fields": [
-              {
-                "name": "<:blank:376016058248724480>",
-                "value": "__**Abilities**__"
-              },
-              {
-                "name": "<:strength:376009689864994820> **STR**",
-                "value": abilityScoreArray[0] + " " + abilityModifierArray[0],
-                "inline": true
-              },
-              {
-                "name": "<:dexterity:376009689348964352> **DEX**",
-                "value": abilityScoreArray[1] + " " + abilityModifierArray[1],
-                "inline": true
-              },
-              {
-                "name": "<:constitution:376009689214877707> **CON**",
-                "value": abilityScoreArray[2] + " " + abilityModifierArray[2],
-                "inline": true
-              },
-              {
-                "name": "<:intelligence:376009689445564426> **INT**",
-                "value": abilityScoreArray[3] + " " + abilityModifierArray[3],
-                "inline": true
-              },
-              {
-                "name": "<:wisdom:376009690796261377> **WIS**",
-                "value": abilityScoreArray[4] + " " + abilityModifierArray[4],
-                "inline": true
-              },
-              {
-                "name": "<:charisma:376009688988516353> **CHA**",
-                "value": abilityScoreArray[5] + " " + abilityModifierArray[5],
-                "inline": true
-              },
-              {
-                "name": "<:blank:376016058248724480>",
-                "value": "__**Quick Information**__"
-              },
-              {
-                "name": "**Challenge**",
-                "value": quickPrimaryArray[0] + " " + quickSecondaryArray[0],
-                "inline": true
-              },
-              {
-                "name": "**Armor Class**",
-                "value": quickPrimaryArray[1] + " " + quickSecondaryArray[1],
-                "inline": true
-              },
-              {
-                "name": "**Hit Points**",
-                "value": quickPrimaryArray[2] + " " + quickSecondaryArray[2],
-                "inline": true
-              },
-              {
-                "name": "**Speed**",
-                "value": quickPrimaryArray[3] + " " + quickSecondaryArray[3],
-                "inline": true
-              },
-              {
-                "name": "<:blank:376016058248724480>",
-                "value": "__**Proficiencies**__"
-              },
-              {
-                "name": "**Saving Throws**",
-                "value": "DEX +5, CON +11, WIS +7, CHA +9",
-                "inline": true
-              },
-              {
-                "name": "**Skills**",
-                "value": "Perception +12, Stealth +5",
-                "inline": true
-              },
-              {
-                "name": "**Damage Immunities**",
-                "value": "Lightning",
-                "inline": true
-              },
-              {
-                "name": "**Senses**",
-                "value": "Blindsight 60ft., Darkvision 120 ft., Passive Perception 22",
-                "inline": true
-              },
-              {
-                "name": "**Languages**",
-                "value": "Common, Draconic",
-                "inline": true
-              },
-              {
-                "name": "<:blank:376016058248724480>",
-                "value": "__**Special Abilities**__",
-              },
-              {
-                "name": "__Legendary Resistance (3/Day).__",
-                "value": "If the dragon fails a saving throw, it can choose to succeed instead.",
-                "inline": true
-              },
-              {
-                "name": "<:blank:376016058248724480>",
-                "value": "__**Actions**__"
-              },
-              {
-                "name": "**Multiattack.**",
-                "value": "Actions of the Adult Blue Dragon:",
-                "inline": true
-              }
-            ]}
-          });
-          */
-          
+          var attackValue = '';
+                  
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
-            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot", "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setImage(page["monsterImage"])
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL(scrapeURL)
@@ -673,15 +554,20 @@ commandDictionary['rpg'] = {
                      "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
                      , false);
-            console.log("---------------------------------------------");
-            console.log(statsTitle);
-            console.log(statsDescription);
-            //Proficiency Fields
+          
+          //Proficiency Fields
           for (i = 0; i < statsDescription.length; i++) { 
             z = i + 10;
             proficiencyValue += '**' + statsTitle[z] + '**: ' + statsDescription[i] + "\n"
           }
           embed.addField("__**Proficiencies**__", proficiencyValue);
+          
+          //Attack Fields
+          for (j = 0; j < strongArray.length; j++) { 
+            z = j + 10;
+            attackValueValue += '**' + strongArray[j] + '**: ' + statsDescription[j] + "\n"
+          }
+          embed.addField("__**Attacks**__", attackValue);
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
