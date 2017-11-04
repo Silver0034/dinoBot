@@ -495,8 +495,12 @@ commandDictionary['rpg'] = {
           quickSecondary: {
             listItem: ".secondary"
           },
-          monsterImage: {
-            selector: ".monster-image",
+          proficienciesTitle: {
+            selector: ".title",
+            attr: "src"
+          },
+          proficienciesDescription: {
+            selector: ".description",
             attr: "src"
           }
         },
@@ -506,7 +510,8 @@ commandDictionary['rpg'] = {
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
           var quickSecondaryArray = page["quickSecondary"];
-          
+          var proficienciesTitle = page["proficienciesTitle"];
+          var proficienciesDescription = page["proficienciesDescription"];
           
           /*
           message.channel.send({
@@ -659,16 +664,23 @@ commandDictionary['rpg'] = {
             .addField("<:charisma:376009688988516353> **CHA**", abilityScoreArray[5] + " " + abilityModifierArray[5], true)
             //----------
             //Secondary Information
-            .addField("__**Secondary Information**__", "Miscellaneous stats for " + page["title"])
+            .addField("__**Secondary Information**__", "Miscellaneous stats for the " + page["title"])
             .addField("**Challenge**", quickPrimaryArray[0] + " " + quickSecondaryArray[0], true)
             .addField("**Armor Class**", quickPrimaryArray[1] + " " + quickSecondaryArray[1], true)
             .addField("**Hit Points**", quickPrimaryArray[2] + " " + quickSecondaryArray[2], true)
             .addField("**Speed**", quickPrimaryArray[3] + " " + quickSecondaryArray[3], true)
+            //Proficiency Title
+            .addField("__**Proficiencies**__", "Proficiencies of the " + page["title"]);
+          
+            for (i = 0; i < cars.length; i++) { 
+              embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
+            }
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
             .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
             */
+          
           message.channel.send({embed});
           
         });   
