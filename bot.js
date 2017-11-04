@@ -576,6 +576,7 @@ commandDictionary['rpg'] = {
             .addBlankField(true)
             .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
             */
+          console.log("---------------------------------------------------------------------------------");
           console.log(page["moreInfoContent"]);
           message.channel.send({embed});
           
