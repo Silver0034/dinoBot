@@ -649,7 +649,7 @@ commandDictionary['rpg'] = {
             .setImage("https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg")
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL("https://www.dndbeyond.com/monsters/adult-blue-dragon")
-            .addField("__**Abilities**__", "|")
+            .addField("__**Abilities**__", "Scores and Modifiers for the " + page["title"])
             .addField("<:strength:376009689864994820> **STR**", abilityScoreArray[0] + " " + abilityModifierArray[0], true)
             .addField("<:dexterity:376009689348964352> **DEX**", abilityScoreArray[1] + " " + abilityModifierArray[1], true)
             .addField("<:constitution:376009689214877707> **CON**", abilityScoreArray[2] + " " + abilityModifierArray[2], true)
