@@ -586,20 +586,29 @@ commandDictionary['rpg'] = {
           
           //Break moreInfoContent at each strongArray entry.
           
+          //Feats section
+          //TODO: rememeber to remove these strings from moreInfoContent and strongArray
           moreInfoContent = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3.  Actions\r\n Four. Filler section 4.";
-          strongArray = ['One.', 'Two.', 'Three.']
-          var featsValue = '';
+          strongArray = ['One.', 'Two.', 'Three.', 'Four'];
           var featsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[0];
-          message.channel.send(featsLoopPlaceholder);
+          //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
+          var featsValue = '';
+          
+          message.channel.send("Before For-Loop: " + featsLoopPlaceholder);
           
           for (j = 0; j < strongArray.length; j++) {
+            
+            if (featsLoopPlaceholder.includes(strongArray[j])) {
+              featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
+              message.channel.send("In For-Loop " + j + ": " + featsLoopPlaceholder);
+            }
             
           }
           console.log("---------------------------------------------------------------------------------");
           console.log(attackValue);
           console.log("---------------------------------------------------------------------------------");
           console.log(page["moreInfoContent"]);
-          message.channel.send({embed});
+          //message.channel.send({embed});
           
         });   
         
