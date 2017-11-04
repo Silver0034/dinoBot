@@ -676,7 +676,7 @@ commandDictionary['rpg'] = {
             console.log(statsTitle);
             console.log(statsDescription);
             //Proficiency Fields
-            for (i = 0; i < statsTitle.length; i++) { 
+            for (i = 0; i < statsDescription.length; i++) { 
               z = i + 10;
               embed.addField('**' + statsTitle[z] + '**', statsDescription[i]);
             }
