@@ -589,7 +589,8 @@ commandDictionary['rpg'] = {
           //TODO: rememeber to remove these strings from moreInfoContent and strongArray
           moreInfoContent = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3.  Actions\r\n Four. Filler section 4.";
           strongArray = ['One.', 'Two.', 'Three.', 'Four'];
-          var featsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[0];
+          var featsLoopArray = moreInfoContent.split('Actions\r\n');
+          var featsLoopPlaceholder = featsLoopArray[0];
           //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
           var featsValueArray = [];
           var featsValueString = '';
@@ -610,7 +611,7 @@ commandDictionary['rpg'] = {
           
           
           //Actions Section
-          var actionsLoopArray = moreInfoContent.split('Actions\r\n', 1);
+          var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsLoopPlaceholder = actionsLoopArray[0];
           message.channel.send(actionsLoopPlaceholder);
           message.channel.send("Before For-Loop: " + actionsLoopPlaceholder);
