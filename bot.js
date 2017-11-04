@@ -865,7 +865,7 @@ commandDictionary['name'] = {
               console.log('nickname toggled');
             });
           }
-          var nicknameResponse = 'Your nickname has been changed to ' + nickname;
+          var nicknameResponse = 'Your nickname has been changed to ' + message.content.substr(12);
           
           if (message.guild) {
             //check BOT has permissions to change nicknames
