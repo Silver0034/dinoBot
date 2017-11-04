@@ -676,8 +676,8 @@ commandDictionary['rpg'] = {
           statsTitle = statsTitle.splice(0, 10);
         
             //Proficiency Fields
-            for (i = 0; i < proficienciesTitle.length; i++) { 
-              embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
+            for (i = 0; i < statsTitle.length; i++) { 
+              embed.addField('**' + statsTitle[i] + '**', statsDescription[i], true);
             }
           
             //----------
