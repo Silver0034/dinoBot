@@ -592,7 +592,7 @@ commandDictionary['rpg'] = {
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsSplit = actionsLoopArray[1].replace('Description\r\n', BOT.user.id).replace('Legendary\r\n', BOT.user.id);
-          actionsSplit = actionSplit[1].split(BOT.user.id); 
+          actionsSplit = actionSplit.split(BOT.user.id); 
           var actionsLoopPlaceholder = actionsLoopArray[1];
           
           for (m = 0; m < strongArray.length; m++) {  
