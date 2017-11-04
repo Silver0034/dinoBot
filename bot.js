@@ -599,7 +599,7 @@ commandDictionary['rpg'] = {
           for (j = 0; j < strongArray.length; j++) {
             
             if (featsLoopPlaceholder.includes(strongArray[j])) {
-              featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
+              featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
               message.channel.send("In For-Loop " + j + ": " + featsLoopPlaceholder);
             }
             
