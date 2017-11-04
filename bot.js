@@ -529,7 +529,7 @@ commandDictionary['rpg'] = {
           var strongArray = page["strong"];
           var paragraphArray = page["paragraph"];
           var moreInfoContent = page["moreInfoContent"] + "";
-          var moreInfoContentPlaceholder = page["moreInfoContent"];
+          var moreInfoContentPlaceholder = page["moreInfoContent"] + "";
           
           var featsValue = '';
           var attackValue = '';
