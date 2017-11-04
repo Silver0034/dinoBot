@@ -833,7 +833,7 @@ commandDictionary['name'] = {
               //save args[2] in nickname slot 2
               sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
                   if (err) throw err;
-                  message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 2.\nTo toggle between your two saved nicknames use "`name toggle"');
+                  message.channel.send(responseHead(message, key) + '"' + message.content.substr(12) + '" has been recorded in name slot 2.\nTo toggle between your two saved nicknames use "`name toggle"');
                 });
               return;
           }
@@ -865,7 +865,7 @@ commandDictionary['name'] = {
               console.log('nickname toggled');
             });
           }
-          var nicknameResponse = 'Your nickname has been changed to ' + message.content.substr(12);
+          var nicknameResponse = 'Your nickname has been changed to ' + nickname;
           
           if (message.guild) {
             //check BOT has permissions to change nicknames
