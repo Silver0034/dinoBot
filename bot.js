@@ -667,10 +667,11 @@ commandDictionary['rpg'] = {
                       , false)
             //Secondary Information
             .addField("__**Stats**__",
-                      "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
-                      "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
-                      "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
-                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
+                     "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
+                     "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
+                     "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
+                     "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
+                     , false)
               /*
             //Proficiency Fields
             for (i = 0; i < proficienciesTitle.length; i++) { 
