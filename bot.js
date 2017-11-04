@@ -667,10 +667,12 @@ commandDictionary['rpg'] = {
                       , false)
             //Secondary Information
             .addField("__**Stats**__",
-                        "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] +
+                        "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0]
+                      /*
                       + "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] +
                       + "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] +
                       + "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
+                      */
                      )
             .addField("__**Secondary Information**__", "Miscellaneous stats for the " + page["title"])
             .addField("**Challenge**", quickPrimaryArray[0] + " " + quickSecondaryArray[0], true)
