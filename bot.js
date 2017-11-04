@@ -649,8 +649,8 @@ commandDictionary['rpg'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
-            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot", page["monsterImage"])
-            .setImage(page["monsterImage"])
+            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot", page["logo"])
+            .setImage(page["logo"])
             .setThumbnail(page["logo"])
             .setURL(scrapeURL)
             //Abilities Section
