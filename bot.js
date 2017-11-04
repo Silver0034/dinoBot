@@ -660,7 +660,7 @@ commandDictionary['rpg'] = {
             .addField("__**Abilities**__",
                       "<:strength:376009689864994820> **STR**: " + abilityScoreArray[0] + abilityModifierArray[0] +
                       "  <:dexterity:376009689348964352> **DEX**: " + abilityScoreArray[1] + abilityModifierArray[1] +
-                      "  <:constitution:376009689214877707> **CON**: " + abilityScoreArray[2] + abilityModifierArray[2] +
+                      "  <:constitution:376009689214877707> **CON**: " + abilityScoreArray[2] + abilityModifierArray[2] + '\n' +
                       "  <:intelligence:376009689445564426> **INT**: " + abilityScoreArray[3] + abilityModifierArray[3] +
                       "  <:wisdom:376009690796261377> **WIS**: " + abilityScoreArray[4] + abilityModifierArray[4]
                       , false)
