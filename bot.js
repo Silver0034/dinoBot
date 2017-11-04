@@ -514,6 +514,7 @@ commandDictionary['rpg'] = {
           var quickSecondaryArray = page["quickSecondary"];
           var statsTitle = page["statsTitle"];
           var statsDescription = page["statsDescription"];
+          var proficiencyValue = '';
           
           /*
           message.channel.send({
@@ -676,10 +677,11 @@ commandDictionary['rpg'] = {
             console.log(statsTitle);
             console.log(statsDescription);
             //Proficiency Fields
-            for (i = 0; i < statsDescription.length; i++) { 
-              z = i + 10;
-              embed.addField('**' + statsTitle[z] + '**', statsDescription[i]);
-            }
+          for (i = 0; i < statsDescription.length; i++) { 
+            z = i + 10;
+            proficiencyValue += '**' + statsTitle[z] + '**', statsDescription[i] + " "
+          }
+          embed.addField("Proficiencies", proficiencyValue);
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
