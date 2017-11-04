@@ -591,10 +591,7 @@ commandDictionary['rpg'] = {
           
           //Actions Section
           var actionsLoopArrayFirst = moreInfoContent.split('Actions\r\n');
-          var actionsLoopArray = actionsLoopArrayFirst[0].split('\
-            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
-            \
-            \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \');
+          var actionsLoopArray = actionsLoopArrayFirst[0].split('                                                 ');
           var actionsLoopPlaceholder = actionsLoopArray[0];
           
           for (m = 0; m < strongArray.length; m++) {  
