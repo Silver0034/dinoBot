@@ -672,7 +672,7 @@ commandDictionary['rpg'] = {
             //Proficiency Title
             .addField("__**Proficiencies**__", "Proficiencies of the " + page["title"]);
           
-            for (i = 0; i < cars.length; i++) { 
+            for (i = 0; i < proficienciesTitle.length; i++) { 
               embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
             }
             //----------
