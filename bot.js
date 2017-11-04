@@ -595,7 +595,7 @@ commandDictionary['rpg'] = {
           console.log('--------------------------------------------------------------\n' + actionsSplit);
           actionsSplit = actionsSplit.split(BOT.user.id); 
           console.log('--------------------------------------------------------------\n' + actionsSplit);
-          var actionsLoopPlaceholder = actionsLoopArray[1];
+          var actionsLoopPlaceholder = actionsSplit;
           
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
