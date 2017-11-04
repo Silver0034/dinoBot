@@ -586,7 +586,7 @@ commandDictionary['rpg'] = {
           
           //Break moreInfoContent at each strongArray entry.
           for (j = 0; j < strongArray.length; j++) {
-            attackValue = moreInfoContent.split(strongArray);
+            attackValue[j] = str.substring(0,str.indexOf(strongArray[j]));
           }
           console.log("---------------------------------------------------------------------------------");
           console.log(attackValue);
