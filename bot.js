@@ -531,7 +531,6 @@ commandDictionary['rpg'] = {
           var moreInfoContent = page["moreInfoContent"] + "";
                     
           var featsValue = '';
-          var attackValue = [];
           var proficiencyValue = '';
                   
           const embed = new DISCORD.RichEmbed()
@@ -614,10 +613,26 @@ commandDictionary['rpg'] = {
           embed.addField("__**Feats**__", featsValueString, true);
           
           
-          console.log("---------------------------------------------------------------------------------");
-          console.log(attackValue);
-          console.log("---------------------------------------------------------------------------------");
-          console.log(page["moreInfoContent"]);
+          //Actions Section
+          var actionsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[1];
+          
+          for (m = 0; m < strongArray.length; m++) {  
+            if (actionsLoopPlaceholder.includes(strongArray[m])) {
+              actionsLoopPlaceholder = actionsLoopPlaceholderLoopPlaceholder.replace(strongArray[m], BOT.user.id);
+              message.channel.send("In Actions For-Loop " + m + ": " + actionsLoopPlaceholder);
+            }
+          }
+          /*
+          featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
+          console.log(featsValue);
+          
+          for (k = 1; k < featsValueArray.length; k++) {  
+            l = k - 1;
+            featsValueString += "**" + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
+          }
+          embed.addField("__**Feats**__", featsValueString, true);
+          */
+
           message.channel.send({embed});
           
         });   
