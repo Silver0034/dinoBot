@@ -531,7 +531,6 @@ commandDictionary['rpg'] = {
           var moreInfoContent = page["moreInfoContent"] + "";
           
           var featsValue = '';
-          var proficiencyValue = '';
           var attackValue = '';
                   
           const embed = new DISCORD.RichEmbed()
@@ -567,6 +566,7 @@ commandDictionary['rpg'] = {
           }
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
           
+          /*
           //Feats Fields
           featsValue = "**" + moreInfoContent.split('Actions\r\n', 1)[0].replace(".", ":**");
           embed.addField("__**Feats**__", featsValue, false);
@@ -576,12 +576,19 @@ commandDictionary['rpg'] = {
             l = j + 4;
             attackValue += '**' + strongArray[j].replace(".", ":") + '** ' + statsDescription[l] + "\n"
           }
-          embed.addField("__**Attacks**__", attackValue, false);
+          embed.addField("__**Feats and Attacks**__", attackValue, false);
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
             .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
             */
+          
+          //Break moreInfoContent at each strongArray entry.
+          for (j = 0; j < strongArray.length; j++) {
+            attackValue = moreInfoContent.split(strongArray);
+          }
+          
+          console.log(attackValue);
           console.log("---------------------------------------------------------------------------------");
           console.log(page["moreInfoContent"]);
           message.channel.send({embed});
