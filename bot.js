@@ -577,7 +577,7 @@ commandDictionary['rpg'] = {
               featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
             }
           }
-          console.log('--------------------------------------------------------------\n' + page['moreInfoContent');
+          console.log('--------------------------------------------------------------\n' + page['moreInfoContent']);
           
           //TODO: Don't let a field excceed  1024 in length
           featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
