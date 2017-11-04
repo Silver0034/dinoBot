@@ -871,10 +871,10 @@ commandDictionary['name'] = {
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
+              console.log("HERE IS THE NEW LOG " + key + " | " + message + " | " + message.channel + " | " + responseHead);
               message.member.setNickname(nickname, function(error) {
                 if (error) {
                   console.log(error);
-                  console.log("HERE IS THE NEW LOG " + key + " | " + message + " | " + message.channel + " | " + responseHead);
                    message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                   return;
                 } else {
