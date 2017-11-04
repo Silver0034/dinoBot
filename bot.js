@@ -565,7 +565,7 @@ commandDictionary['rpg'] = {
           //Attack Fields
           for (j = 0; j < strongArray.length; j++) { 
             z = j + 10;
-            attackValueValue += '**' + strongArray[j] + '**: ' + statsDescription[j] + "\n"
+            attackValue += '**' + strongArray[j] + '**: ' + statsDescription[j] + "\n"
           }
           embed.addField("__**Attacks**__", attackValue);
             //----------
