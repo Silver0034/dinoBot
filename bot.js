@@ -477,7 +477,7 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) { 
       case 'scrape':
-        var scrapeURL = "https://www.dndbeyond.com/monsters/blink-dog";        
+        var scrapeURL = "https://www.dndbeyond.com/monsters/adult-blue-dragon";        
         SCRAPEIT(scrapeURL, {
           
           title: ".monster-name",
@@ -592,7 +592,7 @@ commandDictionary['rpg'] = {
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var sctionsSplit = actionsLoopArray[1].replace('Description\r\n', BOT.user.id).replace('Legendary\r\n', BOT.user.id);
-          var actionsSplit = actionsLoopArray[1].split(BOT.user.id); 
+          actionsSplit = actionSplit[1].split(BOT.user.id); 
           var actionsLoopPlaceholder = actionsLoopArray[1];
           
           for (m = 0; m < strongArray.length; m++) {  
