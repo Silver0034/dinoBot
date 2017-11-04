@@ -673,11 +673,11 @@ commandDictionary['rpg'] = {
                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
                      , false);
           
-          statsTitle = statsTitle.splice(0, 10);
+          statsTitleSplice = statsTitle.splice(0, 10);
         
             //Proficiency Fields
-            for (i = 0; i < statsTitle.length; i++) { 
-              embed.addField('**' + statsTitle[i] + '**', statsDescription[i], true);
+            for (i = 0; i < statsTitleSplice.length; i++) { 
+              embed.addField('**' + statsTitleSplice[i] + '**', statsDescription[i], true);
             }
           
             //----------
