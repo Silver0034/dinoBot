@@ -592,8 +592,6 @@ commandDictionary['rpg'] = {
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsLoopPlaceholder = actionsLoopArray[1];
-          message.channel.send(actionsLoopPlaceholder);
-          message.channel.send("Before For-Loop: " + actionsLoopPlaceholder);
           
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
@@ -609,7 +607,7 @@ commandDictionary['rpg'] = {
             
             //actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
             
-            embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n]);
+            embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n], true);
           }
           //embed.addField("__**Actions**__", actionsValueString, false);
           
