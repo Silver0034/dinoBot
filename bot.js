@@ -679,7 +679,7 @@ commandDictionary['rpg'] = {
             //Proficiency Fields
           for (i = 0; i < statsDescription.length; i++) { 
             z = i + 10;
-            proficiencyValue += '**' + statsTitle[z] + '**', statsDescription[i] + " "
+            proficiencyValue += '**' + statsTitle[z] + '**: ' + statsDescription[i] + "\n"
           }
           embed.addField("Proficiencies", proficiencyValue);
             //----------
