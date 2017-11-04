@@ -606,6 +606,7 @@ commandDictionary['rpg'] = {
           
           embed.addField("__**Actions**__", 'Visit D&D Beyond for a complete list of actions.', false);
           console.log('--------------------------------' + strongArray);
+          console.log('--------------------------------' + featsValueArray);
           //TODO: Don't let a field excceed  1024 in length
           for (n = 1; n < actionsValueArray.length; n++) {
             o = featsValueArray.length - 1 + n;
