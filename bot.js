@@ -587,8 +587,8 @@ commandDictionary['rpg'] = {
           
           //Feats section
           //TODO: rememeber to remove these strings from moreInfoContent and strongArray
-          moreInfoContent = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3.  Actions\r\n Four. Filler section 4.";
-          strongArray = ['One.', 'Two.', 'Three.', 'Four'];
+          moreInfoContent = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3.  Actions\r\n Four. Filler section 4. Five. Filler section 5. Six. Filler section 6.";
+          strongArray = ['One.', 'Two.', 'Three.', 'Four.', 'Five.', 'Six.'];
           var featsLoopArray = moreInfoContent.split('Actions\r\n');
           var featsLoopPlaceholder = featsLoopArray[0];
           //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
@@ -632,7 +632,7 @@ commandDictionary['rpg'] = {
           }
           embed.addField("__**Feats**__", featsValueString, true);
           */
-
+          console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
           
         });   
