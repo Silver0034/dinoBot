@@ -657,7 +657,7 @@ commandDictionary['rpg'] = {
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL(scrapeURL)
             //Abilities Section
-            .addField("__**Abilities**__", "<:strength:376009689864994820> **STR**", abilityScoreArray[0] + " " + abilityModifierArray[0], false)
+            .addField("__**Abilities**__", "<:strength:376009689864994820> **STR**: " abilityScoreArray[0] + " " + abilityModifierArray[0], false)
           /*
             .addField("<:dexterity:376009689348964352> **DEX**", abilityScoreArray[1] + " " + abilityModifierArray[1], true)
             .addField("<:constitution:376009689214877707> **CON**", abilityScoreArray[2] + " " + abilityModifierArray[2], true)
