@@ -578,6 +578,8 @@ commandDictionary['rpg'] = {
             }
           }
           
+          
+          //TODO: Don't let a field excceed  1024 in length
           featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
           
           for (k = 1; k < featsValueArray.length; k++) {  
@@ -601,11 +603,12 @@ commandDictionary['rpg'] = {
           }
           actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
           
+          //TODO: Don't let a field excceed  1024 in length
           for (n = 1; n < actionsValueArray.length; n++) {  
             o = featsValueArray.length - 1 + n;
             actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
           }
-          embed.addField("__**Actions**__", actionsValueString, false);
+          //embed.addField("__**Actions**__", actionsValueString, false);
           
           console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
