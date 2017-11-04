@@ -662,7 +662,7 @@ commandDictionary['rpg'] = {
             .addField("__**Secondary Information**__", "Miscellaneous stats for " + page["title"])
             .addField("**Challenge**", quickPrimaryArray[0] + " " + quickSecondaryArray[0], true)
             .addField("**Armor Class**", quickPrimaryArray[1] + " " + quickSecondaryArray[1], true)
-            .addField("**Hit Points**", quickPrimaryArray[2]] + " " + quickSecondaryArray[2], true)
+            .addField("**Hit Points**", quickPrimaryArray[2] + " " + quickSecondaryArray[2], true)
             .addField("**Speed**", quickPrimaryArray[3] + " " + quickSecondaryArray[3], true)
             //----------
             .addBlankField(true)
