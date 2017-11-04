@@ -602,7 +602,7 @@ commandDictionary['rpg'] = {
           actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
           
           for (n = 1; n < actionsValueArray.length; n++) {  
-            o = featsValueArray.length - 1;
+            o = featsValueArray.length - 1 + n;
             actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
           }
           embed.addField("__**Actions**__", actionsValueString, false);
