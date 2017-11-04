@@ -854,8 +854,16 @@ commandDictionary['name'] = {
           
           if (nicknameToggleState == 0) {
             nickname = results[0].nicknameOne;
+            //change the toggle number
+            sqldb.query("UPDATE user SET toggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+              console.log('nickname toggled');
+              }
           } else if (nicknameToggleState == 1) {
             nickname = results[0].nicknameTwo;
+              //change the toggle number
+            sqldb.query("UPDATE user SET toggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
+              console.log('nickname toggled');
+            }
           }
           var nicknameResponse = 'Your nickname has been changed to ' + nickname;
           
@@ -872,7 +880,6 @@ commandDictionary['name'] = {
               }
               message.channel.sendMessage(responseHead(message, key) + nicknameResponse);
               return;
-            
             } else {
               //If does not have permission
               message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
