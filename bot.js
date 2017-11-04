@@ -621,19 +621,21 @@ commandDictionary['rpg'] = {
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
               actionsLoopPlaceholder = actionsLoopPlaceholder.replace(strongArray[m], BOT.user.id);
-              message.channel.send("In Actions For-Loop " + m + ": " + actionsLoopPlaceholder);
+              
             }
           }
           actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
           
           for (n = 1; k < actionsValueArray.length; n++) {  
             o = featsValueArray.length - 1;
-            actionsValueString += "**" + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n'  
+            actionsValueString += "**" + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
+            message.channel.send("In Actions For-Loop " + m + ": " + actionsLoopPlaceholder);
           }
           embed.addField("__**Actions**__", actionsValueString, true);
-          
+          /*
           console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
+          */
           
         });   
         
