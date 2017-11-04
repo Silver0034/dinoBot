@@ -568,7 +568,7 @@ commandDictionary['rpg'] = {
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
           
           //Feats Fields
-          featsValue = "**" + moreInfoContent.split('Actions\r\n', 1)[0].replace(".", "||||||||");
+          featsValue = "**" + moreInfoContent.split('Actions\r\n', 1)[0].replace(".", ".**");
           embed.addField("__**Feats**__", featsValue, false);
           
           //Attack Fields
