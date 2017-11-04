@@ -671,10 +671,12 @@ commandDictionary['rpg'] = {
             .addField("**Speed**", quickPrimaryArray[3] + " " + quickSecondaryArray[3], true)
             //Proficiency Title
             .addField("__**Proficiencies**__", "Proficiencies of the " + page["title"]);
-          
+            console.log(proficienciesDescription);
+            /*
             for (i = 0; i < proficienciesTitle.length; i++) { 
               embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
             }
+            */
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
