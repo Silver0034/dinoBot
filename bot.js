@@ -498,6 +498,10 @@ commandDictionary['rpg'] = {
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
+          },
+          logo: {
+            selector: ".logo",
+            attr: "src"
           }
         },
           (err, page) => {
@@ -645,9 +649,9 @@ commandDictionary['rpg'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
-            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot")
+            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot", page["monsterImage"])
             .setImage(page["monsterImage"])
-            .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setThumbnail(page["logo"])
             .setURL(scrapeURL)
             //Abilities Section
             .addField("__**Abilities**__", "Scores and Modifiers for the " + page["title"])
@@ -665,9 +669,10 @@ commandDictionary['rpg'] = {
             .addField("**Hit Points**", quickPrimaryArray[2] + " " + quickSecondaryArray[2], true)
             .addField("**Speed**", quickPrimaryArray[3] + " " + quickSecondaryArray[3], true)
             //----------
+            /* Don't forget i can make blank fields
             .addBlankField(true)
             .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
-
+            */
           message.channel.send({embed});
           
         });   
