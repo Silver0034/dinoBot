@@ -672,7 +672,9 @@ commandDictionary['rpg'] = {
                      "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
                      , false);
-          
+            console.log("---------------------------------------------");
+            console.log(statsTitle);
+            console.log(statsDescription);
             //Proficiency Fields
             for (i = 0; i < statsTitle.length; i++) { 
               z = i + 10;
