@@ -865,7 +865,6 @@ commandDictionary['name'] = {
               console.log('nickname toggled');
             });
           }
-          var nicknameResponse = 'Your nickname has been changed to ' + nickname;
           
           if (message.guild) {
             //check BOT has permissions to change nicknames
@@ -875,10 +874,10 @@ commandDictionary['name'] = {
               message.member.setNickname(nickname, function(error) {
                 if (error) {
                   console.log(error);
-                  nicknameResponse = 'I\'m sorry, I can only change the nickname of users with a lower rank than me';
+                   message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                   return;
                 } else {
-                  message.channel.send(responseHead(message, key) + nicknameResponse);
+                  message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
                   return;
                 }
               });
