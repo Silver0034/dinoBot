@@ -532,7 +532,7 @@ commandDictionary['rpg'] = {
           var moreInfoContentPlaceholder = page["moreInfoContent"] + "";
           
           var featsValue = '';
-          var attackValue = '';
+          var attackValue = [];
           var proficiencyValue = '';
                   
           const embed = new DISCORD.RichEmbed()
