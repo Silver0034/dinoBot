@@ -674,8 +674,8 @@ commandDictionary['rpg'] = {
                      , false);
           
             //Proficiency Fields
-            for (i = 10; i < statsTitle.length; i++) { 
-              embed.addField('**' + statsTitle[i] + '**', statsDescription[i]);
+            for (i = 0; i < statsTitle.length; i++) { 
+              embed.addField('**' + statsTitle[i+10] + '**', statsDescription[]);
             }
             //----------
             /* Don't forget i can make blank fields
