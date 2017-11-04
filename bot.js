@@ -877,6 +877,7 @@ commandDictionary['name'] = {
               } catch(error) {
                 console.log(error);
                 nicknameResponse = 'I\'m sorry, I can only change the nickname of users with a lower rank than me';
+                console.log("This is where to look-------" + nicknameResponse); 
               }
               message.channel.sendMessage(responseHead(message, key) + nicknameResponse);
               return;
