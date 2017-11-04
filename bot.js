@@ -507,7 +507,8 @@ commandDictionary['rpg'] = {
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
           var quickSecondaryArray = page["quickSecondary"];
-                
+          
+          /*
           message.channel.send({
             "embed": {
             "title": page["title"],
@@ -637,6 +638,24 @@ commandDictionary['rpg'] = {
               }
             ]}
           });
+          */
+          
+          const embed = new Discord.RichEmbed()
+            .setTitle(page["title"])
+            .setAuthor(BOT.user.username, BOT.user.avatarURL)
+            .setColor(0x64FFDA)
+            .setDescription(page["descShort"])
+            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot")
+            .setImage("https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg")
+            .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setURL("https://www.dndbeyond.com/monsters/adult-blue-dragon")
+            .addField("This is a field title, it can hold 256 characters",
+              "This is a field value, it can hold 2048 characters.")
+            .addBlankField(true)
+            .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
+
+          message.channel.send({embed});
+          
         });   
         
 				return;  
