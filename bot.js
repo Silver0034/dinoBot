@@ -592,26 +592,33 @@ commandDictionary['rpg'] = {
           strongArray = ['One.', 'Two.', 'Three.', 'Four'];
           var featsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[0];
           //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
-          var featsValue = [];
+          var featsValueArray = [];
+          var featsValueString = '';
           
           message.channel.send("Before For-Loop: " + featsLoopPlaceholder);
           
-          for (j = 0; j < strongArray.length; j++) {
-            
+          for (j = 0; j < strongArray.length; j++) {  
             if (featsLoopPlaceholder.includes(strongArray[j])) {
               featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
               message.channel.send("In For-Loop " + j + ": " + featsLoopPlaceholder);
             }
-            
           }
-          featsValue = featsLoopPlaceholder.split(BOT.user.id);
+          
+          featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
           console.log(featsValue);
+          
+          for (k = 1; k < featsValueArray.length; k++) {  
+            l = k - 1;
+            featsValueString = "**" + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
+          }
+          .addField("__**Feats**__", featsValueString, true);
+          
           
           console.log("---------------------------------------------------------------------------------");
           console.log(attackValue);
           console.log("---------------------------------------------------------------------------------");
           console.log(page["moreInfoContent"]);
-          //message.channel.send({embed});
+          message.channel.send({embed});
           
         });   
         
