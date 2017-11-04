@@ -592,7 +592,9 @@ commandDictionary['rpg'] = {
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsSplit = actionsLoopArray[1].replace('Description\r\n', BOT.user.id).replace('Legendary\r\n', BOT.user.id);
+          console.log('--------------------------------------------------------------\n' + actionsSplit);
           actionsSplit = actionsSplit.split(BOT.user.id); 
+          console.log('--------------------------------------------------------------\n' + actionsSplit);
           var actionsLoopPlaceholder = actionsLoopArray[1];
           
           for (m = 0; m < strongArray.length; m++) {  
@@ -615,7 +617,6 @@ commandDictionary['rpg'] = {
           }
           //embed.addField("__**Actions**__", actionsValueString, false);
           
-          console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
           
           
