@@ -498,10 +498,6 @@ commandDictionary['rpg'] = {
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
-          },
-          logo: {
-            selector: ".logo",
-            attr: "src"
           }
         },
           (err, page) => {
@@ -649,9 +645,9 @@ commandDictionary['rpg'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
-            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot", page["logo"])
-            .setImage(page["logo"])
-            .setThumbnail(page["logo"])
+            .setFooter("© 2017 D&D Beyond | Scraped by DinoBot", "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setImage(page["monsterImage"])
+            .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL(scrapeURL)
             //Abilities Section
             .addField("__**Abilities**__", "Scores and Modifiers for the " + page["title"])
