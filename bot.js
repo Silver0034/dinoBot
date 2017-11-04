@@ -604,9 +604,12 @@ commandDictionary['rpg'] = {
           actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
           
           //TODO: Don't let a field excceed  1024 in length
-          for (n = 1; n < actionsValueArray.length; n++) {  
+          for (n = 1; n < actionsValueArray.length; n++) {
             o = featsValueArray.length - 1 + n;
-            actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
+            
+            //actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
+            
+            embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n]);
           }
           //embed.addField("__**Actions**__", actionsValueString, false);
           
