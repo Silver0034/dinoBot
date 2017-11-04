@@ -477,8 +477,8 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) { 
       case 'scrape':
-                
-        SCRAPEIT("https://www.dndbeyond.com/monsters/adult-blue-dragon", {
+        var scrapeURL = "https://www.dndbeyond.com/monsters/aboleth";        
+        SCRAPEIT(scrapeURL, {
           
           title: ".monster-name",
           descShort: ".details-item",
@@ -648,7 +648,7 @@ commandDictionary['rpg'] = {
             .setFooter("© 2017 D&D Beyond | Scraped by DinoBot")
             .setImage(page["monsterImage"])
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
-            .setURL("https://www.dndbeyond.com/monsters/adult-blue-dragon")
+            .setURL(scrapeURL)
             //Abilities Section
             .addField("__**Abilities**__", "Scores and Modifiers for the " + page["title"])
             .addField("<:strength:376009689864994820> **STR**", abilityScoreArray[0] + " " + abilityModifierArray[0], true)
