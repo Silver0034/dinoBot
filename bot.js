@@ -613,7 +613,7 @@ commandDictionary['rpg'] = {
           var actionsLoopArray = moreInfoContent.split('Actions\r\n', 1);
           var actionsLoopPlaceholder = actionsLoopArray[1];
           message.channel.send(actionsLoopPlaceholder);
-          message.channel.send("Before For-Loop: " + featsLoopPlaceholder);
+          message.channel.send("Before For-Loop: " + actionsLoopPlaceholder);
           /*
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
