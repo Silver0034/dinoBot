@@ -495,10 +495,10 @@ commandDictionary['rpg'] = {
           quickSecondary: {
             listItem: ".secondary"
           },
-          proficienciesTitle: {
+          statsTitle: {
             listItem: ".title",
           },
-          proficienciesDescription: {
+          statsDescription: {
             listItem: ".description",
           },
           monsterImage: {
@@ -512,8 +512,8 @@ commandDictionary['rpg'] = {
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
           var quickSecondaryArray = page["quickSecondary"];
-          var proficienciesTitle = page["proficienciesTitle"];
-          var proficienciesDescription = page["proficienciesDescription"];
+          var statsTitle = page["statsTitle"];
+          var statsDescription = page["statsDescription"];
           
           /*
           message.channel.send({
@@ -656,24 +656,17 @@ commandDictionary['rpg'] = {
             .setImage(page["monsterImage"])
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL(scrapeURL)
-            //Abilities Section
+            //Abilities Section          
             .addField("__**Abilities**__",
-                      "<:strength:376009689864994820> **STR**: " + abilityScoreArray[0] + abilityModifierArray[0] +
-                      "  <:dexterity:376009689348964352> **DEX**: " + abilityScoreArray[1] + abilityModifierArray[1] +
-                      "  <:constitution:376009689214877707> **CON**: " + abilityScoreArray[2] + abilityModifierArray[2] + '\n' +
-                      "  <:intelligence:376009689445564426> **INT**: " + abilityScoreArray[3] + abilityModifierArray[3] +
-                      "  <:wisdom:376009690796261377> **WIS**: " + abilityScoreArray[4] + abilityModifierArray[4] +
-                      "  <:charisma:376009688988516353> **CHA**: " + abilityScoreArray[5] + abilityModifierArray[5]
+                      "<:strength:376009689864994820> **" + statsTitle[0] + "**: " + abilityScoreArray[0] + abilityModifierArray[0] +
+                      "  <:dexterity:376009689348964352> **" + statsTitle[1] + "**: " + abilityScoreArray[1] + abilityModifierArray[1] +
+                      "  <:constitution:376009689214877707> **" + statsTitle[2] + "**: " + abilityScoreArray[2] + abilityModifierArray[2] + '\n' +
+                      "  <:intelligence:376009689445564426> **" + statsTitle[3] + "**: " + abilityScoreArray[3] + abilityModifierArray[3] +
+                      "  <:wisdom:376009690796261377> **" + statsTitle[4] + "**: " + abilityScoreArray[4] + abilityModifierArray[4] +
+                      "  <:charisma:376009688988516353> **" + statsTitle[5] + "**: " + abilityScoreArray[5] + abilityModifierArray[5]
                       , false)
-          /*
-            .addField("<:dexterity:376009689348964352> **DEX**", abilityScoreArray[1] + " " + abilityModifierArray[1], true)
-            .addField("<:constitution:376009689214877707> **CON**", abilityScoreArray[2] + " " + abilityModifierArray[2], true)
-            .addField("<:intelligence:376009689445564426> **INT**", abilityScoreArray[3] + " " + abilityModifierArray[3], true)
-            .addField("<:wisdom:376009690796261377> **WIS**", abilityScoreArray[4] + " " + abilityModifierArray[4], true)
-            .addField("<:charisma:376009688988516353> **CHA**", abilityScoreArray[5] + " " + abilityModifierArray[5], true)
-            */
-            //----------
             //Secondary Information
+            .addField("__**Secondary Information**__",)
             .addField("__**Secondary Information**__", "Miscellaneous stats for the " + page["title"])
             .addField("**Challenge**", quickPrimaryArray[0] + " " + quickSecondaryArray[0], true)
             .addField("**Armor Class**", quickPrimaryArray[1] + " " + quickSecondaryArray[1], true)
