@@ -640,7 +640,7 @@ commandDictionary['rpg'] = {
           });
           */
           
-          const embed = new Discord.RichEmbed()
+          const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
