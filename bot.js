@@ -674,8 +674,8 @@ commandDictionary['rpg'] = {
                      , false);
           
             //Proficiency Fields
-            for (i = 10; i < proficienciesTitle.length; i++) { 
-              embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
+            for (i = 10; i < statsTitle.length; i++) { 
+              embed.addField('**' + statsTitle[i] + '**', statsDescription[i]);
             }
             //----------
             /* Don't forget i can make blank fields
