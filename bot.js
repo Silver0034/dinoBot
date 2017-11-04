@@ -599,7 +599,7 @@ commandDictionary['rpg'] = {
           
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
-              actionsLoopPlaceholder = actionsLoopPlaceholder.replace(strongArray[m], BOT.user.id);
+              actionsLoopPlaceholder = '' + actionsLoopPlaceholder.replace(strongArray[m], BOT.user.id);
               
             }
           }
