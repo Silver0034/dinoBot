@@ -590,8 +590,9 @@ commandDictionary['rpg'] = {
           
           
           //Actions Section
-          var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsLoopPlaceholder = actionsLoopArray[1];
+          var actionsLoopArrayFirst = moreInfoContent.split('Actions\r\n');
+          var actionsLoopArray = moreInfoContentFirst[1].split('Legendary Actions');
+          var actionsLoopPlaceholder = actionsLoopArray[0];
           
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
