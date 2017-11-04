@@ -629,13 +629,12 @@ commandDictionary['rpg'] = {
           for (n = 1; n < actionsValueArray.length; n++) {  
             o = featsValueArray.length - 1;
             actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
-            message.channel.send("In Actions For-Loop " + m + ": " + actionsValueString);
           }
-          //embed.addField("__**Actions**__", actionsValueString, true);
-          /*
+          embed.addField("__**Actions**__", actionsValueString, true);
+          
           console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
-          */
+          
           
         });   
         
