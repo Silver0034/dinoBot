@@ -879,15 +879,15 @@ commandDictionary['name'] = {
                 nicknameResponse = 'I\'m sorry, I can only change the nickname of users with a lower rank than me';
                 console.log("This is where to look-------" + nicknameResponse); 
               }
-              message.channel.sendMessage(responseHead(message, key) + nicknameResponse);
+              message.channel.send(responseHead(message, key) + nicknameResponse);
               return;
             } else {
               //If does not have permission
-              message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
+              message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
             }  
           } else {
             //not in a server (in a DM)
-            message.channel.sendMessage(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
+            message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
           }
         });
         //
