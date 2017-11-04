@@ -593,9 +593,7 @@ commandDictionary['rpg'] = {
           //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
           var featsValueArray = [];
           var featsValueString = '';
-          
-          message.channel.send("Before For-Loop: " + featsLoopPlaceholder);
-          
+                    
           for (j = 0; j < strongArray.length; j++) {  
             if (featsLoopPlaceholder.includes(strongArray[j])) {
               featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
@@ -612,8 +610,10 @@ commandDictionary['rpg'] = {
           
           
           //Actions Section
-          var actionsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[1];
+          var actionsLoopArray = moreInfoContent.split('Actions\r\n', 1);
+          var actionsLoopPlaceholder = actionsLoopArray[1];
           message.channel.send(actionsLoopPlaceholder);
+          message.channel.send("Before For-Loop: " + featsLoopPlaceholder);
           /*
           for (m = 0; m < strongArray.length; m++) {  
             if (actionsLoopPlaceholder.includes(strongArray[m])) {
