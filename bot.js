@@ -591,7 +591,7 @@ commandDictionary['rpg'] = {
           
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsSplit = actionsLoopArray[1].split('                                                 '); 
+          var actionsSplit = actionsLoopArray[1].split("\\s{3,}"); 
           var actionsLoopPlaceholder = actionsLoopArray[1];
           
           for (m = 0; m < strongArray.length; m++) {  
@@ -601,6 +601,8 @@ commandDictionary['rpg'] = {
             }
           }
           actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
+          
+          embed.addField("__**Actions**__", 'Visit D&D Beyond for a complete list of actions.', false);
           
           //TODO: Don't let a field excceed  1024 in length
           for (n = 1; n < actionsValueArray.length; n++) {
