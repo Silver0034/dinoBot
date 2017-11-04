@@ -609,7 +609,7 @@ commandDictionary['rpg'] = {
           
           for (k = 1; k < featsValueArray.length; k++) {  
             l = k - 1;
-            featsValueString = "**" + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
+            featsValueString += "**" + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
           }
           embed.addField("__**Feats**__", featsValueString, true);
           
