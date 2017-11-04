@@ -519,7 +519,7 @@ commandDictionary['rpg'] = {
           }
         },
           (err, page) => {
-          console.log(err || page);
+          console.log(err);
           var abilityScoreArray = page["abilityScore"];
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
@@ -592,7 +592,7 @@ commandDictionary['rpg'] = {
           strongArray = ['One.', 'Two.', 'Three.', 'Four'];
           var featsLoopPlaceholder = moreInfoContent.split('Actions\r\n', 1)[0];
           //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
-          var featsValue = '';
+          var featsValue = [];
           
           message.channel.send("Before For-Loop: " + featsLoopPlaceholder);
           
@@ -604,6 +604,9 @@ commandDictionary['rpg'] = {
             }
             
           }
+          featsValue = featsLoopPlaceholder.split(BOT.user.id);
+          console.log(featsValue);
+          
           console.log("---------------------------------------------------------------------------------");
           console.log(attackValue);
           console.log("---------------------------------------------------------------------------------");
