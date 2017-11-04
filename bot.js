@@ -666,18 +666,20 @@ commandDictionary['rpg'] = {
                       "  <:charisma:376009688988516353> **" + statsTitle[5] + "**: " + abilityScoreArray[5] + abilityModifierArray[5]
                       , false)
             //Secondary Information
-            .addField("__**Stats**__",
+            .addField("__**Secondary Stats**__",
                      "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
                      "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
                      "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
                      "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
-                     , false)
-              /*
+                     , false);
+          
+          statsTitle = statsTitle.splice(0, 10);
+        
             //Proficiency Fields
             for (i = 0; i < proficienciesTitle.length; i++) { 
               embed.addField('**' + proficienciesTitle[i] + '**', proficienciesDescription[i]);
             }
-          */
+          
             //----------
             /* Don't forget i can make blank fields
             .addBlankField(true)
