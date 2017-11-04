@@ -594,6 +594,8 @@ commandDictionary['rpg'] = {
           //featsLoopPlaceholder = "One. Filler section 1. Two. Filler section 2. Three. Filler section 3."
           var featsValueArray = [];
           var featsValueString = '';
+          var actionsValueArray = [];
+          var actionsValueString = '';
                     
           for (j = 0; j < strongArray.length; j++) {  
             if (featsLoopPlaceholder.includes(strongArray[j])) {
@@ -622,16 +624,14 @@ commandDictionary['rpg'] = {
               message.channel.send("In Actions For-Loop " + m + ": " + actionsLoopPlaceholder);
             }
           }
-          /*
-          featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
-          console.log(featsValue);
+          actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
           
-          for (k = 1; k < featsValueArray.length; k++) {  
-            l = k - 1;
-            featsValueString += "**" + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
+          for (n = 1; k < actionsValueArray.length; n++) {  
+            o = featsValueArray.length - 1;
+            actionsValueString += "**" + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n'  
           }
-          embed.addField("__**Feats**__", featsValueString, true);
-          */
+          embed.addField("__**Actions**__", actionsValueString, true);
+          
           console.log('--------------------------------------------------------------\n' + moreInfoContent);
           message.channel.send({embed});
           
