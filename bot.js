@@ -482,11 +482,6 @@ commandDictionary['rpg'] = {
           
           title: ".monster-name",
           descShort: ".details-item",
-          //abilities: ".abilities",
-          monsterImage: {
-            selector: ".mosnter-image img",
-            attr: "src"
-          }, 
           // Nested list
           abilityScore: {
             listItem: ".score"
@@ -500,6 +495,10 @@ commandDictionary['rpg'] = {
           quickSecondary: {
             listItem: ".secondary"
           },
+          monsterImage: {
+            selector: ".monster-image",
+            attr: "src"
+          }
         },
           (err, page) => {
           console.log(err || page);
@@ -507,6 +506,7 @@ commandDictionary['rpg'] = {
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
           var quickSecondaryArray = page["quickSecondary"];
+          
           
           /*
           message.channel.send({
@@ -646,7 +646,7 @@ commandDictionary['rpg'] = {
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
             .setFooter("© 2017 D&D Beyond | Scraped by DinoBot")
-            .setImage("https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/16/315/315/636238882493439723.jpeg")
+            .setImage(page["monsterImage"])
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL("https://www.dndbeyond.com/monsters/adult-blue-dragon")
             //Abilities Section
