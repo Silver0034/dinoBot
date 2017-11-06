@@ -538,8 +538,7 @@ commandDictionary['rpg'] = {
           var featsValueString = '';
           var actionsValueArray = [];
           var actionsValueString = '';
-          
-          console.log(page["moreInfoContent"]); 
+                  
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -589,14 +588,6 @@ commandDictionary['rpg'] = {
           }
           embed.addField("__**Feats**__", featsValueString, false);
           
-          moreInfoContent = "Section One. This is the desc for section 1. Section Two. This is the desc for section 2. Actions\r\n Section Three. This is the desc for section 3. Section Four. This is the desc for section 4.";
-          strongArray = ['Section One.', 'Section Two', 'Section Three', 'Section Four'];
-          
-          
-          var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsSplitArray = actionsLoopArray[0].split(strongArray[0]);
-          var actionsSplit = [];
-        
           /*
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
