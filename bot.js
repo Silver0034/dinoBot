@@ -643,7 +643,7 @@ commandDictionary['rpg'] = {
             .addField('4','4')
             .addField('4','4')
             .addField('4','4')
-          
+            .addField('4','4');
           
           
           //<strong>Legendary Resistance (3/Day).</strong> If the dragon fails a saving throw, it can choose to succeed instead. <br>
