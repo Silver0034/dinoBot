@@ -562,10 +562,10 @@ commandDictionary['rpg'] = {
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
-                     "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + bot.quickSecondary[0] + "\n" +
-                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + bot.quickSecondary[1] + "\n" +
-                     "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + bot.quickSecondary[2] + "\n" +
-                     "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + bot.quickSecondary[3]
+                     "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + page.quickSecondary[0] + "\n" +
+                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + page.quickSecondary[1] + "\n" +
+                     "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + page.quickSecondary[2] + "\n" +
+                     "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + page.quickSecondary[3]
                      , false);
           
           //Proficiency Fields
