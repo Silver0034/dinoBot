@@ -607,7 +607,7 @@ commandDictionary['rpg'] = {
           console.log('--------------------------------' + featsValueArray);
           //TODO: Don't let a field excceed  1024 in length
           for (n = 1; n < actionsValueArray.length; n++) {
-            o = featsValueArray.length - 1 + n;
+            o = featsValueArray.length - 2 + n;
             
             //actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
             if (strongArray[o] != null) {
