@@ -538,6 +538,8 @@ commandDictionary['rpg'] = {
           var featsValueString = '';
           var actionsValueArray = [];
           var actionsValueString = '';
+          
+          console.log(page["moreInfoContent"]);
            /*       
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
@@ -596,7 +598,7 @@ commandDictionary['rpg'] = {
           var actionsSplitArray = actionsLoopArray[0].split(strongArray[0]);
           var actionsSplit = [];
           
-          console.log(page["moreInfoContent"]);
+          
           */
           /*
           //Actions Section
