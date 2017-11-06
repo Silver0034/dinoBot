@@ -629,7 +629,7 @@ commandDictionary['rpg'] = {
           */
           //embed.addField("__**Actions**__", actionsValueString, false);
           
-          message.channel.send({embed});
+          //message.channel.send({embed});
           
           
         });   
