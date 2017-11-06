@@ -538,7 +538,7 @@ commandDictionary['rpg'] = {
           var featsValueString = '';
           var actionsValueArray = [];
           var actionsValueString = '';
-                  
+           /*       
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -597,14 +597,6 @@ commandDictionary['rpg'] = {
           var actionsSplit = [];
           
           console.log(page["moreInfoContent"]);
-          
-          /* Here's the testing bit
-          for (i = 0; i < strongArray.length; i++) {
-            j = i + 1;
-            actionsSplitArray = actionsSplitArray[1].split(strongArray[j]);
-            actionsSplit[i] = actionsSplitArray[i]
-          }
-          console.log('---------------------------------------------- actionsSplit ---->' + actionsSplit);
           */
           /*
           //Actions Section
