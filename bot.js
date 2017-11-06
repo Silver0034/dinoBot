@@ -586,7 +586,7 @@ commandDictionary['rpg'] = {
             l = k - 1;
             featsValueString += '**' + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
           }
-          embed.addField("__**Feats**__", featsValueString, false);
+          //embed.addField("__**Feats**__", featsValueString, false);
           
           /*
           //Actions Section
