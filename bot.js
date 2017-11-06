@@ -589,7 +589,7 @@ commandDictionary['rpg'] = {
           
           
           var $ = CHEERIO.load(page.moreInfoContent);
-          var paragraph = $('p').data();
+          var paragraph = $('p').text();
           console.log(paragraph);
           
           
