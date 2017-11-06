@@ -578,7 +578,6 @@ commandDictionary['rpg'] = {
             }
           }
           
-          
           //TODO: Don't let a field excceed  1024 in length
           featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
           
@@ -587,7 +586,6 @@ commandDictionary['rpg'] = {
             featsValueString += '**' + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
           }
           embed.addField("__**Feats**__", featsValueString, false);
-          
           
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
@@ -608,7 +606,7 @@ commandDictionary['rpg'] = {
           console.log('--------------------------------' + strongArray);
           console.log('--------------------------------' + featsValueArray);
           //TODO: Don't let a field excceed  1024 in length
-          for (n = 1; n < actionsValueArray.length; n++) {
+          for (n = 0; n < actionsValueArray.length; n++) {
             o = featsValueArray.length - 1 + n;
             
             //actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
