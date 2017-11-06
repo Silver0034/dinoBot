@@ -587,11 +587,10 @@ commandDictionary['rpg'] = {
           //if so, use it as the Field Header
           //if not fill header with _______?
           
-          console.log('------------------------------------------------------\n' + page.paragraph);
           
           var $ = CHEERIO.load(page.moreInfoContent);
-        
-          
+          $('p').data();
+          console.log($('p').data());
           
           
           
