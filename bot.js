@@ -3,6 +3,7 @@
 const DISCORD = require('discord.js');
 const BOT = new DISCORD.Client();
 //npm dependencies
+const CHEERIO = require('cheerio');
 const FS = require('fs');
 const HTTP = require('http');
 var jimp = require('jimp');
@@ -517,6 +518,9 @@ commandDictionary['rpg'] = {
           moreInfoPlain: {
             selector: ".more-info-content"
           },
+          infoContentParagraph: {
+            selector: 
+          },
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
@@ -578,16 +582,19 @@ commandDictionary['rpg'] = {
           
           //Handles page.moreInfoContent
           
+        
+          
+          
+          
           //look to see if first div is h3
           //if so, use it as the Field Header
           //if not fill header with _______?
           
-          console.log('------------------------------------------------------\n' + page.moreInfoContent);
+          console.log('------------------------------------------------------\n' + page.paragraph);
           
+          var $ = cheerio.load(page.moreInfoContent);
           
-          
-          
-          
+          $(p)
           
           
           
