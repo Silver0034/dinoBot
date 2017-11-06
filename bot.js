@@ -514,6 +514,9 @@ commandDictionary['rpg'] = {
             selector: ".more-info-content",
             how: "html"
           },
+          moreInfoPlain: {
+            selector: ".more-info-content"
+          },
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
@@ -550,32 +553,62 @@ commandDictionary['rpg'] = {
             .setURL(scrapeURL)
             //Abilities Section          
             .addField("__**Abilities**__",
-                      "<:strength:376009689864994820> **" + page.statsTitle[0] + "**: " + abilityScoreArray[0] + abilityModifierArray[0] +
-                      "  <:dexterity:376009689348964352> **" + page.statsTitle[1] + "**: " + abilityScoreArray[1] + abilityModifierArray[1] +
-                      "  <:constitution:376009689214877707> **" + page.statsTitle[2] + "**: " + abilityScoreArray[2] + abilityModifierArray[2] + '\n' +
-                      "  <:intelligence:376009689445564426> **" + page.statsTitle[3] + "**: " + abilityScoreArray[3] + abilityModifierArray[3] +
-                      "  <:wisdom:376009690796261377> **" + page.statsTitle[4] + "**: " + abilityScoreArray[4] + abilityModifierArray[4] +
-                      "  <:charisma:376009688988516353> **" + page.statsTitle[5] + "**: " + abilityScoreArray[5] + abilityModifierArray[5]
+                      "<:strength:376009689864994820> **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
+                      "  <:dexterity:376009689348964352> **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
+                      "  <:constitution:376009689214877707> **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
+                      "  <:intelligence:376009689445564426> **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
+                      "  <:wisdom:376009690796261377> **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
+                      "  <:charisma:376009688988516353> **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
-                     "**" + page.statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
-                     "**" + page.statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
-                     "**" + page.statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
-                     "**" + page.statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
+                     "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + bot.quickSecondary[0] + "\n" +
+                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + bot.quickSecondary[1] + "\n" +
+                     "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + bot.quickSecondary[2] + "\n" +
+                     "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + bot.quickSecondary[3]
                      , false);
           
           //Proficiency Fields
-          for (i = 0; i < statsDescription.length; i++) { 
+          for (i = 0; i < page.statsDescription.length; i++) { 
             z = i + 10;
-            proficiencyValue += '**' + page.statsTitle[z] + '**: ' + statsDescription[i] + "\n"
+            proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
           }
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
-                    
+          
+          
+          //Handles page.moreInfoContent
+          
+          //look to see if first div is h3
+          //if so, use it as the Field Header
+          //if not fill header with _______?
+          
+          console.log('------------------------------------------------------\n' + page.moreInfoPlain);
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          /*          
           //Feats section                    
-          for (j = 0; j < strongArray.length; j++) {  
-            if (featsLoopPlaceholder.includes(strongArray[j])) {
-              featsLoopPlaceholder = featsLoopPlaceholder.replace(strongArray[j], BOT.user.id);
+          for (j = 0; j < page.strong.length; j++) {  
+            if (featsLoopPlaceholder.includes(page.strong[j])) {
+              featsLoopPlaceholder = featsLoopPlaceholder.replace(page.strong[j], BOT.user.id);
             }
           }
           
@@ -584,11 +617,11 @@ commandDictionary['rpg'] = {
           
           for (k = 1; k < featsValueArray.length; k++) {  
             l = k - 1;
-            featsValueString += '**' + strongArray[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
+            featsValueString += '**' + page.strong[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
           }
           //embed.addField("__**Feats**__", featsValueString, false);
-          console.log('--------------------------- strongArray ---------\n' + strongArray +'--------------------------- featsValueArray ---------\n' + featsValueArray);
-          
+          console.log('--------------------------- page.strong ---------\n' + page.strong +'--------------------------- featsValueArray ---------\n' + featsValueArray);
+          */
           /*
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
@@ -597,9 +630,9 @@ commandDictionary['rpg'] = {
 
           var actionsLoopPlaceholder = actionsSplit[0];
           
-          for (m = 0; m < strongArray.length; m++) {  
-            if (actionsLoopPlaceholder.includes(strongArray[m])) {
-              actionsLoopPlaceholder = actionsLoopPlaceholder.replace(strongArray[m], BOT.user.id);
+          for (m = 0; m < page.strong.length; m++) {  
+            if (actionsLoopPlaceholder.includes(page.strong[m])) {
+              actionsLoopPlaceholder = actionsLoopPlaceholder.replace(page.strong[m], BOT.user.id);
               
             }
           }
@@ -611,9 +644,9 @@ commandDictionary['rpg'] = {
           for (n = 1; n < actionsValueArray.length; n++) {
             o = featsValueArray.length - 2 + n;
             
-            //actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
-            if (strongArray[o] != null) {
-              embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n], true);  
+            //actionsValueString += '**' + page.strong[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
+            if (page.strong[o] != null) {
+              embed.addField('**' + page.strong[o].replace('.', ':') + '** ', actionsValueArray[n], true);  
             }
           }
           
