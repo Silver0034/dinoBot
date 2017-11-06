@@ -588,6 +588,7 @@ commandDictionary['rpg'] = {
           embed.addField("__**Feats**__", featsValueString, false);
           
           moreInfoContent = "Section One. This is the desc for section 2. Section Two. This is the desc for section 2. Actions\r\n Section Three. This is the desc for section 3. Section Four. This is the desc for section 4.";
+          strongArray = ['Section One.', 'Section Two', 'Section Three', 'Section Four'];
           
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
