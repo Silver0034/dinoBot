@@ -607,17 +607,17 @@ commandDictionary['rpg'] = {
             paragraphTitle = 'Section ' + i;
             
             
-            
+            /*
             //for each line in the paragraph
             for (j = 0; j < paragraphArray.length; j++) {
               lineContent += $(paragraphArray[i]).text() + '/n';
               //check to make sure it isn't too long
               if ( lineContent.length > 1024) {
-                lineContent = lineContent.substr
+                lineContent = lineContent.substring
               }
               
             }
-            
+            */
           //  embed.addField(paragraphTitle, paragraphContent, false);
           }
           
