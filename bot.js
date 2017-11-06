@@ -587,6 +587,8 @@ commandDictionary['rpg'] = {
           }
           embed.addField("__**Feats**__", featsValueString, false);
           
+          moreInfoContent = "Section One. This is the desc for section 2. Section Two. This is the desc for section 2. Actions Section Three. This is the desc for section 3. Section Four. This is the desc for section 4.";
+          
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsSplit = actionsLoopArray[1].replace('Description', BOT.user.id).replace('Legendary', BOT.user.id);
