@@ -586,7 +586,7 @@ commandDictionary['rpg'] = {
           var paragraph = '';
           console.log(paragraph);
           var paragraphArray = [];
-          var paragraphContent = '';
+          var lineContent = '';
           var paragraphTitle = '';
           
           for (i = 0; i < $('p').length; i++) {
