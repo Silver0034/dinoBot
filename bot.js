@@ -518,9 +518,6 @@ commandDictionary['rpg'] = {
           moreInfoPlain: {
             selector: ".more-info-content"
           },
-          infoContentParagraph: {
-            selector: 
-          },
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
