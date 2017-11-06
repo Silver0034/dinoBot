@@ -582,7 +582,7 @@ commandDictionary['rpg'] = {
           //if so, use it as the Field Header
           //if not fill header with _______?
           
-          console.log('------------------------------------------------------\n' + page.moreInfoPlain);
+          console.log('------------------------------------------------------\n' + page.moreInfoContent);
           
           
           
