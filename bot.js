@@ -538,7 +538,9 @@ commandDictionary['rpg'] = {
           var featsValueString = '';
           var actionsValueArray = [];
           var actionsValueString = '';
-                  
+          
+          //This is how many fields are defined in the const
+          var fieldCount = 2;
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -571,6 +573,7 @@ commandDictionary['rpg'] = {
             proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
           }
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
+          fieldCount++;
           
           
           //Handles page.moreInfoContent
@@ -585,9 +588,8 @@ commandDictionary['rpg'] = {
           var $ = CHEERIO.load(page.moreInfoContent);
           var paragraph = '';
           console.log(paragraph);
-          var paragraphArray = [];
-          var lineContent = '';
-          var paragraphTitle = '';
+          var lineArray = [];
+          var lineSections = [];
           
           for (i = 0; i < $('p').length; i++) {
             //This runs for each paragraph
@@ -598,52 +600,34 @@ commandDictionary['rpg'] = {
             //if h3, make that the field title
             //if not... idk, can't be blank
             //make sure no fields exceed 1024 char
+            //DO NOT ADD MORE THAN 22 FIELDS!!!!!
             
             paragraph = $('p').eq(i).html();
-            paragraph = paragraph.replace('<strong>', '**').replace('.</strong>', ':**');
+    
             //split each paragraph by line breaks
-            paragraphArray = paragraph.split('<br>');
+            lineArray = paragraph.split('<br>');
             
-            paragraphTitle = 'Section ' + i;
-            
-            
-            /*
             //for each line in the paragraph
-            for (j = 0; j < paragraphArray.length; j++) {
-              lineContent += $(paragraphArray[i]).text() + '/n';
+            for (j = 0; j < lineArray.length; j++) {
+              lineSections = lineArray[j].split('</strong>');
+              if (lineSections.length < 2) {
+                message.channel.send(error(key) + 'The monster card was generated incorrectly');
+                return;
+              }
+              
+              lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+              lineSections[1] = $(lineSections[1]).text() + '/n';
+              
+              embed.addField(lineSections[0], lineSections[1], false);
+              fieldCount++;
               //check to make sure it isn't too long
-              if ( lineContent.length > 1024) {
-                lineContent = lineContent.substring
+              if (lineSections[0].length > 1024) {
               }
               
             }
-            */
-          //  embed.addField(paragraphTitle, paragraphContent, false);
+            
           }
-          
-          embed.addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4')
-            .addField('4','4');
+            
           
           
           //<strong>Legendary Resistance (3/Day).</strong> If the dragon fails a saving throw, it can choose to succeed instead. <br>
