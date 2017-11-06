@@ -550,25 +550,25 @@ commandDictionary['rpg'] = {
             .setURL(scrapeURL)
             //Abilities Section          
             .addField("__**Abilities**__",
-                      "<:strength:376009689864994820> **" + statsTitle[0] + "**: " + abilityScoreArray[0] + abilityModifierArray[0] +
-                      "  <:dexterity:376009689348964352> **" + statsTitle[1] + "**: " + abilityScoreArray[1] + abilityModifierArray[1] +
-                      "  <:constitution:376009689214877707> **" + statsTitle[2] + "**: " + abilityScoreArray[2] + abilityModifierArray[2] + '\n' +
-                      "  <:intelligence:376009689445564426> **" + statsTitle[3] + "**: " + abilityScoreArray[3] + abilityModifierArray[3] +
-                      "  <:wisdom:376009690796261377> **" + statsTitle[4] + "**: " + abilityScoreArray[4] + abilityModifierArray[4] +
-                      "  <:charisma:376009688988516353> **" + statsTitle[5] + "**: " + abilityScoreArray[5] + abilityModifierArray[5]
+                      "<:strength:376009689864994820> **" + page.statsTitle[0] + "**: " + abilityScoreArray[0] + abilityModifierArray[0] +
+                      "  <:dexterity:376009689348964352> **" + page.statsTitle[1] + "**: " + abilityScoreArray[1] + abilityModifierArray[1] +
+                      "  <:constitution:376009689214877707> **" + page.statsTitle[2] + "**: " + abilityScoreArray[2] + abilityModifierArray[2] + '\n' +
+                      "  <:intelligence:376009689445564426> **" + page.statsTitle[3] + "**: " + abilityScoreArray[3] + abilityModifierArray[3] +
+                      "  <:wisdom:376009690796261377> **" + page.statsTitle[4] + "**: " + abilityScoreArray[4] + abilityModifierArray[4] +
+                      "  <:charisma:376009688988516353> **" + page.statsTitle[5] + "**: " + abilityScoreArray[5] + abilityModifierArray[5]
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
-                     "**" + statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
-                     "**" + statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
-                     "**" + statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
-                     "**" + statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
+                     "**" + page.statsTitle[6] + "**: " + quickPrimaryArray[0] + " " + quickSecondaryArray[0] + "\n" +
+                     "**" + page.statsTitle[7] + "**: " + quickPrimaryArray[1] + " " + quickSecondaryArray[1] + "\n" +
+                     "**" + page.statsTitle[8] + "**: " + quickPrimaryArray[2] + " " + quickSecondaryArray[2] + "\n" +
+                     "**" + page.statsTitle[9] + "**: " + quickPrimaryArray[3] + " " + quickSecondaryArray[3]
                      , false);
           
           //Proficiency Fields
           for (i = 0; i < statsDescription.length; i++) { 
             z = i + 10;
-            proficiencyValue += '**' + statsTitle[z] + '**: ' + statsDescription[i] + "\n"
+            proficiencyValue += '**' + page.statsTitle[z] + '**: ' + statsDescription[i] + "\n"
           }
           embed.addField("__**Proficiencies**__", proficiencyValue, false);
                     
