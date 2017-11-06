@@ -539,8 +539,7 @@ commandDictionary['rpg'] = {
           var actionsValueArray = [];
           var actionsValueString = '';
           
-          console.log(page["moreInfoContent"]);
-           /*       
+          console.log(page["moreInfoContent"]); 
           const embed = new DISCORD.RichEmbed()
             .setTitle(page["title"])
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -597,9 +596,7 @@ commandDictionary['rpg'] = {
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsSplitArray = actionsLoopArray[0].split(strongArray[0]);
           var actionsSplit = [];
-          
-          
-          */
+        
           /*
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
@@ -631,7 +628,7 @@ commandDictionary['rpg'] = {
           */
           //embed.addField("__**Actions**__", actionsValueString, false);
           
-          //message.channel.send({embed});
+          message.channel.send({embed});
           
           
         });   
