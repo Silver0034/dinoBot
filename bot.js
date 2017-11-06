@@ -508,9 +508,6 @@ commandDictionary['rpg'] = {
           strong: {
             listItem: "strong",
           },
-          paragraph: {
-            listItem: "p",
-          },
           moreInfoContent: {
             selector: ".more-info-content",
             how: "html"
@@ -532,7 +529,6 @@ commandDictionary['rpg'] = {
           var statsTitle = page["statsTitle"];
           var statsDescription = page["statsDescription"];
           var strongArray = page["strong"];
-          var paragraphArray = page["paragraph"];
           var moreInfoContent = page["moreInfoContent"] + "";
                 
           var proficiencyValue = '';
@@ -587,8 +583,11 @@ commandDictionary['rpg'] = {
           
           
           var $ = CHEERIO.load(page.moreInfoContent);
-          var paragraph = $('p').eq(0).html();
+          var paragraph = '';
           console.log(paragraph);
+          var paragraphArray = ;
+          var paragraphContent = '';
+          var paragraphTitle = '';
           
           for (i = 0; i < $('p').length; i++) {
             //This runs for each paragraph
@@ -600,11 +599,54 @@ commandDictionary['rpg'] = {
             //if not... idk, can't be blank
             //make sure no fields exceed 1024 char
             
+            paragraph = $('p').eq(i).html();
+            paragraph = paragraph.replace('<strong>', '**').replace('.</strong>', ':**');
+            //split each paragraph by line breaks
+            paragraphArray = paragraph.split('<br>');
             
+            paragraphTitle = 'Section ' + i;
+            
+            
+            
+            //for each line in the paragraph
+            for (j = 0; j < paragraphArray.length; j++) {
+              lineContent += $(paragraphArray[i]).text() + '/n';
+              //check to make sure it isn't too long
+              if ( lineContent.length > 1024) {
+                lineContent = lineContent.substr
+              }
+              
+            }
+            
+          //  embed.addField(paragraphTitle, paragraphContent, false);
           }
           
+          embed.addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
+            .addField('4','4')
           
-          //<p><strong>Legendary Resistance (3/Day).</strong> If the dragon fails a saving throw, it can choose to succeed instead.</p>
+          
+          
+          //<strong>Legendary Resistance (3/Day).</strong> If the dragon fails a saving throw, it can choose to succeed instead. <br>
           
           
           
