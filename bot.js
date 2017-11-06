@@ -512,6 +512,7 @@ commandDictionary['rpg'] = {
           },
           moreInfoContent: {
             listItem: ".more-info-content",
+            how: "html"
           },
           monsterImage: {
             selector: ".monster-image",
