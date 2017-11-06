@@ -590,6 +590,19 @@ commandDictionary['rpg'] = {
           moreInfoContent = "Section One. This is the desc for section 1. Section Two. This is the desc for section 2. Actions\r\n Section Three. This is the desc for section 3. Section Four. This is the desc for section 4.";
           strongArray = ['Section One.', 'Section Two', 'Section Three', 'Section Four'];
           
+          
+          var actionsLoopArray = moreInfoContent.split('Actions\r\n');
+          var actionsSplitArray = actionsLoopArray.split(strongArray[0]
+          var actionsSplit = [];
+          
+          for (i = 0; i < strongArray.length; i++) {
+            j = i + 1;
+            actionsSplitArray = actionsSplitArray[1].split(strongArray[j]);
+            actionsSplit[i] = actionsSplitArray[i]
+          }
+          console.log('---------------------------------------------- actionsSplit ---->' + actionsSplit);
+          
+          /*
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
           var actionsSplit = actionsLoopArray[1].replace('Description', BOT.user.id).replace('Legendary', BOT.user.id);
@@ -616,6 +629,8 @@ commandDictionary['rpg'] = {
               embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n], true);  
             }
           }
+          
+          */
           //embed.addField("__**Actions**__", actionsValueString, false);
           
           message.channel.send({embed});
