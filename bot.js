@@ -595,13 +595,16 @@ commandDictionary['rpg'] = {
           var actionsSplitArray = actionsLoopArray[0].split(strongArray[0]);
           var actionsSplit = [];
           
+          console.log(page["moreInfoContent"]);
+          
+          /* Here's the testing bit
           for (i = 0; i < strongArray.length; i++) {
             j = i + 1;
             actionsSplitArray = actionsSplitArray[1].split(strongArray[j]);
             actionsSplit[i] = actionsSplitArray[i]
           }
           console.log('---------------------------------------------- actionsSplit ---->' + actionsSplit);
-          
+          */
           /*
           //Actions Section
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
