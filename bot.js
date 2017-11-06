@@ -589,8 +589,8 @@ commandDictionary['rpg'] = {
           
           
           var $ = CHEERIO.load(page.moreInfoContent);
-          $('p').data();
-          console.log($('p').data());
+          var paragraph = $('p').data();
+          console.log(paragraph);
           
           
           
@@ -971,7 +971,7 @@ BOT.on('message', message => {
   sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + MYSQL.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")" + 
               "ON DUPLICATE KEY UPDATE messagesSent = messagesSent + 1, lastSeen = '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "'", function (err, results, fields) {
     if (err) throw err;
-    console.log(results);
+    //console.log(results);
   });
   console.log(message.author.username + ' updated in database');
   //message processing
