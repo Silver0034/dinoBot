@@ -583,19 +583,28 @@ commandDictionary['rpg'] = {
           
           
           
-          //look to see if first div is h3
-          //if so, use it as the Field Header
-          //if not fill header with _______?
+          
           
           
           var $ = CHEERIO.load(page.moreInfoContent);
-          var paragraph = $('p').eq(0).text();
+          var paragraph = $('p').eq(0).html();
           console.log(paragraph);
           
+          for (i = 0; i < $('p').length; i++) {
+            //This runs for each paragraph
+            //Each paragraph is its own section
+            //each section may have 1 or more "actions"
+            //seperated by breakline
+            //bold <strong> as begining of lines
+            //if h3, make that the field title
+            //if not... idk, can't be blank
+            //make sure no fields exceed 1024 char
+            
+            
+          }
           
           
-          
-          
+          //<p><strong>Legendary Resistance (3/Day).</strong> If the dragon fails a saving throw, it can choose to succeed instead.</p>
           
           
           
