@@ -612,8 +612,9 @@ commandDictionary['rpg'] = {
             o = featsValueArray.length - 1 + n;
             
             //actionsValueString += '**' + strongArray[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
-            
-            embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n], true);
+            if (strongArray != null) {
+              embed.addField('**' + strongArray[o].replace('.', ':') + '** ', actionsValueArray[n], true);  
+            }
           }
           //embed.addField("__**Actions**__", actionsValueString, false);
           
