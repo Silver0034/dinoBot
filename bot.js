@@ -577,54 +577,44 @@ commandDictionary['rpg'] = {
           
           
           //Handles page.moreInfoContent
-          
-        
-          
-          
-          
-          
-          
-          
           var $ = CHEERIO.load(page.moreInfoContent);
           var paragraph = '';
           console.log(paragraph);
           var lineArray = [];
           var lineSections = [];
-          
-          for (i = 0; i < $('p').length; i++) {
-            //This runs for each paragraph
-            //Each paragraph is its own section
-            //each section may have 1 or more "actions"
-            //seperated by breakline
-            //bold <strong> as begining of lines
-            //if h3, make that the field title
-            //if not... idk, can't be blank
-            //make sure no fields exceed 1024 char
-            //DO NOT ADD MORE THAN 22 FIELDS!!!!!
-            
-            paragraph = $('p').eq(i).html();
-    
-            //split each paragraph by line breaks
-            lineArray = paragraph.split('<br>');
-            
-            //for each line in the paragraph
-            for (j = 0; j < lineArray.length; j++) {
-              lineSections = lineArray[j].split('</strong>');
-              if (lineSections.length < 2) {
-                message.channel.send(error(key) + 'The monster card was generated incorrectly');
-                return;
-              }
-              
-              lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
-              lineSections[1] = $(lineSections[1]).text() + '/n';
-              
-              embed.addField(lineSections[0], lineSections[1], false);
-              fieldCount++;
-              //check to make sure it isn't too long
-              if (lineSections[0].length > 1024) {
-              }
-              
-            }
+          loopParagraph:
+            for (i = 0; i < $('p').length; i++) {
+
+              paragraph = $('p').eq(i).html();
+
+              //split each paragraph by line breaks
+              lineArray = paragraph.split('<br>');
+
+              //for each line in the paragraph
+              loopLine:
+                for (j = 0; j < lineArray.length; j++) {
+                  //check field number
+                  if (fieldCount > 24) { 
+                  embed.addField('More at D&D Beyond', 'There is more to this monster. Go to the link above for all of its information.', false);
+                  fieldCount++;
+                  break loopParagraph;
+                  }
+
+                  lineSections = lineArray[j].split('</strong>');
+                  if (lineSections.length < 2) {
+                    message.channel.send(error(key) + 'The monster card was generated incorrectly');
+                    return;
+                  }
+                  lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+                  lineSections[1] = $(lineSections[1]).text() + '/n';
+                  //check to make sure it isn't too long
+                  if (lineSections[0].length > 1024) {
+                    lineSections[1] = lineSections[1].substring(1023) + '…';
+                  }
+
+                  embed.addField(lineSections[0], lineSections[1], false);
+                  fieldCount++;              
+                }
             
           }
             
