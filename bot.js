@@ -592,7 +592,7 @@ commandDictionary['rpg'] = {
           
           
           var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsSplitArray = actionsLoopArray.split(strongArray[0]
+          var actionsSplitArray = actionsLoopArray.split(strongArray[0]);
           var actionsSplit = [];
           
           for (i = 0; i < strongArray.length; i++) {
