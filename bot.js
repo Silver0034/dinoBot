@@ -604,13 +604,13 @@ commandDictionary['rpg'] = {
                   if (lineSections.length < 2) {
                     message.channel.send(error(key) + 'The monster card was generated incorrectly');
                     return;
-                  }
+                  }/*
                   lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
                   lineSections[1] = $(lineSections[1]).text() + '/n';
                   //check to make sure it isn't too long
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
-                  }
+                  } */
 
                   embed.addField(lineSections[0], lineSections[1], false);
                   fieldCount++;              
