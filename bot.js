@@ -604,8 +604,9 @@ commandDictionary['rpg'] = {
                     console.log("------------ SPLIT IS WORKING");
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+                    lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
-                    lineSections[1] = lineSectionsCheerio().eq.text();
+                    lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
                     console.log('lineSections[1] ------' + lineSections[1]);
                   } else {
                     lineSections[0] = 'Feat';
