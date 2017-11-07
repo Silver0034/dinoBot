@@ -542,7 +542,7 @@ commandDictionary['rpg'] = {
           console.log(err);
           
           if (page.errorPageTitle == 'Page Not Found') {
-            const embed = new Discord.RichEmbed()
+            const embed = new DISCORD.RichEmbed()
               .setTitle('Monster Not Found')
               .setAuthor(BOT.user.username, BOT.user.avatarURL)
               .setColor(0x64FFDA)
