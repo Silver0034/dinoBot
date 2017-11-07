@@ -605,9 +605,13 @@ commandDictionary['rpg'] = {
                     console.log("------------ SPLIT IS WORKING");
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+                    lineSections[0] = $(lineSections[0]).eq.text();
+                    lineSections[1] = $(lineSections[1]).eq.text();
                     //lineSections[1] = $(lineSections[1]).text() + '/n';
                   } else {
                     lineSections[0] = 'Feat';
+                    lineSections[0] = $(lineSections[0]).eq.text();
+                    lineSections[1] = $(lineSections[1]).eq.text();
                     console.log("------------ No Header is Working");
                     //lineSections[1] = $(lineArray[j]).text() + '/n';
                   }
