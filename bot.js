@@ -598,15 +598,20 @@ commandDictionary['rpg'] = {
                   break loopParagraph;
                   }
                   if (lineArray[j].includes('</strong>')) {
-                    console.log("------------ SPLIT IS WORKING");
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+                    /*
                     lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
                     lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
                     lineSectionsCheerio = CHEERIO.load(lineSections[0]);
                     lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
+                    */
+                    var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
+                    lineSections[1] = lineSectionsCheerio.text();
+                    lineSectionsCheerio = CHEERIO.load(lineSections[0]);
+                    lineSections[0] = lineSectionsCheerio.text();
                   } else {
                     lineSections[0] = '**Extra**';
                     lineSections[1] = '<div class=cheerioLoad>' + lineArray[j] + '</div>';
