@@ -543,13 +543,13 @@ commandDictionary['rpg'] = {
           if (page.monsterImage.includes('https:') == false) {
             monsterImageURL = 'https:' + page.monsterImage;
           }
-          var quickSecondaryArray = [];
+          var quickContent = [];
           
-          for (q = 0; q < page.quickSecondary.length; q++) {
+          for (q = 0; q < page.quickPrimary.length; q++) {
             if (page.quickSecondary[q]) {
-              quickSecondaryArray[q] = page.quickSecondary[q];
+              quickContent[q] = page.quickPrimary[q] + ' ' + page.quickSecondary[q];
             } else {
-              quickSecondaryArray[q] = ' ';
+              quickContent[q] = page.quickPrimary[q];
             }
             
           }
@@ -576,10 +576,10 @@ commandDictionary['rpg'] = {
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
-                     "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + quickSecondaryArray[0] + "\n" +
-                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + quickSecondaryArray[1] + "\n" +
-                     "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + quickSecondaryArray[2] + "\n" +
-                     "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + quickSecondaryArray[3]
+                     "**" + page.statsTitle[6] + "**: " + quickContent[0] + "\n" +
+                     "**" + page.statsTitle[7] + "**: " + quickContent[1] + "\n" +
+                     "**" + page.statsTitle[8] + "**: " + quickContent[2] + "\n" +
+                     "**" + page.statsTitle[9] + "**: " + quickContent[3]
                      , false);
           
           //Proficiency Fields
