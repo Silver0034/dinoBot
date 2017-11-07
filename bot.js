@@ -610,13 +610,15 @@ commandDictionary['rpg'] = {
                     lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
                     lineSectionsCheerio = CHEERIO.load(lineSections[0]);
                     lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
-                  } /*else {
-                    lineSections[0] = 'Feat';
-                    lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
+                  } else {
+                    lineSections[0] = '**Extra**';
+                    lineSections[1] = '<div class=cheerioLoad>' + lineArray[j] + '</div>';
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
-                    console.log("------------ No Header is Working");
-                  }*/
+                    lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
+                    lineSectionsCheerio = CHEERIO.load(lineSections[0]);
+                    lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
+                  }
                   //check to make sure it isn't too long
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
