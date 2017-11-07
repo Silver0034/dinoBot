@@ -601,7 +601,7 @@ commandDictionary['rpg'] = {
                   }
 
                   
-                  if (lineArray[j].contains('</strong>')) {
+                  if (lineArray[j].includes('</strong>')) {
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
                     lineSections[1] = $(lineSections[1]).text() + '/n';
