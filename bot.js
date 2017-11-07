@@ -601,7 +601,7 @@ commandDictionary['rpg'] = {
                   }
 
                   lineSections = lineArray[j].split('</strong>');
-                  if (lineSections.length < 2) {
+                  if (lineSections.length != 2) {
                     message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly');
                     return;
                   }/*
