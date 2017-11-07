@@ -610,13 +610,13 @@ commandDictionary['rpg'] = {
                     lineSections[0] = 'Feat';
                     //lineSections[1] = $(lineArray[j]).text() + '/n';
                   }
+                  console.log("------------ IS THIS RUNNING??");
                   //check to make sure it isn't too long
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
                   }
                   //make sure nothing went wrong
                   if (lineSections.length == 2) {
-                    console.log("------------ IS THIS RUNNING??");
                     //Create Field
                     embed.addField(lineSections[0], lineSections[1], false);
                     fieldCount++; 
