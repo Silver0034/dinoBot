@@ -959,8 +959,8 @@ BOT.on('message', message => {
 								message.channel.id  + ", " + MYSQL.escape(message.channel.name) + ", " + message.guild.id + ")" +
 								"ON DUPLICATE KEY UPDATE channelName = " + MYSQL.escape(message.channel.name), function (err, results, fields) {
 			if (err) throw err;
-			console.log(results);
-			console.log('Edited channel table: ' + message.channel.name);
+			//console.log(results);
+			//console.log('Edited channel table: ' + message.channel.name);
 		});
 		//if message is in PROFANITY enabled channel
 		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
