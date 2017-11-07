@@ -538,6 +538,7 @@ commandDictionary['rpg'] = {
           var featsValueString = '';
           var actionsValueArray = [];
           var actionsValueString = '';
+          console.log(page.monsterImage);
           
           //This is how many fields are defined in the const
           var fieldCount = 2;
