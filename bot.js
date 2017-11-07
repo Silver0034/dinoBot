@@ -533,15 +533,28 @@ commandDictionary['rpg'] = {
             selector: ".monster-image",
             attr: "src"
           },
-          h1: {
-            selector: "h1",
+          errorPageTitle: {
+            selector: ".error-page-title",
             how: "text"
           },
         },
           (err, page) => {
           console.log(err);
           
-          console.log(page.h1);
+          if (page.errorPageTitle == 'Page Not Found') {
+            const embed = new Discord.RichEmbed()
+              .setTitle('Monster Not Found')
+              .setAuthor(BOT.user.username, BOT.user.avatarURL)
+              .setColor(0x64FFDA)
+              .setDescription('The Monster you searched for is not on D&D Beyond.')
+              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+              .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
+              .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+              .setURL(scrapeURL);
+            message.channel.stopTyping();
+            message.channel.send({embed});
+            return;
+          }
           
           var abilityScoreArray = page["abilityScore"];
           var abilityModifierArray = page["abilityModifier"];
