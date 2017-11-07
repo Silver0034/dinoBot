@@ -611,7 +611,7 @@ commandDictionary['rpg'] = {
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
                   } */
-
+                  console.log(lineSections);
                   embed.addField(lineSections[0], lineSections[1], false);
                   fieldCount++;              
                 }
