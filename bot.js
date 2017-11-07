@@ -539,7 +539,7 @@ commandDictionary['rpg'] = {
           var actionsValueArray = [];
           var actionsValueString = '';
           
-          if (page.monserImage.includes('https:' == false)) {
+          if (page.monsterImage.includes('https:' == false)) {
             page.monsterImage = 'https:' + page.monsterImage;
           }
           console.log(page.monsterImage);
