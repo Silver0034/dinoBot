@@ -476,8 +476,14 @@ commandDictionary['rpg'] = {
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
+    var scrapeInput = message.channel.content;
+    
   	switch(args[0]) { 
-      case 'scrape':
+      case 'monster':
+        scrapeInput = scrapeInput.substring(6);
+      case 'm':
+        scrapeInput = scrapeInput.substring(1);
+        console.log(scrapeInput);
         message.channel.startTyping();
         var scrapeURL = "https://www.dndbeyond.com/monsters/axe-beak";        
         SCRAPEIT(scrapeURL, {
@@ -638,7 +644,6 @@ commandDictionary['rpg'] = {
           message.channel.send({embed});
           return;
         });   
-        
 				return;  
 			case 'name':
         message.channel.send(responseHead(message, key) + RPG.name());
