@@ -478,7 +478,7 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) { 
       case 'scrape':
-        var scrapeURL = "https://www.dndbeyond.com/monsters/aboleth";        
+        var scrapeURL = "https://www.dndbeyond.com/monsters/axe-beak";        
         SCRAPEIT(scrapeURL, {
           
           title: ".monster-name",
