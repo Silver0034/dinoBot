@@ -951,8 +951,8 @@ BOT.on('message', message => {
 								message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
 								"'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + MYSQL.escape(message.content) + ")", function (err, results, fields) {
 			if (err) throw err;
-			console.log(results);
-			console.log('Logged message by ' + message.author.username);
+			//console.log(results);
+			//console.log('Logged message by ' + message.author.username);
 		});
   //add new channels to channel database
 		sqldb.query("INSERT INTO channel (channelID, channelName, serverID) VALUES (" +
