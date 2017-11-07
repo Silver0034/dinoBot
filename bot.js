@@ -602,7 +602,8 @@ commandDictionary['rpg'] = {
 
                   lineSections = lineArray[j].split('</strong>');
                   if (lineSections.length != 2) {
-                    message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly');
+                    message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly\nError was in line ' + j);
+                    
                     return;
                   }/*
                   lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
