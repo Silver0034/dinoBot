@@ -483,7 +483,8 @@ commandDictionary['rpg'] = {
         
         if (args.length >= 3) {
           console.log(args);
-          args = args.shift().shift();
+          args = args.shift();
+          args = args.shift();
           console.log(args);
           var scrapeInput = args.join('-');
           console.log(scrapeInput);
