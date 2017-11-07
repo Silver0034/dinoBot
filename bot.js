@@ -478,6 +478,7 @@ commandDictionary['rpg'] = {
   doCommand: function(message, key, args) {
   	switch(args[0]) { 
       case 'scrape':
+        message.channel.startTyping();
         var scrapeURL = "https://www.dndbeyond.com/monsters/axe-beak";        
         SCRAPEIT(scrapeURL, {
           
@@ -542,11 +543,16 @@ commandDictionary['rpg'] = {
           if (page.monsterImage.includes('https:') == false) {
             monsterImageURL = 'https:' + page.monsterImage;
           }
-          var quickSecondaryArray = [page.quickSecondary[0] + ' ',
-                                     page.quickSecondary[1] + ' ',
-                                     page.quickSecondary[2] + ' ',
-                                     page.quickSecondary[3] + ' '];
-          console.log(page.monsterImage);
+          var quickSecondaryArray = [];
+          
+          for (q = 0; q < page.quickSecondary.length; q++) {
+            if (page.quickSecondary[q]) {
+              quickSecondaryArray[q] = page.quickSecondary[q];
+            } else {
+              quickSecondaryArray[q] = ' ';
+            }
+            
+          }
           
           //This is how many fields are defined in the const
           var fieldCount = 2;
@@ -628,7 +634,9 @@ commandDictionary['rpg'] = {
                   }             
                 }
           }
+          message.channel.stopTyping();
           message.channel.send({embed});
+          return;
         });   
         
 				return;  
