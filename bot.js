@@ -538,9 +538,9 @@ commandDictionary['rpg'] = {
           var featsValueString = '';
           var actionsValueArray = [];
           var actionsValueString = '';
-          
+          var monsterImageURL - page.monsterImage;
           if (page.monsterImage.includes('https:' == false)) {
-            page.monsterImage = 'https:' + page.monsterImage;
+            monsterImageURL = 'https:' + page.monsterImage;
           }
           console.log(page.monsterImage);
           
