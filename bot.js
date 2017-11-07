@@ -542,6 +542,10 @@ commandDictionary['rpg'] = {
           if (page.monsterImage.includes('https:') == false) {
             monsterImageURL = 'https:' + page.monsterImage;
           }
+          var quickSecondaryArray = [];
+          for (i = 1; i < quickSecondaryArray.length; i++) {
+            quickSecondaryArray[i] = page.quickSecondary[i] + ' ';
+          }
           console.log(page.monsterImage);
           
           //This is how many fields are defined in the const
@@ -566,10 +570,10 @@ commandDictionary['rpg'] = {
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
-                     "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + page.quickSecondary[0] + "\n" +
-                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + page.quickSecondary[1] + "\n" +
-                     "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + page.quickSecondary[2] + "\n" +
-                     "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + page.quickSecondary[3]
+                     "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + quickSecondaryArray[0] + "\n" +
+                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + quickSecondaryArrayy[1] + "\n" +
+                     "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + quickSecondaryArray[2] + "\n" +
+                     "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + quickSecondaryArray[3]
                      , false);
           
           //Proficiency Fields
