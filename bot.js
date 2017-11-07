@@ -607,11 +607,11 @@ commandDictionary['rpg'] = {
                     lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
-                    console.log('lineSections[1] ------' + lineSections[1]);
                   } else {
                     lineSections[0] = 'Feat';
-                    //lineSections[1] = CHEERIO.load(lineSections[1]).text();
-                    //console.log(lineSections[1]);
+                    lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
+                    var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
+                    lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
                     console.log("------------ No Header is Working");
                   }
                   //check to make sure it isn't too long
@@ -621,7 +621,7 @@ commandDictionary['rpg'] = {
                   //make sure nothing went wrong
                   if (lineSections.length == 2) {
                     //Create Field
-                    //embed.addField(lineSections[0], lineSections[1], false);
+                    embed.addField(lineSections[0], lineSections[1], false);
                     fieldCount++; 
                   }               
                 }
