@@ -602,7 +602,7 @@ commandDictionary['rpg'] = {
 
                   lineSections = lineArray[j].split('</strong>');
                   if (lineSections.length != 2) {
-                    onsole.log(lineSections[0] + '\n' lineSections[1]);
+                    onsole.log(lineSections[0] + '\n' + lineSections[1]);
                     console.log('----- ' + lineSections.length);
                     message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly\nError was in line ' + j);
                     
