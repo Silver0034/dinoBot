@@ -606,7 +606,7 @@ commandDictionary['rpg'] = {
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio().text();
-                    //console.log(lineSections[1]);
+                    console.log(lineSections[1]);
                   } else {
                     lineSections[0] = 'Feat';
                     //lineSections[1] = CHEERIO.load(lineSections[1]).text();
@@ -620,7 +620,7 @@ commandDictionary['rpg'] = {
                   //make sure nothing went wrong
                   if (lineSections.length == 2) {
                     //Create Field
-                    embed.addField(lineSections[0], lineSections[1], false);
+                    //embed.addField(lineSections[0], lineSections[1], false);
                     fieldCount++; 
                   }               
                 }
