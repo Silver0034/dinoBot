@@ -600,37 +600,23 @@ commandDictionary['rpg'] = {
                   if (lineArray[j].includes('</strong>')) {
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
-                    /*
                     lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
                     lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
                     lineSectionsCheerio = CHEERIO.load(lineSections[0]);
                     lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
-                    */
-                    var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
-                    lineSections[1] = lineSectionsCheerio.text();
-                    lineSectionsCheerio = CHEERIO.load(lineSections[0]);
-                    lineSections[0] = lineSectionsCheerio.text();
-                  } else {
-                    lineSections[0] = '**Extra**';
-                    lineSections[1] = '<div class=cheerioLoad>' + lineArray[j] + '</div>';
-                    var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
-                    lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
-                    lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
-                    lineSectionsCheerio = CHEERIO.load(lineSections[0]);
-                    lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
-                  }
-                  //check to make sure it isn't too long
-                  if (lineSections[0].length > 1024) {
-                    lineSections[1] = lineSections[1].substring(1023) + '…';
-                  }
-                  //make sure nothing went wrong
-                  if (lineSections.length == 2) {
-                    //Create Field
-                    embed.addField(lineSections[0], lineSections[1], false);
-                    fieldCount++; 
-                  }               
+                    //check to make sure it isn't too long
+                    if (lineSections[0].length > 1024) {
+                      lineSections[1] = lineSections[1].substring(1023) + '…';
+                    }
+                    //make sure nothing went wrong
+                    if (lineSections.length == 2) {
+                      //Create Field
+                      embed.addField(lineSections[0], lineSections[1], false);
+                      fieldCount++; 
+                    } 
+                  }             
                 }
           }
           message.channel.send({embed});
