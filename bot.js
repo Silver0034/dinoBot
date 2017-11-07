@@ -942,7 +942,7 @@ BOT.on('message', message => {
     if (err) throw err;
     //console.log(results);
   });
-  console.log(message.author.username + ' updated in database');
+  //console.log(message.author.username + ' updated in database');
   //message processing
 	if (message.guild) { //checks if in guild or a DM
 		//record message content
