@@ -571,7 +571,7 @@ commandDictionary['rpg'] = {
             //Secondary Information
             .addField("__**Secondary Stats**__",
                      "**" + page.statsTitle[6] + "**: " + page.quickPrimary[0] + " " + quickSecondaryArray[0] + "\n" +
-                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + quickSecondaryArrayy[1] + "\n" +
+                     "**" + page.statsTitle[7] + "**: " + page.quickPrimary[1] + " " + quickSecondaryArray[1] + "\n" +
                      "**" + page.statsTitle[8] + "**: " + page.quickPrimary[2] + " " + quickSecondaryArray[2] + "\n" +
                      "**" + page.statsTitle[9] + "**: " + page.quickPrimary[3] + " " + quickSecondaryArray[3]
                      , false);
