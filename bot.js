@@ -600,28 +600,26 @@ commandDictionary['rpg'] = {
                   break loopParagraph;
                   }
 
-                  lineSections = lineArray[j].split('</strong>');
-                  if (lineSections.length != 2) {
-                    if (lineSections[0] == null || lineSections[0] == undefined) {
-                      lineSections[0] = 'Feats';
-                      if (lineSections[1]) {
-                      break loopParagraph;  
-                      }
-                    }
-                    console.log(lineSections[0] + '\n' + lineSections[1]);
-                    console.log('----- ' + lineSections.length);
-                    message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly\nError was in line ' + j);
-                    
+                  
+                  if (lineSections.contains('</strong>')) {
+                    lineSections = lineArray[j].split('</strong>');
+                    lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+                    lineSections[1] = $(lineSections[1]).text() + '/n';
                     return;
-                  }/*
-                  lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
-                  lineSections[1] = $(lineSections[1]).text() + '/n';
+                  } else {
+                    lineSections[0] = 'Feat';
+                    lineSections[1] = $(lineArray[j]).text() + '/n';
+                  }
                   //check to make sure it isn't too long
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
-                  } */
-                  embed.addField(lineSections[0], lineSections[1], false);
-                  fieldCount++;              
+                  }
+                  //make sure nothing went wrong
+                  if (lineSections.length == 2) {
+                    //Create Field
+                    embed.addField(lineSections[0], lineSections[1], false);
+                    fieldCount++; 
+                  }               
                 }
             
           }
