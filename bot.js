@@ -602,7 +602,7 @@ commandDictionary['rpg'] = {
 
                   lineSections = lineArray[j].split('</strong>');
                   if (lineSections.length != 2) {
-                    if (lineSections[0] == null) {
+                    if (lineSections[0] == null || lineSections[0] == undefined) {
                       lineSections[0] = 'Feats';
                       if (lineSections[1]) {
                       break loopParagraph;  
