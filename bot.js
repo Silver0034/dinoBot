@@ -479,14 +479,10 @@ commandDictionary['rpg'] = {
     
   	switch(args[0]) { 
       case 'monster':
-      case 'm':
         
-        if (args.length >= 3) {
+        if (args.[1]) {
           console.log(args);
-          args = args.shift();
-          args = args.shift();
-          console.log(args);
-          var scrapeInput = args.join('-');
+          var scrapeInput = args.shift().join('-');
           console.log(scrapeInput);
         } else {
           message.channel.send(error[key]);
