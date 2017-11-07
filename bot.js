@@ -484,7 +484,17 @@ commandDictionary['rpg'] = {
           var scrapeInput = args.join('-').substring(8);
           console.log(scrapeInput);
         } else {
-          message.channel.send(error[key]);
+          message.channel.startTyping(); 
+          const embed = new DISCORD.RichEmbed()
+            .setTitle('Incorrect Format')
+            .setAuthor(BOT.user.username, BOT.user.avatarURL)
+            .setColor(0x64FFDA)
+            .setDescription('Use the command like this: ````rpg monster [monster name]```')
+            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
+            .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png");
+          message.channel.stopTyping();
+          message.channel.send({embed});
           return;
         }
         message.channel.startTyping();          
