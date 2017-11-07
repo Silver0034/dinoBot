@@ -542,10 +542,10 @@ commandDictionary['rpg'] = {
           if (page.monsterImage.includes('https:') == false) {
             monsterImageURL = 'https:' + page.monsterImage;
           }
-          var quickSecondaryArray = [];
-          for (i = 1; i < quickSecondaryArray.length; i++) {
-            quickSecondaryArray[i] = page.quickSecondary[i] + ' ';
-          }
+          var quickSecondaryArray = [page.quickSecondary[0] + ' ',
+                                     page.quickSecondary[1] + ' ',
+                                     page.quickSecondary[2] + ' ',
+                                     page.quickSecondary[3] + ' '];
           console.log(page.monsterImage);
           
           //This is how many fields are defined in the const
