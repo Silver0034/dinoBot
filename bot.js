@@ -579,7 +579,6 @@ commandDictionary['rpg'] = {
           //Handles page.moreInfoContent
           var $ = CHEERIO.load(page.moreInfoContent);
           var paragraph = '';
-          console.log(paragraph);
           var lineArray = [];
           var lineSections = [];
           loopParagraph:
@@ -610,6 +609,7 @@ commandDictionary['rpg'] = {
                   } else {
                     lineSections[0] = 'Feat';
                     lineSections[1] = CHEERIO.load(lineSections[1]).text();
+                    console.log(lineSections[1]);
                     console.log("------------ No Header is Working");
                   }
                   //check to make sure it isn't too long
