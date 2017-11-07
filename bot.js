@@ -604,7 +604,7 @@ commandDictionary['rpg'] = {
                     console.log("------------ SPLIT IS WORKING");
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
-                    lineSectionsCheerio = CHEERIO.load(lineSections[1]);
+                    var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio().text();
                     console.log(lineSections[1]);
                   } else {
