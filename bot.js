@@ -607,6 +607,7 @@ commandDictionary['rpg'] = {
                     lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
                     var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
                     lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
+                    lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
                     lineSectionsCheerio = CHEERIO.load(lineSections[0]);
                     lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
                   } /*else {
