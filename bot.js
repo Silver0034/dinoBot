@@ -612,6 +612,7 @@ commandDictionary['rpg'] = {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
                   } */
                   console.log(lineSections);
+                  console.log('----- ' + lineSections.length);
                   embed.addField(lineSections[0], lineSections[1], false);
                   fieldCount++;              
                 }
