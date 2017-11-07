@@ -480,7 +480,7 @@ commandDictionary['rpg'] = {
   	switch(args[0]) { 
       case 'monster':
         
-        if (args.[1]) {
+        if (args[1]) {
           console.log(args);
           var scrapeInput = args.shift().join('-');
           console.log(scrapeInput);
