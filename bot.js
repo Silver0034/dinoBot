@@ -602,6 +602,8 @@ commandDictionary['rpg'] = {
 
                   lineSections = lineArray[j].split('</strong>');
                   if (lineSections.length != 2) {
+                    onsole.log(lineSections[0] + '\n' lineSections[1]);
+                    console.log('----- ' + lineSections.length);
                     message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly\nError was in line ' + j);
                     
                     return;
@@ -612,8 +614,6 @@ commandDictionary['rpg'] = {
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
                   } */
-                  console.log(lineSections);
-                  console.log('----- ' + lineSections.length);
                   embed.addField(lineSections[0], lineSections[1], false);
                   fieldCount++;              
                 }
