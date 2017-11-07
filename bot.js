@@ -482,7 +482,8 @@ commandDictionary['rpg'] = {
         
         if (args[1]) {
           console.log(args);
-          var scrapeInput = args.shift().join('-');
+          var scrapeInput = args.shift();
+          scrapeInput.join('-');
           console.log(scrapeInput);
         } else {
           message.channel.send(error[key]);
