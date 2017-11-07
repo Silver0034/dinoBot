@@ -552,7 +552,7 @@ commandDictionary['rpg'] = {
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
             .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
-            .setImage(page["monsterImage"])
+            .setImage(monsterImageURL)
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setURL(scrapeURL)
             //Abilities Section          
