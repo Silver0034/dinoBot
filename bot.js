@@ -616,78 +616,14 @@ commandDictionary['rpg'] = {
                   }
                   //make sure nothing went wrong
                   if (lineSections.length == 2) {
+                    console.log("------------ IS THIS RUNNING??");
                     //Create Field
                     embed.addField(lineSections[0], lineSections[1], false);
                     fieldCount++; 
                   }               
                 }
-            
           }
-            
-          
-          
-          //<strong>Legendary Resistance (3/Day).</strong> If the dragon fails a saving throw, it can choose to succeed instead. <br>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          /*          
-          //Feats section                    
-          for (j = 0; j < page.strong.length; j++) {  
-            if (featsLoopPlaceholder.includes(page.strong[j])) {
-              featsLoopPlaceholder = featsLoopPlaceholder.replace(page.strong[j], BOT.user.id);
-            }
-          }
-          
-          //TODO: Don't let a field excceed  1024 in length
-          featsValueArray = featsLoopPlaceholder.split(BOT.user.id);
-          
-          for (k = 1; k < featsValueArray.length; k++) {  
-            l = k - 1;
-            featsValueString += '**' + page.strong[l].replace('.', ':') + '** ' + featsValueArray[k] + '\n'  
-          }
-          //embed.addField("__**Feats**__", featsValueString, false);
-          console.log('--------------------------- page.strong ---------\n' + page.strong +'--------------------------- featsValueArray ---------\n' + featsValueArray);
-          */
-          /*
-          //Actions Section
-          var actionsLoopArray = moreInfoContent.split('Actions\r\n');
-          var actionsSplit = actionsLoopArray[1].replace('Description', BOT.user.id).replace('Legendary', BOT.user.id);
-          actionsSplit = actionsSplit.split(BOT.user.id); 
-
-          var actionsLoopPlaceholder = actionsSplit[0];
-          
-          for (m = 0; m < page.strong.length; m++) {  
-            if (actionsLoopPlaceholder.includes(page.strong[m])) {
-              actionsLoopPlaceholder = actionsLoopPlaceholder.replace(page.strong[m], BOT.user.id);
-              
-            }
-          }
-          actionsValueArray = actionsLoopPlaceholder.split(BOT.user.id);
-          
-          embed.addField("__**Actions**__", 'Visit D&D Beyond for a complete list of actions.', false);
-          console.log('--------------------------------' + actionsValueArray);
-          //TODO: Don't let a field excceed  1024 in length
-          for (n = 1; n < actionsValueArray.length; n++) {
-            o = featsValueArray.length - 2 + n;
-            
-            //actionsValueString += '**' + page.strong[o].replace('.', ':') + '** ' + actionsValueArray[n] + '\n';
-            if (page.strong[o] != null) {
-              embed.addField('**' + page.strong[o].replace('.', ':') + '** ', actionsValueArray[n], true);  
-            }
-          }
-          
-          */
-          //embed.addField("__**Actions**__", actionsValueString, false);
-          
           message.channel.send({embed});
-          
-          
         });   
         
 				return;  
