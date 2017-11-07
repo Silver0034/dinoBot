@@ -532,10 +532,17 @@ commandDictionary['rpg'] = {
           monsterImage: {
             selector: ".monster-image",
             attr: "src"
-          }
+          },
+          h1: {
+            selector: "h1",
+            how: "text"
+          },
         },
           (err, page) => {
           console.log(err);
+          
+          console.log(page.h1);
+          
           var abilityScoreArray = page["abilityScore"];
           var abilityModifierArray = page["abilityModifier"];
           var quickPrimaryArray = page["quickPrimary"];
