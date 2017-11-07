@@ -476,7 +476,7 @@ commandDictionary['rpg'] = {
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
-    var scrapeInput = message.channel.content;
+    var scrapeInput = message.content;
     
   	switch(args[0]) { 
       case 'monster':
