@@ -606,6 +606,7 @@ commandDictionary['rpg'] = {
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
                     lineSections[1] = CHEERIO.load(lineSections[1]).text();
+                    console.log(lineSections[1]);
                   } else {
                     lineSections[0] = 'Feat';
                     lineSections[1] = CHEERIO.load(lineSections[1]).text();
