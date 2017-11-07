@@ -602,15 +602,15 @@ commandDictionary['rpg'] = {
 
                   
                   if (lineArray[j].includes('</strong>')) {
+                    console.log("------------ SPLIT IS WORKING");
                     lineSections = lineArray[j].split('</strong>');
                     lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
                     //lineSections[1] = $(lineSections[1]).text() + '/n';
-                    return;
                   } else {
                     lineSections[0] = 'Feat';
+                    console.log("------------ No Header is Working");
                     //lineSections[1] = $(lineArray[j]).text() + '/n';
                   }
-                  console.log("------------ IS THIS RUNNING??");
                   //check to make sure it isn't too long
                   if (lineSections[0].length > 1024) {
                     lineSections[1] = lineSections[1].substring(1023) + '…';
