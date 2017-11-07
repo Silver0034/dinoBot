@@ -602,6 +602,12 @@ commandDictionary['rpg'] = {
 
                   lineSections = lineArray[j].split('</strong>');
                   if (lineSections.length != 2) {
+                    if (lineSections[0] == null) {
+                      lineSections[0] = 'Feats';
+                      if (lineSections[1]) {
+                      break loopParagraph;  
+                      }
+                    }
                     console.log(lineSections[0] + '\n' + lineSections[1]);
                     console.log('----- ' + lineSections.length);
                     message.channel.send(responseHead(message, key) + 'The monster card was generated incorrectly\nError was in line ' + j);
