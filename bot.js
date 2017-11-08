@@ -624,12 +624,12 @@ commandDictionary['rpg'] = {
             .setURL(scrapeURL)
             //Abilities Section          
             .addField("__**Abilities**__",
-                      "<:strength:376009689864994820> **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
-                      "  <:dexterity:376009689348964352> **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
-                      "  <:constitution:376009689214877707> **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
-                      "  <:intelligence:376009689445564426> **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
-                      "  <:wisdom:376009690796261377> **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
-                      "  <:charisma:376009688988516353> **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
+                      "<:strength:377677018491387904> **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
+                      "  <:dexterity:377677018206175232> **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
+                      "  <:constitution:377677014561325056> **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
+                      "  <:intelligence:377677018285998080> **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
+                      "  <:wisdom:377677018382204931> **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
+                      "  <:charisma:377677013428862978> **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
