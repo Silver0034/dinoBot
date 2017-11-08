@@ -627,7 +627,7 @@ commandDictionary['rpg'] = {
                       "<:strength:377677018491387904> **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
                       "  <:dexterity:377677018206175232> **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
                       "  <:constitution:377677014561325056> **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
-                      "  <:intelligence:377677018285998080> **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
+                      "<:intelligence:377677018285998080> **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
                       "  <:wisdom:377677018382204931> **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
                       "  <:charisma:377677013428862978> **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
                       , false)
