@@ -581,9 +581,7 @@ commandDictionary['rpg'] = {
           var actionsValueArray = [];
           var actionsValueString = '';
           var monsterImageURL = page.monsterImage;
-          if (page.monsterImage.includes('https:') == false) {
-            monsterImageURL = 'https:' + page.monsterImage;
-          }
+          
           
           if (page.monsterImage == undefined) {
             const embed = new DISCORD.RichEmbed()
@@ -596,6 +594,10 @@ commandDictionary['rpg'] = {
             message.channel.stopTyping();
             message.channel.send({embed});
             return;
+          }
+          
+          if (page.monsterImage.includes('https:') == false) {
+            monsterImageURL = 'https:' + page.monsterImage;
           }
           
           var quickContent = [];
