@@ -502,7 +502,7 @@ commandDictionary['rpg'] = {
         var scrapeURL = "https://www.dndbeyond.com/monsters/";
         scrapeURL = scrapeURL + scrapeInput;
         
-        if (scrapeURL.includes('www.dndbeyond.com/marketplace')) {
+        if (page.monsterImage == undefined) {
           const embed = new DISCORD.RichEmbed()
             .setTitle('Monster Not Available')
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
