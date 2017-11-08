@@ -502,6 +502,19 @@ commandDictionary['rpg'] = {
         var scrapeURL = "https://www.dndbeyond.com/monsters/";
         scrapeURL = scrapeURL + scrapeInput;
         
+        if (scrapeURL.includes('www.dndbeyond.com/marketplace')) {
+          const embed = new DISCORD.RichEmbed()
+            .setTitle('Monster Not Available')
+            .setAuthor(BOT.user.username, BOT.user.avatarURL)
+            .setColor(0x64FFDA)
+            .setDescription('I only have acsess to monsters defined by the "basic rules"')
+            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png");
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return;
+        }
+        
              
         SCRAPEIT(scrapeURL, {
           
@@ -549,7 +562,7 @@ commandDictionary['rpg'] = {
           },
         },
           (err, page) => {
-          console.log(err);
+          //console.log(err);
           
           if (page.errorPageTitle == 'Page Not Found') {
             const embed = new DISCORD.RichEmbed()
