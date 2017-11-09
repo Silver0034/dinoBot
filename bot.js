@@ -925,7 +925,7 @@ commandDictionary['name'] = {
           try {
             if (message.guild) {
               //check BOT has permissions to change nicknames
-              if (DISCORD.Permissions(MANAGE_NICKNAMES) && DISCORD.Permissions(CHANGE_NICKNAME)) {
+              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
                 //change nickname
                 //if error make log
                 message.member.setNickname(nickname);
