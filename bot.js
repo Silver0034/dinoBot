@@ -928,15 +928,7 @@ commandDictionary['name'] = {
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
-              try {
-                message.member.setNickname(nickname);  
-              } catch(err) {
-                if (err.name == 'DiscordAPIError') {
-                  message.channel.send('fail');
-                }
-                return;
-              }
-              
+              message.member.setNickname(nickname).then(message.send('Worked'), message.send('Failed'));                
             } else {
               //If does not have permission
               message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
