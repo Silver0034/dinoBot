@@ -930,27 +930,21 @@ commandDictionary['name'] = {
                 //if error make log
                 message.member.setNickname(nickname);
                 message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
-                return;
               } else {
                 //If does not have permission
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
-                return;
               }
             } else {
               //not in a server (in a DM)
               message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
-              return;
             }
           } catch(err) {
             console.log(error);
             message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
-            return;
           }
         });
         
     }
-    message.channel.send(responseHead(message, key) + 'Please use the command as follows:\nname toggle\nname set [1 OR 2] [nickname]');
-    return;
   }
 }
 /*
