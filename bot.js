@@ -1012,12 +1012,12 @@ BOT.on('message', message => {
   //Set Nicknames
   sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
     if (results[0].nicknameOne == null) {
-      sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.autor.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+      sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.author.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
         if (err) throw err;
       });
     }
     if (results[0].nicknameTwo == null) {
-      sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.autor.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+      sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.author.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
         if (err) throw err;
       });
     }
