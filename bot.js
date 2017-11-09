@@ -94,6 +94,17 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
+function nicknameResult(nicknameResultVar) {
+            if (nicknameResultVar == false) {
+                console.log('a fail return; ' + nicknameResultVar);
+                message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
+                return;
+              } else {
+                console.log('a succeed return; ' + nicknameResultVar);
+                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
+                return;
+              }
+          }
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -922,33 +933,17 @@ commandDictionary['name'] = {
             });
           }
   
-          function nicknameResult(nicknameResultVar) {
-            if (nicknameResultVar == false) {
-                console.log('a fail return; ' + nicknameResultVar);
-                message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
-                return;
-              } else {
-                console.log('a succeed return; ' + nicknameResultVar);
-                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
-                return;
-              }
-          }
           if (message.guild) {
             //check BOT has permissions to change nicknames
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
               var nicknameResultVar = false;
-              console.log('Before: ' + nicknameResultVar);
               message.member.setNickname(nickname).then(function(value) {
                 nicknameResultVar = true;
-                console.log('If True: ' + nicknameResultVar);
-                console.log('reads true');
                 nicknameResult(nicknameResultVar);
               }, function(reason) {
                 nicknameResultVar = false;
-                console.log('If False: ' + nicknameResultVar);
-                console.log('reads false');
                 nicknameResult(nicknameResultVar);
               });
               
