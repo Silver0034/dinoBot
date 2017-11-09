@@ -912,13 +912,13 @@ commandDictionary['name'] = {
             nickname = results[0].nicknameOne;
             //change the toggle number
             sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
-              console.log('nickname toggled');
+              //console.log('nickname toggled');
               });
           } else if (nicknameToggleState == 1) {
             nickname = results[0].nicknameTwo;
               //change the toggle number
             sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
-              console.log('nickname toggled');
+              //console.log('nickname toggled');
             });
           }
   
@@ -942,6 +942,7 @@ commandDictionary['name'] = {
             console.log(error);
             message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
           }
+          return;
         });
         
     }
