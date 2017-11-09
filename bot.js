@@ -922,25 +922,26 @@ commandDictionary['name'] = {
             });
           }
   
+          function 
           
           if (message.guild) {
             //check BOT has permissions to change nicknames
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
-              var setNicknameResult = 0;
+              var setNicknameResult = false;
               console.log('Before: ' + setNicknameResult);
               message.member.setNickname(nickname).then(function(value) {
-                setNicknameResult = 1;
+                setNicknameResult = true;
                 console.log('If True: ' + setNicknameResult);
                 console.log('reads true');
               }, function(reason) {
-                setNicknameResult = 0;
+                setNicknameResult = false;
                 console.log('If False: ' + setNicknameResult);
                 console.log('reads false');
               });
 
-              if (setNicknameResult == 0) {
+              if (setNicknameResult == false) {
                 console.log('a fail return; ' + setNicknameResult);
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                 return;
