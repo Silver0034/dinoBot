@@ -938,7 +938,7 @@ commandDictionary['name'] = {
               //not in a server (in a DM)
               message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
             }
-          } catch(err) {
+          } catch(error) {
             console.log(error);
             message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
           }
