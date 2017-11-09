@@ -922,25 +922,8 @@ commandDictionary['name'] = {
             });
           }
   
-          
-          if (message.guild) {
-            //check BOT has permissions to change nicknames
-            if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
-              //change nickname
-              //if error make log
-              var setNicknameResult = false;
-              console.log('Before: ' + setNicknameResult);
-              message.member.setNickname(nickname).then(function(value) {
-                setNicknameResult = true;
-                console.log('If True: ' + setNicknameResult);
-                console.log('reads true');
-              }, function(reason) {
-                setNicknameResult = false;
-                console.log('If False: ' + setNicknameResult);
-                console.log('reads false');
-              });
-
-              if (setNicknameResult == false) {
+          function nicknameResult(nicknameResultVar) {
+            if (setNicknameResult == false) {
                 console.log('a fail return; ' + setNicknameResult);
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                 return;
@@ -949,6 +932,25 @@ commandDictionary['name'] = {
                 message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
                 return;
               }
+          }
+          if (message.guild) {
+            //check BOT has permissions to change nicknames
+            if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
+              //change nickname
+              //if error make log
+              var NicknameResultVar = false;
+              console.log('Before: ' + setNicknameResult);
+              message.member.setNickname(nickname).then(function(value) {
+                setNicknameResult = true;
+                console.log('If True: ' + setNicknameResult);
+                console.log('reads true');
+                nicknameResult(nicknameResultVar);
+              }, function(reason) {
+                setNicknameResult = false;
+                console.log('If False: ' + setNicknameResult);
+                console.log('reads false');
+                nicknameResult(nicknameResultVar);
+              });
               
             } else {
               //If does not have permission
