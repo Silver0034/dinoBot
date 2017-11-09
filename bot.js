@@ -941,9 +941,11 @@ commandDictionary['name'] = {
               });
 
               if (setNicknameResult == 0) {
+                console.log('a fail return; ' + setNicknameResult);
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                 return;
               } else {
+                console.log('a succeed return; ' + setNicknameResult);
                 message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
                 return;
               }
