@@ -94,7 +94,7 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
-function nicknameResult(nicknameResultVar) {
+function nicknameResult(message, nicknameResultVar) {
             if (nicknameResultVar == false) {
                 console.log('a fail return; ' + nicknameResultVar);
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
@@ -941,10 +941,10 @@ commandDictionary['name'] = {
               var nicknameResultVar = false;
               message.member.setNickname(nickname).then(function(value) {
                 nicknameResultVar = true;
-                nicknameResult(nicknameResultVar);
+                nicknameResult(message, nicknameResultVar);
               }, function(reason) {
                 nicknameResultVar = false;
-                nicknameResult(nicknameResultVar);
+                nicknameResult(message, nicknameResultVar);
               });
               
             } else {
