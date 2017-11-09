@@ -1021,7 +1021,7 @@ BOT.on('message', message => {
         if (err) throw err;
       });
     }
-  }
+  });
   //console.log(message.author.username + ' updated in database');
   //message processing
 	if (message.guild) { //checks if in guild or a DM
