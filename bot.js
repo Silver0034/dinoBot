@@ -925,7 +925,7 @@ commandDictionary['name'] = {
           try {
             if (message.guild) {
               //check BOT has permissions to change nicknames
-              if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
+              if (message.guild.members.get(BOT.user.id).GuildMember.permissions.has(MANAGE_NICKNAMES)) {
                 //change nickname
                 //if error make log
                 message.member.setNickname(nickname);
@@ -1069,7 +1069,7 @@ BOT.on('message', message => {
     }
     else {
       //TODO: Consider sending the help message
-      console.log(getTime(), message.author.username + " used an unrecognized command input");
+      //console.log(getTime(), message.author.username + " used an unrecognized command input");
       return;    
     }
   }
