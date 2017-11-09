@@ -923,12 +923,12 @@ commandDictionary['name'] = {
           }
   
           function nicknameResult(nicknameResultVar) {
-            if (setNicknameResult == false) {
-                console.log('a fail return; ' + setNicknameResult);
+            if (nicknameResultVar == false) {
+                console.log('a fail return; ' + nicknameResultVar);
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                 return;
               } else {
-                console.log('a succeed return; ' + setNicknameResult);
+                console.log('a succeed return; ' + nicknameResultVar);
                 message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
                 return;
               }
@@ -938,16 +938,16 @@ commandDictionary['name'] = {
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
-              var NicknameResultVar = false;
-              console.log('Before: ' + setNicknameResult);
+              var nicknameResultVar = false;
+              console.log('Before: ' + nicknameResultVar);
               message.member.setNickname(nickname).then(function(value) {
-                NicknameResultVar = true;
-                console.log('If True: ' + setNicknameResult);
+                nicknameResultVar = true;
+                console.log('If True: ' + nicknameResultVar);
                 console.log('reads true');
                 nicknameResult(nicknameResultVar);
               }, function(reason) {
-                NicknameResultVar = false;
-                console.log('If False: ' + setNicknameResult);
+                nicknameResultVar = false;
+                console.log('If False: ' + nicknameResultVar);
                 console.log('reads false');
                 nicknameResult(nicknameResultVar);
               });
