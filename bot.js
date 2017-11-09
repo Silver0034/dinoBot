@@ -941,12 +941,12 @@ commandDictionary['name'] = {
               var NicknameResultVar = false;
               console.log('Before: ' + setNicknameResult);
               message.member.setNickname(nickname).then(function(value) {
-                setNicknameResult = true;
+                NicknameResultVar = true;
                 console.log('If True: ' + setNicknameResult);
                 console.log('reads true');
                 nicknameResult(nicknameResultVar);
               }, function(reason) {
-                setNicknameResult = false;
+                NicknameResultVar = false;
                 console.log('If False: ' + setNicknameResult);
                 console.log('reads false');
                 nicknameResult(nicknameResultVar);
