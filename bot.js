@@ -931,8 +931,10 @@ commandDictionary['name'] = {
               var setNicknameResult = Boolean;
               message.member.setNickname(nickname).then(function(value) {
                 setNicknameResult = true;
+                console.log('reads true');
               }, function(reason) {
                 setNicknameResult = false;
+                console.log('reads false');
               });
 
               if (setNicknameResult == false) {
