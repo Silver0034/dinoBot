@@ -929,7 +929,11 @@ commandDictionary['name'] = {
               //change nickname
               //if error make log
               try {
-                message.member.setNickname(nickname).then(message.send('worked'), message.send('failed'));
+                message.member.setNickname(nickname).then(function(value) {
+                  message.send('worked');
+                }, function(reason) {
+                  message.send('failed');
+                });
               } catch(err) {
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
               }
