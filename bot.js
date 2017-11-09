@@ -928,16 +928,16 @@ commandDictionary['name'] = {
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
-              var setNicknameResult = Boolean;
+              var setNicknameResult = 0;
               message.member.setNickname(nickname).then(function(value) {
-                setNicknameResult = true;
+                setNicknameResult = 1;
                 console.log('reads true');
               }, function(reason) {
-                setNicknameResult = false;
+                setNicknameResult = 0;
                 console.log('reads false');
               });
 
-              if (setNicknameResult == false) {
+              if (setNicknameResult == 0) {
                 message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
                 return;
               } else {
