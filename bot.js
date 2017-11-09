@@ -929,11 +929,14 @@ commandDictionary['name'] = {
               //change nickname
               //if error make log
               var setNicknameResult = 0;
+              console.log('Before: ' + setNicknameResult);
               message.member.setNickname(nickname).then(function(value) {
                 setNicknameResult = 1;
+                console.log('If True: ' + setNicknameResult);
                 console.log('reads true');
               }, function(reason) {
                 setNicknameResult = 0;
+                console.log('If False: ' + setNicknameResult);
                 console.log('reads false');
               });
 
