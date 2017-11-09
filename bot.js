@@ -911,13 +911,13 @@ commandDictionary['name'] = {
           if (nicknameToggleState == 0) {
             nickname = results[0].nicknameOne;
             //change the toggle number
-            sqldb.query("UPDATE user SET toggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+            sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
               console.log('nickname toggled');
               });
           } else if (nicknameToggleState == 1) {
             nickname = results[0].nicknameTwo;
               //change the toggle number
-            sqldb.query("UPDATE user SET toggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
+            sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
               console.log('nickname toggled');
             });
           }
