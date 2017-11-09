@@ -1009,22 +1009,35 @@ BOT.on('message', message => {
     if (err) throw err;
     //console.log(results);
   });
+  //Set Nicknames
+  sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+    if (results[0].nicknameOne == null) {
+      sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.autor.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+        if (err) throw err;
+      });
+    }
+    if (results[0].nicknameTwo == null) {
+      sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.autor.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+        if (err) throw err;
+      });
+    }
+  }
   //console.log(message.author.username + ' updated in database');
   //message processing
 	if (message.guild) { //checks if in guild or a DM
 		//record message content
   	//note: does not account for daylight savings time
 		sqldb.query("INSERT INTO messages (messageID, userID, guildID, channelID, date, content) VALUES (" +
-								message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
-								"'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + MYSQL.escape(message.content) + ")", function (err, results, fields) {
+		  message.id  + ", " + message.author.id + ", " + message.guild.id + ", " + message.channel.id + "," +
+			"'" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + MYSQL.escape(message.content) + ")", function (err, results, fields) {
 			if (err) throw err;
 			//console.log(results);
 			//console.log('Logged message by ' + message.author.username);
 		});
   //add new channels to channel database
 		sqldb.query("INSERT INTO channel (channelID, channelName, serverID) VALUES (" +
-								message.channel.id  + ", " + MYSQL.escape(message.channel.name) + ", " + message.guild.id + ")" +
-								"ON DUPLICATE KEY UPDATE channelName = " + MYSQL.escape(message.channel.name), function (err, results, fields) {
+			message.channel.id  + ", " + MYSQL.escape(message.channel.name) + ", " + message.guild.id + ")" +
+			"ON DUPLICATE KEY UPDATE channelName = " + MYSQL.escape(message.channel.name), function (err, results, fields) {
 			if (err) throw err;
 			//console.log(results);
 			//console.log('Edited channel table: ' + message.channel.name);
