@@ -922,7 +922,6 @@ commandDictionary['name'] = {
             });
           }
   
-          function 
           
           if (message.guild) {
             //check BOT has permissions to change nicknames
