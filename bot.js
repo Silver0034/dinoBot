@@ -928,7 +928,7 @@ commandDictionary['name'] = {
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
               //change nickname
               //if error make log
-              var setNicknameResult = false;
+              var setNicknameResult = Boolean;
               message.member.setNickname(nickname).then(function(value) {
                 setNicknameResult = true;
               }, function(reason) {
