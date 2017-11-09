@@ -94,17 +94,6 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
-function nicknameResult(message, key, nicknameResultVar) {
-            if (nicknameResultVar == false) {
-                console.log('a fail return; ' + nicknameResultVar);
-                message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
-                return;
-              } else {
-                console.log('a succeed return; ' + nicknameResultVar);
-                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
-                return;
-              }
-          }
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -933,6 +922,17 @@ commandDictionary['name'] = {
             });
           }
   
+          function nicknameResult(nicknameResultVar) {
+            if (nicknameResultVar == false) {
+                console.log('a fail return; ' + nicknameResultVar);
+                message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
+                return;
+              } else {
+                console.log('a succeed return; ' + nicknameResultVar);
+                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
+                return;
+              }
+          }
           if (message.guild) {
             //check BOT has permissions to change nicknames
             if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
@@ -941,10 +941,10 @@ commandDictionary['name'] = {
               var nicknameResultVar = false;
               message.member.setNickname(nickname).then(function(value) {
                 nicknameResultVar = true;
-                nicknameResult(message, nicknameResultVar);
+                nicknameResult(nicknameResultVar);
               }, function(reason) {
                 nicknameResultVar = false;
-                nicknameResult(message, key, nicknameResultVar);
+                nicknameResult(nicknameResultVar);
               });
               
             } else {
