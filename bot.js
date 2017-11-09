@@ -930,7 +930,7 @@ commandDictionary['name'] = {
               //if error make log
               try {
                 message.member.setNickname(nickname).then(
-                  message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname););
+                  message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname));
                 console.log(message.member.setNickname(nickname));
               }
             } else {
