@@ -193,7 +193,7 @@ commandDictionary['help'] = {
       .setTitle('Help')
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
-      .setDescription('Commands are formatted as `[command]')
+      .setDescription('Commands are formatted as ``[command]`')
       .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
       .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
       .addBlankField(false)
