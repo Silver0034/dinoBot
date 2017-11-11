@@ -148,38 +148,36 @@ exports.generate = function(message, key, args) {
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
     //add name part one to return
-    nameReturn += nameFirst;    
+    nameReturn += name[args[0]].maleOne[nameFirst];
+    
     //pick name part 2
 	  var nameSecond = Math.floor((Math.random() * name[args[0]].maleTwo.length)); 
     //add name part 2 to return
-    nameReturn += nameSecond; 
+    nameReturn += name[args[0]].maleTwo[nameSecond]; 
     //pick name part 3
     var nameThird = Math.floor((Math.random() * name[args[0]].maleThree.length));
     //add name part 3 to return
-    nameReturn += nameThird; 
+    nameReturn += name[args[0]].maleThree[nameThird]; 
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
     
-  } else if(args[1] == 'male' || args == undefined || args == null) {
+  } else (args[1] == 'male') {
     //if male or not specified
-    //pick name part 1
+   //pick name part 1
     var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
     //add name part one to return
-    nameReturn += nameFirst;    
+    nameReturn += name[args[0]].maleOne[nameFirst];
+    
     //pick name part 2
 	  var nameSecond = Math.floor((Math.random() * name[args[0]].maleTwo.length)); 
     //add name part 2 to return
-    nameReturn += nameSecond; 
+    nameReturn += name[args[0]].maleTwo[nameSecond]; 
     //pick name part 3
     var nameThird = Math.floor((Math.random() * name[args[0]].maleThree.length));
     //add name part 3 to return
-    nameReturn += nameThird; 
+    nameReturn += name[args[0]].maleThree[nameThird]; 
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
-  } else {
-    //return error if not male, female, or empty
-    console.log(args);
-    return 'Please specify either male, female, or leave blank';
   }
   
 }
