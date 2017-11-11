@@ -161,7 +161,7 @@ exports.generate = function(message, key, args) {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
     
-  } else (args[1] == 'male') {
+  } else {
     //if male or not specified
    //pick name part 1
     var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
