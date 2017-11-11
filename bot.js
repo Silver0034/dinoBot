@@ -1007,7 +1007,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
-        .addField('Possible Races:', '```human```')
+        .addField('Possible Races:', NAME.list())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
@@ -1017,27 +1017,6 @@ commandDictionary['name'] = {
     }
   }
 }
-/*
-commandDictionary['dex'] = {
-  timeout: '1',
-  error: 'Use the command like this: `dex [thing]',
-  usage: '**Usage:** `dex [thing]',
-  doCommand: function(message, key, args) {
-    var sayMessage = EMOJIDINO + message.content.substring(5);     
-    message.delete(0); //deletes message  
-    if (!args[0]) {
-    	message.channel.send(error(key));
-      return;
-    } else {    
-      
-      JQUERY.get('HTTPs://www.pokemon.com/us/pokedex/bulbasaur', null, function(text){
-        alert(JQUERY(text).find('.pokemon-number'));
-      });  
-        
-    }
-  }
-};
-*/
 
 //Connect to Database
 sqldb.connect(function(err) {
