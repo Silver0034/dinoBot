@@ -991,7 +991,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('A list of names for a human male\n*Use the command again for a new list of names*')
-        .addField('Names:', NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n')
+        .addField('Names:', '```' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '```')
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
