@@ -143,7 +143,7 @@ exports.generate = function(message, key, args) {
     return 'Please specify a valid race';
   }
   
-  if (args == 'female') {
+  if (args[1] == 'female') {
     //if female
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
@@ -160,7 +160,7 @@ exports.generate = function(message, key, args) {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
     
-  } else if(args == 'male' || args == undefined || args == null) {
+  } else if(args[1] == 'male' || args == undefined || args == null) {
     //if male or not specified
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
@@ -178,6 +178,7 @@ exports.generate = function(message, key, args) {
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   } else {
     //return error if not male, female, or empty
+    consle.log(args);
     return 'Please specify either male, female, or leave blank';
   }
   
