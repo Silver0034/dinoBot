@@ -270,12 +270,20 @@ nameDictionary['elf'] = {
   ]
 };
 
-exports.list = function() {
+function raceList() {
   var raceList = new Array();
-    	for (var keyIter in nameDictionary) {
-      	raceList.push(keyIter);
-      }
-      return '```' + raceList.sort().toString().replace(/,/g, ", ") + '```';
+  for (var keyIter in nameDictionary) {
+    raceList.push(keyIter);
+  }
+  return raceList;
+}
+
+exports.list = function() {
+  return '```' + raceList().sort().toString().replace(/,/g, ", ") + '```';
+}
+
+exports.raceCheck = function() {
+  return raceList();
 }
 
 exports.generate = function(message, key, args) {
