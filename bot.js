@@ -986,7 +986,7 @@ commandDictionary['name'] = {
       var raceArray = NAME.array();
       console.log(raceArray);
       for (i = 0; i < raceArray.length; i++) {
-        if (raceArray[i].includes(args[0])) {
+        if (raceArray[i] == args[0].toLowerCase()) {
           message.channel.startTyping();
           const embed = new DISCORD.RichEmbed()
             .setTitle('Name Generator')
