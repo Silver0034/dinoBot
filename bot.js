@@ -983,8 +983,9 @@ commandDictionary['name'] = {
   doCommand: function(message, key, args) { 
     //if race specified
     if (args[0]) {
-      for (i = 0; i < NAME.array().length; i++) {
-        if (args[0] = NAME.array()[i]) {
+      var raceArray = NAME.array();
+      for (i = 0; i < raceArray.length; i++) {
+        if (raceArray[i].includes(args[0])) {
           message.channel.startTyping();
           const embed = new DISCORD.RichEmbed()
             .setTitle('Name Generator')
