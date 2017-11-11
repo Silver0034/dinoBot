@@ -189,20 +189,21 @@ commandDictionary['help'] = {
       helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
     message.channel.send(responseHead(message, key) + ROAR.generate() + ' ' + ROAR.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+      .setTitle('Help')
+      .setAuthor(BOT.user.username, BOT.user.avatarURL)
+      .setColor(0x64FFDA)
+      .setDescription(helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*')
+      .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
+      .setThumbnail();
+    message.channel.stopTyping();
+    message.channel.send({embed});
     return;
   }
   
   
-  message.channel.startTyping();
-        const embed = new DISCORD.RichEmbed()
-          .setTitle('')
-          .setAuthor(BOT.user.username, BOT.user.avatarURL)
-          .setColor(0x64FFDA)
-          .setDescription('')
-          .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
-          .setThumbnail();
-        message.channel.stopTyping();
-        message.channel.send({embed});
+ 
   
 }; 
 commandDictionary['coin'] = {
