@@ -983,21 +983,40 @@ commandDictionary['name'] = {
   doCommand: function(message, key, args) { 
     //if race specified
     if (args[0]) {
+      for (i = 0; i < NAME.array().length; i++) {
+        if (args[0] = NAME.array()[i]) {
+          message.channel.startTyping();
+          const embed = new DISCORD.RichEmbed()
+            .setTitle('Name Generator')
+            .setAuthor(BOT.user.username, BOT.user.avatarURL)
+            .setColor(0x64FFDA)
+            .setDescription('A list of names for a human male\n*Use the command again for a new list of names*')
+            .addField('Names:', '```' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '```')
+            .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+            .addBlankField(false)
+            .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return;
+        } else {
+          message.channel.startTyping();
+          const embed = new DISCORD.RichEmbed()
+            .setTitle('Name Generator')
+            .setAuthor(BOT.user.username, BOT.user.avatarURL)
+            .setColor(0x64FFDA)
+            .setDescription('*The specified race is unavailable*')
+            .addField('Possible Races:', NAME.list())
+            .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+            .addBlankField(false)
+            .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return; 
+        }
+      }
       //TODO: Different Generators for different races
       //TODO: Different Generators for gender
-      message.channel.startTyping();
-      const embed = new DISCORD.RichEmbed()
-        .setTitle('Name Generator')
-        .setAuthor(BOT.user.username, BOT.user.avatarURL)
-        .setColor(0x64FFDA)
-        .setDescription('A list of names for a human male\n*Use the command again for a new list of names*')
-        .addField('Names:', '```' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '```')
-        .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
-        .addBlankField(false)
-        .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
-      message.channel.stopTyping();
-      message.channel.send({embed});
-      return;
+      
     } else {
       //This is the default generation
       //male human
