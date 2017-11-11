@@ -15,6 +15,7 @@ const VALIDURL = require('valid-url');
 const ATTACK = require('./commandFunctions/attack.js');
 const BALL = require('./commandFunctions/ball.js');
 const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
+const NAME = require('./commandFunctions/nameGen.js');
 const PROFANITY = require('./commandFunctions/profanity.js');
 const QUOTE = require('./commandFunctions/quote.js');
 const ROAR = require('./commandFunctions/roar.js');
@@ -990,7 +991,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('A list of names for a human male\n*Use the command again for a new list of names*')
-        .addField('Names:', '```Option 1\nOption 2\nOption 3```')
+        .addField('Names:', '```' + NAME.generate(message, key, args) + NAME.generate(message, key, args) + NAME.generate(message, key, args) + '```')
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
