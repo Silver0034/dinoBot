@@ -178,7 +178,7 @@ exports.generate = function(message, key, args) {
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   } else {
     //return error if not male, female, or empty
-    consle.log(args);
+    console.log(args);
     return 'Please specify either male, female, or leave blank';
   }
   
