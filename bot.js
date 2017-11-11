@@ -190,7 +190,7 @@ commandDictionary['help'] = {
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
-      .setTitle('Help ' + commandDictionary[key].emoji)
+      .setTitle('Help')
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as ``[command]`')
