@@ -1062,13 +1062,13 @@ BOT.on('message', message => {
   var userID = message.author.id;
   
    //delete BOT messages that say to slow down   
-  if (message.author.BOT && messageContent.includes('Slow down, you\'re scaring me!')) {
+  if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
     message.delete(6000); //deletes message
     return;
   }
   //stop message from being processed
   //if from a BOT
-  if (message.author.BOT) { return; }
+  if (message.author.bot) { return; }
   
   //if user sends a message
   sqldb.query("INSERT INTO user (userID, username, lastSeen, messagesSent) VALUES (" + userID + ", " + MYSQL.escape(message.author.username) + ", '" + new Date(parseInt(message.createdTimestamp)).toLocaleString() + "', " + "1" + ")" + 
