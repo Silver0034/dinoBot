@@ -1005,7 +1005,7 @@ commandDictionary['name'] = {
         .setTitle('Name Generator')
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
-        .setDescription('```' + commandDictionary[key].usage + '```')
+        .setDescription('```' + commandDictionary[key].usage + '```*Please specify race*\nPossible races include: human')
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
