@@ -192,10 +192,10 @@ commandDictionary['help'] = {
     const embed = new DISCORD.RichEmbed()
       .setTitle('Help')
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
-      .setImage('https://cdn.discordapp.com/attachments/358264614200279050/378748601049939969/HelpImage.png')
       .setColor(0x64FFDA)
       .setDescription(helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*')
       .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
+      .addBlankField(false)
       .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png');
     message.channel.stopTyping();
     message.channel.send({embed});
