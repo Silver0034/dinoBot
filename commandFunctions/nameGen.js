@@ -146,18 +146,18 @@ exports.generate = function(message, key, args) {
   if (args[1] == 'female') {
     //if female
     //pick name part 1
-    var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
+    var nameFirst = Math.floor((Math.random() * name[args[0]].femaleOne.length));
     //add name part one to return
-    nameReturn += name[args[0]].maleOne[nameFirst];
+    nameReturn += name[args[0]].femaleOne[nameFirst];
     
     //pick name part 2
-	  var nameSecond = Math.floor((Math.random() * name[args[0]].maleTwo.length)); 
+	  var nameSecond = Math.floor((Math.random() * name[args[0]].femaleTwo.length)); 
     //add name part 2 to return
-    nameReturn += name[args[0]].maleTwo[nameSecond]; 
+    nameReturn += name[args[0]].femaleTwo[nameSecond]; 
     //pick name part 3
-    var nameThird = Math.floor((Math.random() * name[args[0]].maleThree.length));
+    var nameThird = Math.floor((Math.random() * name[args[0]].femaleThree.length));
     //add name part 3 to return
-    nameReturn += name[args[0]].maleThree[nameThird]; 
+    nameReturn += name[args[0]].femaleThree[nameThird]; 
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
     
