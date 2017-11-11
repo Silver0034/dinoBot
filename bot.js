@@ -186,7 +186,7 @@ commandDictionary['help'] = {
     	for (var keyIter in commandDictionary) {
       	helpList.push(keyIter);
       }
-      helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
+      helpMessageBody = helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
@@ -194,7 +194,7 @@ commandDictionary['help'] = {
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as `[command]')
-      .addField('Available Commands', helpMessageBody + 'Use ``help [command]` to learn more\n*Do not include brackets' + ' [] ' + 'while using commands*')
+      .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
       .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
       .addBlankField(false)
       .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png');
