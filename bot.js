@@ -186,7 +186,7 @@ commandDictionary['help'] = {
     	for (var keyIter in commandDictionary) {
       	helpList.push(keyIter);
       }
-      helpMessageBody = helpList.sort().toString().replace(/,/g, ", ") + '```';
+      helpMessageBody = '```' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
