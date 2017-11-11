@@ -191,6 +191,19 @@ commandDictionary['help'] = {
     message.channel.send(responseHead(message, key) + ROAR.generate() + ' ' + ROAR.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
     return;
   }
+  
+  
+  message.channel.startTyping();
+        const embed = new DISCORD.RichEmbed()
+          .setTitle('')
+          .setAuthor(BOT.user.username, BOT.user.avatarURL)
+          .setColor(0x64FFDA)
+          .setDescription('')
+          .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
+          .setThumbnail();
+        message.channel.stopTyping();
+        message.channel.send({embed});
+  
 }; 
 commandDictionary['coin'] = {
   emoji: ':moneybag: ',  //put space after emoji  
@@ -490,13 +503,14 @@ commandDictionary['rpg'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription('Use the command like this: ````rpg monster [monster name]```')
-            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
             .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
             .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png");
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
         }
+        
         message.channel.startTyping();          
         
         var scrapeURL = "https://www.dndbeyond.com/monsters/";
@@ -556,7 +570,7 @@ commandDictionary['rpg'] = {
               .setAuthor(BOT.user.username, BOT.user.avatarURL)
               .setColor(0x64FFDA)
               .setDescription('The Monster you searched for is not on D&D Beyond.')
-              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
               .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
               .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png");
             message.channel.stopTyping();
@@ -589,7 +603,7 @@ commandDictionary['rpg'] = {
               .setAuthor(BOT.user.username, BOT.user.avatarURL)
               .setColor(0x64FFDA)
               .setDescription('I only have acsess to monsters defined by the "basic rules"')
-              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
+              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png")
               .setThumbnail("https://cdn.discordapp.com/attachments/358264614200279050/376058047614943232/dnd-beyond-logo.png");
             message.channel.stopTyping();
             message.channel.send({embed});
@@ -922,6 +936,8 @@ commandDictionary['name'] = {
             });
           }
   
+          //returns message depending on succsess of
+          //if statements below the function
           function nicknameResult(nicknameResultVar) {
             if (nicknameResultVar == false) {
                 console.log('a fail return; ' + nicknameResultVar);
