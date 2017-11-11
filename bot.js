@@ -195,8 +195,7 @@ commandDictionary['help'] = {
       .setColor(0x64FFDA)
       .setDescription(helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*')
       .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
-      .setImage('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png')
-      .setThumbnail();
+      .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png');
     message.channel.stopTyping();
     message.channel.send({embed});
     return;
