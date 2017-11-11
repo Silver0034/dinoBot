@@ -193,7 +193,7 @@ commandDictionary['help'] = {
       .setTitle('Help')
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
-      .setDescription(helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*')
+      .setDescription('Commands are Formatted as `[command]' + helpMessageBody + 'Use `help [command] to learn more\n*Do not include brackets' + ' [] ' + 'while using commands*')
       .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
       .addBlankField(false)
       .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png');
