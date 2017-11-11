@@ -208,17 +208,20 @@ exports.filter = function(message, EMOJIDINO, getTime, getDate, userID) {
 					if(messageCheck[i].indexOf(PROFANITYEXCEPTIONS[k]) != -1) {return;} 
 				}   
 				if (message.guild) {
+          console.log(message.author.username);
           //send message in channel
 					//message.channel.send(EMOJIDINO + profanityResponseGenerate());      
-					console.log(getTime(), message.author.username + ' was warned about cursing.');    
           //DM message
 					//message.author.send(EMOJIDINO + '<@' + userID + '>, please keep the ' + message.guild.name + ' profanity free. Do not curse.'); 
           //send message to owner
 					message.guild.owner.send(EMOJIDINO + ' ' + message.author.username + ' cursed in your server, ' + message.guild.name + ', in the channel ' + message.channel.name +':```' + '\n' + message.author.username + ': \"' + message + '\"```' + 'The trigger was ' + PROFANITYLIST[j] + '\non ' + getDate());  
+          console.log(message.author.username);
 					return;
 				} else {
+          console.log(message.author.username);
 					console.log(getTime(), message.author.username + ' cursed at me in direct message');
 					message.author.send(EMOJIDINO + '<@' + userID + '>, please don\'t curse in front of me. :confounded: ');
+          console.log(message.author.username);
 					return;
 				}
 			}
