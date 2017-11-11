@@ -1013,6 +1013,7 @@ commandDictionary['name'] = {
       message.channel.send({embed});
       return;
     }
+  }
 }
 /*
 commandDictionary['dex'] = {
