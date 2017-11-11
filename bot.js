@@ -190,12 +190,12 @@ commandDictionary['help'] = {
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
-      .setTitle('Help')
+      .setTitle('Help ' + commandDictionary[key].emoji)
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as ``[command]`')
       .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
-      .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
+      .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
       .addBlankField(false)
       .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png');
     message.channel.stopTyping();
@@ -882,11 +882,11 @@ commandDictionary['profile'] = {
 		}		
 	}
 };
-commandDictionary['name'] = {
+commandDictionary['nick'] = {
   timeout: 0,
 	emoji: ':name_badge: ',
-  error: 'Use the command like this: `name [set OR toggle]',
-  usage: '**Usage:** `name',
+  error: 'Use the command like this: `nick [set OR toggle]',
+  usage: '**Usage:** `nick',
   doCommand: function(message, key, args) {
     switch(args[0]) { 
       case 'set':
