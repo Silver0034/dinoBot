@@ -1,7 +1,7 @@
 //NameGen.j
 
-var name = new Object();
-name['human'] = {
+var nameDictionary = new Object();
+nameDictionary['human'] = {
   maleOne: [
     "",
     "",
@@ -136,46 +136,54 @@ name['human'] = {
   ]
 }
 
+exports.list = {
+  var raceList = new Array();
+    	for (var keyIter in nameDictionary) {
+      	raceList.push(keyIter);
+      }
+      return '```' + raceList.sort().toString().replace(/,/g, ", ") + '```';
+}
+
 exports.generate = function(message, key, args) {
   var nameReturn = '';
   
-  if (name[args[0]].maleOne == null || name[args[0]].maleOne == undefined) {
+  if (nameDictionary[args[0]].maleOne == null || nameDictionary[args[0]].maleOne == undefined) {
     return 'Please specify a valid race';
   }
   
   if (args[1] == 'female') {
     //if female
     //pick name part 1
-    var nameFirst = Math.floor((Math.random() * name[args[0]].femaleOne.length));
+    var nameFirst = Math.floor((Math.random() * nameDictionary[args[0]].femaleOne.length));
     //add name part one to return
-    nameReturn += name[args[0]].femaleOne[nameFirst];
+    nameReturn += nameDictionary[args[0]].femaleOne[nameFirst];
     
     //pick name part 2
-	  var nameSecond = Math.floor((Math.random() * name[args[0]].femaleTwo.length)); 
+	  var nameSecond = Math.floor((Math.random() * nameDictionary[args[0]].femaleTwo.length)); 
     //add name part 2 to return
-    nameReturn += name[args[0]].femaleTwo[nameSecond]; 
+    nameReturn += nameDictionary[args[0]].femaleTwo[nameSecond]; 
     //pick name part 3
-    var nameThird = Math.floor((Math.random() * name[args[0]].femaleThree.length));
+    var nameThird = Math.floor((Math.random() * nameDictionary[args[0]].femaleThree.length));
     //add name part 3 to return
-    nameReturn += name[args[0]].femaleThree[nameThird]; 
+    nameReturn += nameDictionary[args[0]].femaleThree[nameThird]; 
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
     
   } else {
     //if male or not specified
    //pick name part 1
-    var nameFirst = Math.floor((Math.random() * name[args[0]].maleOne.length));
+    var nameFirst = Math.floor((Math.random() * nameDictionary[args[0]].maleOne.length));
     //add name part one to return
-    nameReturn += name[args[0]].maleOne[nameFirst];
+    nameReturn += nameDictionary[args[0]].maleOne[nameFirst];
     
     //pick name part 2
-	  var nameSecond = Math.floor((Math.random() * name[args[0]].maleTwo.length)); 
+	  var nameSecond = Math.floor((Math.random() * nameDictionary[args[0]].maleTwo.length)); 
     //add name part 2 to return
-    nameReturn += name[args[0]].maleTwo[nameSecond]; 
+    nameReturn += nameDictionary[args[0]].maleTwo[nameSecond]; 
     //pick name part 3
-    var nameThird = Math.floor((Math.random() * name[args[0]].maleThree.length));
+    var nameThird = Math.floor((Math.random() * nameDictionary[args[0]].maleThree.length));
     //add name part 3 to return
-    nameReturn += name[args[0]].maleThree[nameThird]; 
+    nameReturn += nameDictionary[args[0]].maleThree[nameThird]; 
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   }
