@@ -984,7 +984,11 @@ commandDictionary['name'] = {
     //if race specified
     if (args[0]) {
       var raceArray = NAME.array();
-      var returnGender = ' ' + args[1];
+      var returnGender = ' '
+      if (args[1]) {
+        returnGender = returnGender + args[1];
+      }
+      
       console.log(raceArray);
       for (i = 0; i < raceArray.length; i++) {
         if (raceArray[i] == args[0].toLowerCase()) {
