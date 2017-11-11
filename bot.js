@@ -989,8 +989,8 @@ commandDictionary['name'] = {
         .setTitle('Name Generator')
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
-        .setDescription('```' + commandDictionary[key].usage + '```')
-        .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
+        .setDescription('A list of names for a human male\n*Use the command again for a new list of names*')
+        .addField('Names:', 'Option 1\nOption 2\nOption 3')
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
