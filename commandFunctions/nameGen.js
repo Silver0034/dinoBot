@@ -136,7 +136,7 @@ nameDictionary['human'] = {
   ]
 }
 
-exports.list = {
+exports.list = function {
   var raceList = new Array();
     	for (var keyIter in nameDictionary) {
       	raceList.push(keyIter);
