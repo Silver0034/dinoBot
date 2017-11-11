@@ -188,7 +188,6 @@ commandDictionary['help'] = {
       }
       helpMessageBody = '```**Available Commands:** ' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
-    message.channel.send(responseHead(message, key) + ROAR.generate() + ' ' + ROAR.generate() + helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*');
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
       .setTitle('Help')
@@ -196,6 +195,7 @@ commandDictionary['help'] = {
       .setColor(0x64FFDA)
       .setDescription(helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*')
       .setFooter(BOT.user.username + '™ | Service by Lodes Deisgn')
+      .setImage('https://cdn.discordapp.com/attachments/358264614200279050/378746081665613834/HelpIcon.png')
       .setThumbnail();
     message.channel.stopTyping();
     message.channel.send({embed});
