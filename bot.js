@@ -984,6 +984,7 @@ commandDictionary['name'] = {
     //if race specified
     if (args[0]) {
       var raceArray = NAME.array();
+      var returnGender = ' ' + args[1];
       console.log(raceArray);
       for (i = 0; i < raceArray.length; i++) {
         if (raceArray[i] == args[0].toLowerCase()) {
@@ -992,7 +993,7 @@ commandDictionary['name'] = {
             .setTitle('Name Generator')
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
-            .setDescription('A list of names for a human male\n*Use the command again for a new list of names*')
+            .setDescription('A list of names for a ' + args[0] + args[1] + '\n*Use the command again for a new list of names*')
             .addField('Names:', '```' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '\n' + NAME.generate(message, key, args) + '```')
             .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
             .addBlankField(false)
