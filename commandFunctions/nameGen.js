@@ -102,7 +102,7 @@ name['human'] = {
     "in",
     "et",
     "te",
-    "nn",
+    "n",
     "ll",
     "li",
     "ri",
