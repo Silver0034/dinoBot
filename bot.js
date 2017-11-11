@@ -984,6 +984,7 @@ commandDictionary['name'] = {
     //if race specified
     if (args[0]) {
       var raceArray = NAME.array();
+      console.log(raceArray);
       for (i = 0; i < raceArray.length; i++) {
         if (raceArray[i].includes(args[0])) {
           message.channel.startTyping();
