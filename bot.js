@@ -201,11 +201,7 @@ commandDictionary['help'] = {
     message.channel.stopTyping();
     message.channel.send({embed});
     return;
-  }
-  
-  
- 
-  
+  } 
 }; 
 commandDictionary['coin'] = {
   emoji: ':moneybag: ',  //put space after emoji  
@@ -978,6 +974,45 @@ commandDictionary['nick'] = {
         
     }
   }
+}
+commandDictionary['name'] = {
+	emoji: ':thinking: ',
+  error: 'Use the command like this: `name [race] [male OR female]',
+  usage: '**Usage:** `name [race] [male OR female]',
+  doCommand: function(message, key, args) { 
+    //if race specified
+    if (args[0]) {
+      //TODO: Different Generators for different races
+      //TODO: Different Generators for gender
+      message.channel.startTyping();
+      const embed = new DISCORD.RichEmbed()
+        .setTitle('Name Generator')
+        .setAuthor(BOT.user.username, BOT.user.avatarURL)
+        .setColor(0x64FFDA)
+        .setDescription('```' + commandDictionary[key].usage + '```')
+        .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
+        .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+        .addBlankField(false)
+        .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
+    } else {
+      //This is the default generation
+      //male human
+      message.channel.startTyping();
+      const embed = new DISCORD.RichEmbed()
+        .setTitle('Name Generator')
+        .setAuthor(BOT.user.username, BOT.user.avatarURL)
+        .setColor(0x64FFDA)
+        .setDescription('```' + commandDictionary[key].usage + '```')
+        .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+        .addBlankField(false)
+        .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
+    }
 }
 /*
 commandDictionary['dex'] = {
