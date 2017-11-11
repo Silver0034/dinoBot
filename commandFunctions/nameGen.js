@@ -282,7 +282,7 @@ exports.list = function() {
   return '```' + raceList().sort().toString().replace(/,/g, ", ") + '```';
 }
 
-exports.raceCheck = function() {
+exports.array = function() {
   return raceList();
 }
 
