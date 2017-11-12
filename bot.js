@@ -977,6 +977,7 @@ commandDictionary['nick'] = {
   }
 }
 commandDictionary['name'] = {
+  timeout: 0,
 	emoji: ':thinking: ',
   error: 'Use the command like this: `name [race] [male OR female]',
   usage: '**Usage:** `name [race] [male OR female] [list]',
