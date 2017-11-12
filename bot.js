@@ -978,6 +978,7 @@ commandDictionary['nick'] = {
 }
 commandDictionary['name'] = {
   timeout: 0,
+  icon: 'https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png',
 	emoji: ':thinking: ',
   error: 'Use the command like this: `name [race] [male OR female]',
   usage: '**Usage:** `name [race] [male OR female] [list]',
@@ -1006,7 +1007,7 @@ commandDictionary['name'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
-            .setThumbnail('/assets/icons/NameIcon.png');
+            .setThumbnail(commandDictionary[key].icon);
           
           if (args[2] == 'list' || args[1] == 'list') {
             embed
@@ -1084,7 +1085,7 @@ commandDictionary['name'] = {
         .addField('Possible Races:', NPC.raceList())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
-        .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+        .setThumbnail(commandDictionary[key].icon);
       message.channel.stopTyping();
       message.channel.send({embed});
       return; 
@@ -1103,7 +1104,7 @@ commandDictionary['name'] = {
         .addField('Possible Races:', NPC.raceList())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
-        .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+        .setThumbnail(commandDictionary[key].icon);
       message.channel.stopTyping();
       message.channel.send({embed});
       return;
