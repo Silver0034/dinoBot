@@ -15,7 +15,7 @@ const VALIDURL = require('valid-url');
 const ATTACK = require('./commandFunctions/attack.js');
 const BALL = require('./commandFunctions/ball.js');
 const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
-const NAME = require('./commandFunctions/nameGen.js');
+const NPC = require('./commandFunctions/npcGenerate.js');
 const PROFANITY = require('./commandFunctions/profanity.js');
 const QUOTE = require('./commandFunctions/quote.js');
 const ROAR = require('./commandFunctions/roar.js');
@@ -983,7 +983,7 @@ commandDictionary['name'] = {
   doCommand: function(message, key, args) { 
     //if race specified
     if (args[0]) {
-      var raceArray = NAME.array();
+      var raceArray = NPC.array();
       var returnGender = ' ';
       var returnDescription = args[0] + '';
       if (args[1] == 'male' || args[1] == 'female') {
@@ -1011,31 +1011,31 @@ commandDictionary['name'] = {
             embed
               .setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
               .addField('Names:', '```' +
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' + 
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '\n' +
-                           NAME.generate(message, key, args) + '```'
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' + 
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '\n' +
+                           NPC.generate(message, key, args) + '```'
                           );          
           } else {
              embed
                .setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*')
-               .addField('Names:', '```' + NAME.generate(message, key, args) + '```\n*Add "list" to the end of the command to return a list of names*');
+               .addField('Names:', '```' + NPC.generate(message, key, args) + '```\n*Add "list" to the end of the command to return a list of names*');
           }
           
           embed.addBlankField(false);
@@ -1051,7 +1051,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('*The specified race is unavailable*')
-        .addField('Possible Races:', NAME.list())
+        .addField('Possible Races:', NAME.raceList())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
@@ -1070,7 +1070,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
-        .addField('Possible Races:', NAME.list())
+        .addField('Possible Races:', NPC.list())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
