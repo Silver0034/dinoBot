@@ -133,7 +133,8 @@ npcDictionary['race'] = {
     "",
     ""
   ],
-  nameMale: function() {
+  nameMale: function(race) {
+    var nameReturn = '';
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[race].maleOne.length));
     //add name part one to return
@@ -149,7 +150,8 @@ npcDictionary['race'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   },
-  nameFemale: function() {
+  nameFemale: function(race) {
+    var nameReturn = '';
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[race].femaleOne.length));
     //add name part one to return
@@ -165,7 +167,6 @@ npcDictionary['race'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
   }
-};
 */
 
 
@@ -471,7 +472,7 @@ npcDictionary['elf'] = {
     "di",
     "ina"
   ],
-  nameMale: function() {
+  nameMale: function(race) {
     var nameReturn = '';
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[race].maleOne.length));
@@ -488,7 +489,7 @@ npcDictionary['elf'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   },
-  nameFemale: function() {
+  nameFemale: function(race) {
     var nameReturn = '';
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[race].femaleOne.length));
