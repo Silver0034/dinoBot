@@ -1210,7 +1210,7 @@ BOT.on('message', message => {
       //calls for the command function   
       console.log(getTime(), message.author.username + ' used: ' + key);
       //runs function: be sure to message.channel.send in functions that need it
-      commandDictionary[key].doCommand(message, key, args);
+      commandDictionary[key].doCommand(message, key, args, embedFooter);
       timeout(key, userID);
       return;      
     }
