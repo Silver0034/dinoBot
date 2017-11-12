@@ -132,7 +132,39 @@ npcDictionary['race'] = {
     "",
     "",
     ""
-  ]
+  ],
+  nameMale: function() {
+    //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].maleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].maleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].maleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].maleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
+  },
+  nameFemale: function() {
+    //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].femaleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].femaleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].femaleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].femaleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].femaleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
+  }
 };
 */
 
@@ -271,8 +303,8 @@ npcDictionary['human'] = {
     "ss",
     "y"
   ],
-  nameMale: {
-  //pick name part 1
+  nameMale: function() {
+    //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
     //add name part one to return
     nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
@@ -287,7 +319,7 @@ npcDictionary['human'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   },
-  nameFemale: {
+  nameFemale: function() {
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
     //add name part one to return
@@ -437,7 +469,7 @@ npcDictionary['elf'] = {
     "di",
     "ina"
   ],
-   nameMale: {
+  nameMale: function() {
   //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
     //add name part one to return
@@ -453,7 +485,7 @@ npcDictionary['elf'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   },
-  nameFemale: {
+  nameFemale: function() {
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
     //add name part one to return
@@ -603,7 +635,7 @@ npcDictionary['arakocra'] = {
     "uli",
     "ike"
   ],
-  nameMale: {
+  nameMale: function() {
   //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
     //add name part one to return
@@ -619,7 +651,7 @@ npcDictionary['arakocra'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   },
-  nameFemale: {
+  nameFemale: function() {
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
     //add name part one to return
@@ -769,7 +801,7 @@ npcDictionary['dwarf'] = {
     "van",
     "tva"
   ],
-  nameMale: {
+  nameMale: function() {
   //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
     //add name part one to return
@@ -785,7 +817,7 @@ npcDictionary['dwarf'] = {
     //return name
 	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
   },
-  nameFemale: {
+  nameFemale: function() {
     //pick name part 1
     var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
     //add name part one to return
