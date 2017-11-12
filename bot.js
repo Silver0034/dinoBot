@@ -1013,7 +1013,7 @@ commandDictionary['name'] = {
             
             if (args[1] == 'female') {
               embed.addField('Names:', '```' +
-                             npcDictionary[args[0]].nameFemale();
+                             npcDictionary[args[0]].nameFemale()
                         /*
                        NPC.generate(message, key, args) + '\n' + 
                        NPC.generate(message, key, args) + '\n' + 
