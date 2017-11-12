@@ -989,7 +989,7 @@ commandDictionary['name'] = {
       if (args[1]) {
         returnGender = returnGender + args[1];
       }
-      if (args[0].chartAt(0) == 'a') {
+      if (args[0].toString.substring(0, 1) == 'a') {
         returnDescription = 'an';
       }
       
