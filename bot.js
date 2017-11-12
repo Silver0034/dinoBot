@@ -1051,7 +1051,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('*The specified race is unavailable*')
-        .addField('Possible Races:', NAME.raceList())
+        .addField('Possible Races:', NPC.raceList())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
@@ -1070,7 +1070,7 @@ commandDictionary['name'] = {
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
-        .addField('Possible Races:', NPC.list())
+        .addField('Possible Races:', NPC.raceList())
         .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
         .addBlankField(false)
         .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
