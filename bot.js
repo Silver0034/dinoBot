@@ -1025,22 +1025,21 @@ commandDictionary['name'] = {
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
-        } else {
-          message.channel.startTyping();
-          const embed = new DISCORD.RichEmbed()
-            .setTitle('Name Generator')
-            .setAuthor(BOT.user.username, BOT.user.avatarURL)
-            .setColor(0x64FFDA)
-            .setDescription('*The specified race is unavailable*')
-            .addField('Possible Races:', NAME.list())
-            .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
-            .addBlankField(false)
-            .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
-          message.channel.stopTyping();
-          message.channel.send({embed});
-          return; 
         }
       }
+      message.channel.startTyping();
+      const embed = new DISCORD.RichEmbed()
+        .setTitle('Name Generator')
+        .setAuthor(BOT.user.username, BOT.user.avatarURL)
+        .setColor(0x64FFDA)
+        .setDescription('*The specified race is unavailable*')
+        .addField('Possible Races:', NAME.list())
+        .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+        .addBlankField(false)
+        .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return; 
       //TODO: Different Generators for different races
       //TODO: Different Generators for gender
       
