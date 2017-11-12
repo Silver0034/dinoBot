@@ -850,3 +850,11 @@ exports.raceList = function() {
 exports.array = function() {
   return raceList();
 }
+
+exports.nameMale = function(race) {
+  return npcDictionary[race].nameMale;
+}
+
+exports.nameFemale = function(race) {
+  return npcDictionary[race].nameFemale;
+}
