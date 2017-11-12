@@ -985,11 +985,12 @@ commandDictionary['name'] = {
     if (args[0]) {
       var raceArray = NAME.array();
       var returnGender = ' ';
-      var returnDescription = 'a';
+      var returnDescription = args[0] + '';
       if (args[1]) {
         returnGender = returnGender + args[1];
       }
-      if (args[0].toString.substring(0, 1) == 'a') {
+      
+      if (returnDescription.substring(0, 1) == 'a') {
         returnDescription = 'an';
       }
       
