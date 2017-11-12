@@ -992,6 +992,8 @@ commandDictionary['name'] = {
       
       if (returnDescription.substring(0, 1) == 'a') {
         returnDescription = 'an';
+      } else {
+        returnDescription = 'a';
       }
       
           
@@ -1009,7 +1011,7 @@ commandDictionary['name'] = {
           
           if (args[2] == 'list') {
             embed
-              .setDescription('A list of names for ' + returnDescription + '***' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
+              .setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
               .addField('Names:', '```' +
                            NAME.generate(message, key, args) + '\n' + 
                            NAME.generate(message, key, args) + '\n' + 
@@ -1034,7 +1036,7 @@ commandDictionary['name'] = {
                           );          
           } else {
              embed
-               .setDescription('A random name for ' + returnDescription + '***' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
+               .setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
                .addField('Names:', '```' + NAME.generate(message, key, args) + '```');
           }
           
