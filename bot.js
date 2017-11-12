@@ -1013,35 +1013,58 @@ commandDictionary['name'] = {
             
             if (args[1] == 'female') {
               embed.addField('Names:', '```' +
-                             npcDictionary[args[0]].nameFemale()
-                        /*
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' + 
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '\n' +
-                       NPC.generate(message, key, args) + '```'
-                        */
-                          );
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                             npcDictionary[args[0]].nameFemale() + '\n' +
+                            );
+            } else {
+              embed.addField('Names:', '```' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                             npcDictionary[args[0]].nameMale() + '\n' +
+                            );
             }
           } else {
-             embed
-               .setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*')
-               .addField('Names:', '```' + NPC.generate(message, key, args) + '```\n*Add "list" to the end of the command to return a list of names*');
+            embed.setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*');
+            if (args[1] == 'female') {
+              embed.addField('Names:', '```' + npcDictionary[args[0]].nameFemale() + '```\n*Add "list" to the end of the command to return a list of names*');
+            } else {
+              embed.addField('Names:', '```' + npcDictionary[args[0]].nameMale() + '```\n*Add "list" to the end of the command to return a list of names*');
+            }    
           }
           
           embed.addBlankField(false);
@@ -1049,7 +1072,7 @@ commandDictionary['name'] = {
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
-        }
+        } 
       }
       message.channel.startTyping();
       const embed = new DISCORD.RichEmbed()
