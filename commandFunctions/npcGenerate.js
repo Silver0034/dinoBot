@@ -270,7 +270,39 @@ npcDictionary['human'] = {
     "ett",
     "ss",
     "y"
-  ]
+  ],
+  nameMale: {
+  //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].maleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].maleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].maleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].maleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
+  },
+  nameFemale: {
+    //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].femaleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].femaleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].femaleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].femaleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].femaleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
+  }
 };
 npcDictionary['elf'] = {
   maleOne: [
@@ -404,7 +436,39 @@ npcDictionary['elf'] = {
     "edi",
     "di",
     "ina"
-  ]
+  ],
+   nameMale: {
+  //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].maleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].maleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].maleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].maleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
+  },
+  nameFemale: {
+    //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].femaleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].femaleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].femaleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].femaleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].femaleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
+  }
 };
 npcDictionary['arakocra'] = {
   maleOne: [
@@ -538,7 +602,39 @@ npcDictionary['arakocra'] = {
     "eeci",
     "uli",
     "ike"
-  ]
+  ],
+  nameMale: {
+  //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].maleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].maleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].maleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].maleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
+  },
+  nameFemale: {
+    //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].femaleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].femaleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].femaleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].femaleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].femaleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
+  }
 };
 npcDictionary['dwarf'] = {
   maleOne: [
@@ -672,7 +768,39 @@ npcDictionary['dwarf'] = {
     "nora",
     "van",
     "tva"
-  ]
+  ],
+  nameMale: {
+  //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].maleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].maleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].maleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].maleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
+  },
+  nameFemale: {
+    //pick name part 1
+    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
+    //add name part one to return
+    nameReturn += npcDictionary[args[0]].femaleOne[nameFirst];
+    //pick name part 2
+	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].femaleTwo.length)); 
+    //add name part 2 to return
+    nameReturn += npcDictionary[args[0]].femaleTwo[nameSecond]; 
+    //pick name part 3
+    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].femaleThree.length));
+    //add name part 3 to return
+    nameReturn += npcDictionary[args[0]].femaleThree[nameThird]; 
+    //return name
+	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
+  }
 };
 
 function raceList() {
@@ -689,50 +817,4 @@ exports.raceList = function() {
 
 exports.array = function() {
   return raceList();
-}
-
-exports.generate = function(message, key, args) {
-  var nameReturn = '';
-  
-  if (npcDictionary[args[0]].maleOne == null || npcDictionary[args[0]].maleOne == undefined) {
-    return 'Please specify a valid race';
-  }
-  
-  if (args[1] == 'female') {
-    //if female
-    //pick name part 1
-    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].femaleOne.length));
-    //add name part one to return
-    nameReturn += npcDictionary[args[0]].femaleOne[nameFirst];
-    
-    //pick name part 2
-	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].femaleTwo.length)); 
-    //add name part 2 to return
-    nameReturn += npcDictionary[args[0]].femaleTwo[nameSecond]; 
-    //pick name part 3
-    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].femaleThree.length));
-    //add name part 3 to return
-    nameReturn += npcDictionary[args[0]].femaleThree[nameThird]; 
-    //return name
-	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
-    
-  } else {
-    //if male or not specified
-   //pick name part 1
-    var nameFirst = Math.floor((Math.random() * npcDictionary[args[0]].maleOne.length));
-    //add name part one to return
-    nameReturn += npcDictionary[args[0]].maleOne[nameFirst];
-    
-    //pick name part 2
-	  var nameSecond = Math.floor((Math.random() * npcDictionary[args[0]].maleTwo.length)); 
-    //add name part 2 to return
-    nameReturn += npcDictionary[args[0]].maleTwo[nameSecond]; 
-    //pick name part 3
-    var nameThird = Math.floor((Math.random() * npcDictionary[args[0]].maleThree.length));
-    //add name part 3 to return
-    nameReturn += npcDictionary[args[0]].maleThree[nameThird]; 
-    //return name
-	  return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
-  }
-  
 }
