@@ -978,7 +978,7 @@ commandDictionary['nick'] = {
 }
 commandDictionary['name'] = {
   timeout: 0,
-  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png',
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png?raw=true',
 	emoji: ':thinking: ',
   error: 'Use the command like this: `name [race] [male OR female]',
   usage: '**Usage:** `name [race] [male OR female] [list]',
