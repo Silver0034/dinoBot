@@ -986,11 +986,10 @@ commandDictionary['name'] = {
       var raceArray = NAME.array();
       var returnGender = ' ';
       var returnDescription = args[0] + '';
-      if (args[1]) {
+      if (args[1] == 'male' || args[1] == 'female') {
         returnGender = returnGender + args[1];
       }
-      
-      if (returnDescription.substring(0, 1) == 'a') {
+        if (returnDescription.substring(0, 1) == 'a') {
         returnDescription = 'an';
       } else {
         returnDescription = 'a';
@@ -1006,10 +1005,9 @@ commandDictionary['name'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
-            .addBlankField(false)
             .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
           
-          if (args[2] == 'list') {
+          if (args[2] == 'list' || args[1] == 'list') {
             embed
               .setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
               .addField('Names:', '```' +
@@ -1039,6 +1037,8 @@ commandDictionary['name'] = {
                .setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
                .addField('Names:', '```' + NAME.generate(message, key, args) + '```');
           }
+          
+          embed.addBlankField(false);
           
           message.channel.stopTyping();
           message.channel.send({embed});
