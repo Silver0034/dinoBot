@@ -852,10 +852,9 @@ exports.array = function() {
 }
 
 exports.nameMale = function(race) {
-  console.log(race);
-  return npcDictionary[race].nameMale();
+  return npcDictionary[race].nameMale(race);
 }
 
 exports.nameFemale = function(race) {
-  return npcDictionary[race].nameFemale();
+  return npcDictionary[race].nameFemale(race);
 }
