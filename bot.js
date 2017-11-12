@@ -979,16 +979,21 @@ commandDictionary['nick'] = {
 commandDictionary['name'] = {
 	emoji: ':thinking: ',
   error: 'Use the command like this: `name [race] [male OR female]',
-  usage: '**Usage:** `name [race] [male OR female]',
+  usage: '**Usage:** `name [race] [male OR female] [list]',
   doCommand: function(message, key, args) { 
     //if race specified
     if (args[0]) {
       var raceArray = NAME.array();
-      var returnGender = ' '
+      var returnGender = ' ';
+      var returnDescription = 'a';
       if (args[1]) {
         returnGender = returnGender + args[1];
       }
+      if (args[0].chartAt(0) == 'a') {
+        returnDescription = 'an';
+      }
       
+          
       console.log(raceArray);
       for (i = 0; i < raceArray.length; i++) {
         if (raceArray[i] == args[0].toLowerCase()) {
@@ -997,31 +1002,41 @@ commandDictionary['name'] = {
             .setTitle('Name Generator')
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
-            .setDescription('A list of names for a ***' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
-            .addField('Names:', '```' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' + 
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '\n' +
-                      NAME.generate(message, key, args) + '```')
             .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
             .addBlankField(false)
             .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+          
+          if (args[2] == 'list') {
+            embed
+              .setDescription('A list of names for ' + returnDescription + '***' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
+              .addField('Names:', '```' +
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' + 
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '\n' +
+                           NAME.generate(message, key, args) + '```'
+                          );          
+          } else {
+             embed
+               .setDescription('A random name for ' + returnDescription + '***' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
+               .addField('Names:', '```' + NAME.generate(message, key, args) + '```');
+          }
+          
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
