@@ -1009,29 +1009,35 @@ commandDictionary['name'] = {
           
           if (args[2] == 'list' || args[1] == 'list') {
             embed
-              .setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*')
-              .addField('Names:', '```' +
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' + 
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '\n' +
-                           NPC.generate(message, key, args) + '```'
-                          );          
+              .setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*');
+            
+            if (args[1] == 'female') {
+              embed.addField('Names:', '```' +
+                             npcDictionary[args[0]].nameFemale();
+                        /*
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' + 
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '\n' +
+                       NPC.generate(message, key, args) + '```'
+                        */
+                          );
+            }
           } else {
              embed
                .setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*')
