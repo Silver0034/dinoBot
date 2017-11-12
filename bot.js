@@ -198,7 +198,7 @@ commandDictionary['help'] = {
       .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
       .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
       .addBlankField(false)
-      .setThumbnail('./assets/icons/HelpIcon.png');
+      .setThumbnail('/assets/icons/HelpIcon.png');
     message.channel.stopTyping();
     message.channel.send({embed});
     return;
@@ -502,9 +502,9 @@ commandDictionary['rpg'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription('Use the command like this: ````rpg monster [monster name]```')
-            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "./assets/icons/dnd-beyond-logo.png")
+            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "/assets/icons/dnd-beyond-logo.png")
             .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-            .setThumbnail("./assets/icons/dnd-beyond-logo.png");
+            .setThumbnail("/assets/icons/dnd-beyond-logo.png");
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
@@ -569,9 +569,9 @@ commandDictionary['rpg'] = {
               .setAuthor(BOT.user.username, BOT.user.avatarURL)
               .setColor(0x64FFDA)
               .setDescription('The Monster you searched for is not on D&D Beyond.')
-              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "./assets/icons/dnd-beyond-logo.png")
+              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "/assets/icons/dnd-beyond-logo.png")
               .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-              .setThumbnail("./assets/icons/dnd-beyond-logo.png");
+              .setThumbnail("/assets/icons/dnd-beyond-logo.png");
             message.channel.stopTyping();
             message.channel.send({embed});
             return;
@@ -602,8 +602,8 @@ commandDictionary['rpg'] = {
               .setAuthor(BOT.user.username, BOT.user.avatarURL)
               .setColor(0x64FFDA)
               .setDescription('I only have acsess to monsters defined by the "basic rules"')
-              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "./assets/icons/dnd-beyond-logo.png")
-              .setThumbnail("./assets/icons/dnd-beyond-logo.png");
+              .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "/assets/icons/dnd-beyond-logo.png")
+              .setThumbnail("/assets/icons/dnd-beyond-logo.png");
             message.channel.stopTyping();
             message.channel.send({embed});
             return;
@@ -631,9 +631,9 @@ commandDictionary['rpg'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setDescription(page["descShort"])
-            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "./assets/icons/dnd-beyond-logo.png")
+            .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "/assets/icons/dnd-beyond-logo.png")
             .setImage(monsterImageURL)
-            .setThumbnail("./assets/icons/dnd-beyond-logo.png")
+            .setThumbnail("/assets/icons/dnd-beyond-logo.png")
             .setURL(scrapeURL)
             //Abilities Section          
             .addField("__**Abilities**__",
@@ -1006,7 +1006,7 @@ commandDictionary['name'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
-            .setThumbnail('./assets/icons/NameIcon.png');
+            .setThumbnail('/assets/icons/NameIcon.png');
           
           if (args[2] == 'list' || args[1] == 'list') {
             embed
