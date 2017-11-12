@@ -1013,57 +1013,57 @@ commandDictionary['name'] = {
             
             if (args[1] == 'female') {
               embed.addField('Names:', '```' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n' +
-                             npcDictionary[args[0]].nameFemale() + '\n'
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n' +
+                             NPC.nameFemale(args[0]) + '\n'
                             );
             } else {
               embed.addField('Names:', '```' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n' +
-                             npcDictionary[args[0]].nameMale() + '\n'
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n' +
+                             NPC.nameMale(args[0]) + '\n'
                             );
             }
           } else {
             embed.setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*');
             if (args[1] == 'female') {
-              embed.addField('Names:', '```' + npcDictionary[args[0]].nameFemale() + '```\n*Add "list" to the end of the command to return a list of names*');
+              embed.addField('Names:', '```' + NPC.nameFemale(args[0]) + '```\n*Add "list" to the end of the command to return a list of names*');
             } else {
-              embed.addField('Names:', '```' + npcDictionary[args[0]].nameMale() + '```\n*Add "list" to the end of the command to return a list of names*');
+              embed.addField('Names:', '```' + NPC.nameMale(args[0]) + '```\n*Add "list" to the end of the command to return a list of names*');
             }    
           }
           
