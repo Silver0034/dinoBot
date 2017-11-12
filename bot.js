@@ -29,7 +29,6 @@ const TOKEN = TOKENRETURN.return();
 const MYSQLCRED = TOKENRETURN.sqlCredentials;
 //make sure to put a space after. Ex:':smile: '
 const EMOJIDINO = '<:sauropod:355738679211327488> ';
-const embedFooter = BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
 var download = function(uri, filename, callback){
@@ -1136,6 +1135,9 @@ BOT.on('message', message => {
   var key = messageArguments[0];
   var args = messageArguments.slice(1);
   var userID = message.author.id;
+  
+  //Constants that have dependencies
+  const embedFooter = BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn';
   
    //delete BOT messages that say to slow down   
   if (message.author.bot && messageContent.includes('Slow down, you\'re scaring me!')) {
