@@ -29,6 +29,7 @@ const TOKEN = TOKENRETURN.return();
 const MYSQLCRED = TOKENRETURN.sqlCredentials;
 //make sure to put a space after. Ex:':smile: '
 const EMOJIDINO = '<:sauropod:355738679211327488> ';
+const embedFooter = BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
 var download = function(uri, filename, callback){
@@ -197,7 +198,7 @@ commandDictionary['help'] = {
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as ``[command]`')
       .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
-      .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+      .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
     message.channel.stopTyping();
@@ -506,7 +507,7 @@ commandDictionary['rpg'] = {
             .setDescription('Use the command like this: ````rpg monster [monster name]```')
             .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
             .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-            .setThumbnail("commandDictionary[key].icon");
+            .setThumbnail(commandDictionary[key].icon);
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
@@ -573,7 +574,7 @@ commandDictionary['rpg'] = {
               .setDescription('The Monster you searched for is not on D&D Beyond.')
               .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
               .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-              .setThumbnail("commandDictionary[key].icon");
+              .setThumbnail(commandDictionary[key].icon);
             message.channel.stopTyping();
             message.channel.send({embed});
             return;
@@ -605,7 +606,7 @@ commandDictionary['rpg'] = {
               .setColor(0x64FFDA)
               .setDescription('I only have acsess to monsters defined by the "basic rules"')
               .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
-              .setThumbnail("commandDictionary[key].icon");
+              .setThumbnail(commandDictionary[key].icon);
             message.channel.stopTyping();
             message.channel.send({embed});
             return;
@@ -635,7 +636,7 @@ commandDictionary['rpg'] = {
             .setDescription(page["descShort"])
             .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "commandDictionary[key].icon")
             .setImage(monsterImageURL)
-            .setThumbnail("commandDictionary[key].icon")
+            .setThumbnail(commandDictionary[key].icon)
             .setURL(scrapeURL)
             //Abilities Section          
             .addField("__**Abilities**__",
@@ -1008,7 +1009,7 @@ commandDictionary['name'] = {
             .setTitle('Name Generator')
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
-            .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+            .setFooter(embedFooter)
             .setThumbnail(commandDictionary[key].icon);
           
           if (args[2] == 'list' || args[1] == 'list') {
@@ -1085,7 +1086,7 @@ commandDictionary['name'] = {
         .setColor(0x64FFDA)
         .setDescription('*The specified race is unavailable*')
         .addField('Possible Races:', NPC.raceList())
-        .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+        .setFooter(embedFooter)
         .addBlankField(false)
         .setThumbnail(commandDictionary[key].icon);
       message.channel.stopTyping();
@@ -1104,7 +1105,7 @@ commandDictionary['name'] = {
         .setColor(0x64FFDA)
         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
         .addField('Possible Races:', NPC.raceList())
-        .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
+        .setFooter(embedFooter)
         .addBlankField(false)
         .setThumbnail(commandDictionary[key].icon);
       message.channel.stopTyping();
