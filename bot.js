@@ -978,7 +978,7 @@ commandDictionary['nick'] = {
 }
 commandDictionary['name'] = {
   timeout: 0,
-  icon: 'https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png',
+  icon: './assets/icons/HelpIcon.png',
 	emoji: ':thinking: ',
   error: 'Use the command like this: `name [race] [male OR female]',
   usage: '**Usage:** `name [race] [male OR female] [list]',
