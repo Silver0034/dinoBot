@@ -985,133 +985,91 @@ commandDictionary['name'] = {
   error: 'Use the command like this: `name [race] [male OR female]',
   usage: '**Usage:** `name [race] [male OR female] [list]',
   doCommand: function(message, key, args, embedFooter) { 
-    //if race specified
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+                             .setTitle('Name Generator')
+                             .setAuthor(BOT.user.username, BOT.user.avatarURL)
+                             .setColor(0x64FFDA)
+                             .setFooter(embedFooter)
+                             .setThumbnail(commandDictionary[key].icon);
+    //if race is specified
     if (args[0]) {
       var raceArray = NPC.array();
       var returnGender = ' ';
       var returnDescription = args[0] + '';
+      //set male or female for returnGender
       if (args[1] == 'male' || args[1] == 'female') {
         returnGender = returnGender + args[1];
       }
-        if (returnDescription.substring(0, 1) == 'a') {
+      //make return description a or an
+      if (returnDescription.substring(0, 1) == 'a') {
         returnDescription = 'an';
       } else {
         returnDescription = 'a';
       }
-      
-          
-      console.log(raceArray);
+      //For each item in the race array
       for (i = 0; i < raceArray.length; i++) {
+        //if input is a valid race
         if (raceArray[i] == args[0].toLowerCase()) {
-          message.channel.startTyping();
-          const embed = new DISCORD.RichEmbed()
-            .setTitle('Name Generator')
-            .setAuthor(BOT.user.username, BOT.user.avatarURL)
-            .setColor(0x64FFDA)
-            .setFooter(embedFooter)
-            .setThumbnail(commandDictionary[key].icon);
-          
+          //if a list is requested
           if (args[2] == 'list' || args[1] == 'list') {
-            embed
-              .setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new list of names*');
-            
-            if (args[1] == 'female') {
-              embed.addField('Names:', '```' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n' + '```'
-                            );
-            } else {
-              embed.addField('Names:', '```' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n' + '```'
-                            );
-            }
+            embed.addField('Names:', '```' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' + '```'
+                          );
+            embed.setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*');
           } else {
+            //if a single name is requested
             embed.setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*');
+            //if gender is specified 'female'
             if (args[1] == 'female') {
               embed.addField('Names:', '```' + NPC.nameFemale(args[0]) + '```\n*Add "list" to the end of the command to return a list of names*');
             } else {
+              //return male otherwise
               embed.addField('Names:', '```' + NPC.nameMale(args[0]) + '```\n*Add "list" to the end of the command to return a list of names*');
-            }    
+            } 
           }
-          
           embed.addBlankField(false);
-          
           message.channel.stopTyping();
           message.channel.send({embed});
           return;
-        } 
+        }
+        //if the specified race is unavailable
+        embed
+             .setDescription('*The specified race is unavailable*')
+             .addField('Possible Races:', NPC.raceList())
+             .addBlankField(false);
+        message.channel.stopTyping();
+        message.channel.send({embed});
+        return;
       }
-      message.channel.startTyping();
-      const embed = new DISCORD.RichEmbed()
-        .setTitle('Name Generator')
-        .setAuthor(BOT.user.username, BOT.user.avatarURL)
-        .setColor(0x64FFDA)
-        .setDescription('*The specified race is unavailable*')
-        .addField('Possible Races:', NPC.raceList())
-        .setFooter(embedFooter)
-        .addBlankField(false)
-        .setThumbnail(commandDictionary[key].icon);
-      message.channel.stopTyping();
-      message.channel.send({embed});
-      return; 
-      //TODO: Different Generators for different races
-      //TODO: Different Generators for gender
-      
-    } else {
-      //This is the default generation
-      //male human
-      message.channel.startTyping();
-      const embed = new DISCORD.RichEmbed()
-        .setTitle('Name Generator')
-        .setAuthor(BOT.user.username, BOT.user.avatarURL)
-        .setColor(0x64FFDA)
-        .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
-        .addField('Possible Races:', NPC.raceList())
-        .setFooter(embedFooter)
-        .addBlankField(false)
-        .setThumbnail(commandDictionary[key].icon);
-      message.channel.stopTyping();
-      message.channel.send({embed});
-      return;
     }
-  }
+    //if the race is unspecified
+    embed
+         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
+         .addField('Possible Races:', NPC.raceList())
+         .addBlankField(false);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
 }
 
 //Connect to Database
