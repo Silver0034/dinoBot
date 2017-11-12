@@ -853,9 +853,9 @@ exports.array = function() {
 
 exports.nameMale = function(race) {
   console.log(race);
-  var npcNameReturn = npcDictionary[race].nameMale;
+  return npcDictionary[race].nameMale();
 }
 
 exports.nameFemale = function(race) {
-  var npcNameReturn = npcDictionary[race].nameFemale;
+  return npcDictionary[race].nameFemale();
 }
