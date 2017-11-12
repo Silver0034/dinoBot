@@ -540,7 +540,7 @@ nameDictionary['arakocra'] = {
     "ike"
   ]
 };
-nameDictionary['race'] = {
+nameDictionary['dwarf'] = {
   maleOne: [
     "",
     "",
