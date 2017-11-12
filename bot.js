@@ -1033,7 +1033,7 @@ commandDictionary['name'] = {
                              NPC.nameFemale(args[0]) + '\n' +
                              NPC.nameFemale(args[0]) + '\n' +
                              NPC.nameFemale(args[0]) + '\n' +
-                             NPC.nameFemale(args[0]) + '\n'
+                             NPC.nameFemale(args[0]) + '\n' + '```'
                             );
             } else {
               embed.addField('Names:', '```' +
@@ -1056,7 +1056,7 @@ commandDictionary['name'] = {
                              NPC.nameMale(args[0]) + '\n' +
                              NPC.nameMale(args[0]) + '\n' +
                              NPC.nameMale(args[0]) + '\n' +
-                             NPC.nameMale(args[0]) + '\n'
+                             NPC.nameMale(args[0]) + '\n' + '```'
                             );
             }
           } else {
