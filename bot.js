@@ -1070,6 +1070,7 @@ commandDictionary['name'] = {
     message.channel.stopTyping();
     message.channel.send({embed});
     return;
+  }
 }
 
 //Connect to Database
