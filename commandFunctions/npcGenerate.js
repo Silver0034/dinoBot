@@ -852,6 +852,7 @@ exports.array = function() {
 }
 
 exports.nameMale = function(race) {
+  console.log(race);
   var npcNameReturn = npcDictionary[race].nameMale;
 }
 
