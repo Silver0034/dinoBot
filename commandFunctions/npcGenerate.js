@@ -852,9 +852,9 @@ exports.array = function() {
 }
 
 exports.nameMale = function(race) {
-  return npcDictionary[race].nameMale;
+  var npcNameReturn = npcDictionary[race].nameMale;
 }
 
 exports.nameFemale = function(race) {
-  return npcDictionary[race].nameFemale;
+  var npcNameReturn = npcDictionary[race].nameFemale;
 }
