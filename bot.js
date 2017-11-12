@@ -1006,7 +1006,7 @@ commandDictionary['name'] = {
             .setAuthor(BOT.user.username, BOT.user.avatarURL)
             .setColor(0x64FFDA)
             .setFooter(BOT.user.username + '™ | Discord.js Bot by Lodes Deisgn')
-            .setThumbnail('https://cdn.discordapp.com/attachments/358264614200279050/378756501491286026/NameIcon.png');
+            .setThumbnail('./assets/icons/NameIcon.png');
           
           if (args[2] == 'list' || args[1] == 'list') {
             embed
