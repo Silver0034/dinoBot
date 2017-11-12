@@ -179,7 +179,7 @@ commandDictionary['help'] = {
   emoji: ':grey_question: ',  //put space after emoji 
   error: 'Use the command like this: `help',
   usage: '**Usage:** `help OR `help [command]',    
-  doCommand: function(message, key, args) {
+  doCommand: function(message, key, args, embedFooter) {
     var helpMessageBody;
     if(args[0] in commandDictionary) {
       helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
@@ -984,7 +984,7 @@ commandDictionary['name'] = {
 	emoji: ':thinking: ',
   error: 'Use the command like this: `name [race] [male OR female]',
   usage: '**Usage:** `name [race] [male OR female] [list]',
-  doCommand: function(message, key, args) { 
+  doCommand: function(message, key, args, embedFooter) { 
     //if race specified
     if (args[0]) {
       var raceArray = NPC.array();
