@@ -1010,6 +1010,8 @@ commandDictionary['name'] = {
       //For each item in the race array
       for (i = 0; i < raceArray.length; i++) {
         //if input is a valid race
+        console.log(raceArray[i]);
+        console.log(args[0].toLowerCase())
         if (raceArray[i] == args[0].toLowerCase()) {
           //if a list is requested
           if (args[2] == 'list' || args[1] == 'list') {
