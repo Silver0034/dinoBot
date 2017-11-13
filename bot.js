@@ -1054,15 +1054,15 @@ commandDictionary['name'] = {
           message.channel.send({embed});
           return;
         }
-        //if the specified race is unavailable
-        embed
-             .setDescription('*The specified race is unavailable*')
-             .addField('Possible Races:', NPC.raceList())
-             .addBlankField(false);
-        message.channel.stopTyping();
-        message.channel.send({embed});
-        return;
       }
+      //if the specified race is unavailable
+      embed
+           .setDescription('*The specified race is unavailable*')
+           .addField('Possible Races:', NPC.raceList())
+           .addBlankField(false);
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
     }
     //if the race is unspecified
     embed
