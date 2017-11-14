@@ -703,12 +703,13 @@ exports.armorList = function(SCRAPEIT) {
   SCRAPEIT(
   'https://www.dndbeyond.com/equipment',
     {
+      title: '.title',
       name: {
         listItem: ".link"
       }
     },
     (err, page) => {
-      return page.name;
+      return page.title;
     }
   );
 }
