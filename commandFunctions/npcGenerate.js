@@ -598,6 +598,7 @@ npcDictionary['dwarf'] = {
   ]
 };
 
+/*
 //possible npc classes
 var npcClass = new Object();
 npcClass['swashbuckler'] = {
@@ -619,6 +620,7 @@ npcClass['swashbuckler'] = {
     '*Suave Defense.* While the swashbuckler is wearing light or no armor and wielding no shield, its AC includes its Charisma modifier.\n'
   ]
 };
+*/
 
 /*
 //possible npc armors
