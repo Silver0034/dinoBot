@@ -713,6 +713,7 @@ exports.armorList = function(SCRAPEIT) {
       var armorListArray = page.name;
       var armorListSplitNum = armorListArray.length - 9;
       armorListArray = armorListArray.slice(0, armorListSplitNum);
+      console.log(armorListArray);
       return armorListArray;
     }
   );
