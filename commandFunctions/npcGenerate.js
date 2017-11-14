@@ -701,7 +701,7 @@ exports.nameFemale = function(race) {
 
 exports.armorList = function(SCRAPEIT) {  
   SCRAPEIT(
-  'https://www.dndbeyond.com/equipment',
+  'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
     {
       name: {
         listItem: ".link"
@@ -711,6 +711,8 @@ exports.armorList = function(SCRAPEIT) {
       
       console.log(page.name);
       var armorListArray = page.name;
+      var armorListSplitNum = armorListArray.length - 9;
+      armorListArray = armorListArray.slice(0, armorListSplitNum);
       return armorListArray;
     }
   );
