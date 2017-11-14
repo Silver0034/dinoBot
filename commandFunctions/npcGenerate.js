@@ -651,27 +651,6 @@ function raceList() {
   return raceList;
 }
 
-//create list of armor
-function armorList(SCRAPEIT) {
-  SCRAPEIT(
-    'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
-    {
-      name: {
-        listItem: ".link"
-      }
-    },
-    (err, page) => {
-      
-      console.log(page.name);
-      var armorListArray = page.name;
-      var armorListSplitNum = armorListArray.length - 9;
-      armorListArray = armorListArray.slice(0, armorListSplitNum);
-      console.log(armorListArray);
-      return armorListArray;
-    }
-  );
-}
-
 //return string of supported races
 exports.raceList = function() {
   return '```' + raceList().sort().toString().replace(/,/g, ", ") + '```';
@@ -720,11 +699,21 @@ exports.nameFemale = function(race) {
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
 }
 
-exports.armorList = function(SCRAPEIT) {
-  var armorNameArray = armorList(SCRAPEIT);
-  var armorListString = '';
-  for (i = 0; i < armorList().length; i++) {
-    armorListString += armorNameArray[i] + ' '
+//create a list of all supported classes
+function classList() {
+  var classList = new Array();
+  for (var keyIter in npcDictionary) {
+    classList.push(keyIter);
   }
-  return armorListString
+  return classList;
+}
+
+//return string of supported classes
+exports.classList = function() {
+  return '```' + classList().sort().toString().replace(/,/g, ", ") + '```';
+}
+
+//returns array of supported classes
+exports.classArray = function() {
+  return classList();
 }
