@@ -1,4 +1,4 @@
-+//NameGen.j
+//NameGen.j
 //possible npc races
 var npcDictionary = new Object();
 npcDictionary['human'] = {
