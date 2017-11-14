@@ -704,7 +704,7 @@ exports.armorList = function(SCRAPEIT) {
   'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
     {
       title: ".monster-name",
-    }
+    },
     (err, page) => {
       return page.name;
     }
