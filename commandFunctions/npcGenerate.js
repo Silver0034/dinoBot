@@ -701,7 +701,7 @@ exports.nameFemale = function(race) {
 
 exports.armorList = function(SCRAPEIT) {  
   SCRAPEIT(
-  'https://www.dndbeyond.com/equipment/abacus',
+  'https://www.dndbeyond.com/equipment',
     {
       name: {
         listItem: ".link"
