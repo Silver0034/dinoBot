@@ -149,7 +149,7 @@ npcDictionary['human'] = {
     'a valuable posession',
     'revenge'
   ]
-};
+}
 npcDictionary['elf'] = {
   maleOne: [
     "",
@@ -298,7 +298,7 @@ npcDictionary['elf'] = {
     'a valuable posession',
     'revenge'
   ]
-};
+}
 npcDictionary['arakocra'] = {
   maleOne: [
     "",
@@ -447,7 +447,7 @@ npcDictionary['arakocra'] = {
     'a valuable posession',
     'revenge'
   ]
-};
+}
 npcDictionary['dwarf'] = {
   maleOne: [
     "",
@@ -596,7 +596,7 @@ npcDictionary['dwarf'] = {
     'a valuable posession',
     'revenge'
   ]
-};
+}
 
 /*
 //possible npc classes
