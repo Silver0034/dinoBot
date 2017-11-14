@@ -699,12 +699,13 @@ exports.nameFemale = function(race) {
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
 }
 
-exports.armorList = function(SCRAPEIT) {  
+exports.armorList = function(SCRAPEIT()) {  
   SCRAPEIT(
   'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
     {
-      title: ".monster-name",
-    },
+      name: {
+        listItem: ".link"
+      },
     (err, page) => {
       return page.name;
     }
