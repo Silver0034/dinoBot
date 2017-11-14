@@ -598,7 +598,7 @@ npcDictionary['dwarf'] = {
   ],
 }
 
-/*
+
 //possible npc classes
 var npcClass = new Object();
 npcClass['swashbuckler'] = {
@@ -620,9 +620,7 @@ npcClass['swashbuckler'] = {
     '*Suave Defense.* While the swashbuckler is wearing light or no armor and wielding no shield, its AC includes its Charisma modifier.\n'
   ]
 };
-*/
 
-/*
 //possible npc armors
 var npcAmor = new Object();
 npcAmor['padded'] = {
@@ -643,7 +641,6 @@ npcAmor['leather'] = {
   stealth: null,
   weight: 10
 };
-*/
 
 //create a list of all supported races
 function raceList() {
@@ -702,7 +699,6 @@ exports.nameFemale = function(race) {
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
 }
 
-/*
 exports.armorList = function() {  
   SCRAPEIT(
   'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
@@ -716,4 +712,3 @@ exports.armorList = function() {
     }
   );
 }
-*/
