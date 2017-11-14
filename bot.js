@@ -1106,6 +1106,8 @@ commandDictionary['npc'] = {
       message.channel.send({embed});
       return;
     }
+  }
+};
       /*
       SCRAPEIT(
         'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
