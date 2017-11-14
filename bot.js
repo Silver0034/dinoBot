@@ -1095,7 +1095,7 @@ commandDictionary['npc'] = {
       //else return error
       
     }
-    console.log(NPC.armorList(SCAPREIT);
+    console.log(NPC.armorList(SCRAPEIT));
     embed
          .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
          .addField('Possible Races:', NPC.raceList())
