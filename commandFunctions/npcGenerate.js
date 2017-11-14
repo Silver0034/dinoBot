@@ -620,6 +620,7 @@ npcClass['swashbuckler'] = {
   ]
 };
 
+/*
 //possible npc armors
 var npcAmor = new Object();
 npcAmor['padded'] = {
@@ -640,6 +641,7 @@ npcAmor['leather'] = {
   stealth: null,
   weight: 10
 };
+*/
 
 //create a list of all supported races
 function raceList() {
