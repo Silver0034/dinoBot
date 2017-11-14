@@ -1096,18 +1096,17 @@ commandDictionary['npc'] = {
         //if class is valid
         if (classArray[i] == args[0].toLowerCase()) {
           
-        } else {
-          embed
-               .setDescription('Class not found')
-               .addField('Possible NPC Classes:', NPC.classList())
-               .addBlankField(false);
-          message.channel.stopTyping();
-          message.channel.send({embed});
-          return;
         }
       }
+      embed
+           .setDescription('Class not found')
+           .addField('Possible NPC Classes:', NPC.classList())
+           .addBlankField(false);
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
       
-      
+      /*
       SCRAPEIT(
         'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
         {
@@ -1128,7 +1127,7 @@ commandDictionary['npc'] = {
     } else {
       //if class unspecified
     }
-    
+    */
     
     
     
