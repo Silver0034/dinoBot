@@ -721,7 +721,7 @@ exports.nameFemale = function(race) {
 }
 
 exports.armorList = function(SCRAPEIT) {
-  var armorNameArray = armorList();
+  var armorNameArray = armorList(SCRAPEIT);
   var armorListString = '';
   for (i = 0; i < armorList().length; i++) {
     armorListString += armorNameArray[i] + ' '
