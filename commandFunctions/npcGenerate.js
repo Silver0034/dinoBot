@@ -1,4 +1,4 @@
-//NameGen.j
++//NameGen.j
 /* Template
 npcDictionary['race'] = {
   maleOne: [
@@ -136,7 +136,7 @@ npcDictionary['race'] = {
 };
 */
 
-
+//possible npc races
 var npcDictionary = new Object();
 npcDictionary['human'] = {
   maleOne: [
@@ -270,6 +270,21 @@ npcDictionary['human'] = {
     "ett",
     "ss",
     "y"
+  ],
+  bonds: [
+    'personal goals',
+    'achievements',
+    'family members',
+    'colleagues',
+    'compatriots',
+    'a benefactor',
+    'a patron',
+    'an employer',
+    'a romantic interest',
+    'a special place',
+    'a keepsake',
+    'a valuable posession',
+    'revenge'
   ]
 };
 npcDictionary['elf'] = {
@@ -404,6 +419,21 @@ npcDictionary['elf'] = {
     "edi",
     "di",
     "ina"
+  ],
+  bonds: [
+    'personal goals',
+    'achievements',
+    'family members',
+    'colleagues',
+    'compatriots',
+    'a benefactor',
+    'a patron',
+    'an employer',
+    'a romantic interest',
+    'a special place',
+    'a keepsake',
+    'a valuable posession',
+    'revenge'
   ]
 };
 npcDictionary['arakocra'] = {
@@ -538,6 +568,21 @@ npcDictionary['arakocra'] = {
     "eeci",
     "uli",
     "ike"
+  ],
+  bonds: [
+    'personal goals',
+    'achievements',
+    'family members',
+    'colleagues',
+    'compatriots',
+    'a benefactor',
+    'a patron',
+    'an employer',
+    'a romantic interest',
+    'a special place',
+    'a keepsake',
+    'a valuable posession',
+    'revenge'
   ]
 };
 npcDictionary['dwarf'] = {
@@ -672,9 +717,68 @@ npcDictionary['dwarf'] = {
     "nora",
     "van",
     "tva"
+  ],
+  bonds: [
+    'personal goals',
+    'achievements',
+    'family members',
+    'colleagues',
+    'compatriots',
+    'a benefactor',
+    'a patron',
+    'an employer',
+    'a romantic interest',
+    'a special place',
+    'a keepsake',
+    'a valuable posession',
+    'revenge'
   ]
 };
 
+//possible npc classes
+var npcClass = new Object();
+npcClass['swashbuckler'] = {
+  str: [12, '(+1)'],
+  dex: [18, '(+4)'],
+  con: [12, '(+1)'],
+  int: [14, '(+2)'],
+  wis: [11, '(+0)'],
+  cha: [15, '(+2)'],
+  armor: 'leather',
+  quickInfo: [
+    '*Skills* Acrobatics +8, Athletics +5, Persuasion +6\n' +
+    '*Senses* Passive Perception 10\n' +
+    '*Languages* Any one language (usually Common)\n' +
+    '*Challenge* 3 (700 XP)'
+  ],
+  prof: [
+    '*Lightfooted.* The swashbuckler can take the Dash or Disengage action as a bonus action on each of its turns.\n' +
+    '*Suave Defense.* While the swashbuckler is wearing light or no armor and wielding no shield, its AC includes its Charisma modifier.\n'
+  ]
+}
+
+//possible npc armors
+var npcAmor = new Object();
+npcAmor['padded'] = {
+  type: 'light',
+  desc: 'Padded armor consists of quilted layers of cloth and batting.',
+  cost: [5, 'gp'],
+  armorClass: [11, 'dex'],
+  strength: null,
+  stealth: null,
+  weight: 8
+}
+npcAmor['leather'] = {
+  type: 'light',
+  desc: 'The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.',
+  cost: [10, 'gp'],
+  armorClass: [11, 'dex'],
+  strength: null,
+  stealth: null,
+  weight: 10
+}
+
+//create a list of all supported races
 function raceList() {
   var raceList = new Array();
   for (var keyIter in npcDictionary) {
@@ -683,14 +787,17 @@ function raceList() {
   return raceList;
 }
 
+//return string of supported races
 exports.raceList = function() {
   return '```' + raceList().sort().toString().replace(/,/g, ", ") + '```';
 }
 
+//returns array of supported races
 exports.array = function() {
   return raceList();
 }
 
+//return name for male
 exports.nameMale = function(race) {
   var nameReturn = '';
   //pick name part 1
@@ -709,6 +816,7 @@ exports.nameMale = function(race) {
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1);
 }
 
+//return name for female
 exports.nameFemale = function(race) {
   var nameReturn = '';
   //pick name part 1
@@ -726,3 +834,26 @@ exports.nameFemale = function(race) {
   //return name
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
 }
+
+exports.armorList = function() {
+  var armorListUrl = 
+  
+  SCRAPEIT('https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=', {
+    name: '.list'
+  }, (err, page) => {
+    return page.name;
+  }
+          );
+}
+
+var scrapeURL = "https://www.dndbeyond.com/monsters/";
+        scrapeURL = scrapeURL + scrapeInput;        
+             
+        SCRAPEIT(scrapeURL, {
+          
+          title: ".monster-name",
+          descShort: ".details-item",
+          
+          },
+        },
+          (err, page) => {
