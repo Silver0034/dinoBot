@@ -1102,8 +1102,8 @@ commandDictionary['npc'] = {
   usage: '**Usage:** `npc',
   doCommand: function(message, key, args, embedFooter) { 
     var armorListArray = armorList();
-    console.log(armorListArray);
-    var armorListString = armorListArray.toString();
+    console.log('THE ARRAY: ' + armorListArray);
+    //var armorListString = armorListArray.toString();
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
@@ -1119,7 +1119,7 @@ commandDictionary['npc'] = {
       
     }
     embed
-         .setDescription('*Armors*```' + armorListString + '```')
+         .setDescription('*Armors*```' + '```')
          .addField('Possible Races:', NPC.raceList())
          .addBlankField(false);
     message.channel.stopTyping();
