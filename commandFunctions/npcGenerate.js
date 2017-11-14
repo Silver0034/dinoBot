@@ -704,7 +704,7 @@ exports.armorList = function() {
   'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
     {
       name: {
-        listItem: ".link"
+            listItem: ".link"
       },
     }
     (err, page) => {
