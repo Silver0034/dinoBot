@@ -95,6 +95,26 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
+//create list of armor
+function armorList() {
+  SCRAPEIT(
+    'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
+    {
+      name: {
+        listItem: ".link"
+      }
+    },
+    (err, page) => {
+      
+      console.log(page.name);
+      var armorListArray = page.name;
+      var armorListSplitNum = armorListArray.length - 9;
+      armorListArray = armorListArray.slice(0, armorListSplitNum);
+      console.log(armorListArray);
+      return armorListArray;
+    }
+  );
+}
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -1081,6 +1101,8 @@ commandDictionary['npc'] = {
   error: 'Use the command like this: `npc',
   usage: '**Usage:** `npc',
   doCommand: function(message, key, args, embedFooter) { 
+    var armorListArray = armorList()
+    var armorListString = armorListArray.toString();
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
@@ -1096,7 +1118,7 @@ commandDictionary['npc'] = {
       
     }
     embed
-         .setDescription('*Armors*```' + NPC.armorList(SCRAPEIT) + '```')
+         .setDescription('*Armors*```' + armorListString + '```')
          .addField('Possible Races:', NPC.raceList())
          .addBlankField(false);
     message.channel.stopTyping();
