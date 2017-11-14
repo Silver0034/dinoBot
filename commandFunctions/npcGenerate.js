@@ -652,7 +652,7 @@ function raceList() {
 }
 
 //create list of armor
-function armorList() {
+function armorList(SCRAPEIT) {
   SCRAPEIT(
     'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
     {
@@ -721,5 +721,5 @@ exports.nameFemale = function(race) {
 }
 
 exports.armorList = function(SCRAPEIT) {  
-  return armorList().toString();
+  return armorList(SCRAPEIT).toString();
 }
