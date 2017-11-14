@@ -709,6 +709,8 @@ exports.armorList = function(SCRAPEIT) {
       }
     },
     (err, page) => {
+      console.log(page['title']);
+      console.log(page.title);
       return page.title;
     }
   );
