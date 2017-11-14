@@ -1082,6 +1082,7 @@ commandDictionary['npc'] = {
   usage: '**Usage:** `npc',
   doCommand: function(message, key, args, embedFooter) { 
     message.channel.startTyping();
+    var classArray = NPC.classArray();
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
                              .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -1090,6 +1091,23 @@ commandDictionary['npc'] = {
                              .setThumbnail(commandDictionary[key].icon);
     //if class specified
     if (args[0]) {
+      
+      for (i = 0; i < classArray.length; i++) {
+        //if class is valid
+        if (classArray[i] == args[0].toLowerCase()) {
+          
+        } else {
+          embed
+               .setDescription('Class not found')
+               .addField('Possible NPC Classes:', NPC.classList())
+               .addBlankField(false);
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return;
+        }
+      }
+      
+      
       SCRAPEIT(
         'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
         {
@@ -1114,14 +1132,15 @@ commandDictionary['npc'] = {
     
     
     
-
+/*
     embed
-         .setDescription('*Armors*```' + armorListArray[0] + '```')
+         .setDescription('*Armors*```' + '```')
          .addField('Possible Races:', NPC.raceList())
          .addBlankField(false);
     message.channel.stopTyping();
     message.channel.send({embed});
     return;
+    */
   }
 };
 
