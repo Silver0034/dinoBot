@@ -1101,7 +1101,8 @@ commandDictionary['npc'] = {
   error: 'Use the command like this: `npc',
   usage: '**Usage:** `npc',
   doCommand: function(message, key, args, embedFooter) { 
-    var armorListArray = armorList()
+    var armorListArray = armorList();
+    console.log(armorListArray);
     var armorListString = armorListArray.toString();
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
