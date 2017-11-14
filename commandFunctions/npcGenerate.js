@@ -602,44 +602,18 @@ npcDictionary['dwarf'] = {
 //possible npc classes
 var npcClass = new Object();
 npcClass['swashbuckler'] = {
-  str: [12, '(+1)'],
-  dex: [18, '(+4)'],
-  con: [12, '(+1)'],
-  int: [14, '(+2)'],
-  wis: [11, '(+0)'],
-  cha: [15, '(+2)'],
-  armor: 'leather',
-  quickInfo: [
-    '*Skills* Acrobatics +8, Athletics +5, Persuasion +6\n' +
-    '*Senses* Passive Perception 10\n' +
-    '*Languages* Any one language (usually Common)\n' +
-    '*Challenge* 3 (700 XP)'
-  ],
-  prof: [
-    '*Lightfooted.* The swashbuckler can take the Dash or Disengage action as a bonus action on each of its turns.\n' +
-    '*Suave Defense.* While the swashbuckler is wearing light or no armor and wielding no shield, its AC includes its Charisma modifier.\n'
-  ]
-};
-
-//possible npc armors
-var npcAmor = new Object();
-npcAmor['padded'] = {
-  type: 'light',
-  desc: 'Padded armor consists of quilted layers of cloth and batting.',
-  cost: [5, 'gp'],
-  armorClass: [11, 'dex'],
-  strength: null,
-  stealth: null,
-  weight: 8
-};
-npcAmor['leather'] = {
-  type: 'light',
-  desc: 'The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.',
-  cost: [10, 'gp'],
-  armorClass: [11, 'dex'],
-  strength: null,
-  stealth: null,
-  weight: 10
+  armorClass: '17 (leather armor)',
+  hitPoints: '66 (12d8 + 12)',
+  speed: '30 ft.',
+  str: '12 (+1)',
+  dex: '18 (+4)',
+  con: '12 (+1)',
+  int: '14 (+2)',
+  wis: '11 (+0)',
+  cha: '15 (+2)',
+  quickInfo: '*Skills* Acrobatics +8, Athletics +5, Persuasion +6\n*Senses* Passive Perception 10\n*Languages* Any one language (usually Common)\n*Challenge* 3 (700 XP)',
+  prof: '*Lightfooted.* The swashbuckler can take the Dash or Disengage action as a bonus action on each of its turns.\n*Suave Defense.* While the swashbuckler is wearing light or no armor and wielding no shield, its AC includes its Charisma modifier.',
+  actions: '*Multiattack.* The swashbuckler makes three attacks: one with a dagger and two with its rapier.\n*Dagger.* *Melee* or *Ranged Weapon Attack:* +6 to hit, reach 5 ft. or range 20/60 ft., one target. *Hit:* 6 (1d4 + 4) piercing damage.\n*Rapier.* *Melee Weapon Attack:* +6 to hit, reach 5 ft., one target. *Hit:* 8 (1d8 + 4) piercing damage.'
 };
 
 //create a list of all supported races
@@ -716,4 +690,21 @@ exports.classList = function() {
 //returns array of supported classes
 exports.classArray = function() {
   return classList();
+}
+
+exports.classInfo = function(class) {
+  var classInfo = [];
+  classInfo[0] = npcClass[class].armorClass;
+  classInfo[1] = npcClass[class].hitPoints;
+  classInfo[2] = npcClass[class].speed;
+  classInfo[3] = npcClass[class].str;
+  classInfo[4] = npcClass[class].dex;
+  classInfo[5] = npcClass[class].con;
+  classInfo[6] = npcClass[class].int;
+  classInfo[7] = npcClass[class].wis;
+  classInfo[8] = npcClass[class].cha;
+  classInfo[9] = npcClass[class].quickInfo;
+  classInfo[10] = npcClass[class].prof;
+  classInfo[11] = npcClass[class].actions;
+  return classInfo;
 }
