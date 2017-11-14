@@ -1095,7 +1095,20 @@ commandDictionary['npc'] = {
       for (i = 0; i < classArray.length; i++) {
         //if class is valid
         if (classArray[i] == args[0].toLowerCase()) {
-          
+          //if race is specified
+          if (args[1]) {
+            
+          } else {
+            //if race is unspecified
+            
+            embed
+                 .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
+                 .addField('Possible NPC Classes:', NPC.classList())
+                 .addBlankField(false);
+            message.channel.stopTyping();
+            message.channel.send({embed});
+            return;
+          }
         }
       }
       embed
