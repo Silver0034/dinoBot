@@ -95,26 +95,6 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
-//create list of armor
-function armorList() {
-  SCRAPEIT(
-    'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
-    {
-      name: {
-        listItem: ".link"
-      }
-    },
-    (err, page) => {
-      
-      console.log(page.name);
-      var armorListArray = page.name;
-      var armorListSplitNum = armorListArray.length - 9;
-      armorListArray = armorListArray.slice(0, armorListSplitNum);
-      console.log(armorListArray);
-      return armorListArray;
-    }
-  );
-}
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
@@ -1101,8 +1081,6 @@ commandDictionary['npc'] = {
   error: 'Use the command like this: `npc',
   usage: '**Usage:** `npc',
   doCommand: function(message, key, args, embedFooter) { 
-    var armorListArray = armorList();
-    //var armorListString = armorListArray.toString();
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
@@ -1110,13 +1088,33 @@ commandDictionary['npc'] = {
                              .setColor(0x64FFDA)
                              .setFooter(embedFooter)
                              .setThumbnail(commandDictionary[key].icon);
-    //if race is specified
+    //if class specified
     if (args[0]) {
-      //add a check that the class exists
-      //if exists continue
-      //else return error
-      
+      SCRAPEIT(
+        'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
+        {
+          name: {
+            listItem: ".link"
+          }
+        },
+        (err, page) => {
+          var armorListArray = page.name;
+          var armorListSplitNum = armorListArray.length - 9;
+          armorListArray = armorListArray.slice(0, armorListSplitNum);
+
+          for (i = 0; i < armorListArray.length; i++) {
+
+          }
+        }
+      );
+    } else {
+      //if class unspecified
     }
+    
+    
+    
+    
+
     embed
          .setDescription('*Armors*```' + armorListArray[0] + '```')
          .addField('Possible Races:', NPC.raceList())
