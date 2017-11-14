@@ -699,10 +699,15 @@ exports.nameFemale = function(race) {
 }
 
 exports.armorList = function() {  
-  SCRAPEIT('https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=', {
-    name: '.list'
-  }, (err, page) => {
-    return page.name;
-  }
-          );
+  SCRAPEIT(
+  'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
+    {
+      name: {
+        listItem: ".link"
+      },
+    }
+    (err, page) => {
+      return page.name;
+    }
+  );
 }
