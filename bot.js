@@ -1142,8 +1142,6 @@ commandDictionary['npc'] = {
     message.channel.send({embed});
     return;
     */
-  }
-}
 
 //Connect to Database
 sqldb.connect(function(err) {
