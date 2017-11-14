@@ -702,7 +702,7 @@ exports.nameFemale = function(race) {
 //create a list of all supported classes
 function classList() {
   var classList = new Array();
-  for (var keyIter in npcDictionary) {
+  for (var keyIter in npcClass) {
     classList.push(keyIter);
   }
   return classList;
