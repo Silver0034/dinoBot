@@ -148,7 +148,7 @@ npcDictionary['human'] = {
     'a keepsake',
     'a valuable posession',
     'revenge'
-  ]
+  ],
 }
 npcDictionary['elf'] = {
   maleOne: [
@@ -297,7 +297,7 @@ npcDictionary['elf'] = {
     'a keepsake',
     'a valuable posession',
     'revenge'
-  ]
+  ],
 }
 npcDictionary['arakocra'] = {
   maleOne: [
@@ -446,7 +446,7 @@ npcDictionary['arakocra'] = {
     'a keepsake',
     'a valuable posession',
     'revenge'
-  ]
+  ],
 }
 npcDictionary['dwarf'] = {
   maleOne: [
@@ -595,7 +595,7 @@ npcDictionary['dwarf'] = {
     'a keepsake',
     'a valuable posession',
     'revenge'
-  ]
+  ],
 }
 
 /*
