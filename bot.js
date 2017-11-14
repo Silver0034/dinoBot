@@ -1106,6 +1106,13 @@ commandDictionary['npc'] = {
       message.channel.send({embed});
       return;
     }
+    embed
+         .setDescription('Please specify a class')
+         .addField('Possible NPC Classes:', NPC.classList())
+         .addBlankField(false);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
   }
 };
       /*
