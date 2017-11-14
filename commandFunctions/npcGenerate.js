@@ -630,7 +630,7 @@ npcAmor['padded'] = {
   strength: null,
   stealth: null,
   weight: 8
-}
+};
 npcAmor['leather'] = {
   type: 'light',
   desc: 'The breastplate and shoulder protectors of this armor are made of leather that has been stiffened by being boiled in oil. The rest of the armor is made of softer and more flexible materials.',
@@ -639,7 +639,7 @@ npcAmor['leather'] = {
   strength: null,
   stealth: null,
   weight: 10
-}
+};
 
 //create a list of all supported races
 function raceList() {
@@ -708,15 +708,3 @@ exports.armorList = function() {
   }
           );
 }
-
-var scrapeURL = "https://www.dndbeyond.com/monsters/";
-        scrapeURL = scrapeURL + scrapeInput;        
-             
-        SCRAPEIT(scrapeURL, {
-          
-          title: ".monster-name",
-          descShort: ".details-item",
-          
-          },
-        },
-          (err, page) => {
