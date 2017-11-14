@@ -703,15 +703,15 @@ exports.armorList = function(SCRAPEIT) {
   SCRAPEIT(
   'https://www.dndbeyond.com/equipment/abacus',
     {
-      title: '.ddb-page-header-title',
       name: {
         listItem: ".link"
       }
     },
     (err, page) => {
-      console.log(page['title']);
-      console.log(page.title);
-      return page.title;
+      
+      console.log(page.name);
+      var armorListArray = page.name;
+      return armorListArray;
     }
   );
 }
