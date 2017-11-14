@@ -698,9 +698,7 @@ exports.nameFemale = function(race) {
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
 }
 
-exports.armorList = function() {
-  var armorListUrl = 
-  
+exports.armorList = function() {  
   SCRAPEIT('https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=', {
     name: '.list'
   }, (err, page) => {
