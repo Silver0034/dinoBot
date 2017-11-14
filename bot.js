@@ -178,7 +178,7 @@ commandDictionary['help'] = {
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png?raw=true',
   emoji: ':grey_question: ',  //put space after emoji 
   error: 'Use the command like this: `help',
-  usage: '**Usage:** `help OR `help [command]',    
+  usage: '**Usage:** `help OR `help [command]', 
   doCommand: function(message, key, args, embedFooter) {
     var helpMessageBody;
     if(args[0] in commandDictionary) {
@@ -977,7 +977,7 @@ commandDictionary['nick'] = {
         
     }
   }
-}
+};
 commandDictionary['name'] = {
   timeout: 0,
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/NameIcon.png?raw=true',
@@ -1073,7 +1073,38 @@ commandDictionary['name'] = {
     message.channel.send({embed});
     return;
   }
-}
+};
+commandDictionary['npc'] = {
+  timeout: 0,
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/NameIcon.png?raw=true',
+	emoji: ':man_dancing: ',
+  error: 'Use the command like this: `npc',
+  usage: '**Usage:** `npc',
+  doCommand: function(message, key, args, embedFooter) { 
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+                             .setTitle('NPC Generator')
+                             .setAuthor(BOT.user.username, BOT.user.avatarURL)
+                             .setColor(0x64FFDA)
+                             .setFooter(embedFooter)
+                             .setThumbnail(commandDictionary[key].icon);
+    //if race is specified
+    if (args[0]) {
+      //add a check that the class exists
+      //if exists continue
+      //else return error
+      
+    }
+    console.log(NPC.armorList());
+    embed
+         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
+         .addField('Possible Races:', NPC.raceList())
+         .addBlankField(false);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
+  }
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
