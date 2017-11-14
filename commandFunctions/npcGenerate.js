@@ -720,6 +720,11 @@ exports.nameFemale = function(race) {
   return nameReturn.charAt(0).toUpperCase() + nameReturn.slice(1); 
 }
 
-exports.armorList = function(SCRAPEIT) {  
-  return armorList(SCRAPEIT).toString();
+exports.armorList = function(SCRAPEIT) {
+  var armorNameArray = armorList();
+  var armorListString = '';
+  for (i = 0; i < armorList().length; i++) {
+    armorListString += armorNameArray[i] + ' '
+  }
+  return armorListString
 }
