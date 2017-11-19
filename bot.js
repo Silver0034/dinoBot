@@ -1125,6 +1125,9 @@ commandDictionary['npc'] = {
                          emoji.wis + ': **' + classInfoArray[7] + '**' +
                          emoji.cha + ': **' + classInfoArray[8] + '**'
                         )
+               .addField('__**Quick Info**__', classInfoArray[9])
+               .addField('__**Proficiencies**__', classInfoArray[10])
+               .addField('__**Actions**__', classInfoArray[11])
                .addBlankField(false);
           message.channel.stopTyping();
           message.channel.send({embed});
