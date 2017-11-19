@@ -1083,7 +1083,6 @@ commandDictionary['npc'] = {
   doCommand: function(message, key, args, embedFooter) { 
     message.channel.startTyping();
     var classArray = NPC.classArray();
-    var classInfoArray = NPC.classList(args[0].toLowerCase());
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
                              .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -1092,7 +1091,7 @@ commandDictionary['npc'] = {
                              .setThumbnail(commandDictionary[key].icon);
     //if class specified
     if (args[0]) {
-      
+      var classInfoArray = NPC.classList(args[0].toLowerCase());
       for (i = 0; i < classArray.length; i++) {
         //if class is valid
         if (classArray[i] == args[0].toLowerCase()) {
