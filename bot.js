@@ -28,7 +28,6 @@ const TOKENRETURN = require('./token.js');
 const TOKEN = TOKENRETURN.return();
 const MYSQLCRED = TOKENRETURN.sqlCredentials;
 //make sure to put a space after. Ex:':smile: '
-const EMOJIDINO = '<:sauropod:355738679211327488> ';
 var timedOutUsers = new Array();
 var sqldb = MYSQL.createConnection(MYSQLCRED);
 var download = function(uri, filename, callback){
@@ -50,7 +49,7 @@ function setUserTimeout(userID, timeoutDuration) {
 function timeoutAlert(timeoutAlert) {
     //alert users to stop using commands
     //if they are in the timeout array
-  return EMOJIDINO + ' ' + ROAR.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
+  return emoji.dino + ' ' + ROAR.generate() + ' *(Slow down, you\'re scaring me!)*  :no_entry_sign:';
 }
 // timoutDuration is optional. Allows manually passing in a length to time out
 function timeout(key, userID, timeoutDuration) {
@@ -64,12 +63,12 @@ function timeout(key, userID, timeoutDuration) {
   }
 }
 function error(key) {
-  var errorMessage = EMOJIDINO + ' ' + ROAR.generate() + ' ' + ROAR.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
+  var errorMessage = emoji.dino + ' ' + ROAR.generate() + ' ' + ROAR.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
   console.log('[FAILED]');
   return errorMessage;
 }
 function responseHead(message, key, extraContent) { //extraContent is optional
-    return EMOJIDINO + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
+    return emoji.dino + commandDictionary[key].emoji + (extraContent || '') + '| **' + message.author.username + '** | ';
 }
 function getTime(date) {
   var time;
@@ -94,6 +93,11 @@ function getDate(date) {
     var years = time.getFullYear();
     
     return months + '/' + days + '/' + years;
+}
+
+var emoji= new Object();
+emoji = {
+  dino: '<:sauropod:355738679211327488> ',
 }
 
 //dictionary for all commands and information
@@ -300,7 +304,7 @@ commandDictionary['hello'] = {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(EMOJIDINO + ROAR.generate() + ' ' + ROAR.generate() + ' *(Hi ' + message.author.username + ')*');
+      message.channel.send(emoji.dino + ROAR.generate() + ' ' + ROAR.generate() + ' *(Hi ' + message.author.username + ')*');
       return;
     }
   }
@@ -314,7 +318,7 @@ commandDictionary['ping'] = {
       message.channel.send(error(key));
       return;
     } else {
-      message.channel.send(EMOJIDINO + ROAR.generate() + ' ' + ROAR.generate() + ' *(Pong!)*');
+      message.channel.send(emoji.dino + ROAR.generate() + ' ' + ROAR.generate() + ' *(Pong!)*');
       return;
     }
   }      
@@ -352,7 +356,7 @@ commandDictionary['say'] = {
   error: 'Use the command like this: `say [message]',
   usage: '**Usage:** `say [message]',
   doCommand: function(message, key, args) {
-    var sayMessage = EMOJIDINO + message.content.substring(5);     
+    var sayMessage = emoji.dino + message.content.substring(5);     
     message.delete(0); //deletes message  
     if (!args[0]) {
       message.channel.send(error(key));
@@ -429,7 +433,7 @@ commandDictionary['admin'] = {
       }
     } else {
       timeout(key, message.author.id, 6000);
-      message.channel.send(EMOJIDINO + 'You do not have access to this command.');
+      message.channel.send(emoji.dino + 'You do not have access to this command.');
       return;
     }
   }
@@ -439,7 +443,7 @@ commandDictionary['rps'] = {
   error: 'Use the command like this: `rps [rock OR paper OR scissors]',
   usage: '**Usage** `rps [rock OR paper OR scissors]',
   doCommand: function(message, key, args) {               
-		var rpsMessage = EMOJIDINO + 'I choose **';
+		var rpsMessage = emoji.dino + 'I choose **';
 		var rpsWin = '*You win.*';
 		var rpsLoose = '*You loose!*';
 		var rpsTie = '*We tie.*'
@@ -875,7 +879,7 @@ commandDictionary['profile'] = {
 																message, 
 																key, 
 																args,
-																EMOJIDINO,
+																emoji.dino,
 																attachment,
 																sqldb);
 		}		
@@ -1091,7 +1095,7 @@ commandDictionary['npc'] = {
                              .setThumbnail(commandDictionary[key].icon);
     //if class specified
     if (args[0]) {
-      var classInfoArray = NPC.classList(args[0].toLowerCase());
+      var classInfoArray = NPC.classInfo(args[0].toLowerCase());
       for (i = 0; i < classArray.length; i++) {
         //if class is valid
         if (classArray[i] == args[0].toLowerCase()) {
@@ -1102,7 +1106,7 @@ commandDictionary['npc'] = {
           //if race is unspecified  
           embed
                .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
-               .addField('__**Stats**__', NPC.classInfo())
+               .addField('__**Stats**__', classInfoArray[0])
                .addField('__**Abilities**__', classInfoArray)
                .addBlankField(false);
           message.channel.stopTyping();
@@ -1238,10 +1242,10 @@ BOT.on('message', message => {
 		//if message is in PROFANITY enabled channel
 		sqldb.query("SELECT * FROM channel WHERE channelID = " + message.channel.id + " AND profanityMonitor = 1", function (err, results, fields) {
 			if (err) throw err;
-			if (results.length == 1) {PROFANITY.filter(message, EMOJIDINO, getTime, getDate, userID);}
+			if (results.length == 1) {PROFANITY.filter(message, emoji.dino, getTime, getDate, userID);}
 		}); 
 	} else {
-		PROFANITY.filter(message, EMOJIDINO, getTime, getDate, userID);
+		PROFANITY.filter(message, emoji.dino, getTime, getDate, userID);
 	}
   //listen for the ` to start a command
   //the BOT only responds with things inside this if
@@ -1269,7 +1273,7 @@ BOT.on('message', message => {
     }
   }
   if (message.isMentioned(BOT.user)) {
-    message.channel.send(EMOJIDINO + ROAR.generate());     
+    message.channel.send(emoji.dino + ROAR.generate());     
   }    
   //stop message from being processed
   //if from a BOT
