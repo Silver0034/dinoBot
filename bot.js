@@ -1093,25 +1093,58 @@ commandDictionary['npc'] = {
   doCommand: function(message, key, args, embedFooter) { 
     message.channel.startTyping();
     var classArray = NPC.classArray();
+    var raceArray = NPC.array();
+    var setRace = 'human';
+    var setGender = 'Male';
+    var setName = NPC.nameMale('human');
+    var setFailState = 0;
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
                              .setAuthor(BOT.user.username, BOT.user.avatarURL)
                              .setColor(0x64FFDA)
                              .setFooter(embedFooter)
                              .setThumbnail(commandDictionary[key].icon);
+    //if gender specified
+    if (args[2]) {
+      if (args[2] == 'female' || args[2] == 'Female') {
+        var npcName = NPC.nameFemale;
+      }
+      setGender = args[2].charAt(0).toUpperCase() + args[1].slice(1).toLowerCase();
+    } else {
+      var npcName = NPC.nameMale;
+    }
+    
+    //if race specified
+    if (args[1]) {
+      raceCheck:  
+        for (h = 0; h < raceArray.length; h++) {
+          if (raceArray[h] == args[1].toLowerCase()) {
+            setRace = raceArray[h].chatAt(0).toUpperCase() + raceArray[h].slice(1);
+            setFailState = 0;
+            break raceCheck;
+          } else {
+            setFailState = 1;
+          }
+        }
+      //if race is invalid
+      if (setFailState == 1) {
+        embed
+             .setDescription('Race not found')
+             .addField('Possible NPC Races:', NPC.raceList())
+             .addBlankField(false);
+        message.channel.stopTyping();
+        message.channel.send({embed});
+        return;
+      }
     //if class specified
     if (args[0]) {
       var classInfoArray = NPC.classInfo(args[0].toLowerCase());
       for (i = 0; i < classArray.length; i++) {
         //if class is valid
         if (classArray[i] == args[0].toLowerCase()) {
-          //if race is specified
-          if (args[1]) {
-            
-          }
-          //if race is unspecified  
           embed
-               .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
+               .setTitle(setName + ': ' + classArray[1].charAt(0).toUpperCase() + classArray[i].slice(1))
+               .setDescription(setRace + ' ' + setGender)
                .addField('__**Stats**__', 
                          '**Armor Class:** ' + classInfoArray[0] + '\n' +
                          '**Hit Points:** ' + classInfoArray[1] + '\n' +
