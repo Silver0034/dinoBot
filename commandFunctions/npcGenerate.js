@@ -692,19 +692,19 @@ exports.classArray = function() {
   return classList();
 }
 
-exports.classInfo = function(class) {
+exports.classInfo = function(classArgument) {
   var classInfo = [];
-  classInfo[0] = npcClass[class].armorClass;
-  classInfo[1] = npcClass[class].hitPoints;
-  classInfo[2] = npcClass[class].speed;
-  classInfo[3] = npcClass[class].str;
-  classInfo[4] = npcClass[class].dex;
-  classInfo[5] = npcClass[class].con;
-  classInfo[6] = npcClass[class].int;
-  classInfo[7] = npcClass[class].wis;
-  classInfo[8] = npcClass[class].cha;
-  classInfo[9] = npcClass[class].quickInfo;
-  classInfo[10] = npcClass[class].prof;
-  classInfo[11] = npcClass[class].actions;
+  classInfo[0] = npcClass[classArgument].armorClass;
+  classInfo[1] = npcClass[classArgument].hitPoints;
+  classInfo[2] = npcClass[classArgument].speed;
+  classInfo[3] = npcClass[classArgument].str;
+  classInfo[4] = npcClass[classArgument].dex;
+  classInfo[5] = npcClass[classArgument].con;
+  classInfo[6] = npcClass[classArgument].int;
+  classInfo[7] = npcClass[classArgument].wis;
+  classInfo[8] = npcClass[classArgument].cha;
+  classInfo[9] = npcClass[classArgument].quickInfo;
+  classInfo[10] = npcClass[classArgument].prof;
+  classInfo[11] = npcClass[classArgument].actions;
   return classInfo;
 }
