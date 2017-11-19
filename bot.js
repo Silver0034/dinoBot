@@ -1086,7 +1086,7 @@ commandDictionary['name'] = {
 };
 commandDictionary['npc'] = {
   timeout: 0,
-  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/NameIcon.png?raw=true',
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/npcIcon.png?raw=true',
 	emoji: ':man_dancing: ',
   error: 'Use the command like this: `npc',
   usage: '**Usage:** `npc',
