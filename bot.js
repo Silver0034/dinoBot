@@ -1083,6 +1083,7 @@ commandDictionary['npc'] = {
   doCommand: function(message, key, args, embedFooter) { 
     message.channel.startTyping();
     var classArray = NPC.classArray();
+    var classInfoArray = NPC.classList(args[0].toLowerCase());
     const embed = new DISCORD.RichEmbed()
                              .setTitle('NPC Generator')
                              .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -1102,8 +1103,8 @@ commandDictionary['npc'] = {
           //if race is unspecified  
           embed
                .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
-               .addField(__**Stats**__, NPC.classInfo(args[0].toLowerCase())[0])
-               .addField(__**Abilities**__, NPC.classList())
+               .addField(__**Stats**__, NPC.classInfo()
+               .addField(__**Abilities**__, classInfoArray)
                .addBlankField(false);
           message.channel.stopTyping();
           message.channel.send({embed});
