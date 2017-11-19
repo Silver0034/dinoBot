@@ -1103,7 +1103,7 @@ commandDictionary['npc'] = {
           //if race is unspecified  
           embed
                .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
-               .addField(__**Stats**__, NPC.classInfo()
+               .addField(__**Stats**__, NPC.classInfo())
                .addField(__**Abilities**__, classInfoArray)
                .addBlankField(false);
           message.channel.stopTyping();
