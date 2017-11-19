@@ -694,6 +694,7 @@ exports.classArray = function() {
 
 exports.classInfo = function(classArgument) {
   var classInfo = [];
+  console.log('---////   ' + classArgument);
   classInfo[0] = npcClass[classArgument].armorClass;
   classInfo[1] = npcClass[classArgument].hitPoints;
   classInfo[2] = npcClass[classArgument].speed;
