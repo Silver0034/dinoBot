@@ -1112,7 +1112,11 @@ commandDictionary['npc'] = {
           //if race is unspecified  
           embed
                .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
-               .addField('__**Stats**__', classInfoArray[0])
+               .addField('__**Stats**__', 
+                         '**Armor Class:** ' + classInfoArray[0] + '\n' +
+                         '**Hit Points:** ' + classInfoArray[1] + '\n' +
+                         '**Speed:** ' + classInfoArray[2]
+                        )
                .addField('__**Abilities**__', 
                          emoji.str + ': **' + classInfoArray[3] + '**' +
                          emoji.dex + ': **' + classInfoArray[4] + '**' +
