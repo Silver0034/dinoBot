@@ -98,6 +98,12 @@ function getDate(date) {
 var emoji= new Object();
 emoji = {
   dino: '<:sauropod:355738679211327488> ',
+  str: '<:strength:377677018491387904>',
+  dex: '<:dexterity:377677018206175232>',
+  con: '<:constitution:377677014561325056>',
+  int: '<:intelligence:377677018285998080>',
+  wis: '<:wisdom:377677018382204931>',
+  cha: '<:charisma:377677013428862978>'
 }
 
 //dictionary for all commands and information
@@ -643,12 +649,12 @@ commandDictionary['rpg'] = {
             .setURL(scrapeURL)
             //Abilities Section          
             .addField("__**Abilities**__",
-                      "<:strength:377677018491387904> **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
-                      "  <:dexterity:377677018206175232> **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
-                      "  <:constitution:377677014561325056> **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
-                      "<:intelligence:377677018285998080> **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
-                      "  <:wisdom:377677018382204931> **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
-                      "  <:charisma:377677013428862978> **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
+                      emoji.str + " **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
+                      "  " + emoij.dex + " **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
+                      "  " + emoij.con + " **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
+                      emoij.int + " **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
+                      "  " + emoij.wis + " **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
+                      "  " + emoij.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
                       , false)
             //Secondary Information
             .addField("__**Secondary Stats**__",
@@ -1107,7 +1113,14 @@ commandDictionary['npc'] = {
           embed
                .setDescription(args[0].charAt(0).toUpperCase() + args[0].slice(1))
                .addField('__**Stats**__', classInfoArray[0])
-               .addField('__**Abilities**__', classInfoArray)
+               .addField('__**Abilities**__', 
+                         emoji.str + ': **' + classInfoArray[3] + '**' +
+                         emoji.dex + ': **' + classInfoArray[4] + '**' +
+                         emoji.con + ': **' + classInfoArray[5] + '**\n' +
+                         emoji.int + ': **' + classInfoArray[6] + '**' +
+                         emoji.wis + ': **' + classInfoArray[7] + '**' +
+                         emoji.cha + ': **' + classInfoArray[8] + '**'
+                        )
                .addBlankField(false);
           message.channel.stopTyping();
           message.channel.send({embed});
