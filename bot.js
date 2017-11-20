@@ -1105,7 +1105,7 @@ commandDictionary['npc'] = {
                              .setFooter(embedFooter)
                              .setThumbnail(commandDictionary[key].icon);
     //if gender specified
-    if (args[2]) {
+    if (args[2] != null) {
       if (args[2] == 'female' || args[2] == 'Female') {
         var npcName = NPC.nameFemale;
       }
@@ -1115,7 +1115,7 @@ commandDictionary['npc'] = {
     }
     
     //if race specified
-    if (args[1]) {
+    if (args[1] != null) {
       raceCheck:  
         for (h = 0; h < raceArray.length; h++) {
           if (raceArray[h] == args[1].toLowerCase()) {
@@ -1137,7 +1137,7 @@ commandDictionary['npc'] = {
         return;
       }
       //if class specified
-      if (args[0]) {
+      if (args[0] != null) {
         console.log('IT GETS THIS FAR!!')
         var classInfoArray = NPC.classInfo(args[0].toLowerCase());
         for (i = 0; i < classArray.length; i++) {
