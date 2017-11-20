@@ -1167,22 +1167,22 @@ commandDictionary['npc'] = {
             return;
           }
         }
-        embed
-             .setDescription('Class not found')
-             .addField('Possible NPC Classes:', NPC.classList())
-             .addBlankField(false);
-        message.channel.stopTyping();
-        message.channel.send({embed});
-        return;
       }
       embed
-           .setDescription('Please specify a class')
+           .setDescription('Class not found')
            .addField('Possible NPC Classes:', NPC.classList())
            .addBlankField(false);
       message.channel.stopTyping();
       message.channel.send({embed});
       return;
     }
+    embed
+         .setDescription('Please specify a class')
+         .addField('Possible NPC Classes:', NPC.classList())
+         .addBlankField(false);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
   }
 };
       /*
