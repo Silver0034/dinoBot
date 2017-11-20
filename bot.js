@@ -1137,7 +1137,7 @@ commandDictionary['npc'] = {
             embed
                  .setDescription('Race not found')
                  .addField('Possible NPC Races:', NPC.raceList())
-                 .addField('Usage:', commandDictionary[key].usage)
+                 .addField('Usage:', '```' + commandDictionary[key].usage + '```')
                  .addBlankField(false);
             message.channel.stopTyping();
             message.channel.send({embed});
@@ -1173,7 +1173,7 @@ commandDictionary['npc'] = {
       embed
            .setDescription('Class not found')
            .addField('Possible NPC Classes:', NPC.classList())
-           .addField('Usage:', commandDictionary[key].usage)
+           .addField('Usage:', '```' + commandDictionary[key].usage + '```')
            .addBlankField(false);
       message.channel.stopTyping();
       message.channel.send({embed});
@@ -1182,7 +1182,7 @@ commandDictionary['npc'] = {
     embed
          .setDescription('Please specify a class')
          .addField('Possible NPC Classes:', NPC.classList())
-         .addField('Usage:', commandDictionary[key].usage)
+         .addField('Usage:', '```' + commandDictionary[key].usage + '```')
          .addBlankField(false);
     message.channel.stopTyping();
     message.channel.send({embed});
