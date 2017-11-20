@@ -1094,7 +1094,7 @@ commandDictionary['npc'] = {
     message.channel.startTyping();
     var classArray = NPC.classArray();
     var raceArray = NPC.array();
-    var setRace = 'human';
+    var setRace = 'Human';
     var setGender = 'Male';
     var setName = NPC.nameMale('human');
     var setFailState = 0;
@@ -1119,7 +1119,7 @@ commandDictionary['npc'] = {
       raceCheck:  
         for (h = 0; h < raceArray.length; h++) {
           if (raceArray[h] == args[1].toLowerCase()) {
-            setRace = raceArray[h].chatAt(0).toUpperCase() + raceArray[h].slice(1);
+            setRace = raceArray[h].charAt(0).toUpperCase() + raceArray[h].slice(1);
             setFailState = 0;
             break raceCheck;
           } else {
