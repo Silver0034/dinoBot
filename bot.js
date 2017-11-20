@@ -1145,7 +1145,7 @@ commandDictionary['npc'] = {
           //if class is valid
           if (classArray[i] == args[0].toLowerCase()) {
             embed
-                 .setTitle(setName + ': ' + classInfoArray[1].charAt(0).toUpperCase() + classInfoArray[i].slice(1))
+                 .setTitle(setName + ': ' + args[0].charAt(0).toUpperCase() + args[0].slice(1).toLowerCase())
                  .setDescription(setRace + ' ' + setGender)
                  .addField('__**Stats**__', 
                            '**Armor Class:** ' + classInfoArray[0] + '\n' +
