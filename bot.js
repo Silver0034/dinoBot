@@ -1138,6 +1138,7 @@ commandDictionary['npc'] = {
       }
       //if class specified
       if (args[0]) {
+        console.log('IT GETS THIS FAR!!')
         var classInfoArray = NPC.classInfo(args[0].toLowerCase());
         for (i = 0; i < classArray.length; i++) {
           //if class is valid
