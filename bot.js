@@ -1114,9 +1114,7 @@ commandDictionary['npc'] = {
       var npcName = NPC.nameMale;
     }
     //if class specified
-    if (args[0] != null) {
-      var classInfoArray = NPC.classInfo(args[0].toLowerCase());
-      
+    if (args[0] != null) {      
       //if race specified
       if (args[1] != null) {
         raceCheck:  
@@ -1140,30 +1138,35 @@ commandDictionary['npc'] = {
         message.channel.send({embed});
         return;
       }
-      if (classInfoArray[0] != undefined) {
-        embed
-             .setTitle(setName + ': ' + args[0].charAt(0).toUpperCase() + args[0].slice(1).toLowerCase())
-             .setDescription(setRace + ' ' + setGender)
-             .addField('__**Stats**__', 
-                       '**Armor Class:** ' + classInfoArray[0] + '\n' +
-                       '**Hit Points:** ' + classInfoArray[1] + '\n' +
-                       '**Speed:** ' + classInfoArray[2]
-                      )
-             .addField('__**Abilities**__', 
-                       emoji.str + ': **' + classInfoArray[3] + '**' +
-                       emoji.dex + ': **' + classInfoArray[4] + '**' +
-                       emoji.con + ': **' + classInfoArray[5] + '**\n' +
-                       emoji.int + ': **' + classInfoArray[6] + '**' +
-                       emoji.wis + ': **' + classInfoArray[7] + '**' +
-                       emoji.cha + ': **' + classInfoArray[8] + '**'
-                      )
-             .addField('__**Quick Info**__', classInfoArray[9])
-             .addField('__**Proficiencies**__', classInfoArray[10])
-             .addField('__**Actions**__', classInfoArray[11])
-             .addBlankField(false);
-        message.channel.stopTyping();
-        message.channel.send({embed});
-        return;
+      
+      for (i = 0; i < classArray.length; i++) {
+        //if class is valid
+        if (classArray[i] == args[0].toLowerCase()) {
+          var classInfoArray = NPC.classInfo(args[0].toLowerCase());
+          embed
+               .setTitle(setName + ': ' + args[0].charAt(0).toUpperCase() + args[0].slice(1).toLowerCase())
+               .setDescription(setRace + ' ' + setGender)
+               .addField('__**Stats**__', 
+                         '**Armor Class:** ' + classInfoArray[0] + '\n' +
+                         '**Hit Points:** ' + classInfoArray[1] + '\n' +
+                         '**Speed:** ' + classInfoArray[2]
+                        )
+               .addField('__**Abilities**__', 
+                         emoji.str + ': **' + classInfoArray[3] + '**' +
+                         emoji.dex + ': **' + classInfoArray[4] + '**' +
+                         emoji.con + ': **' + classInfoArray[5] + '**\n' +
+                         emoji.int + ': **' + classInfoArray[6] + '**' +
+                         emoji.wis + ': **' + classInfoArray[7] + '**' +
+                         emoji.cha + ': **' + classInfoArray[8] + '**'
+                        )
+               .addField('__**Quick Info**__', classInfoArray[9])
+               .addField('__**Proficiencies**__', classInfoArray[10])
+               .addField('__**Actions**__', classInfoArray[11])
+               .addBlankField(false);
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return;
+        }
       }
       embed
            .setDescription('Class not found')
