@@ -1116,30 +1116,32 @@ commandDictionary['npc'] = {
       //if class specified
     if (args[0] != null) {
       var classInfoArray = NPC.classInfo(args[0].toLowerCase());
-      for (i = 0; i < classArray.length; i++) {
-        //if race specified
-        if (args[1] != null) {
-          raceCheck:  
-            for (h = 0; h < raceArray.length; h++) {
-              if (raceArray[h] == args[1].toLowerCase()) {
-                setRace = raceArray[h].charAt(0).toUpperCase() + raceArray[h].slice(1);
-                setFailState = 0;
-                break raceCheck;
-              } else {
-                setFailState = 1;
-              }
+      
+      //if race specified
+      if (args[1] != null) {
+        raceCheck:  
+          for (h = 0; h < raceArray.length; h++) {
+            if (raceArray[h] == args[1].toLowerCase()) {
+              setRace = raceArray[h].charAt(0).toUpperCase() + raceArray[h].slice(1);
+              setFailState = 0;
+              break raceCheck;
+            } else {
+              setFailState = 1;
             }
-        }
-          //if race is invalid
-          if (setFailState == 1) {
-            embed
-                 .setDescription('Race not found')
-                 .addField('Possible NPC Races:', NPC.raceList())
-                 .addBlankField(false);
-            message.channel.stopTyping();
-            message.channel.send({embed});
-            return;
           }
+      }
+        //if race is invalid
+        if (setFailState == 1) {
+          embed
+               .setDescription('Race not found')
+               .addField('Possible NPC Races:', NPC.raceList())
+               .addBlankField(false);
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return;
+        }
+      
+      for (i = 0; i < classArray.length; i++) {
         //if class is valid
         if (classArray[i] == args[0].toLowerCase()) {
           embed
