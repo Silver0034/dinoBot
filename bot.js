@@ -1140,7 +1140,7 @@ commandDictionary['npc'] = {
         message.channel.send({embed});
         return;
       }
-      if (classInfoArray.length === 12) {
+      if (classInfoArray[0] != undefined) {
         embed
              .setTitle(setName + ': ' + args[0].charAt(0).toUpperCase() + args[0].slice(1).toLowerCase())
              .setDescription(setRace + ' ' + setGender)
