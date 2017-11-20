@@ -1141,6 +1141,7 @@ commandDictionary['npc'] = {
         return;
       }
       
+      console.log('||||| + ' classInfoArray)
       if (classInfoArray != undefined || classInfoArray != null) {
         embed
              .setTitle(setName + ': ' + args[0].charAt(0).toUpperCase() + args[0].slice(1).toLowerCase())
