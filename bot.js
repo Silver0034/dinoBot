@@ -1109,7 +1109,7 @@ commandDictionary['npc'] = {
       if (args[2] == 'female' || args[2] == 'Female') {
         var npcName = NPC.nameFemale;
       }
-      setGender = args[2].charAt(0).toUpperCase() + args[1].slice(1).toLowerCase();
+      setGender = args[2].charAt(0).toUpperCase() + args[2].slice(1).toLowerCase();
     } else {
       var npcName = NPC.nameMale;
     }
