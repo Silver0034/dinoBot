@@ -1126,6 +1126,7 @@ commandDictionary['npc'] = {
             setFailState = 1;
           }
         }
+    }
       //if race is invalid
       if (setFailState == 1) {
         embed
@@ -1168,15 +1169,14 @@ commandDictionary['npc'] = {
             return;
           }
         }
+        embed
+             .setDescription('Class not found')
+             .addField('Possible NPC Classes:', NPC.classList())
+             .addBlankField(false);
+        message.channel.stopTyping();
+        message.channel.send({embed});
+        return;
       }
-      embed
-           .setDescription('Class not found')
-           .addField('Possible NPC Classes:', NPC.classList())
-           .addBlankField(false);
-      message.channel.stopTyping();
-      message.channel.send({embed});
-      return;
-    }
     embed
          .setDescription('Please specify a class')
          .addField('Possible NPC Classes:', NPC.classList())
