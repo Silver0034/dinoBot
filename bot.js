@@ -1145,7 +1145,7 @@ commandDictionary['npc'] = {
           //if class is valid
           if (classArray[i] == args[0].toLowerCase()) {
             embed
-                 .setTitle(setName + ': ' + classArray[1].charAt(0).toUpperCase() + classArray[i].slice(1))
+                 .setTitle(setName + ': ' + classInfoArray[1].charAt(0).toUpperCase() + classInfoArray[i].slice(1))
                  .setDescription(setRace + ' ' + setGender)
                  .addField('__**Stats**__', 
                            '**Armor Class:** ' + classInfoArray[0] + '\n' +
@@ -1176,7 +1176,7 @@ commandDictionary['npc'] = {
         message.channel.stopTyping();
         message.channel.send({embed});
         return;
-      }
+    }
     embed
          .setDescription('Please specify a class')
          .addField('Possible NPC Classes:', NPC.classList())
