@@ -1088,8 +1088,8 @@ commandDictionary['npc'] = {
   timeout: 0,
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/npcIcon.png?raw=true',
 	emoji: ':man_dancing: ',
-  error: 'Use the command like this: `npc',
-  usage: '**Usage:** `npc',
+  error: 'Use the command like this: `npc [class] [race] [gender]',
+  usage: '**Usage:** `npc [class] [race] [gender]',
   doCommand: function(message, key, args, embedFooter) { 
     message.channel.startTyping();
     var classArray = NPC.classArray();
@@ -1137,6 +1137,7 @@ commandDictionary['npc'] = {
             embed
                  .setDescription('Race not found')
                  .addField('Possible NPC Races:', NPC.raceList())
+                 .addField('Usage:', commandDictionary[key].usage)
                  .addBlankField(false);
             message.channel.stopTyping();
             message.channel.send({embed});
@@ -1172,6 +1173,7 @@ commandDictionary['npc'] = {
       embed
            .setDescription('Class not found')
            .addField('Possible NPC Classes:', NPC.classList())
+           .addField('Usage:', commandDictionary[key].usage)
            .addBlankField(false);
       message.channel.stopTyping();
       message.channel.send({embed});
@@ -1180,6 +1182,7 @@ commandDictionary['npc'] = {
     embed
          .setDescription('Please specify a class')
          .addField('Possible NPC Classes:', NPC.classList())
+         .addField('Usage:', commandDictionary[key].usage)
          .addBlankField(false);
     message.channel.stopTyping();
     message.channel.send({embed});
