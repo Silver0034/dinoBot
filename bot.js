@@ -981,7 +981,7 @@ commandDictionary['monster'] = {
           .setTitle('Monster Not Found')
           .setAuthor(BOT.user.username, BOT.user.avatarURL)
           .setColor(0x64FFDA)
-          //.setThumbnail(commandDictionary[key].icon)
+          .setThumbnail(commandDictionary[key].icon)
           .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', commandDictionary[key].icon);
         message.channel.stopTyping();
         message.channel.send({embed});
