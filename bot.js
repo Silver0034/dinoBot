@@ -971,13 +971,32 @@ commandDictionary['npc'] = {
 };
 commandDictionary['monster'] = {
   timeout: 0,
-  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/npcIcon.png?raw=true',
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/MonsterIcon.png?raw=true',
 	emoji: ':man_dancing: ',
   error: 'Use the command like this: `monster [monster name]',
   usage: '**Usage:** `monster [monster name]',
   doCommand: function(message, key, args, embedFooter) {
-    if (args) {
-      console.log(args);
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+          .setTitle('Monster Not Found')
+          .setAuthor(BOT.user.username, BOT.user.avatarURL)
+          .setColor(0x64FFDA)
+          .setThumbnail(commandDictionary[key].icon)
+          .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon");
+        message.channel.stopTyping();
+        message.channel.send({embed});
+    //if args not defined
+    if (args == '' || args == undefined || args == null) {
+    //return error message
+      embed
+      .setTitle('Monster Not Found')
+      .setDescription('The Monster you searched for is not on D&D Beyond.')
+      
+    } else {
+      //if args defined
+    }
+      
+      
       var scrapeInput = args.join('-');
       console.log(scrapeInput);
 
@@ -1194,7 +1213,7 @@ commandDictionary['monster'] = {
       return;
     }
   }
-}
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
