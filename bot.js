@@ -996,7 +996,7 @@ commandDictionary['monster'] = {
       //if args defined
     }
       
-      
+    /*  
       var scrapeInput = args.join('-');
       console.log(scrapeInput);
 
@@ -1197,10 +1197,9 @@ commandDictionary['monster'] = {
       message.channel.stopTyping();
       message.channel.send({embed});
       return;
-    }); 
+    }); */
   }
-  }
-}
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
