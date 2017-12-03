@@ -991,7 +991,7 @@ commandDictionary['monster'] = {
       embed
       .setTitle('Monster Not Found')
       .setDescription('The Monster you searched for is not on D&D Beyond.')
-      
+      .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png');
     } else {
       //if args defined
     }
@@ -1198,20 +1198,7 @@ commandDictionary['monster'] = {
       message.channel.send({embed});
       return;
     }); 
-      } else {
-      message.channel.startTyping(); 
-      const embed = new DISCORD.RichEmbed()
-        .setTitle('Incorrect Format')
-        .setAuthor(BOT.user.username, BOT.user.avatarURL)
-        .setColor(0x64FFDA)
-        .setDescription('Use the command like this: ````rpg monster [monster name]```')
-        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
-        .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-        .setThumbnail(commandDictionary[key].icon);
-      message.channel.stopTyping();
-      message.channel.send({embed});
-      return;
-    }
+  }
   }
 };
 
