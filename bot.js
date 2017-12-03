@@ -1200,7 +1200,7 @@ commandDictionary['monster'] = {
     }); 
   }
   }
-};
+}
 
 //Connect to Database
 sqldb.connect(function(err) {
