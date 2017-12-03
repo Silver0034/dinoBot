@@ -976,74 +976,60 @@ commandDictionary['monster'] = {
   error: 'Use the command like this: `monster [monster name]',
   usage: '**Usage:** `monster [monster name]',
   doCommand: function(message, key, args, embedFooter) {
-    if (args[0] != null || args[0] != undefined) {
+    if (args) {
       console.log(args);
       var scrapeInput = args.join('-');
       console.log(scrapeInput);
-    } else {
-      message.channel.startTyping(); 
-      const embed = new DISCORD.RichEmbed()
-        .setTitle('Incorrect Format')
-        .setAuthor(BOT.user.username, BOT.user.avatarURL)
-        .setColor(0x64FFDA)
-        .setDescription('Use the command like this: ````rpg monster [monster name]```')
-        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
-        .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-        .setThumbnail(commandDictionary[key].icon);
-      message.channel.stopTyping();
-      message.channel.send({embed});
-      return;
-    }
 
-    message.channel.startTyping();          
+      message.channel.startTyping();          
 
-    var scrapeURL = "https://www.dndbeyond.com/monsters/";
-    scrapeURL = scrapeURL + scrapeInput;        
+      var scrapeURL = "https://www.dndbeyond.com/monsters/";
+      scrapeURL = scrapeURL + scrapeInput;        
 
-    SCRAPEIT(scrapeURL, {
+      SCRAPEIT(scrapeURL, {
 
-      title: ".monster-name",
-      descShort: ".details-item",
-      // Nested list
-      abilityScore: {
-        listItem: ".score"
-      },
-      abilityModifier: {
-        listItem: ".modifier"
-      },
-      quickPrimary: {
-        listItem: ".primary"
-      },
-      quickSecondary: {
-        listItem: ".secondary"
-      },
-      statsTitle: {
-        listItem: ".title",
-      },
-      statsDescription: {
-        listItem: ".description",
-      },
-      strong: {
-        listItem: "strong",
-      },
-      strong: {
-        listItem: "strong",
-      },
-      moreInfoContent: {
-        selector: ".more-info-content",
-        how: "html"
-      },
-      moreInfoPlain: {
-        selector: ".more-info-content"
-      },
-      monsterImage: {
-        selector: ".monster-image",
-        attr: "src"
-      },
-      errorPageTitle: {
-        selector: ".error-page-title",
-        how: "text"
-      },
+        title: ".monster-name",
+        descShort: ".details-item",
+        // Nested list
+        abilityScore: {
+          listItem: ".score"
+        },
+        abilityModifier: {
+          listItem: ".modifier"
+        },
+        quickPrimary: {
+          listItem: ".primary"
+        },
+        quickSecondary: {
+          listItem: ".secondary"
+        },
+        statsTitle: {
+          listItem: ".title",
+        },
+        statsDescription: {
+          listItem: ".description",
+        },
+        strong: {
+          listItem: "strong",
+        },
+        strong: {
+          listItem: "strong",
+        },
+        moreInfoContent: {
+          selector: ".more-info-content",
+          how: "html"
+        },
+        moreInfoPlain: {
+          selector: ".more-info-content"
+        },
+        monsterImage: {
+          selector: ".monster-image",
+          attr: "src"
+        },
+        errorPageTitle: {
+          selector: ".error-page-title",
+          how: "text"
+        },
     },
       (err, page) => {
       //console.log(err);
@@ -1193,6 +1179,20 @@ commandDictionary['monster'] = {
       message.channel.send({embed});
       return;
     }); 
+      } else {
+      message.channel.startTyping(); 
+      const embed = new DISCORD.RichEmbed()
+        .setTitle('Incorrect Format')
+        .setAuthor(BOT.user.username, BOT.user.avatarURL)
+        .setColor(0x64FFDA)
+        .setDescription('Use the command like this: ````rpg monster [monster name]```')
+        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
+        .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
+        .setThumbnail(commandDictionary[key].icon);
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
+    }
   }
 }
 
