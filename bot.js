@@ -95,7 +95,7 @@ function getDate(date) {
     return months + '/' + days + '/' + years;
 }
 
-var emoji= new Object();
+var emoji = new Object();
 emoji = {
   dino: '<:sauropod:355738679211327488> ',
   str: '<:strength:377677018491387904>',
@@ -106,6 +106,7 @@ emoji = {
   cha: '<:charisma:377677013428862978>',
   monster: '<:beholder:386676248434180106>'
 }
+console.log(emoji);
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
