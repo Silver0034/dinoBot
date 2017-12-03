@@ -106,7 +106,7 @@ emoji = {
   cha: '<:charisma:377677013428862978>',
   monster: '<:beholder:386676248434180106>'
 }
-console.log(emoji);
+console.log(emoji.monster);
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
