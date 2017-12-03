@@ -974,11 +974,11 @@ commandDictionary['monster'] = {
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/npcIcon.png?raw=true',
 	emoji: ':man_dancing: ',
   error: 'Use the command like this: `monster [monster name]',
-  usage: '**Usage:** `npc [class] [race] [gender]',
+  usage: '**Usage:** `monster [monster name]',
   doCommand: function(message, key, args, embedFooter) {
     if (args[0]) {
       console.log(args);
-      var scrapeInput = args.join('-').substring(8);
+      var scrapeInput = args.join('-');
       console.log(scrapeInput);
     } else {
       message.channel.startTyping(); 
