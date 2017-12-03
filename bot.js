@@ -103,7 +103,8 @@ emoji = {
   con: '<:constitution:377677014561325056>',
   int: '<:intelligence:377677018285998080>',
   wis: '<:wisdom:377677018382204931>',
-  cha: '<:charisma:377677013428862978>'
+  cha: '<:charisma:377677013428862978>',
+  monster: '<:beholder:386676248434180106>'
 }
 
 //dictionary for all commands and information
@@ -494,9 +495,9 @@ commandDictionary['rps'] = {
     return;
 	}
 };
-commandDictionary['rpg'] = {
+commandDictionary['monster'] = {
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/dnd-beyond-logo.png?raw=true',
-  emoji: ':map: ',
+  emoji: emoji.monster,
   error: 'Use the command like this: `rpg name character',
   usage: '**Usage:** `rpg [name | characteristic OR char | bond | flaw | npc | conditions OR con OR c]',
   doCommand: function(message, key, args) {
@@ -1020,8 +1021,6 @@ commandDictionary['name'] = {
       //For each item in the race array
       for (i = 0; i < raceArray.length; i++) {
         //if input is a valid race
-        console.log(raceArray[i]);
-        console.log(args[0].toLowerCase())
         if (raceArray[i] == args[0].toLowerCase()) {
           //if a list is requested
           if (args[2] == 'list' || args[1] == 'list') {
@@ -1189,40 +1188,6 @@ commandDictionary['npc'] = {
     return;
   }
 };
-      /*
-      SCRAPEIT(
-        'https://www.dndbeyond.com/equipment?filter-search=armor&filter-cost-min=&filter-cost-max=&filter-weight-min=&filter-weight-max=',
-        {
-          name: {
-            listItem: ".link"
-          }
-        },
-        (err, page) => {
-          var armorListArray = page.name;
-          var armorListSplitNum = armorListArray.length - 9;
-          armorListArray = armorListArray.slice(0, armorListSplitNum);
-
-          for (i = 0; i < armorListArray.length; i++) {
-
-          }
-        }
-      );
-    } else {
-      //if class unspecified
-    }
-    */
-    
-    
-    
-/*
-    embed
-         .setDescription('*Armors*```' + '```')
-         .addField('Possible Races:', NPC.raceList())
-         .addBlankField(false);
-    message.channel.stopTyping();
-    message.channel.send({embed});
-    return;
-    */
 
 //Connect to Database
 sqldb.connect(function(err) {
