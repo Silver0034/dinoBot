@@ -976,7 +976,7 @@ commandDictionary['monster'] = {
   error: 'Use the command like this: `monster [monster name]',
   usage: '**Usage:** `monster [monster name]',
   doCommand: function(message, key, args, embedFooter) {
-    if (args[0]) {
+    if (args[0] != null || args[0] != undefined) {
       console.log(args);
       var scrapeInput = args.join('-');
       console.log(scrapeInput);
