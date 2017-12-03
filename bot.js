@@ -978,13 +978,10 @@ commandDictionary['monster'] = {
   doCommand: function(message, key, args, embedFooter) {
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
-          .setTitle('Monster Not Found')
           .setAuthor(BOT.user.username, BOT.user.avatarURL)
           .setColor(0x64FFDA)
           .setThumbnail(commandDictionary[key].icon)
           .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', commandDictionary[key].icon);
-        message.channel.stopTyping();
-        message.channel.send({embed});
     //if args not defined
     if (args == '' || args == undefined || args == null) {
     //return error message
@@ -992,6 +989,8 @@ commandDictionary['monster'] = {
       .setTitle('Monster Not Found')
       .setDescription('The Monster you searched for is not on D&D Beyond.')
       .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png');
+      message.channel.stopTyping();
+        message.channel.send({embed});
     } else {
       //if args defined
     }
