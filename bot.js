@@ -1,3 +1,9 @@
+// DinoBot™ | Discord.js Bot by Lodes Deisgn
+// Version: 2.0beta
+
+//debugg mode
+var debug = true;
+
 //establish constants
 //discord.js dependencies
 const DISCORD = require('discord.js');
@@ -37,6 +43,14 @@ var download = function(uri, filename, callback){
 };
 
 //global functions
+//debug console log
+function debugLog(logMessage) {
+  if (debug == true) {
+    console.log(logMessage);
+  } else {
+    return;
+  }
+}
 //puts user in timeout
 function setUserTimeout(userID, timeoutDuration) {
   //put users userID in a timeout array
@@ -94,6 +108,54 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
+//Standard Embed
+function embed(title, author, avatar, color, footer, thumbnail, key) {
+  message.channel.startTyping();
+  const embed = new DISCORD.RichEmbed()
+  //set title of embed
+  if (title != '') {
+    embed.setTitle(title)
+  } else {
+    if (key != undefined || key != null) {
+      embed.setTitle(key) 
+    } else {
+      embed.setTitle('Title Not Found')
+    }
+  }
+  //set author name
+  if (author != '') {
+    var embedAuthor = author;
+  } else {
+    var embedAuthor = BOT.user.username;
+  }
+  //set avatar name
+  if (avatar != '') {
+    var embedAvatar = avatar;
+  } else {
+    var embedAvatar = BOT.user.avatarURL;
+  }
+  //embed author and avatar
+  embed.setAuthor(embedAuthor, embedAvatar);
+  //set color
+  if (color != '') {
+    embed.setColor(color);
+  } else {
+    embed.setColor(0x64FFDA);
+  }
+  //set footer
+  if (footer != '') {
+    embed.setFooter(footer);
+  } else {
+    embed.setFooter('DinoBot™ | Discord.js Bot by Lodes Deisgn');
+  }
+  //set thumbnail
+  if (thumbnail != '') {
+    embed.setThumbnail(thumbnail);
+  } else if (commandDictionary[key].icon != undefined || commandDictionary[key].icon != null) {
+    embed.setThumbnail(commandDictionary[key].icon);
+  }
+  message.channel.stopTyping();
+}
 
 var emoji = new Object();
 emoji = {
@@ -109,6 +171,39 @@ emoji = {
 
 //dictionary for all commands and information
 var commandDictionary = new Object();
+commandDictionary['help'] = {
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png?raw=true',
+  emoji: ':grey_question: ',  //put space after emoji 
+  error: 'Use the command like this: `help',
+  usage: '**Usage:** `help OR `help [command]', 
+  doCommand: function(message, key, args, embedFooter) {
+    var helpMessageBody;
+    if(args[0] in commandDictionary) {
+      helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
+    } else {
+      var helpList = new Array();
+    	for (var keyIter in commandDictionary) {
+      	helpList.push(keyIter);
+      }
+      helpMessageBody = '```' + helpList.sort().toString().replace(/,/g, ", ") + '```';
+    }
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+      .setTitle('Help')
+      .setAuthor(BOT.user.username, BOT.user.avatarURL)
+      .setColor(0x64FFDA)
+      .setDescription('Commands are formatted as ``[command]`')
+      .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
+      .setFooter(embedFooter)
+      .addBlankField(false)
+      .setThumbnail(commandDictionary[key].icon);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
+  } 
+};
+
+/*
 commandDictionary['8ball'] = {
   emoji: ':8ball: ', //put space after emoji 
   error: 'Use the command like this: `8ball [question]',
@@ -184,37 +279,6 @@ commandDictionary['roll'] = {
       return;
     }
   }
-};
-commandDictionary['help'] = {
-  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png?raw=true',
-  emoji: ':grey_question: ',  //put space after emoji 
-  error: 'Use the command like this: `help',
-  usage: '**Usage:** `help OR `help [command]', 
-  doCommand: function(message, key, args, embedFooter) {
-    var helpMessageBody;
-    if(args[0] in commandDictionary) {
-      helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
-    } else {
-      var helpList = new Array();
-    	for (var keyIter in commandDictionary) {
-      	helpList.push(keyIter);
-      }
-      helpMessageBody = '```' + helpList.sort().toString().replace(/,/g, ", ") + '```';
-    }
-    message.channel.startTyping();
-    const embed = new DISCORD.RichEmbed()
-      .setTitle('Help')
-      .setAuthor(BOT.user.username, BOT.user.avatarURL)
-      .setColor(0x64FFDA)
-      .setDescription('Commands are formatted as ``[command]`')
-      .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
-      .setFooter(embedFooter)
-      .addBlankField(false)
-      .setThumbnail(commandDictionary[key].icon);
-    message.channel.stopTyping();
-    message.channel.send({embed});
-    return;
-  } 
 }; 
 commandDictionary['coin'] = {
   emoji: ':moneybag: ',  //put space after emoji  
@@ -658,7 +722,7 @@ commandDictionary['profile'] = {
 						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');	
 					}
 				return;
-			}	*/
+			}	*/ /*
 		} else {
 			//if there is no first argument
 			message.channel.startTyping();
@@ -986,13 +1050,23 @@ commandDictionary['monster'] = {
     if (args == '' || args == undefined || args == null) {
     //return error message
       embed
-      .setTitle('Monster Not Found')
-      .setDescription('The Monster you searched for is not on D&D Beyond.')
-      .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png');
+      .setTitle('Incorrect Format')
+      .setDescription('There was no monster specified')
+      .addField('*Please Specify a Monster*', '```'+ commandDictionary[key].usage + '```');
+      .addField('*Please Note:*', 'This command only works with monsters found in the "basic rules" posted on D&D Beyond');
       message.channel.stopTyping();
-        message.channel.send({embed});
+      message.channel.send({embed});
     } else {
       //if args defined
+      if (/*Link Valid*/) {
+      //post information    
+      } else {
+      embed
+        .setTitle('Monster Not Found')
+        .setDescription('The Monster you searched for is not on D&D Beyond.');
+        message.channel.stopTyping();
+        message.channel.send({embed});
+      }
     }
       
     /*  
@@ -1199,7 +1273,7 @@ commandDictionary['monster'] = {
     }); */
   }
 };
-
+*/
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
