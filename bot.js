@@ -1058,7 +1058,7 @@ commandDictionary['monster'] = {
       message.channel.send({embed});
     } else {
       //if args defined
-      if (/*Link Valid*/) {
+      if (/*Link Valid*//*) {
       //post information    
       } else {
       embed
