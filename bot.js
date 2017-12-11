@@ -1050,7 +1050,7 @@ commandDictionary['monster'] = {
       embed
       .setTitle('Incorrect Format')
       .setDescription('There was no monster specified')
-      .addField('*Please Specify a Monster*', '```'+ commandDictionary[key].usage + '```');
+      .addField('*Please Specify a Monster*', '```'+ commandDictionary[key].usage + '```')
       .addField('*Please Note:*', 'This command only works with monsters found in the "basic rules" posted on D&D Beyond');
       message.channel.stopTyping();
       message.channel.send({embed});
