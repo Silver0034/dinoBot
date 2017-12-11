@@ -109,7 +109,7 @@ function getDate(date) {
     return months + '/' + days + '/' + years;
 }
 //Standard Embed
-function embed(title, author, avatar, color, footer, thumbnail, key) {
+function embed(title, author, avatar, color, footer, thumbnail, message, key) {
   message.channel.startTyping();
   const embed = new DISCORD.RichEmbed()
   //set title of embed
@@ -187,6 +187,7 @@ commandDictionary['help'] = {
       }
       helpMessageBody = '```' + helpList.sort().toString().replace(/,/g, ", ") + '```';
     }
+    /*
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
       .setTitle('Help')
@@ -197,6 +198,8 @@ commandDictionary['help'] = {
       .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
+    */
+    embed('Help', '', '', '', '', '', message, key);
     message.channel.stopTyping();
     message.channel.send({embed});
     return;
