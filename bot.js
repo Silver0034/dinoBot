@@ -1057,6 +1057,7 @@ commandDictionary['monster'] = {
     } else {
       //if args defined
       //if link valid
+      /*
       if () {
       //post information    
       } else {
@@ -1066,6 +1067,7 @@ commandDictionary['monster'] = {
         message.channel.stopTyping();
         message.channel.send({embed});
       }
+    */
     }
       
     /*  
