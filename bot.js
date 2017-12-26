@@ -273,6 +273,21 @@ commandDictionary['taste'] = {
     }
   }
 };
+commandDictionary['attack'] = {
+  type: 'fun',
+  emoji: ':dagger: ',  //put space after emoji   
+  error: 'Use the command like this: `attack [@user OR name]',
+  usage: '**Usage:** `attack [@user OR name]',
+  doCommand: function(message, key, args, embedFooter) {
+    if (args[0] === undefined || args[0] === '' || args[0] == BOT.user) {
+    	errorUsage(message, key, embedFooter);
+      return;
+    } else {
+      message.channel.send(responseHead(message, key) + args[0] + ATTACK.generate());
+      return;
+    }
+  }
+};
 commandDictionary['avatar'] = {
   type: 'user',
   timeout: 12000,
