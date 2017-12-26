@@ -184,10 +184,10 @@ commandDictionary['help'] = {
       helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
     } else {
       //if no command specified
-      var helpInfo = [''];
-      var helpFun = [''];
-      var helpUser = [''];
-      var helpDnd = [''];
+      var helpInfo = new Array();
+      var helpFun = new Array();
+      var helpUser = new Array();
+      var helpDnd = new Array();
     	for (var keyIter in commandDictionary) {
         if (commandDictionary[keyIter].type.toLowerCase() == 'info') {
           helpInfo.push(keyIter);
@@ -219,7 +219,146 @@ commandDictionary['help'] = {
     return;
   } 
 };
-
+commandDictionary['taste'] = {
+  type: 'fun',
+  emoji: ':fork_and_knife: ',  //put space after emoji 
+  error: 'Use the command like this: `taste [@user OR name]',
+  usage: '**Usage:** `taste [@user OR name]',
+  doCommand: function(message, key, args) {
+    if (!args[0]) {
+      message.channel.send(error(key));
+      return;
+    } else {
+      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' TASTEs ' + TASTE.generate());
+      return;
+    }
+  }
+};
+commandDictionary['avatar'] = {
+  type: 'user',
+  timeout: 12000,
+  emoji: ':busts_in_silhouette: ',    
+  error: 'Use the command like this: `avatar [target]',
+  usage: '**Usage:** `avatar [target]',
+  doCommand: function(message, key, args) {
+    var avatarMention = message.mentions.users.array();
+    var avatarReturn = responseHead(message, key) + '\n'; 
+    //if no mentions return sender's avatar  
+    if (avatarMention.length < 1) {
+      message.channel.send(message.author.username + '\'s Avatar: ' + message.author.avatarURL);
+      return;
+    } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
+        //if mention range between 1-6 return all avatars
+        for (var i = 0; i < avatarMention.length; i++) {
+        avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarMention[i].avatarURL + "\n";   
+      }
+      message.channel.send(avatarReturn);
+      return;     
+    } else {
+      //if message range longer than 6 return error
+      message.channel.send(error(key) + '\nPlease mention 5 or fewer users.');
+      return;
+    }
+    //if message formatted incorectly  
+    message.channel.send(error(key));
+    return;      
+  }
+};
+commandDictionary['name'] = {
+  type: 'dnd',
+  timeout: 0,
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/NameIcon.png?raw=true',
+	emoji: ':thinking: ',
+  error: 'Use the command like this: `name [race] [male OR female]',
+  usage: '**Usage:** `name [race] [male OR female] [list]',
+  doCommand: function(message, key, args, embedFooter) { 
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+                             .setTitle('Name Generator')
+                             .setAuthor(BOT.user.username, BOT.user.avatarURL)
+                             .setColor(0x64FFDA)
+                             .setFooter(embedFooter)
+                             .setThumbnail(commandDictionary[key].icon);
+    //if race is specified
+    if (args[0]) {
+      var raceArray = NPC.array();
+      var returnGender = ' ';
+      var returnDescription = args[0] + '';
+      //set male or female for returnGender
+      if (args[1] == 'male' || args[1] == 'female') {
+        returnGender = returnGender + args[1];
+      }
+      //make return description a or an
+      if (returnDescription.substring(0, 1) == 'a') {
+        returnDescription = 'an';
+      } else {
+        returnDescription = 'a';
+      }
+      //For each item in the race array
+      for (i = 0; i < raceArray.length; i++) {
+        //if input is a valid race
+        if (raceArray[i] == args[0].toLowerCase()) {
+          //if a list is requested
+          if (args[2] == 'list' || args[1] == 'list') {
+            embed.addField('Names:', '```' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' +
+                           NPC.nameFemale(args[0]) + '\n' + '```'
+                          );
+            embed.setDescription('A list of names for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*');
+          } else {
+            //if a single name is requested
+            embed.setDescription('A random name for ' + returnDescription + '*** ' + args[0] + returnGender + '***\n*Use the command again for a new name*');
+            //if gender is specified 'female'
+            if (args[1] == 'female') {
+              embed.addField('Names:', '```' + NPC.nameFemale(args[0]) + '```\n*Add "list" to the end of the command to return a list of names*');
+            } else {
+              //return male otherwise
+              embed.addField('Names:', '```' + NPC.nameMale(args[0]) + '```\n*Add "list" to the end of the command to return a list of names*');
+            } 
+          }
+          embed.addBlankField(false);
+          message.channel.stopTyping();
+          message.channel.send({embed});
+          return;
+        }
+      }
+      //if the specified race is unavailable
+      embed
+           .setDescription('*The specified race is unavailable*')
+           .addField('Possible Races:', NPC.raceList())
+           .addBlankField(false);
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
+    }
+    //if the race is unspecified
+    embed
+         .setDescription('*Please specify race*```' + commandDictionary[key].usage + '```')
+         .addField('Possible Races:', NPC.raceList())
+         .addBlankField(false);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
+  }
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
