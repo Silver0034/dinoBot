@@ -107,7 +107,7 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
-function errorUsage(message, key) {
+function errorUsage(message, key, embedFooter) {
   message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
       .setTitle(key.charAt(0).toUpperCase() + key.slice(1))
@@ -403,12 +403,12 @@ commandDictionary['8ball'] = {
   emoji: ':8ball: ', //put space after emoji 
   error: 'Use the command like this: `8ball [question]',
   usage: '**Usage:** `8ball [question]',
-  doCommand: function(message, key, args) {
+  doCommand: function(message, key, args, embedFooter) {
     if (args[0]) {
       message.channel.send(responseHead(message, key) + BALL.generate());
       return;
     } else {
-      errorUsage(message, key);
+      errorUsage(message, key, embedFooter);
       return;
     }
   }
