@@ -230,7 +230,7 @@ commandDictionary['about'] = {
       .setTitle('About')
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
-      .setDescription('About ' + BOT.user.username + '™')
+      .setDescription('About ' + BOT.user.username + '™ and its creators:')
       .addField('Creators', 'This bot was created by Jacob Lodes (Silver0034#4220). \nThis could not have been done without the knowledge and help of SMarioMan')
       .addField('Information Sources', 'Much of the information this bot posts is original, but many commands (relating to to the game *Dungeons & Dragons*) reference or directly pull information from sources owned by *Wizards of the Coast*\nLinks are provided to the original information if it comes from a web-based source.')
       .addField('NPMs', 'Much of the code used to power ' + BOT.user.username + '™ is authored by the creators above. This bot runs Discord.js via Node.js and *does* utilize open-sourced NPMs below.' + '```Cheerio, Jimp, Mysql, Scrape-It ```')
