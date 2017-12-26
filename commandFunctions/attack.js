@@ -38,7 +38,7 @@ var attackArray = [
   ' tastes like pteranodon',
   ' tastes like apatosaurus',
   ' tastes like stegosaurus',
-  'tastes like chicken',    
+  ' tastes like chicken',    
   ' went well with my stegosaurus burger',
   ' was a popular dish at the watering hole',
   ' is gonna be saved for later',
