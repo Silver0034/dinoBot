@@ -202,7 +202,7 @@ commandDictionary['help'] = {
           helpDnd.push(keyIter);
         }
       }
-      helpMessageBody = '**Info**' + '```' + helpInfo.sort().toString().replace(/,/g, ", ") + '```';
+      helpMessageBody = '**Info**' + '```' + helpInfo.sort().toString().replace(/,/g, ", ") + '```' + '**Fun**' + '```' + helpFun.sort().toString().replace(/,/g, ", ") + '```' + '**User**' + '```' + helpUser.sort().toString().replace(/,/g, ", ") + '```' + '**D&D**' + '```' + helpDnd.sort().toString().replace(/,/g, ", ") + '```';
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
