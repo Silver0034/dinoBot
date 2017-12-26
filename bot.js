@@ -510,6 +510,57 @@ commandDictionary['quote'] = {
     }
   }
 };
+commandDictionary['rps'] = {
+  type: 'fun',
+  emoji: ':cop: ',
+  error: 'Use the command like this: `rps [rock OR paper OR scissors]',
+  usage: '**Usage** `rps [rock OR paper OR scissors]',
+  doCommand: function(message, key, args, embedFooter) {               
+		var rpsMessage = emoji.dino + 'I choose **';
+		var rpsWin = '*You win.*';
+		var rpsLoose = '*You loose!*';
+		var rpsTie = '*We tie.*'
+		//check for correct input
+		switch(args[0]) {
+			case 'rock':
+				rpsResult = RPS.generate();
+				rpsMessage += rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsTie);
+				} else if (rpsResult == 'paper') {
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsLoose);
+				} else if (rpsResult == 'scissors') {
+					message.channel.send(rpsMessage + ':v:\n' + rpsWin);
+				}
+        break;
+			case 'paper':
+				rpsResult = RPS.generate();
+				rpsMessage += rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+					message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsWin);
+				} else if (rpsResult == 'paper') {
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsTie);
+				} else if (rpsResult == 'scissors') {
+					message.channel.send(rpsMessage + ':v:\n' + rpsLoose);
+				}
+        break;
+			case 'scissors':
+				rpsResult = RPS.generate();
+				rpsMessage += rpsResult.toUpperCase() + '** '
+				if (rpsResult == 'rock') {
+          message.channel.send(rpsMessage + ':right_facing_fist:\n' + rpsLoose);
+				} else if (rpsResult == 'paper') {
+					message.channel.send(rpsMessage + ':raised_back_of_hand:\n' + rpsWin);
+				} else if (rpsResult == 'scissors') {
+					message.channel.send(rpsMessage + ':v:\n' + rpsTie);
+				}
+        break;
+      default:
+        errorUsage(message, key, embedFooter);
+		}
+    return;
+	}
+};
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
