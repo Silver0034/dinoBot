@@ -561,6 +561,23 @@ commandDictionary['rps'] = {
     return;
 	}
 };
+commandDictionary['say'] = {
+  type: 'fun',
+  timeout: 0,
+  error: 'Use the command like this: `say [message]',
+  usage: '**Usage:** `say [message]',
+  doCommand: function(message, key, args, embedFooter) {
+    var sayMessage = emoji.dino + message.content.substring(5);     
+    message.delete(0); //deletes message  
+    if (!args[0]) {
+      errorUsage(message, key, embedFooter);
+      return;
+    } else {    
+      message.channel.send(sayMessage);
+      return;
+    }
+  }
+};
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
