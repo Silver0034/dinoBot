@@ -496,6 +496,7 @@ commandDictionary['cookie'] = {
   }  
 };
 commandDictionary['quote'] = {
+  type: 'fun',
   emoji: ':speech_balloon: ',  //put space after emoji 
   error: 'Use the command like this: `quote',
   usage: '**Usage:** `quote',
