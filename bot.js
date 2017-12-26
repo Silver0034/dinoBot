@@ -472,7 +472,7 @@ commandDictionary['coin'] = {
       return coinAnswers[coinNum];
     }
     if (args[0]) {
-      message.channel.send(error(key));
+      errorUsage(message, key, embedFooter);
       return;     
     }    
     message.channel.send(responseHead(message, key) + 'You flipped *' + coinGenerator() + '*');
