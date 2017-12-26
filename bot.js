@@ -263,12 +263,12 @@ commandDictionary['taste'] = {
   emoji: ':fork_and_knife: ',  //put space after emoji 
   error: 'Use the command like this: `taste [@user OR name]',
   usage: '**Usage:** `taste [@user OR name]',
-  doCommand: function(message, key, args) {
+  doCommand: function(message, key, args, embedFooter) {
     if (!args[0]) {
-      message.channel.send(error(key));
+      errorUsage(message, key, embedFooter);
       return;
     } else {
-      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' TASTEs ' + TASTE.generate());
+      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' tastes ' + TASTE.generate());
       return;
     }
   }
