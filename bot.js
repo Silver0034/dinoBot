@@ -495,6 +495,20 @@ commandDictionary['cookie'] = {
     }
   }  
 };
+commandDictionary['quote'] = {
+  emoji: ':speech_balloon: ',  //put space after emoji 
+  error: 'Use the command like this: `quote',
+  usage: '**Usage:** `quote',
+  doCommand: function(message, key, args, embedFooter) {
+    if (args[0]) {
+      errorUsage(message, key, embedFooter);
+      return;
+    } else {
+      message.channel.send(responseHead(message, key) + QUOTE.generate());
+      return;
+    }
+  }
+};
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
