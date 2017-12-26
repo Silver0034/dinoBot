@@ -1359,7 +1359,7 @@ BOT.on('message', message => {
   //listen for the ` to start a command
   //the BOT only responds with things inside this if
   //if I want the BOT to display something write it in here
-  if (messageContent.substring(0, 1) === '`') {
+  if (messageContent.substring(0, 1) === '`' || messageContent.substring(0, 1) === '\'') {
   //stop message from being processed  
   //if from a user in timeout
     if(commandDictionary[key]) {
