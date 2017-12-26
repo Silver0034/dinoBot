@@ -288,6 +288,35 @@ commandDictionary['attack'] = {
     }
   }
 };
+commandDictionary['choose'] = {
+  emoji: ':point_up: ',  //put space after emoji   
+  error: 'Use the command like this: `choose [choice1|choice2|etc]',
+  usage: '**Usage:** `choose [choice1|choice2|etc]',
+  doCommand: function(message, key, args, embedFooter) {
+    function chooseGenerator() {
+      var chooseNum = Math.floor((Math.random() * chooseArray.length));
+      return chooseArray[chooseNum];
+    }
+    //looks to see if the user input includes string|string
+    //if it does not; stops the command and returns error
+    //if valid, split the strings into an array    
+    if (args[0] && args[0].substring(1, args[0].length - 1).includes('|')) {
+      var chooseArray = args[0].split('|');            
+    } else {
+      errorUsage(message, key, embedFooter);
+      return;
+    }
+    //if the string|string is valid return output
+    //else return error    
+    if (chooseArray[0] === '' || chooseArray[1] === '' || chooseArray === null || chooseArray.length <= 1) {
+      message.channel.send(error(key));
+      return;
+    } else {
+      message.channel.send(responseHead(message, key) + ' *(I choose ' + chooseGenerator() + '*)');
+      return;
+    }         
+  }
+};
 commandDictionary['avatar'] = {
   type: 'user',
   timeout: 12000,
