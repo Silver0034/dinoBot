@@ -172,20 +172,37 @@ emoji = {
 //dictionary for all commands and information
 var commandDictionary = new Object();
 commandDictionary['help'] = {
+  type: 'info',
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png?raw=true',
   emoji: ':grey_question: ',  //put space after emoji 
   error: 'Use the command like this: `help',
   usage: '**Usage:** `help OR `help [command]', 
   doCommand: function(message, key, args, embedFooter) {
     var helpMessageBody;
+    //if command specified
     if(args[0] in commandDictionary) {
       helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
     } else {
-      var helpList = new Array();
+      //if no command specified
+      var helpInfo = new Array();
+      var helpFun = new Array();
+      var helpUser = new Array();
+      var helpDnd = new Array();
     	for (var keyIter in commandDictionary) {
-      	helpList.push(keyIter);
+        if (commandDictionary[keyIter].type.toLowerCase() == 'info') {
+          helpInfo.push(keyIter);
+        }
+        if (commandDictionary[keyIter].type.toLowerCase() == 'fun') {
+          helpFun.push(keyIter);
+        }
+        if (commandDictionary[keyIter].type.toLowerCase() == 'user') {
+          helpUser.push(keyIter);
+        }
+        if (commandDictionary[keyIter].type.toLowerCase() == 'dnd') {
+          helpDnd.push(keyIter);
+        }
       }
-      helpMessageBody = '```' + helpList.sort().toString().replace(/,/g, ", ") + '```';
+      helpMessageBody = '**Info**' + '```' + helpInfo.sort().toString().replace(/,/g, ", ") + '```';
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
