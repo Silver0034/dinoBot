@@ -184,10 +184,10 @@ commandDictionary['help'] = {
       helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
     } else {
       //if no command specified
-      var helpInfo = [' '];
-      var helpFun = [' '];
-      var helpUser = [' '];
-      var helpDnd = [' '];
+      var helpInfo = [''];
+      var helpFun = [''];
+      var helpUser = [''];
+      var helpDnd = [''];
     	for (var keyIter in commandDictionary) {
         if (commandDictionary[keyIter].type.toLowerCase() == 'info') {
           helpInfo.push(keyIter);
