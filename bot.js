@@ -384,6 +384,21 @@ commandDictionary['name'] = {
     return;
   }
 };
+commandDictionary['8ball'] = {
+  type: 'fun',
+  emoji: ':8ball: ', //put space after emoji 
+  error: 'Use the command like this: `8ball [question]',
+  usage: '**Usage:** `8ball [question]',
+  doCommand: function(message, key, args) {
+    if (args[0]) {
+      message.channel.send(responseHead(message, key) + BALL.generate());
+      return;
+    } else {
+      message.channel.send(error(key));
+      return;
+    }
+  }
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
