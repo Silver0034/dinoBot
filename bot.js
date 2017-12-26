@@ -184,10 +184,10 @@ commandDictionary['help'] = {
       helpMessageBody =  ' ```' + commandDictionary[args[0]].usage + '```';
     } else {
       //if no command specified
-      var helpInfo = new Array();
-      var helpFun = new Array();
-      var helpUser = new Array();
-      var helpDnd = new Array();
+      var helpInfo = {' '};
+      var helpFun = {' '};
+      var helpUser = {' '};
+      var helpDnd = {' '};
     	for (var keyIter in commandDictionary) {
         if (commandDictionary[keyIter].type.toLowerCase() == 'info') {
           helpInfo.push(keyIter);
@@ -202,7 +202,7 @@ commandDictionary['help'] = {
           helpDnd.push(keyIter);
         }
       }
-      helpMessageBody = '**Info**' + '```' + helpInfo.sort().toString().replace(/,/g, ", ") + '```\n' + '**Fun**' + '```' + helpFun.sort().toString().replace(/,/g, ", ") + '```\n' + '**User**' + '```' + helpUser.sort().toString().replace(/,/g, ", ") + '```\n' + '**D&D**' + '```' + helpDnd.sort().toString().replace(/,/g, ", ") + '```';
+      helpMessageBody = '**Info**' + '```' + helpInfo.sort().toString().replace(/,/g, ", ") + '```' + '**Fun**' + '```' + helpFun.sort().toString().replace(/,/g, ", ") + '```' + '**User**' + '```' + helpUser.sort().toString().replace(/,/g, ", ") + '```' + '**D&D**' + '```' + helpDnd.sort().toString().replace(/,/g, ", ") + '```';
     }
     message.channel.startTyping();
     const embed = new DISCORD.RichEmbed()
