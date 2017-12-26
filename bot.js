@@ -16,7 +16,6 @@ var jimp = require('jimp');
 const MYSQL = require('mysql');
 const REQUEST = require('request');
 const SCRAPEIT = require("scrape-it");
-const VALIDURL = require('valid-url');
 // commandFunctions dependencies
 const ATTACK = require('./commandFunctions/attack.js');
 const BALL = require('./commandFunctions/ball.js');
@@ -211,6 +210,31 @@ commandDictionary['help'] = {
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as ``[command]`\nBoth grave accent (`) *and* single quote (\') may be used to trigger commands')
       .addField('Command Info', helpMessageBody + '*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
+      .setFooter(embedFooter)
+      .addBlankField(false)
+      .setThumbnail(commandDictionary[key].icon);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+    return;
+  } 
+};
+commandDictionary['about'] = {
+  type: 'info',
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/HelpIcon.png?raw=true',
+  emoji: ':a: ',  //put space after emoji 
+  error: 'Use the command like this: `about',
+  usage: '**Usage:** `about', 
+  doCommand: function(message, key, args, embedFooter) {
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+      .setTitle('About')
+      .setAuthor(BOT.user.username, BOT.user.avatarURL)
+      .setColor(0x64FFDA)
+      .setDescription('About ' + BOT.user.username + '™')
+      .addField('Creators', 'This bot was created by Jacob Lodes (Silver0034#4220). \n This could not have been done without the knowledge and help of SMarioMan')
+      .addFeild('Information Sources', 'Much of the information this bot posts is original, but many commands relating to D&D reference or directly pull information from sources owned by Wizards of the Coast\nLinks are provided to the origonal information if it comes from a web-based source.')
+      .addFeild('NPMS', 'Much of the code used to power ' + BOT.user.username + '™ is authored by the creators above. This bot runs Discord.js via Node.js and *does* utilize open-sourced NPMs as follows' + '```Cheerio, Jimp, Mysql, Scrape-It ```')
+      .addFeild('Artwork', 'All artwork specific to' + BOT.user.username + '™ including but not limited to its logos and icons are origonal pieces. Artworks pertaining to information owned by Wizards of the Coast are often pulled from the same sources as the information they accompany.')
       .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
