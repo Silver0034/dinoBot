@@ -480,7 +480,21 @@ commandDictionary['coin'] = {
     return;
   }
 };
-
+commandDictionary['cookie'] = {
+  type: 'fun',
+  emoji: ':gift: ',  //put space after emoji  
+  error: 'Use the command like this: `cookie [@user OR name]',
+  usage: '**Usage:** `cookie [@user OR name]',
+  doCommand: function(message, key, args, embedFooter) {
+    if (!args[0]) {
+  		errorUsage(message, key, embedFooter);
+      return;
+    } else {
+      message.channel.send(responseHead(message, key) + 'You gave ' + args[0] + ' a dino-cookie! :cookie:');
+      return;
+    }
+  }  
+};
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
