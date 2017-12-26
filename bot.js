@@ -232,9 +232,9 @@ commandDictionary['about'] = {
       .setColor(0x64FFDA)
       .setDescription('About ' + BOT.user.username + '™')
       .addField('Creators', 'This bot was created by Jacob Lodes (Silver0034#4220). \n This could not have been done without the knowledge and help of SMarioMan')
-      .addFeild('Information Sources', 'Much of the information this bot posts is original, but many commands relating to D&D reference or directly pull information from sources owned by Wizards of the Coast\nLinks are provided to the origonal information if it comes from a web-based source.')
-      .addFeild('NPMS', 'Much of the code used to power ' + BOT.user.username + '™ is authored by the creators above. This bot runs Discord.js via Node.js and *does* utilize open-sourced NPMs as follows' + '```Cheerio, Jimp, Mysql, Scrape-It ```')
-      .addFeild('Artwork', 'All artwork specific to' + BOT.user.username + '™ including but not limited to its logos and icons are origonal pieces. Artworks pertaining to information owned by Wizards of the Coast are often pulled from the same sources as the information they accompany.')
+      .addField('Information Sources', 'Much of the information this bot posts is original, but many commands relating to D&D reference or directly pull information from sources owned by Wizards of the Coast\nLinks are provided to the origonal information if it comes from a web-based source.')
+      .addField('NPMS', 'Much of the code used to power ' + BOT.user.username + '™ is authored by the creators above. This bot runs Discord.js via Node.js and *does* utilize open-sourced NPMs as follows' + '```Cheerio, Jimp, Mysql, Scrape-It ```')
+      .addField('Artwork', 'All artwork specific to' + BOT.user.username + '™ including but not limited to its logos and icons are origonal pieces. Artworks pertaining to information owned by Wizards of the Coast are often pulled from the same sources as the information they accompany.')
       .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
