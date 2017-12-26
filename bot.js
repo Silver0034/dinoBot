@@ -289,6 +289,7 @@ commandDictionary['attack'] = {
   }
 };
 commandDictionary['choose'] = {
+  type: 'fun',
   emoji: ':point_up: ',  //put space after emoji   
   error: 'Use the command like this: `choose [choice1|choice2|etc]',
   usage: '**Usage:** `choose [choice1|choice2|etc]',
