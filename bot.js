@@ -459,6 +459,7 @@ commandDictionary['8ball'] = {
   }
 };
 commandDictionary['coin'] = {
+  type: 'fun',
   emoji: ':moneybag: ',  //put space after emoji  
   error: 'Use the command like this: `coin',
   usage: '**Usage:** `coin',
