@@ -458,6 +458,27 @@ commandDictionary['8ball'] = {
     }
   }
 };
+commandDictionary['coin'] = {
+  emoji: ':moneybag: ',  //put space after emoji  
+  error: 'Use the command like this: `coin',
+  usage: '**Usage:** `coin',
+  doCommand: function(message, key, args, embedFooter) {
+    const coinAnswers = [
+      'Heads',
+      'Tails'
+    ];
+    function coinGenerator() {
+      var coinNum = Math.floor((Math.random() * coinAnswers.length));
+      return coinAnswers[coinNum];
+    }
+    if (args[0]) {
+      message.channel.send(error(key));
+      return;     
+    }    
+    message.channel.send(responseHead(message, key) + 'You flipped *' + coinGenerator() + '*');
+    return;
+  }
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
