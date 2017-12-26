@@ -235,7 +235,7 @@ commandDictionary['about'] = {
       .addField('Information Sources', 'Much of the information this bot posts is original, but many commands (relating to to the game *Dungeons & Dragons*) reference or directly pull information from sources owned by *Wizards of the Coast*\nLinks are provided to the original information if it comes from a web-based source.')
       .addField('NPMs', 'Much of the code used to power ' + BOT.user.username + '™ is authored by the creators above. This bot runs Discord.js via Node.js and *does* utilize open-sourced NPMs below' + '```Cheerio, Jimp, Mysql, Scrape-It ```')
       .addField('Artwork', 'All artwork specific to ' + BOT.user.username + '™ including but not limited to its logos and icons are origonal pieces. Artworks pertaining to information owned by *Wizards of the Coast* are often pulled from the same sources as the information they accompany.')
-      .addField('Legal', BOT.user.username + '™ is owned by and run by Jacob Lodes. The name ' + BOT.user.username + '™ is protected by Florida Trademark law')
+      .addField('Legal', BOT.user.username + '™ is a chat bot owned and operated by Jacob Lodes. The name ' + BOT.user.username + '™ is protected by Florida Trademark law')
       .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
