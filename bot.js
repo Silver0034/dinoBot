@@ -107,6 +107,20 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
+function errorUsage(message, key) {
+  message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+      .setTitle(key.charAt(0).toUpperCase() + key.slice(1))
+      .setAuthor(BOT.user.username, BOT.user.avatarURL)
+      .setColor(0x64FFDA)
+      .setDescription('Commands are formatted as ``[command]`\nBoth grave accent (`) *and* single quote (\') may be used to trigger commands')
+      .addField('Command Info', '```' + commandDictionary[key].usage + '```*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
+      .setFooter(embedFooter)
+      .addBlankField(false)
+      .setThumbnail(commandDictionary[key].icon);
+    message.channel.stopTyping();
+    message.channel.send({embed});
+}
 //Standard Embed
 function embed(title, author, avatar, color, footer, thumbnail, message, key) {
   message.channel.startTyping();
@@ -394,7 +408,7 @@ commandDictionary['8ball'] = {
       message.channel.send(responseHead(message, key) + BALL.generate());
       return;
     } else {
-      message.channel.send(error(key));
+      errorUsage(message, key);
       return;
     }
   }
