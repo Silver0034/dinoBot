@@ -661,8 +661,7 @@ commandDictionary['nick'] = {
 					return;
 				}
 			});	
-			}
-    }
+		}
     
 		if (message.guild == null) {
 			message.channel.startTyping();
