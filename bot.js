@@ -802,7 +802,7 @@ commandDictionary['image'] = {
   type: 'user',
   emoji: ':busts_in_silhouette: ',  //put space after emoji 
   error: 'Use the command like this: `image [link to PNG or JPG image]',
-  usage: '**Usage:** `image [link to PNG image]',
+  usage: '**Usage:** `image [link to PNG or JPG image]',
   doCommand: function(message, key, args, embedFooter) {
 		
 		if (args[0] == undefined || args[0] == null || args[0] == '') {
@@ -852,6 +852,19 @@ commandDictionary['image'] = {
 		//database slot is userBackground
 		
 	}	
+};
+commandDictionary['rep'] = {
+	type: 'user',
+	emoji: ':thumbsup: ',
+	error: 'Use the command like this: `rep [@user]',
+	usage: '**Usage** `rep [@user]',
+	doCommand: function(message, key, args, embedFooter) {
+		debugLog(getFullYear() + '/' + getMonth() '/' + getDate());
+		//check if args[0] is a valid user
+		//check if author gave rep same day as current day
+		//if not same date increment @user's rep by 1
+		//if same give error and reason
+	}
 };
    /*
     switch(args[0]) { 
