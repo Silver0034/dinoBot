@@ -929,6 +929,103 @@ commandDictionary['rep'] = {
 		});
 	}
 };
+commandDictionary['profile'] = {
+	type: 'user',
+  timeout: 0,
+	emoji: ':robot: ',
+  error: 'Use the command like this: `profile',
+  usage: '**Usage:** `profile',
+  doCommand: function(message, key, args) {
+		if (args[0]) {
+			//if there is a first argument
+			switch(args[0]) {
+				case 'background':
+				case 'b':
+					if (args[1] != undefined) {
+						//if there is a second argument
+						//turn https into http
+            var imageInputURL = '';
+            var imageUrlSplit = args[1].split(':');
+            if (imageUrlSplit[0] == 'https') {
+							imageUrlSplit[0] = 'http';
+						}
+						imageInputURL = imageUrlSplit.join(':');
+						//check if the argument is a url
+						if (VALIDURL.isUri(imageInputURL)) {
+							download(imageInputURL, './userContent/userBackground/temp.png');
+							//put stuff here
+						} else {
+							//if the argument is not a url
+							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
+						}
+						break;
+					} else {
+						//if there is no argument
+						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px'); 
+						break;
+					}
+			}						
+						/*
+						//turn https into http
+            var imageInputURL = '';
+            var imageUrlSplit = args[1].split(':');
+            if (imageUrlSplit[0] == 'https') {
+							imageUrlSplit[0] = 'http';
+						}
+						imageInputURL = imageUrlSplit.join(':');
+						//what to do if link is added
+						if (VALIDURL.isUri(imageInputURL)) {
+							//check if image is a png
+							HTTP.get(imageInputURL, function(res) {
+								var imgCheckBuffer = [];
+								var imgCheckLength = 0;
+								res.on('data', function(chunk) {
+									//store each block of data in imgCheckbuffer
+									imgCheckLength += chunk.length;
+									imgCheckBuffer.push(chunk);
+								})
+								res.on('end', function () {
+									//puts image from array into single buffer
+									console.log(imgCheckBuffer);
+									console.log('LOOOOOOK HEEEERRE -----------------------------------------------------------');
+									var image = Buffer.concat(imgCheckBuffer);
+									//determine if the image is png
+									var type = 'image/png';
+									if (res.headers['content-type'] !== undefined)
+										type = res.headers['content-type'];
+									//download the image
+									fs.writeFile('./userContent/userBackground/' + message.author.id + '.png', image, function (err) {
+										if (err) throw err;
+									});
+									//Generate path and save path to users
+									sqldb.query("UPDATE user SET userBackground = " + MYSQL.escape("./userContent/userBackground/" + message.author.id + ".png") + " WHERE userID = " + message.author.id, function (err, results, fields) {
+								if (err) throw err;
+    						message.channel.send(responseHead(message, key) + 'Your user background has been updated.');
+  						});
+								});
+							});
+						} else {
+							message.channel.send(responseHead(message, key) + 'Please use a valid link to an image.');
+						}
+					} else {
+						message.channel.send(responseHead(message, key) + 'Please use the command as follows:````profile [background OR b] [url-for-the-picture]```Please note that images will be sized to fit over a 800px200px window.');	
+					}
+				return;
+			}	*/
+		} else {
+			//if there is no first argument
+			message.channel.startTyping();
+					var attachment = '';
+					JIMPFUNCTIONS.profile(jimp, 
+																message, 
+																key, 
+																args,
+																emoji.dino,
+																attachment,
+																sqldb);
+		}		
+	}
+};
    /*
     switch(args[0]) { 
       case 'set':
