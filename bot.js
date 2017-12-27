@@ -597,7 +597,7 @@ commandDictionary['nick'] = {
 								return;
 
 							}
-							if (args[2] == '' || args[1] == undefined || args[1] == null) {
+							if (args[2] == '' || args[2] == undefined || args[2] == null) {
 								//return embed
 								message.channel.startTyping();
 								const embed = new DISCORD.RichEmbed()
