@@ -606,6 +606,13 @@ commandDictionary['nick'] = {
 						debugLog('recognizes toggle state as ' + nicknameToggleState);
 						nickname = results[0].nicknameOne;
 						debugLog('nickname1 is ' + results[0].nicknameOne);
+						message.guild.member.get(message.author.id).setNickname(nickname).then(function(value) {
+                //succsess
+								message.channel.send(responseHead + 'Your nickname has been updated to ' + nickname);
+              }, function(reason) {
+                //error because didn't have permission
+								errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
+              });
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
 						debugLog('nickname toggled');
@@ -614,6 +621,13 @@ commandDictionary['nick'] = {
 						debugLog('recognizes toggle state as ' + nicknameToggleState);
 						debugLog('nickname2 is ' + results[0].nicknameTwo);
 						nickname = results[0].nicknameTwo;
+						message.guild.member.get(message.author.id).setNickname(nickname).then(function(value) {
+							//succsess
+							message.channel.send(responseHead + 'Your nickname has been updated to ' + nickname);
+            }, function(reason) {
+							//error because didn't have permission
+							errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
+            });
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
 						debugLog('nickname toggled');
