@@ -60,7 +60,7 @@ exports.profile = function(jimp,
 															.composite(background, 0, 0)
 															.composite(plate, 0, 0)
 															.composite(avatar, 27, 94)
-															.composite(xp, 247, 510)
+															.composite(xp, 247, 550)
 															.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username)
 															.print(jimpFontMS36ptTitleBlack, 65, 280, rep)
 															.write(attachment, function() {
