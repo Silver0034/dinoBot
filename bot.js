@@ -587,7 +587,7 @@ commandDictionary['nick'] = {
 		
 		function nickTwo(message, results, nicknameToggleState, nickname) {
 			debugLog('recognizes toggle state as ' + nicknameToggleState);
-			nickname = results[1].nicknameTwo;
+			nickname = results[0].nicknameTwo;
 			debugLog('nickname1 is ' + results[0].nicknameTwo);
 			message.member.setNickname(nickname).then(function(value) {
 				debugLog('setting nickname');
