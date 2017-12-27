@@ -649,7 +649,7 @@ commandDictionary['nick'] = {
     }
     
 		debugLog(message.guild);
-		if (message.guild == '') {
+		if (message.guild == null) {
 			message.channel.startTyping();
 			const embed = new DISCORD.RichEmbed()
 				.setTitle('Nickname')
