@@ -9,7 +9,7 @@ exports.profile = function(jimp,
 	console.log('1');
 	sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		var userBackground = results[0].userBackground;
-		var rep = results[0].reputation;
+		var rep = '+' + results[0].reputation + 'rep';
 		console.log('2');
 		console.log(userBackground);
 		//Assembling the picture
