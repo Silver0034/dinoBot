@@ -112,10 +112,10 @@ function getDate(date) {
 function errorUsage(message, key, embedFooter, extra) {
   message.channel.startTyping();
   var usageTip = '';
-  if (extra != undefined || extra != null || extra != '') {
-    var usageTip = extra;
-  } else {
+  if (extra == undefined || extra == null || extra == '') {
     usageTip = commandDictionary[key].usage;
+  } else {
+    usageTip = extra;
   }
     const embed = new DISCORD.RichEmbed()
       .setTitle(key.charAt(0).toUpperCase() + key.slice(1))
