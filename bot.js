@@ -804,10 +804,9 @@ commandDictionary['image'] = {
   error: 'Use the command like this: `image [link to PNG or JPG image]',
   usage: '**Usage:** `image [link to PNG image]',
   doCommand: function(message, key, args, embedFooter) {
-		//check if there is a link
 		try {
 			jimp.read('./assets/profile.png', function (err, profileBackground) {
-					.write('./assets/userBackground/profile-image-' + message.author.id + '.jpg');
+					profileBackground.write('./assets/userBackground/profile-image-' + message.author.id + '.jpg');
 			});
 		} catch {
 			message.channel.startTyping();
