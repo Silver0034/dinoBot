@@ -21,10 +21,10 @@ exports.profile = function(jimp,
 			// Put Plate over Background
 			jimp.read(userBackground, function (err, background) {
 				console.log('3');
-			//	background.cover(800, 198)
-			//	.blur(1)
-			//	.brightness(-0.2);
-			//	if (err) throw err;
+					background.cover(800, 198)
+				.blur(1)
+				.brightness(-0.2);
+				if (err) throw err;
 				jimp.read('./assets/profile.png', function (err, plate) {
 					console.log('4');
 					//XP BAR in image
