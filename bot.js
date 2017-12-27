@@ -872,7 +872,7 @@ commandDictionary['rep'] = {
 				if (mention[0].id != message.author.id) {
 				
 					//check if author gave rep same day as current day
-					if (repLastDate.substr(0 15) != findDate.substr(0, 15)) {
+					if (repLastDate.substr(0, 15) != findDate.substr(0, 15)) {
 						debugLog('|'+repLastDate.substr(0, 15) + '|    VS    |' + findDate.substr(0, 15) + '|');
 						//give rep to mentioned user
 						sqldb.query("UPDATE user SET reputation = reputation + 1 WHERE userID = " + mention[0].id, function (err, results, fields) {
