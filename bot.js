@@ -75,6 +75,7 @@ function timeout(key, userID, timeoutDuration) {
     setUserTimeout(userID, 6000);
   }
 }
+//Old error message (not completelty fazed out)
 function error(key) {
   var errorMessage = emoji.dino + ' ' + ROAR.generate() + ' ' + ROAR.generate() + ' *(There was an error)*  :no_entry_sign:' + '\n' + commandDictionary[key].error;
   console.log('[FAILED]');
@@ -107,14 +108,21 @@ function getDate(date) {
     
     return months + '/' + days + '/' + years;
 }
-function errorUsage(message, key, embedFooter) {
+//new error message
+function errorUsage(message, key, embedFooter, extra) {
   message.channel.startTyping();
+  var usageTip = '';
+  if (extra != undefined || extra != null || extra != '') {
+    var usageTip = extra;
+  } else {
+    usageTip = commandDictionary[key].usage;
+  }
     const embed = new DISCORD.RichEmbed()
       .setTitle(key.charAt(0).toUpperCase() + key.slice(1))
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as ``[command]`\nBoth grave accent (`) *and* single quote (\') may be used to trigger commands')
-      .addField('Command Info', '```' + commandDictionary[key].usage + '```*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
+      .addField('Command Info', '```' + usageTip + '```*Do not include brackets' + ' [] ' + 'while using commands*\nUse ``help [command]` to learn more')
       .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
