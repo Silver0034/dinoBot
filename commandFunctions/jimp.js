@@ -79,7 +79,7 @@ exports.profile = function(jimp,
 						});
 					});
 				});
-			//});
+			});
 		});
 	});
-});
+}
