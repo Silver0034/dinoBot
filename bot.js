@@ -593,9 +593,52 @@ commandDictionary['nick'] = {
   error: 'Use the command like this: `nick [set OR toggle]',
   usage: '**Usage:** `nick',
   doCommand: function(message, key, args, embedFooter) {
+    
+    function nickToggle() {
+      //Switch between two usernames
+      //Pull toggle number from database
+      sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+		  var nicknameToggleState = results[0].nicknameToggle;
+      var nickname = ''; 
+      }
+                  
+      try {
+      	if (nicknameToggleState == 0) {
+					nickname = results[0].nicknameOne;
+          //change the toggle number
+          sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+          //console.log('nickname toggled');
+        	});
+      	} else if (nicknameToggleState == 1) {
+        	nickname = results[0].nicknameTwo;
+          //change the toggle number
+					sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
+          //console.log('nickname toggled');
+          });
+        }          
+      }        
+      catch {
+      	errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
+      }
+                  
+
+    
+    
+    
+    
+    
+    }
+    
     if (args[0] == undefined) {
       errorUsage(message, key, embedFooter, 'args[0] is undefined');
+      
+    } else {
+      switch(args[0]) {
+        
+      }
     }
+  }
+};
    /*
     switch(args[0]) { 
       case 'set':
@@ -687,8 +730,6 @@ commandDictionary['nick'] = {
         
     }
     */
-  }
-};
 
 //Connect to Database
 sqldb.connect(function(err) {
