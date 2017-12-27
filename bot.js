@@ -289,6 +289,21 @@ commandDictionary['avatar'] = {
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
+			if (message.author.avatarURL == null) {
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Nickname')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('The User Specified has not set an Avatar')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return;
+			}
+			
       message.channel.send(message.author.username + '\'s Avatar: ' + message.author.avatarURL);
       return;
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
@@ -782,6 +797,38 @@ commandDictionary['nick'] = {
     
 
   }
+};
+commandDictionary['image'] = {
+  type: 'user',
+  emoji: ':busts_in_silhouette: ',  //put space after emoji 
+  error: 'Use the command like this: `image [link to PNG or JPG image]',
+  usage: '**Usage:** `image [link to PNG image]',
+  doCommand: function(message, key, args, embedFooter) {
+		//check if there is a link
+		try {
+			jimp.read('./assets/profile.png', function (err, profileBackground) {
+					.write('./assets/userBackground/profile-image-' + message.author.id + '.jpg');
+			});
+		} catch {
+			message.channel.startTyping();
+			const embed = new DISCORD.RichEmbed()
+				.setTitle('Profile Image')
+				.setAuthor(BOT.user.username, BOT.user.avatarURL)
+				.setColor(0x64FFDA)
+				.setDescription('The image linked to was either not found or in an incorrect format.\nBe sure to use an image hosted on the internet, not a local image.\nTry using the link found by right-clicking the image and selecting \'copy image address\' from the drop-down menu in your web browser.')
+				.setFooter(embedFooter)
+				.addBlankField(false)
+				.setThumbnail(commandDictionary[key].icon);
+			message.channel.stopTyping();
+			message.channel.send({embed});
+			return;
+	}	
+		//check if link is a png (maybe run it through jimp?)
+		//if error say the image is not the correct format
+		//no error save image to database
+		//database slot is userBackground
+		
+	}	
 };
    /*
     switch(args[0]) { 
