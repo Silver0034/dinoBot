@@ -638,7 +638,7 @@ commandDictionary['nick'] = {
     function nickToggle() {
       //Switch between two usernames
 			nickNumber();
-			debugLog('nickNumer found');
+			debugLog('nickNumber found').then(
 				try {
 					if (nicknameToggleState == 0) {
 						nickOne(message, results, nicknameToggleState, nickname);
@@ -660,7 +660,8 @@ commandDictionary['nick'] = {
 					message.channel.send({embed});   
 					return;
 				}
-      }
+			);
+    }
     
 		if (message.guild == null) {
 			message.channel.startTyping();
