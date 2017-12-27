@@ -859,7 +859,7 @@ commandDictionary['rep'] = {
 	error: 'Use the command like this: `rep [@user]',
 	usage: '**Usage** `rep [@user]',
 	doCommand: function(message, key, args, embedFooter) {
-		var currentDate = getFullYear() + '/' + getMonth() '/' + getDate();
+		var currentDate = getFullYear() + '/' + getMonth() + '/' + getDate();
 		debugLog(currentDate);
 		//check if args[0] is a valid user
 		//check if author gave rep same day as current day
