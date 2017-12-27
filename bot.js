@@ -599,7 +599,7 @@ commandDictionary['nick'] = {
       //Pull toggle number from database
       sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		  var nicknameToggleState = results[0].nicknameToggle;
-			debugLog('nicknameToggleState = ' = nicknameToggleState);
+			debugLog('nicknameToggleState = ' + nicknameToggleState);
       var nickname = ''; 
       });
                
