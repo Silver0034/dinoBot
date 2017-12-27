@@ -543,7 +543,7 @@ commandDictionary['nick'] = {
   timeout: 0,
 	emoji: ':name_badge: ',
   error: 'Use the command like this: `nick [set OR toggle]',
-  usage: '**Usage:** `nick OR `nick toggle``` ```\'nick 1 OR \'nick 2``` ```\'nick set 1 OR \'nick set 2```,
+  usage: '**Usage:** `nick OR `nick toggle``` ```\'nick 1 OR \'nick 2``` ```\'nick set 1 OR \'nick set 2```',
   doCommand: function(message, key, args, embedFooter) {
     
 		var nickname = '';
