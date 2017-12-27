@@ -861,6 +861,8 @@ commandDictionary['rep'] = {
 	doCommand: function(message, key, args, embedFooter) {
 		var findDate = Date(parseInt(message.createdTimestamp)).toLocaleString();
 		debugLog(findDate);
+		//Wed Dec 27 2017 16:01:11 GMT-0500 (EST)
+		
 		//check if args[0] is a valid user
 		//check if author gave rep same day as current day
 		//if not same date increment @user's rep by 1
@@ -999,19 +1001,7 @@ BOT.on('message', message => {
     if (err) throw err;
     //console.log(results);
   });
-  //Set Nicknames
-  sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
-    if (results[0].nicknameOne == null) {
-      sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.author.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
-        if (err) throw err;
-      });
-    }
-    if (results[0].nicknameTwo == null) {
-      sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.author.username) + " WHERE userID = " + message.author.id, function (err, results, fields) {
-        if (err) throw err;
-      });
-    }
-  });
+
   //console.log(message.author.username + ' updated in database');
   //message processing
 	if (message.guild) { //checks if in guild or a DM
