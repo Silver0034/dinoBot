@@ -573,7 +573,7 @@ commandDictionary['say'] = {
       errorUsage(message, key, embedFooter);
       return;
     } else {    
-      message.channel.send(sayMessage);
+      errorUsage(message, key, embedFooter);
       return;
     }
   }
