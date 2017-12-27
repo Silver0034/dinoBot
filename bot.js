@@ -812,36 +812,36 @@ commandDictionary['image'] = {
 		//`image_
 		var imagePath = message.content.substr(7);
 		
-		try {
-			jimp.read(imagePath, function (err, profileBackground) {
-					profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
-			});
-			message.channel.startTyping();
-			const embed = new DISCORD.RichEmbed()
-				.setTitle('Profile Image')
-				.setAuthor(BOT.user.username, BOT.user.avatarURL)
-				.setColor(0x64FFDA)
-				.setDescription('Your profile background image has been sucsessfully updated.')
-				.setFooter(embedFooter)
-				.addBlankField(false)
-				.setThumbnail(commandDictionary[key].icon);
-			message.channel.stopTyping();
-			message.channel.send({embed});
-			return;
-		} catch(err) {
-			message.channel.startTyping();
-			const embed = new DISCORD.RichEmbed()
-				.setTitle('Profile Image')
-				.setAuthor(BOT.user.username, BOT.user.avatarURL)
-				.setColor(0x64FFDA)
-				.setDescription('The image linked to was either not found or in an incorrect format.\nBe sure to use an image hosted on the internet, not a local image.\nTry using the link found by right-clicking the image and selecting \'copy image address\' from the drop-down menu in your web browser.')
-				.setFooter(embedFooter)
-				.addBlankField(false)
-				.setThumbnail(commandDictionary[key].icon);
-			message.channel.stopTyping();
-			message.channel.send({embed});
-			return;
-	}	
+		jimp.read(imagePath, function (err, profileBackground) {
+			try {
+				profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
+			} catch(err) {
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Profile Image')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('The image linked to was either not found or in an incorrect format.\nBe sure to use an image hosted on the internet, not a local image.\nTry using the link found by right-clicking the image and selecting \'copy image address\' from the drop-down menu in your web browser.')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return;
+			}	
+		});
+		message.channel.startTyping();
+		const embed = new DISCORD.RichEmbed()
+			.setTitle('Profile Image')
+			.setAuthor(BOT.user.username, BOT.user.avatarURL)
+			.setColor(0x64FFDA)
+			.setDescription('Your profile background image has been sucsessfully updated.')
+			.setFooter(embedFooter)
+			.addBlankField(false)
+			.setThumbnail(commandDictionary[key].icon);
+		message.channel.stopTyping();
+		message.channel.send({embed});
+		return; 
 		//check if link is a png (maybe run it through jimp?)
 		//if error say the image is not the correct format
 		//no error save image to database
