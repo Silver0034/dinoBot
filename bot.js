@@ -610,6 +610,7 @@ commandDictionary['nick'] = {
 								debugLog('setting nickname');
                 //succsess
 								message.channel.send(responseHead(message, key) + 'Your nickname has been updated to *' + nickname + '*');
+							embed('Nickname Toggle', '', '', '', '', '', 'Your nickname has been updated to *' + nickname + '*' , key)
               }, function(reason) {
                 //error because didn't have permission
 								errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
