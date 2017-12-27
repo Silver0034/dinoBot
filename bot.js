@@ -660,7 +660,7 @@ commandDictionary['nick'] = {
 					message.channel.send({embed});   
 					return;
 				}
-			);	
+			});	
 			}
     }
     
