@@ -583,7 +583,7 @@ commandDictionary['nick'] = {
 							return;		
 						case 'set':
 							switch(args[1]) {
-								case '1';
+								case '1':
 									//run function to set name 1
 									//`nick_set_1_
 									sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
@@ -603,7 +603,7 @@ commandDictionary['nick'] = {
 									return;
                 });
 									return;
-								case '2';
+								case '2':
 									//run function to set name 2
 									//`nick_set_2_
 									sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
