@@ -568,18 +568,18 @@ commandDictionary['nick'] = {
 				return;
 			} else {
 				if (args[0] == undefined) {
-					nickToggle();
+					nickToggle(message, results, nicknameToggleState, nickname);
 					return;
 				} else {
 					switch(args[0]) {
 						case 'toggle':
-							nickToggle();
+							nickToggle(message, results, nicknameToggleState, nickname);
 							return;
 						case '1':
-							nickOne();
+							nickOne(message, results, nicknameToggleState, nickname);
 							return;	
 						case '2':
-							nickTwo();
+							nickTwo(message, results, nicknameToggleState, nickname);
 							return;		
         
       		}
