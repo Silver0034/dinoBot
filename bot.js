@@ -593,6 +593,16 @@ commandDictionary['nick'] = {
   error: 'Use the command like this: `nick [set OR toggle]',
   usage: '**Usage:** `nick',
   doCommand: function(message, key, args) {
+    if (args[0]) {
+      //switch to next name
+    } else if (args[0] == 1) {
+      //switch to name 1
+    } else if (args[0] == 2) {
+      //switch to name 2
+    } else {
+      errorUsage(message, key, embedFooter, 'This is a test error message');
+    }
+   /*
     switch(args[0]) { 
       case 'set':
         if (args[2]) {
@@ -682,6 +692,7 @@ commandDictionary['nick'] = {
         });
         
     }
+    */
   }
 };
 
