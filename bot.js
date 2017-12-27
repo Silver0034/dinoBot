@@ -543,7 +543,7 @@ commandDictionary['nick'] = {
   timeout: 0,
 	emoji: ':name_badge: ',
   error: 'Use the command like this: `nick [set OR toggle]',
-  usage: '**Usage:** `nick',
+  usage: '**Usage:** `nick OR `nick toggle``` ```\'nick 1 OR \'nick 2``` ```\'nick set 1 OR \'nick set 2```,
   doCommand: function(message, key, args, embedFooter) {
     
 		var nickname = '';
@@ -581,7 +581,62 @@ commandDictionary['nick'] = {
 						case '2':
 							nickTwo(message, results, nicknameToggleState, nickname);
 							return;		
-        
+						case 'set':
+							switch(args[1]) {
+								case '1';
+									//run function to set name 1
+									//`nick_set_1_
+									sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+                  if (err) throw err;
+									//return embed
+									message.channel.startTyping();
+									const embed = new DISCORD.RichEmbed()
+										.setTitle('Nickname')
+										.setAuthor(BOT.user.username, BOT.user.avatarURL)
+										.setColor(0x64FFDA)
+										.setDescription('The nickname *' + message.content.substr(12) + '* has been saved in nickname slot 1.')
+										.setFooter(embedFooter)
+										.addBlankField(false)
+										.setThumbnail(commandDictionary[key].icon);
+									message.channel.stopTyping();
+									message.channel.send({embed}); 
+									return;
+                });
+									return;
+								case '2';
+									//run function to set name 2
+									//`nick_set_2_
+									sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+                  if (err) throw err;
+									//return embed
+									message.channel.startTyping();
+									const embed = new DISCORD.RichEmbed()
+										.setTitle('Nickname')
+										.setAuthor(BOT.user.username, BOT.user.avatarURL)
+										.setColor(0x64FFDA)
+										.setDescription('The nickname *' + message.content.substr(12) + '* has been saved in nickname slot 2.')
+										.setFooter(embedFooter)
+										.addBlankField(false)
+										.setThumbnail(commandDictionary[key].icon);
+									message.channel.stopTyping();
+									message.channel.send({embed}); 
+									return;
+                });
+									return;
+								//error due to not specifying number
+									message.channel.startTyping();
+									const embed = new DISCORD.RichEmbed()
+										.setTitle('Nickname')
+										.setAuthor(BOT.user.username, BOT.user.avatarURL)
+										.setColor(0x64FFDA)
+										.setDescription('Please be sure to specify which slot to save to.````nick set [1 OR 2]```')
+										.setFooter(embedFooter)
+										.addBlankField(false)
+										.setThumbnail(commandDictionary[key].icon);
+									message.channel.stopTyping();
+									message.channel.send({embed}); 
+									return;
+							}
       		}
     		}				
 			}
