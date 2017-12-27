@@ -867,12 +867,12 @@ commandDictionary['rep'] = {
 			var mention = message.mentions.users.array();
 			//Wed Dec 27 2017 16:01:11 GMT-0500 (EST)	
 			//check if args[0] is a valid user
-			if (mention.length == 1 && args[0] == mention[0]) {
+			if (mention.length == 1) {
 				
 				if (mention[0].id != message.author.id) {
 				
 					//check if author gave rep same day as current day
-					if (repLastDate.substr(15) != findDate.substr(15)) {
+					if (repLastDate.substr(15) != findDate.substr(15) || repLastDate == null) {
 						//give rep to mentioned user
 						sqldb.query("UPDATE user SET reputation = reputation + 1 WHERE userID = " + mention[0].id, function (err, results, fields) {
 							//update repLastDate
