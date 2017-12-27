@@ -815,6 +815,18 @@ commandDictionary['image'] = {
 		jimp.read(imagePath, function (err, profileBackground) {
 			try {
 				profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Profile Image')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('Your profile background image has been sucsessfully updated.')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return; 
 			} catch(err) {
 				message.channel.startTyping();
 				const embed = new DISCORD.RichEmbed()
@@ -830,18 +842,6 @@ commandDictionary['image'] = {
 				return;
 			}	
 		});
-		message.channel.startTyping();
-		const embed = new DISCORD.RichEmbed()
-			.setTitle('Profile Image')
-			.setAuthor(BOT.user.username, BOT.user.avatarURL)
-			.setColor(0x64FFDA)
-			.setDescription('Your profile background image has been sucsessfully updated.')
-			.setFooter(embedFooter)
-			.addBlankField(false)
-			.setThumbnail(commandDictionary[key].icon);
-		message.channel.stopTyping();
-		message.channel.send({embed});
-		return; 
 		//check if link is a png (maybe run it through jimp?)
 		//if error say the image is not the correct format
 		//no error save image to database
