@@ -816,17 +816,21 @@ commandDictionary['image'] = {
 			try {
 				profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
 				message.channel.startTyping();
-				const embed = new DISCORD.RichEmbed()
-					.setTitle('Profile Image')
-					.setAuthor(BOT.user.username, BOT.user.avatarURL)
-					.setColor(0x64FFDA)
-					.setDescription('Your profile background image has been sucsessfully updated.')
-					.setFooter(embedFooter)
-					.addBlankField(false)
-					.setThumbnail(commandDictionary[key].icon);
-				message.channel.stopTyping();
-				message.channel.send({embed});
-				return; 
+				
+				sqldb.query("UPDATE user SET userBackground = " + MYSQL.escape('./userContent/userBackground/profile-image-' + message.author.id + '.jpg') + " WHERE userID = " + message.author.id, function (err, results, fields) {
+					if (err) throw err;
+					const embed = new DISCORD.RichEmbed()
+						.setTitle('Profile Image')
+						.setAuthor(BOT.user.username, BOT.user.avatarURL)
+						.setColor(0x64FFDA)
+						.setDescription('Your profile background image has been sucsessfully updated.')
+						.setFooter(embedFooter)
+						.addBlankField(false)
+						.setThumbnail(commandDictionary[key].icon);
+					message.channel.stopTyping();
+					message.channel.send({embed});
+					return;
+				}); 
 			} catch(err) {
 				message.channel.startTyping();
 				const embed = new DISCORD.RichEmbed()
