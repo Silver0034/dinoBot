@@ -638,6 +638,7 @@ commandDictionary['nick'] = {
     function nickToggle() {
       //Switch between two usernames
 			nickNumber();
+			debugLog('nickNumer found');
 				try {
 					if (nicknameToggleState == 0) {
 						nickOne(message, results, nicknameToggleState, nickname);
