@@ -62,7 +62,7 @@ exports.profile = function(jimp,
 															.composite(avatar, 27, 94)
 															.composite(xp, 247, 464)
 															.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username)
-															.print(jimpFontMS36ptTitleBlack, 50, 200, rep)
+															.print(jimpFontMS36ptTitleBlack, 60, 250, rep)
 															.write(attachment, function() {
 																message.channel.send(EMOJIDINO + ' ' + message.author.username + '\'s Profile', {
 																	file: attachment
