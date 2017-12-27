@@ -600,33 +600,26 @@ commandDictionary['nick'] = {
       sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		  var nicknameToggleState = results[0].nicknameToggle;
 			debugLog('nicknameToggleState = ' + nicknameToggleState);
-      var nickname = ''; 
+      var nickname = '';
+				try {
+					if (nicknameToggleState == 0) {
+						nickname = results[0].nicknameOne;
+						//change the toggle number
+						sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+						//console.log('nickname toggled');
+						});
+					} else if (nicknameToggleState == 1) {
+						nickname = results[0].nicknameTwo;
+						//change the toggle number
+						sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
+						//console.log('nickname toggled');
+						});
+					}          
+				}        
+				catch(err) {
+					errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
+				}
       });
-               
-      try {
-      	if (nicknameToggleState == 0) {
-					nickname = results[0].nicknameOne;
-          //change the toggle number
-          sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
-          //console.log('nickname toggled');
-        	});
-      	} else if (nicknameToggleState == 1) {
-        	nickname = results[0].nicknameTwo;
-          //change the toggle number
-					sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
-          //console.log('nickname toggled');
-          });
-        }          
-      }        
-      catch(err) {
-      	errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
-      }
-                  
-
-    
-    
-    
-    
     
     }
     
