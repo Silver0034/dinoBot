@@ -669,7 +669,7 @@ commandDictionary['nick'] = {
 			//Switch between two usernames
 			try {
 				debugLog('try to toggle');
-				debugLog('attempts to toggle to name ' + nameToggleState);
+				debugLog('attempts to toggle to name');
 				if (nicknameToggleState == 0) {
 					nickOne(message, results, nicknameToggleState, nickname);
 				} else if (nicknameToggleState == 1) {
