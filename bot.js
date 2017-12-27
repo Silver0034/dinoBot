@@ -946,7 +946,6 @@ commandDictionary['profile'] = {
 																emoji.dino,
 																attachment,
 																sqldb);
-		}		
 	}
 };
    /*
