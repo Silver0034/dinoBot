@@ -860,13 +860,72 @@ commandDictionary['rep'] = {
 	usage: '**Usage** `rep [@user]',
 	doCommand: function(message, key, args, embedFooter) {
 		var findDate = Date(parseInt(message.createdTimestamp)).toLocaleString();
-		debugLog(findDate);
-		//Wed Dec 27 2017 16:01:11 GMT-0500 (EST)
-		
-		//check if args[0] is a valid user
-		//check if author gave rep same day as current day
-		//if not same date increment @user's rep by 1
-		//if same give error and reason
+		debugLog(findDate); 
+				
+		sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+			var repLastDate = results[0].repLastDate;
+			var mention = message.mentions.users.array();
+			//Wed Dec 27 2017 16:01:11 GMT-0500 (EST)	
+			//check if args[0] is a valid user
+			if (mention.length == 1 && args[0] == mention[0]) {
+				
+				if (mention[0].id != message.author.id) {
+				
+					//check if author gave rep same day as current day
+					if (repLastDate.substr(15) != findDate.substr(15)) {
+						//give rep to mentioned user
+						sqldb.query("UPDATE user SET reputation = reputation + 1 WHERE userID = " + mention[0].id, function (err, results, fields) {
+							//update repLastDate
+							sqldb.query("UPDATE user SET repLastDate = " + MYSQL.escape(findDate) + " WHERE userID = " + message.author.id, function (err, results, fields) { 
+								//Give sucsess message
+								message.channel.startTyping();
+								const embed = new DISCORD.RichEmbed()
+									.setTitle('Reputation')
+									.setAuthor(BOT.user.username, BOT.user.avatarURL)
+									.setColor(0x64FFDA)
+									.setDescription('You awarded 1 reputation point to ' + mention[0].username)
+									.setFooter(embedFooter)
+									.addBlankField(false)
+									.setThumbnail(commandDictionary[key].icon);
+								message.channel.stopTyping();
+								message.channel.send({embed});
+							}
+						}
+						
+					} else {
+						//error (only use once a day)
+						message.channel.startTyping();
+						const embed = new DISCORD.RichEmbed()
+							.setTitle('Reputation')
+							.setAuthor(BOT.user.username, BOT.user.avatarURL)
+							.setColor(0x64FFDA)
+							.setDescription('You may only award reputation once a day')
+							.setFooter(embedFooter)
+							.addBlankField(false)
+							.setThumbnail(commandDictionary[key].icon);
+						message.channel.stopTyping();
+						message.channel.send({embed});							
+					}
+
+				} else {
+					//error  (can't give self rep)
+					message.channel.startTyping();
+					const embed = new DISCORD.RichEmbed()
+						.setTitle('Reputation')
+						.setAuthor(BOT.user.username, BOT.user.avatarURL)
+						.setColor(0x64FFDA)
+						.setDescription('You are unable to award yourself reputation points')
+						.setFooter(embedFooter)
+						.addBlankField(false)
+						.setThumbnail(commandDictionary[key].icon);
+					message.channel.stopTyping();
+					message.channel.send({embed});
+				}
+
+			} else {
+				errorUsage(message, key, embedFooter, extra);
+			}
+		}
 	}
 };
    /*
@@ -1001,7 +1060,7 @@ BOT.on('message', message => {
     if (err) throw err;
     //console.log(results);
   });
-
+	
   //console.log(message.author.username + ' updated in database');
   //message processing
 	if (message.guild) { //checks if in guild or a DM
