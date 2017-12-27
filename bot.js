@@ -547,10 +547,44 @@ commandDictionary['nick'] = {
   doCommand: function(message, key, args, embedFooter) {
     
 		var nickname = '';
+		
 		//Pull toggle number from database
     sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 			var nicknameToggleState = results[0].nicknameToggle;
 			debugLog('nicknameToggleState = ' + nicknameToggleState);
+			
+			if (message.guild == null) {
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Nickname')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('The command ``nick` is only available in guilds (servers)')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});  
+				return;
+			} else {
+				if (args[0] == undefined) {
+					nickToggle();
+					return;
+				} else {
+					switch(args[0]) {
+						case 'toggle':
+							nickToggle();
+							return;
+						case '1':
+							nickOne();
+							return;	
+						case '2':
+							nickTwo();
+							return;		
+        
+      		}
+    		}				
+			}
 		});
 				
 		function nickOne(message, results, nicknameToggleState, nickname) {
@@ -658,38 +692,7 @@ commandDictionary['nick'] = {
 			debugLog('nickNumber found');
 		}
     
-		if (message.guild == null) {
-			message.channel.startTyping();
-			const embed = new DISCORD.RichEmbed()
-				.setTitle('Nickname')
-				.setAuthor(BOT.user.username, BOT.user.avatarURL)
-				.setColor(0x64FFDA)
-				.setDescription('The command ``nick` is only available in guilds (servers)')
-				.setFooter(embedFooter)
-				.addBlankField(false)
-				.setThumbnail(commandDictionary[key].icon);
-			message.channel.stopTyping();
-			message.channel.send({embed});  
-			return;
-		}
-		
-    if (args[0] == undefined) {
-      nickToggle();
-			return;
-    } else {
-      switch(args[0]) {
-				case 'toggle':
-					nickToggle();
-					return;
-				case '1':
-					nickOne();
-					return;	
-				case '2':
-					nickTwo();
-					return;		
-        
-      }
-    }
+
   }
 };
    /*
