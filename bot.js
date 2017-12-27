@@ -923,7 +923,7 @@ commandDictionary['rep'] = {
 				}
 
 			} else {
-				errorUsage(message, key, embedFooter, extra);
+				errorUsage(message, key, embedFooter);
 			}
 		});
 	}
