@@ -609,7 +609,7 @@ commandDictionary['nick'] = {
 						message.member.setNickname(nickname).then(function(value) {
 								debugLog('setting nickname');
                 //succsess
-								message.channel.send(responseHead + 'Your nickname has been updated to ' + nickname);
+								message.channel.send(responseHead() + 'Your nickname has been updated to ' + nickname);
               }, function(reason) {
                 //error because didn't have permission
 								errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
@@ -625,7 +625,7 @@ commandDictionary['nick'] = {
 						message.member.setNickname(nickname).then(function(value) {
 							//succsess
 							debugLog('setting nickname');
-							message.channel.send(responseHead + 'Your nickname has been updated to ' + nickname);
+							message.channel.send(responseHead() + 'Your nickname has been updated to ' + nickname);
             }, function(reason) {
 							//error because didn't have permission
 							errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
