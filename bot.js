@@ -600,7 +600,7 @@ commandDictionary['nick'] = {
       sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		  var nicknameToggleState = results[0].nicknameToggle;
       var nickname = ''; 
-      })
+      });
                
       try {
       	if (nicknameToggleState == 0) {
@@ -617,7 +617,7 @@ commandDictionary['nick'] = {
           });
         }          
       }        
-      catch {
+      catch(err) {
       	errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
       }
                   
