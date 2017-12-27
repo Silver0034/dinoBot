@@ -612,16 +612,17 @@ commandDictionary['nick'] = {
 								return;            }, function(reason) {
 							//error because didn't have permission
 							message.channel.startTyping();
-									const embed = new DISCORD.RichEmbed()
-										.setTitle('Nickname')
-										.setAuthor(BOT.user.username, BOT.user.avatarURL)
-										.setColor(0x64FFDA)
-										.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
-										.setFooter(embedFooter)
-										.addBlankField(false)
-										.setThumbnail(commandDictionary[key].icon);
-									message.channel.stopTyping();
-									message.channel.send({embed});                  
+							const embed = new DISCORD.RichEmbed()
+								.setTitle('Nickname')
+								.setAuthor(BOT.user.username, BOT.user.avatarURL)
+								.setColor(0x64FFDA)
+								.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
+								.setFooter(embedFooter)
+								.addBlankField(false)
+								.setThumbnail(commandDictionary[key].icon);
+							message.channel.stopTyping();
+							message.channel.send({embed});   
+							return;	
             });
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
@@ -630,12 +631,38 @@ commandDictionary['nick'] = {
 					}          
 				}        
 				catch(err) {
-					errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
+					message.channel.startTyping();
+					const embed = new DISCORD.RichEmbed()
+						.setTitle('Nickname')
+						.setAuthor(BOT.user.username, BOT.user.avatarURL)
+						.setColor(0x64FFDA)
+						.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
+						.setFooter(embedFooter)
+						.addBlankField(false)
+						.setThumbnail(commandDictionary[key].icon);
+					message.channel.stopTyping();
+					message.channel.send({embed});   
+					return;
 				}
       });
     
     }
     
+		if (message.guild == false) {
+			message.channel.startTyping();
+			const embed = new DISCORD.RichEmbed()
+				.setTitle('Nickname')
+				.setAuthor(BOT.user.username, BOT.user.avatarURL)
+				.setColor(0x64FFDA)
+				.setDescription('The command ``nick` is only available in guilds (servers))
+				.setFooter(embedFooter)
+				.addBlankField(false)
+				.setThumbnail(commandDictionary[key].icon);
+			message.channel.stopTyping();
+			message.channel.send({embed});  
+			return;
+		}
+		
     if (args[0] == undefined) {
       nickToggle();
 			return;
