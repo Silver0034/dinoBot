@@ -9,6 +9,7 @@ exports.profile = function(jimp,
 	console.log('1');
 	sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
 		var userBackground = results[0].userBackground;
+		var rep = results[0].reputation;
 		console.log('2');
 		console.log(userBackground);
 		//Assembling the picture
@@ -61,6 +62,7 @@ exports.profile = function(jimp,
 															.composite(avatar, 27, 94)
 															.composite(xp, 247, 464)
 															.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username)
+															.print(jimpFontMS36ptTitleBlack, 200, 50, rep)
 															.write(attachment, function() {
 																message.channel.send(EMOJIDINO + ' ' + message.author.username + '\'s Profile', {
 																	file: attachment
