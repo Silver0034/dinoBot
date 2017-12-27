@@ -21,7 +21,7 @@ exports.profile = function(jimp,
 			// Put Plate over Background
 			jimp.read(userBackground, function (err, background) {
 				console.log('3');
-					background.cover(800, 198)
+				background.cover(800, 198)
 				.blur(1)
 				.brightness(-0.2);
 				if (err) throw err;
@@ -56,7 +56,7 @@ exports.profile = function(jimp,
 															//Assemble Image
 															console.log('7');
 															image
-															//.composite(background, 0, 0)
+															.composite(background, 0, 0)
 															.composite(plate, 0, 0)
 															.composite(avatar, 27, 94)
 															.composite(xp, 247, 464)
