@@ -129,54 +129,6 @@ function errorUsage(message, key, embedFooter, extra) {
     message.channel.stopTyping();
     message.channel.send({embed});
 }
-//Standard Embed
-function embed(title, author, avatar, color, footer, thumbnail, message, key) {
-  message.channel.startTyping();
-  const embed = new DISCORD.RichEmbed()
-  //set title of embed
-  if (title != '') {
-    embed.setTitle(title)
-  } else {
-    if (key != undefined || key != null) {
-      embed.setTitle(key) 
-    } else {
-      embed.setTitle('Title Not Found')
-    }
-  }
-  //set author name
-  if (author != '') {
-    var embedAuthor = author;
-  } else {
-    var embedAuthor = BOT.user.username;
-  }
-  //set avatar name
-  if (avatar != '') {
-    var embedAvatar = avatar;
-  } else {
-    var embedAvatar = BOT.user.avatarURL;
-  }
-  //embed author and avatar
-  embed.setAuthor(embedAuthor, embedAvatar);
-  //set color
-  if (color != '') {
-    embed.setColor(color);
-  } else {
-    embed.setColor(0x64FFDA);
-  }
-  //set footer
-  if (footer != '') {
-    embed.setFooter(footer);
-  } else {
-    embed.setFooter('DinoBot™ | Discord.js Bot by Lodes Deisgn');
-  }
-  //set thumbnail
-  if (thumbnail != '') {
-    embed.setThumbnail(thumbnail);
-  } else if (commandDictionary[key].icon != undefined || commandDictionary[key].icon != null) {
-    embed.setThumbnail(commandDictionary[key].icon);
-  }
-  message.channel.stopTyping();
-}
 
 var emoji = new Object();
 emoji = {
@@ -610,7 +562,17 @@ commandDictionary['nick'] = {
 								debugLog('setting nickname');
                 //succsess
 								message.channel.send(responseHead(message, key) + 'Your nickname has been updated to *' + nickname + '*');
-							embed('Nickname Toggle', '', '', '', '', '', 'Your nickname has been updated to *' + nickname + '*' , key)
+								message.channel.startTyping();
+								const embed = new DISCORD.RichEmbed()
+									.setTitle('Nickname')
+									.setAuthor(BOT.user.username, BOT.user.avatarURL)
+									.setColor(0x64FFDA)
+									.setDescription('Your nickname has been updated to *' + nickname + '*')
+									.setFooter(embedFooter)
+									.addBlankField(false)
+									.setThumbnail(commandDictionary[key].icon);
+								message.channel.stopTyping();
+								message.channel.send({embed});
               }, function(reason) {
                 //error because didn't have permission
 								errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
