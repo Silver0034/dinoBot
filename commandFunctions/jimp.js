@@ -19,7 +19,7 @@ exports.profile = function(jimp,
 			if (err) throw err;
 			console.log('2.2');
 			// Put Plate over Background
-			//jimp.read(userBackground, function (err, background) {
+			jimp.read(userBackground, function (err, background) {
 				console.log('3');
 			//	background.cover(800, 198)
 			//	.blur(1)
