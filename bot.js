@@ -804,10 +804,30 @@ commandDictionary['image'] = {
   error: 'Use the command like this: `image [link to PNG or JPG image]',
   usage: '**Usage:** `image [link to PNG image]',
   doCommand: function(message, key, args, embedFooter) {
+		
+		if (args[0] == undefined || args[0] == null || args[0] == '') {
+			errorUsage(message, key, embedFooter, extra);
+			return;
+		}
+		//`image_
+		var imagePath = message.substr(7);
+		
 		try {
-			jimp.read('./assets/userBackground/default.png', function (err, profileBackground) {
+			jimp.read(imagePath, function (err, profileBackground) {
 					profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
 			});
+			message.channel.startTyping();
+			const embed = new DISCORD.RichEmbed()
+				.setTitle('Profile Image')
+				.setAuthor(BOT.user.username, BOT.user.avatarURL)
+				.setColor(0x64FFDA)
+				.setDescription('Your profile background image has been sucsessfully updated.')
+				.setFooter(embedFooter)
+				.addBlankField(false)
+				.setThumbnail(commandDictionary[key].icon);
+			message.channel.stopTyping();
+			message.channel.send({embed});
+			return;
 		} catch(err) {
 			message.channel.startTyping();
 			const embed = new DISCORD.RichEmbed()
