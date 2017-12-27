@@ -575,8 +575,18 @@ commandDictionary['nick'] = {
 								return;
               }, function(reason) {
                 //error because didn't have permission
-								errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
-              });
+								message.channel.startTyping();
+									const embed = new DISCORD.RichEmbed()
+										.setTitle('Nickname')
+										.setAuthor(BOT.user.username, BOT.user.avatarURL)
+										.setColor(0x64FFDA)
+										.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
+										.setFooter(embedFooter)
+										.addBlankField(false)
+										.setThumbnail(commandDictionary[key].icon);
+									message.channel.stopTyping();
+									message.channel.send({embed});        
+								});
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
 						debugLog('nickname toggled');
@@ -601,7 +611,18 @@ commandDictionary['nick'] = {
 								message.channel.send({embed});
 								return;            }, function(reason) {
 							//error because didn't have permission
-							errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
+							message.channel.startTyping();
+									const embed = new DISCORD.RichEmbed()
+										.setTitle('Nickname')
+										.setAuthor(BOT.user.username, BOT.user.avatarURL)
+										.setColor(0x64FFDA)
+										.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
+										.setFooter(embedFooter)
+										.addBlankField(false)
+										.setThumbnail(commandDictionary[key].icon);
+									message.channel.stopTyping();
+									message.channel.send({embed});        
+								});          
             });
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
