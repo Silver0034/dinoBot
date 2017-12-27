@@ -548,15 +548,13 @@ commandDictionary['nick'] = {
     
 		var nickname = '';
 		
-		function nickNumber() {
-			//Pull toggle number from database
-      sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
-				var nicknameToggleState = results[0].nicknameToggle;
-				debugLog('nicknameToggleState = ' + nicknameToggleState);
-				return;
-			});
-		}
-		
+		//Pull toggle number from database
+    sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+			var nicknameToggleState = results[0].nicknameToggle;
+			debugLog('nicknameToggleState = ' + nicknameToggleState);
+			return;
+		});
+				
 		function nickOne(message, results, nicknameToggleState, nickname) {
 			debugLog('recognizes toggle state as ' + nicknameToggleState);
 			nickname = results[0].nicknameOne;
@@ -636,30 +634,28 @@ commandDictionary['nick'] = {
 		}
 		
     function nickToggle() {
-      //Switch between two usernames
-			nickNumber().then(function(value) {
-				try {
-					if (nicknameToggleState == 0) {
-						nickOne(message, results, nicknameToggleState, nickname);
-					} else if (nicknameToggleState == 1) {
-						nickTwo(message, results, nicknameToggleState, nickname);
-					}          
-				}        
-				catch(err) {
-					message.channel.startTyping();
-					const embed = new DISCORD.RichEmbed()
-						.setTitle('Nickname')
-						.setAuthor(BOT.user.username, BOT.user.avatarURL)
-						.setColor(0x64FFDA)
-						.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
-						.setFooter(embedFooter)
-						.addBlankField(false)
-						.setThumbnail(commandDictionary[key].icon);
-					message.channel.stopTyping();
-					message.channel.send({embed});   
-					return;
-				}
-			});
+			//Switch between two usernames
+			try {
+				if (nicknameToggleState == 0) {
+					nickOne(message, results, nicknameToggleState, nickname);
+				} else if (nicknameToggleState == 1) {
+					nickTwo(message, results, nicknameToggleState, nickname);
+				}          
+			}        
+			catch(err) {
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Nickname')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});   
+				return;
+			}
 			debugLog('nickNumber found');
 		}
     
