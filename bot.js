@@ -592,7 +592,7 @@ commandDictionary['nick'] = {
 	emoji: ':name_badge: ',
   error: 'Use the command like this: `nick [set OR toggle]',
   usage: '**Usage:** `nick',
-  doCommand: function(message, key, args, endFooter) {
+  doCommand: function(message, key, args, embedFooter) {
     if (args[0]) {
       //switch to next name
     } else if (args[0] == 1) {
