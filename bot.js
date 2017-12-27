@@ -588,6 +588,7 @@ commandDictionary['nick'] = {
 		});
 				
 		function nickOne(message, results, nicknameToggleState, nickname) {
+			debugLog('Runs fn nickOne');
 			debugLog('recognizes toggle state as ' + nicknameToggleState);
 			nickname = results[0].nicknameOne;
 			debugLog('nickname1 is ' + results[0].nicknameOne);
@@ -627,6 +628,7 @@ commandDictionary['nick'] = {
 		}
 		
 		function nickTwo(message, results, nicknameToggleState, nickname) {
+			debugLog('Runs fn nickTwo');
 			debugLog('recognizes toggle state as ' + nicknameToggleState);
 			nickname = results[0].nicknameTwo;
 			debugLog('nickname1 is ' + results[0].nicknameTwo);
@@ -689,7 +691,6 @@ commandDictionary['nick'] = {
 				message.channel.send({embed});   
 				return;
 			}
-			debugLog('nickNumber found');
 		}
     
 
