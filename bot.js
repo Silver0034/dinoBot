@@ -546,6 +546,14 @@ commandDictionary['nick'] = {
   usage: '**Usage:** `nick',
   doCommand: function(message, key, args, embedFooter) {
     
+		function nickNumber() {
+			//Pull toggle number from database
+      sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+		  var nicknameToggleState = results[0].nicknameToggle;
+			debugLog('nicknameToggleState = ' + nicknameToggleState);
+      var nickname = '';
+		}
+		
 		function nickOne(message, results, nicknameToggleState, nickname) {
 			debugLog('recognizes toggle state as ' + nicknameToggleState);
 			nickname = results[0].nicknameOne;
@@ -626,11 +634,7 @@ commandDictionary['nick'] = {
 		
     function nickToggle() {
       //Switch between two usernames
-      //Pull toggle number from database
-      sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
-		  var nicknameToggleState = results[0].nicknameToggle;
-			debugLog('nicknameToggleState = ' + nicknameToggleState);
-      var nickname = '';
+			nickNumber();
 				try {
 					if (nicknameToggleState == 0) {
 						nickOne(message, results, nicknameToggleState, nickname);
