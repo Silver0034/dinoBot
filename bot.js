@@ -606,7 +606,8 @@ commandDictionary['nick'] = {
 						debugLog('recognizes toggle state as ' + nicknameToggleState);
 						nickname = results[0].nicknameOne;
 						debugLog('nickname1 is ' + results[0].nicknameOne);
-						message.guild.member.get(message.author.id).setNickname(nickname).then(function(value) {
+						message.member.setNickname(nickname).then(function(value) {
+								debugLog('setting nickname');
                 //succsess
 								message.channel.send(responseHead + 'Your nickname has been updated to ' + nickname);
               }, function(reason) {
@@ -621,8 +622,9 @@ commandDictionary['nick'] = {
 						debugLog('recognizes toggle state as ' + nicknameToggleState);
 						debugLog('nickname2 is ' + results[0].nicknameTwo);
 						nickname = results[0].nicknameTwo;
-						message.guild.member.get(message.author.id).setNickname(nickname).then(function(value) {
+						message.member.setNickname(nickname).then(function(value) {
 							//succsess
+							debugLog('setting nickname');
 							message.channel.send(responseHead + 'Your nickname has been updated to ' + nickname);
             }, function(reason) {
 							//error because didn't have permission
