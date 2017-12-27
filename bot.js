@@ -637,7 +637,7 @@ commandDictionary['nick'] = {
 		
     function nickToggle() {
       //Switch between two usernames
-			nickNumber().then(function() {
+			nickNumber().then(function(value) {
 				try {
 					if (nicknameToggleState == 0) {
 						nickOne(message, results, nicknameToggleState, nickname);
