@@ -806,7 +806,7 @@ commandDictionary['image'] = {
   doCommand: function(message, key, args, embedFooter) {
 		try {
 			jimp.read('./assets/profile.png', function (err, profileBackground) {
-					profileBackground.write('./assets/userBackground/profile-image-' + message.author.id + '.jpg');
+					profileBackground.write('./assets/userContent/userBackground/profile-image-' + message.author.id + '.jpg');
 			});
 		} catch(err) {
 			message.channel.startTyping();
