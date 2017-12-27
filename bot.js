@@ -654,7 +654,7 @@ commandDictionary['nick'] = {
 				.setTitle('Nickname')
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
-				.setDescription('The command ``nick` is only available in guilds (servers))
+				.setDescription('The command ``nick` is only available in guilds (servers)')
 				.setFooter(embedFooter)
 				.addBlankField(false)
 				.setThumbnail(commandDictionary[key].icon);
