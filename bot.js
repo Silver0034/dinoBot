@@ -859,7 +859,7 @@ commandDictionary['rep'] = {
 	error: 'Use the command like this: `rep [@user]',
 	usage: '**Usage** `rep [@user]',
 	doCommand: function(message, key, args, embedFooter) {
-		var findDate = new Date().getFullYear() + '/' + Date().getMonth() + '/' + Date().getTime();
+		var findDate = new Date();
 		debugLog(findDate);
 		var currentDate = getFullYear() + '/' + getMonth() + '/' + getDate();
 		debugLog(currentDate);
