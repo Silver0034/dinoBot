@@ -925,7 +925,7 @@ commandDictionary['rep'] = {
 			} else {
 				errorUsage(message, key, embedFooter, extra);
 			}
-		}
+		});
 	}
 };
    /*
