@@ -808,7 +808,7 @@ commandDictionary['image'] = {
 			jimp.read('./assets/profile.png', function (err, profileBackground) {
 					profileBackground.write('./assets/userBackground/profile-image-' + message.author.id + '.jpg');
 			});
-		} catch {
+		} catch(err) {
 			message.channel.startTyping();
 			const embed = new DISCORD.RichEmbed()
 				.setTitle('Profile Image')
