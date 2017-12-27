@@ -680,8 +680,11 @@ commandDictionary['nick'] = {
 					nickToggle();
 					return;
 				case '1':
-					nickToggle();
+					nickOne();
 					return;	
+				case '2':
+					nickTwo();
+					return;		
         
       }
     }
