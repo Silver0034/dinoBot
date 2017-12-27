@@ -552,7 +552,7 @@ commandDictionary['nick'] = {
 				var nicknameToggleState = results[0].nicknameToggle;
 				debugLog('nicknameToggleState = ' + nicknameToggleState);
 				var nickname = '';
-			}
+			});
 		}
 		
 		function nickOne(message, results, nicknameToggleState, nickname) {
