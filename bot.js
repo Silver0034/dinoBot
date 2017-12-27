@@ -889,8 +889,8 @@ commandDictionary['rep'] = {
 									.setThumbnail(commandDictionary[key].icon);
 								message.channel.stopTyping();
 								message.channel.send({embed});
-							})
-						}
+							});
+						});
 						
 					} else {
 						//error (only use once a day)
