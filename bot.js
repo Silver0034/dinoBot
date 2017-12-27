@@ -578,21 +578,105 @@ commandDictionary['say'] = {
     }
   }
 };
-commandDictionary['taste'] = {
-  type: 'fun',
-  emoji: ':fork_and_knife: ',  //put space after emoji 
-  error: 'Use the command like this: `taste [@user OR name]',
-  usage: '**Usage:** `taste [@user OR name]',
-  doCommand: function(message, key, args, embedFooter) {
-    if (!args[0]) {
-      errorUsage(message, key, embedFooter);
-      return;
-    } else {
-      message.channel.send(responseHead(message, key) + 'I think ' + args[0] + ' TASTEs ' + TASTE.generate());
-      return;
+commandDictionary['nick'] = {
+  type: 'user',
+  timeout: 0,
+	emoji: ':name_badge: ',
+  error: 'Use the command like this: `nick [set OR toggle]',
+  usage: '**Usage:** `nick',
+  doCommand: function(message, key, args) {
+    switch(args[0]) { 
+      case 'set':
+        if (args[2]) {
+          switch(args[1]) {
+            case '1':
+            case 'one':
+              //save args[2] in nickname slot 1
+              sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+                  if (err) throw err;
+                  message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 1.\nTo toggle between your two saved nicknames use "`name toggle"');
+                });
+              return;
+            case '2':
+            case 'two':
+              //save args[2] in nickname slot 2
+              sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+                  if (err) throw err;
+                  message.channel.send(responseHead(message, key) + '"' + message.content.substr(12) + '" has been recorded in name slot 2.\nTo toggle between your two saved nicknames use "`name toggle"');
+                });
+              return;
+          }
+          //if there is no nickname given
+          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name set [1 OR 2] [nickname]');
+          return;
+        } else {
+          //if there is no number selected
+          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name set [1 OR 2] [nickname]');
+        }
+        return;
+      case 'toggle':
+        //Switch between two usernames
+        //Pull toggle number from database
+        sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
+		      var nicknameToggleState = results[0].nicknameToggle;
+          var nickname = ''; 
+          
+          if (nicknameToggleState == 0) {
+            nickname = results[0].nicknameOne;
+            //change the toggle number
+            sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+              //console.log('nickname toggled');
+              });
+          } else if (nicknameToggleState == 1) {
+            nickname = results[0].nicknameTwo;
+              //change the toggle number
+            sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
+              //console.log('nickname toggled');
+            });
+          }
+  
+          //returns message depending on succsess of
+          //if statements below the function
+          function nicknameResult(nicknameResultVar) {
+            if (nicknameResultVar == false) {
+                console.log('a fail return; ' + nicknameResultVar);
+                message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
+                return;
+              } else {
+                console.log('a succeed return; ' + nicknameResultVar);
+                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
+                return;
+              }
+          }
+          if (message.guild) {
+            //check BOT has permissions to change nicknames
+            if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
+              //change nickname
+              //if error make log
+              var nicknameResultVar = false;
+              message.member.setNickname(nickname).then(function(value) {
+                nicknameResultVar = true;
+                nicknameResult(nicknameResultVar);
+              }, function(reason) {
+                nicknameResultVar = false;
+                nicknameResult(nicknameResultVar);
+              });
+              
+            } else {
+              //If does not have permission
+              message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
+            }
+          } else {
+            //not in a server (in a DM)
+            message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
+          }
+          return;
+        });
+        
     }
   }
 };
+
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
