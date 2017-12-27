@@ -657,9 +657,7 @@ commandDictionary['nick'] = {
 					message.channel.send({embed});   
 					return;
 				}
-      });
-    
-    }
+      }
     
 		if (message.guild == null) {
 			message.channel.startTyping();
