@@ -122,7 +122,7 @@ function errorUsage(message, key, embedFooter, extra) {
       .setAuthor(BOT.user.username, BOT.user.avatarURL)
       .setColor(0x64FFDA)
       .setDescription('Commands are formatted as ``[command]`\nBoth grave accent (`) *and* single quote (\') may be used to trigger commands')
-      .addField('Command Info', '```' + usageTip + '`*Do not include brackets [] while using commands*`\nUse ``help [command]` to learn more')
+      .addField('Command Info', '```' + usageTip + '````*Do not include brackets [] while using commands*`\nUse ``help [command]` to learn more')
       .setFooter(embedFooter)
       .addBlankField(false)
       .setThumbnail(commandDictionary[key].icon);
