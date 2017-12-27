@@ -648,7 +648,8 @@ commandDictionary['nick'] = {
     
     }
     
-		if (message.guild == false) {
+		debugLog(message.guild);
+		if (message.guild == '') {
 			message.channel.startTyping();
 			const embed = new DISCORD.RichEmbed()
 				.setTitle('Nickname')
