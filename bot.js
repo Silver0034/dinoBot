@@ -546,6 +546,45 @@ commandDictionary['nick'] = {
   usage: '**Usage:** `nick',
   doCommand: function(message, key, args, embedFooter) {
     
+		function nickOne(message, results, nicknameToggleState, nickname) {
+			debugLog('recognizes toggle state as ' + nicknameToggleState);
+			nickname = results[0].nicknameOne;
+			debugLog('nickname1 is ' + results[0].nicknameOne);
+			message.member.setNickname(nickname).then(function(value) {
+				debugLog('setting nickname');
+        //succsess
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Nickname')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('Your nickname has been updated to ***' + nickname + '***')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return;
+      }, function(reason) {
+       	//error because didn't have permission
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Nickname')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});        
+			});
+				//change the toggle number
+				sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+					debugLog('nickname toggled');
+				});
+		}
+		
     function nickToggle() {
       //Switch between two usernames
       //Pull toggle number from database
@@ -555,42 +594,7 @@ commandDictionary['nick'] = {
       var nickname = '';
 				try {
 					if (nicknameToggleState == 0) {
-						debugLog('recognizes toggle state as ' + nicknameToggleState);
-						nickname = results[0].nicknameOne;
-						debugLog('nickname1 is ' + results[0].nicknameOne);
-						message.member.setNickname(nickname).then(function(value) {
-								debugLog('setting nickname');
-                //succsess
-								message.channel.startTyping();
-								const embed = new DISCORD.RichEmbed()
-									.setTitle('Nickname')
-									.setAuthor(BOT.user.username, BOT.user.avatarURL)
-									.setColor(0x64FFDA)
-									.setDescription('Your nickname has been updated to ***' + nickname + '***')
-									.setFooter(embedFooter)
-									.addBlankField(false)
-									.setThumbnail(commandDictionary[key].icon);
-								message.channel.stopTyping();
-								message.channel.send({embed});
-								return;
-              }, function(reason) {
-                //error because didn't have permission
-								message.channel.startTyping();
-									const embed = new DISCORD.RichEmbed()
-										.setTitle('Nickname')
-										.setAuthor(BOT.user.username, BOT.user.avatarURL)
-										.setColor(0x64FFDA)
-										.setDescription('The command ``nick` is unavailable for users with permissions/roles higher than ' + BOT.user.username)
-										.setFooter(embedFooter)
-										.addBlankField(false)
-										.setThumbnail(commandDictionary[key].icon);
-									message.channel.stopTyping();
-									message.channel.send({embed});        
-								});
-						//change the toggle number
-						sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
-						debugLog('nickname toggled');
-						});
+						nickOne(message, results, nicknameToggleState, nickname);
 					} else if (nicknameToggleState == 1) {
 						debugLog('recognizes toggle state as ' + nicknameToggleState);
 						debugLog('nickname2 is ' + results[0].nicknameTwo);
@@ -648,7 +652,6 @@ commandDictionary['nick'] = {
     
     }
     
-		debugLog(message.guild);
 		if (message.guild == null) {
 			message.channel.startTyping();
 			const embed = new DISCORD.RichEmbed()
@@ -672,6 +675,9 @@ commandDictionary['nick'] = {
 				case 'toggle':
 					nickToggle();
 					return;
+				case '1':
+					nickToggle();
+					return;	
         
       }
     }
