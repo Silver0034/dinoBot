@@ -859,10 +859,8 @@ commandDictionary['rep'] = {
 	error: 'Use the command like this: `rep [@user]',
 	usage: '**Usage** `rep [@user]',
 	doCommand: function(message, key, args, embedFooter) {
-		var findDate = new Date();
+		var findDate = Date(parseInt(message.createdTimestamp)).toLocaleString();
 		debugLog(findDate);
-		var currentDate = getFullYear() + '/' + getMonth() + '/' + getDate();
-		debugLog(currentDate);
 		//check if args[0] is a valid user
 		//check if author gave rep same day as current day
 		//if not same date increment @user's rep by 1
