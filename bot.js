@@ -630,7 +630,7 @@ commandDictionary['nick'] = {
     }
     
     if (args[0] == undefined) {
-      errorUsage(message, key, embedFooter, 'args[0] is undefined');
+      nickToggle()
       
     } else {
       switch(args[0]) {
