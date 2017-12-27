@@ -810,7 +810,7 @@ commandDictionary['image'] = {
 			return;
 		}
 		//`image_
-		var imagePath = message.substr(7);
+		var imagePath = message.content.substr(7);
 		
 		try {
 			jimp.read(imagePath, function (err, profileBackground) {
