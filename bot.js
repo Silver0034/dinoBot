@@ -543,7 +543,7 @@ commandDictionary['nick'] = {
   timeout: 0,
 	emoji: ':name_badge: ',
   error: 'Use the command like this: `nick [set OR toggle]',
-  usage: '**Usage:** `nick OR `nick toggle``` ```\'nick 1 OR \'nick 2``` ```\'nick set 1 OR \'nick set 2```',
+  usage: '**Usage:** `nick OR `nick toggle``` ```\'nick [1 OR 2]``` ```\'nick set [1 OR 2]```',
   doCommand: function(message, key, args, embedFooter) {
     
 		var nickname = '';
@@ -582,6 +582,36 @@ commandDictionary['nick'] = {
 							nickTwo(message, results, nicknameToggleState, nickname);
 							return;		
 						case 'set':
+							if (args[1] != 1 && args[1] != 2) {
+								message.channel.startTyping();
+								const embed = new DISCORD.RichEmbed()
+									.setTitle('Nickname')
+									.setAuthor(BOT.user.username, BOT.user.avatarURL)
+									.setColor(0x64FFDA)
+									.setDescription('Please specify a slot to save in.```**Usage:** `nick set [1 OR 2] [name]```')
+									.setFooter(embedFooter)
+									.addBlankField(false)
+									.setThumbnail(commandDictionary[key].icon);
+								message.channel.stopTyping();
+								message.channel.send({embed});
+								return;
+
+							}
+							if (args[2] == '' || args[1] == undefined || args[1] == null) {
+								//return embed
+								message.channel.startTyping();
+								const embed = new DISCORD.RichEmbed()
+									.setTitle('Nickname')
+									.setAuthor(BOT.user.username, BOT.user.avatarURL)
+									.setColor(0x64FFDA)
+									.setDescription('Please specify a nickname to save.```**Usage:** `nick set [1 OR 2] [name]```')
+									.setFooter(embedFooter)
+									.addBlankField(false)
+									.setThumbnail(commandDictionary[key].icon);
+								message.channel.stopTyping();
+								message.channel.send({embed});
+								return;
+							}
 							switch(args[1]) {
 								case '1':
 									//run function to set name 1
