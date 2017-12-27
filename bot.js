@@ -644,10 +644,13 @@ commandDictionary['nick'] = {
     }
     
     if (args[0] == undefined) {
-      nickToggle()
-      
+      nickToggle();
+			return;
     } else {
       switch(args[0]) {
+				case 'toggle':
+					nickToggle();
+					return;
         
       }
     }
