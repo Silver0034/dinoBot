@@ -593,15 +593,8 @@ commandDictionary['nick'] = {
   error: 'Use the command like this: `nick [set OR toggle]',
   usage: '**Usage:** `nick',
   doCommand: function(message, key, args, embedFooter) {
-    if (args[0] == '' || args[0]) {
-      errorUsage(message, key, embedFooter, 'works');
-      //switch to next name
-    } else if (args[0] == 1) {
-      //switch to name 1
-    } else if (args[0] == 2) {
-      //switch to name 2
-    } else {
-      errorUsage(message, key, embedFooter, 'This is a test error message');
+    if (args[0] == undefined) {
+      errorUsage(message, key, embedFooter, 'args[0] is undefined');
     }
    /*
     switch(args[0]) { 
