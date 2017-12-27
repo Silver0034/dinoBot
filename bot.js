@@ -603,12 +603,16 @@ commandDictionary['nick'] = {
       var nickname = '';
 				try {
 					if (nicknameToggleState == 0) {
+						debugLog('recognizes toggle state as ' + nicknameToggleState);
 						nickname = results[0].nicknameOne;
+						debugLog('nickname1 is ' + results[0].nicknameOne);
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
 						//console.log('nickname toggled');
 						});
 					} else if (nicknameToggleState == 1) {
+						debugLog('recognizes toggle state as ' + nicknameToggleState);
+						debugLog('nickname2 is ' + results[0].nicknameTwo);
 						nickname = results[0].nicknameTwo;
 						//change the toggle number
 						sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
