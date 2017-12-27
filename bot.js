@@ -561,18 +561,18 @@ commandDictionary['nick'] = {
 						message.member.setNickname(nickname).then(function(value) {
 								debugLog('setting nickname');
                 //succsess
-								message.channel.send(responseHead(message, key) + 'Your nickname has been updated to *' + nickname + '*');
 								message.channel.startTyping();
 								const embed = new DISCORD.RichEmbed()
 									.setTitle('Nickname')
 									.setAuthor(BOT.user.username, BOT.user.avatarURL)
 									.setColor(0x64FFDA)
-									.setDescription('Your nickname has been updated to *' + nickname + '*')
+									.setDescription('Your nickname has been updated to ***' + nickname + '***')
 									.setFooter(embedFooter)
 									.addBlankField(false)
 									.setThumbnail(commandDictionary[key].icon);
 								message.channel.stopTyping();
 								message.channel.send({embed});
+								return;
               }, function(reason) {
                 //error because didn't have permission
 								errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
@@ -588,8 +588,18 @@ commandDictionary['nick'] = {
 						message.member.setNickname(nickname).then(function(value) {
 							//succsess
 							debugLog('setting nickname');
-							message.channel.send(responseHead(message, key) + 'Your nickname has been updated to *' + nickname + '*');
-            }, function(reason) {
+							message.channel.startTyping();
+								const embed = new DISCORD.RichEmbed()
+									.setTitle('Nickname')
+									.setAuthor(BOT.user.username, BOT.user.avatarURL)
+									.setColor(0x64FFDA)
+									.setDescription('Your nickname has been updated to ***' + nickname + '***')
+									.setFooter(embedFooter)
+									.addBlankField(false)
+									.setThumbnail(commandDictionary[key].icon);
+								message.channel.stopTyping();
+								message.channel.send({embed});
+								return;            }, function(reason) {
 							//error because didn't have permission
 							errorUsage(message, key, embedFooter, 'Nick is unavailble for users with permissions/roles higher than ' + BOT.user.username);           
             });
