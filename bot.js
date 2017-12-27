@@ -672,8 +672,10 @@ commandDictionary['nick'] = {
 			try {
 				debugLog('try to toggle');
 				if (nicknameToggleState == 0) {
+					debugLog('try to run fn nickOne()');
 					nickOne(message, results, nicknameToggleState, nickname);
 				} else if (nicknameToggleState == 1) {
+					debugLog('try to run fn nickTwo()');
 					nickTwo(message, results, nicknameToggleState, nickname);
 				}          
 			}        
