@@ -619,7 +619,7 @@ commandDictionary['nick'] = {
 				message.channel.send({embed});        
 			});
 				//change the toggle number
-				sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
+				sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
 					debugLog('nickname toggled');
 				});
 		}
