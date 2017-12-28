@@ -944,7 +944,10 @@ commandDictionary['profile'] = {
 			//check if args[0] is a valid user
 			if (mention.length == 1 && args[0] == mention[0]) {
 				target = mention[0];
-			} else if (mention.length > 2) {
+			} else if (args[0]) {
+				errorUsage(message, key, embedFooter);
+			}
+			if (args[1]) {
 				//error saying only mention 1 user
 				const embed = new DISCORD.RichEmbed()
 					.setTitle('Profile')
