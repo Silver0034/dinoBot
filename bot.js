@@ -988,7 +988,7 @@ commandDictionary['tag'] = {
 					message.channel.stopTyping();
 					message.channel.send({embed});
 					return;
-				}
+				});
 			}
 		} else {
 			errorUsage(message, key, embedFooter);
@@ -1035,7 +1035,7 @@ commandDictionary['desc'] = {
 					message.channel.stopTyping();
 					message.channel.send({embed});
 					return;
-				}
+				});
 			}
 		} else {
 			errorUsage(message, key, embedFooter);
