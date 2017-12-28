@@ -948,6 +948,49 @@ commandDictionary['profile'] = {
 																sqldb);
 	}
 };
+commandDictionary['tag'] = {
+	type: 'user',
+	timeout: 0,
+	emoji: ':robot: ',
+	error: 'Use the command like this: `tag [tagline]',
+	usage: '**Usage** `tag',
+	doCommand: function(message, key, args) {
+		var taglineInput = message.content.substr(5);
+		if (taglineInput != '' && taglineInput != ' ') {
+			if (taglineInput.length >= 40) {
+				//error; message too long
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Tagline')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('The tagline must be shorter than 40 characters.')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return;
+			} else {
+				//save message
+				message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Tagline')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('Your tagline, *"' + taglineInput + '"*, has been saved.')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return;
+			}
+		} else {
+			errorUsage(message, key, embedFooter);
+		}
+	}
+}
    /*
     switch(args[0]) { 
       case 'set':
@@ -1058,7 +1101,7 @@ process.on('unhandledRejection', console.error);
 BOT.on('message', message => {  
   var messageContent = message.content;
   var messageArguments = message.content.substring(1).split(' ');
-  var key = messageArguments[0];
+  var key = messageArguments[0].toLowerCase();
   var args = messageArguments.slice(1);
   var userID = message.author.id;
   
