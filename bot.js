@@ -981,7 +981,7 @@ commandDictionary['tag'] = {
 						.setTitle('Tagline')
 						.setAuthor(BOT.user.username, BOT.user.avatarURL)
 						.setColor(0x64FFDA)
-						.setDescription('Your tagline, *"' + taglineInput + '"*, has been saved.')
+						.setDescription('Your tagline has been saved.\n*"' + taglineInput + '"*')
 						.setFooter(embedFooter)
 						.addBlankField(false)
 						.setThumbnail(commandDictionary[key].icon);
@@ -1028,7 +1028,7 @@ commandDictionary['desc'] = {
 						.setTitle('Personal Description')
 						.setAuthor(BOT.user.username, BOT.user.avatarURL)
 						.setColor(0x64FFDA)
-						.setDescription('Your personal description, *"' + descriptionInput + '"*, has been saved.')
+						.setDescription('Your personal description has been saved.\n*"' + descriptionInput + '"*')
 						.setFooter(embedFooter)
 						.addBlankField(false)
 						.setThumbnail(commandDictionary[key].icon);
