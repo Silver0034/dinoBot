@@ -66,7 +66,7 @@ exports.profile = function(jimp,
 															.print(jimpFontMS36ptTitleWhite, 280, 146, message.author.username)
 															.print(jimpFontMS36ptTitleBlack, 65, 282, rep)
 															.print(jimpFontMS24pt700Black, 250, 200, tagline)
-															.print(jimpFontMS24pt700Black, 250, 250, description, 820)
+															.print(jimpFontMS24pt700Black, 250, 250, description, 620)
 															.write(attachment, function() {
 																message.channel.send(EMOJIDINO + ' ' + message.author.username + '\'s Profile', {
 																	file: attachment
