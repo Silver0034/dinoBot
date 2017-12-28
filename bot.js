@@ -935,7 +935,7 @@ commandDictionary['profile'] = {
 	emoji: ':robot: ',
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
-  doCommand: function(message, key, args) {
+  doCommand: function(message, key, args, embedFooter) {
 			//if there is no first argument
 			message.channel.startTyping();
 					var attachment = '';
@@ -954,7 +954,7 @@ commandDictionary['tag'] = {
 	emoji: ':robot: ',
 	error: 'Use the command like this: `tag [tagline]',
 	usage: '**Usage** `tag',
-	doCommand: function(message, key, args) {
+	doCommand: function(message, key, args, embedFooter) {
 		var taglineInput = message.content.substr(5);
 		if (taglineInput != '' && taglineInput != ' ') {
 			if (taglineInput.length >= 40) {
