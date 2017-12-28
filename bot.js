@@ -957,6 +957,7 @@ commandDictionary['tag'] = {
 	doCommand: function(message, key, args, embedFooter) {
 		var taglineInput = message.content.substr(5);
 		if (taglineInput != '' && taglineInput != ' ') {
+			//mysql will save up to 42 characters
 			if (taglineInput.length > 40) {
 				//error; message too long
 				message.channel.startTyping();
@@ -973,18 +974,68 @@ commandDictionary['tag'] = {
 				return;
 			} else {
 				//save message
+				sqldb.query("UPDATE user SET tagline = " + MYSQL.escape(taglineInput) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+					//sucsess message
+					message.channel.startTyping();
+					const embed = new DISCORD.RichEmbed()
+						.setTitle('Tagline')
+						.setAuthor(BOT.user.username, BOT.user.avatarURL)
+						.setColor(0x64FFDA)
+						.setDescription('Your tagline, *"' + taglineInput + '"*, has been saved.')
+						.setFooter(embedFooter)
+						.addBlankField(false)
+						.setThumbnail(commandDictionary[key].icon);
+					message.channel.stopTyping();
+					message.channel.send({embed});
+					return;
+				}
+			}
+		} else {
+			errorUsage(message, key, embedFooter);
+		}
+	}
+}
+commandDictionary['desc'] = {
+	type: 'user',
+	timeout: 0,
+	emoji: ':robot: ',
+	error: 'Use the command like this: `desc [your mini-bio here]',
+	usage: '**Usage** `desc [your mini-bio here]',
+	doCommand: function(message, key, args, embedFooter) {
+		var descriptionInput = message.content.substr(5);
+		if (descriptionInput != '' && descriptionInput != ' ') {
+			//mysql will save up to 126 characters
+			if (descriptionInput.length > 125) {
+				//error; message too long
 				message.channel.startTyping();
 				const embed = new DISCORD.RichEmbed()
-					.setTitle('Tagline')
+					.setTitle('Personal Description')
 					.setAuthor(BOT.user.username, BOT.user.avatarURL)
 					.setColor(0x64FFDA)
-					.setDescription('Your tagline, *"' + taglineInput + '"*, has been saved.')
+					.setDescription('Your personal description must be shorter than 125 characters.')
 					.setFooter(embedFooter)
 					.addBlankField(false)
 					.setThumbnail(commandDictionary[key].icon);
 				message.channel.stopTyping();
 				message.channel.send({embed});
 				return;
+			} else {
+				//save message
+				sqldb.query("UPDATE user SET description = " + MYSQL.escape(descriptionInput) + " WHERE userID = " + message.author.id, function (err, results, fields) {
+					//sucsess message
+					message.channel.startTyping();
+					const embed = new DISCORD.RichEmbed()
+						.setTitle('Personal Description')
+						.setAuthor(BOT.user.username, BOT.user.avatarURL)
+						.setColor(0x64FFDA)
+						.setDescription('Your personal description, *"' + descriptionInput + '"*, has been saved.')
+						.setFooter(embedFooter)
+						.addBlankField(false)
+						.setThumbnail(commandDictionary[key].icon);
+					message.channel.stopTyping();
+					message.channel.send({embed});
+					return;
+				}
 			}
 		} else {
 			errorUsage(message, key, embedFooter);
