@@ -1002,7 +1002,7 @@ commandDictionary['desc'] = {
 	error: 'Use the command like this: `desc [your mini-bio here]',
 	usage: '**Usage** `desc [your mini-bio here]',
 	doCommand: function(message, key, args, embedFooter) {
-		var descriptionInput = message.content.substr(5);
+		var descriptionInput = message.content.substr(6);
 		if (descriptionInput != '' && descriptionInput != ' ') {
 			//mysql will save up to 126 characters
 			if (descriptionInput.length > 125) {
