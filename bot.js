@@ -952,8 +952,8 @@ commandDictionary['tag'] = {
 	type: 'user',
 	timeout: 0,
 	emoji: ':robot: ',
-	error: 'Use the command like this: `tag [tagline]',
-	usage: '**Usage** `tag',
+	error: 'Use the command like this: `tag [your tagline here]',
+	usage: '**Usage** `tag [your tagline here]',
 	doCommand: function(message, key, args, embedFooter) {
 		var taglineInput = message.content.substr(5);
 		if (taglineInput != '' && taglineInput != ' ') {
