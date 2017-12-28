@@ -868,7 +868,6 @@ commandDictionary['rep'] = {
 			//Wed Dec 27 2017 16:01:11 GMT-0500 (EST)	
 			//check if args[0] is a valid user
 			if (mention.length == 1) {
-				
 				if (mention[0].id != message.author.id) {
 				
 					//check if author gave rep same day as current day
@@ -921,6 +920,7 @@ commandDictionary['rep'] = {
 						.setThumbnail(commandDictionary[key].icon);
 					message.channel.stopTyping();
 					message.channel.send({embed});
+					return;
 				}
 
 			} else {
@@ -938,14 +938,34 @@ commandDictionary['profile'] = {
   doCommand: function(message, key, args, embedFooter) {
 			//if there is no first argument
 			message.channel.startTyping();
-					var attachment = '';
-					JIMPFUNCTIONS.profile(jimp, 
-																message, 
-																key, 
-																args,
-																emoji.dino,
-																attachment,
-																sqldb);
+			var attachment = '';
+			var mention = message.mentions.users.array();
+			var target = message.author;
+			//check if args[0] is a valid user
+			if (mention.length == 1 && args[0] == mention[0]) {
+				target = mention[0];
+			} else if (mention.length > 2) {
+				//error saying only mention 1 user
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Profile')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription('Please only specify 1 user.')
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+				return;
+			}
+			JIMPFUNCTIONS.profile(jimp, 
+														message, 
+														key, 
+														args,
+														emoji.dino,
+														attachment,
+														sqldb,
+													 	target);
 	}
 };
 commandDictionary['tag'] = {
@@ -981,7 +1001,7 @@ commandDictionary['tag'] = {
 						.setTitle('Tagline')
 						.setAuthor(BOT.user.username, BOT.user.avatarURL)
 						.setColor(0x64FFDA)
-						.setDescription('Your tagline has been saved.\n*"' + taglineInput + '"*')
+						.setDescription('Your tagline has been saved.\n\n*"' + taglineInput + '"*')
 						.setFooter(embedFooter)
 						.addBlankField(false)
 						.setThumbnail(commandDictionary[key].icon);
@@ -1028,7 +1048,7 @@ commandDictionary['desc'] = {
 						.setTitle('Personal Description')
 						.setAuthor(BOT.user.username, BOT.user.avatarURL)
 						.setColor(0x64FFDA)
-						.setDescription('Your personal description has been saved.\n*"' + descriptionInput + '"*')
+						.setDescription('Your personal description has been saved.\n\n*"' + descriptionInput + '"*')
 						.setFooter(embedFooter)
 						.addBlankField(false)
 						.setThumbnail(commandDictionary[key].icon);
