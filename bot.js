@@ -946,6 +946,7 @@ commandDictionary['profile'] = {
 				target = mention[0];
 			} else if (args[0]) {
 				errorUsage(message, key, embedFooter);
+				return;
 			}
 			if (args[1]) {
 				//error saying only mention 1 user
