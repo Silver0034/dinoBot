@@ -957,7 +957,7 @@ commandDictionary['tag'] = {
 	doCommand: function(message, key, args, embedFooter) {
 		var taglineInput = message.content.substr(5);
 		if (taglineInput != '' && taglineInput != ' ') {
-			if (taglineInput.length >= 40) {
+			if (taglineInput.length > 40) {
 				//error; message too long
 				message.channel.startTyping();
 				const embed = new DISCORD.RichEmbed()
