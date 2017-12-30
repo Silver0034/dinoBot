@@ -286,6 +286,7 @@ commandDictionary['avatar'] = {
   usage: '**Usage:** `avatar [target]',
   doCommand: function(message, key, args) {
     var avatarMention = message.mentions.users.array();
+		debugLog(avatarMention);
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
@@ -948,21 +949,7 @@ commandDictionary['profile'] = {
 				errorUsage(message, key, embedFooter);
 				message.channel.stopTyping();
 				return;
-			}
-			if (args[1]) {
-				//error saying only mention 1 user
-				const embed = new DISCORD.RichEmbed()
-					.setTitle('Profile')
-					.setAuthor(BOT.user.username, BOT.user.avatarURL)
-					.setColor(0x64FFDA)
-					.setDescription('Please only specify 1 user.')
-					.setFooter(embedFooter)
-					.addBlankField(false)
-					.setThumbnail(commandDictionary[key].icon);
-				message.channel.stopTyping();
-				message.channel.send({embed});
-				return;
-			}
+		
 			JIMPFUNCTIONS.profile(jimp, 
 														message, 
 														key, 
