@@ -1096,24 +1096,12 @@ commandDictionary['monster'] = {
       .addField('*Please Note:*', 'This command only works with monsters found in the "basic rules" posted on D&D Beyond');
       message.channel.stopTyping();
       message.channel.send({embed});
-    } 
-		
-		/*
-		
-		else {
+    } else {
       //if args defined
       //if link valid
       if () {
-      //post information    
-      } else {
-      embed
-        .setTitle('Monster Not Found')
-        .setDescription('The Monster you searched for is not on D&D Beyond.');
-        message.channel.stopTyping();
-        message.channel.send({embed});
-      }
-    }
-      
+      //post information
+				      
       var scrapeInput = args.join('-');
       console.log(scrapeInput);
 
@@ -1314,7 +1302,15 @@ commandDictionary['monster'] = {
       message.channel.stopTyping();
       message.channel.send({embed});
       return;
-    }); */
+    });
+      } else {
+      embed
+        .setTitle('Monster Not Found')
+        .setDescription('The Monster you searched for is not on D&D Beyond.');
+        message.channel.stopTyping();
+        message.channel.send({embed});
+      }
+    }
   }
 };
 
