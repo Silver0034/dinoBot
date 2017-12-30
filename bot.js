@@ -820,6 +820,7 @@ commandDictionary['image'] = {
 		
 		jimp.read(imagePath, function (err, profileBackground) {
 			try {
+				background.cover(400, 99)
 				profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
 				message.channel.startTyping();
 				
