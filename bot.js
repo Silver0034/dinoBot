@@ -946,7 +946,7 @@ commandDictionary['profile'] = {
 			debugLog('Metions: ' + mention);
 			debugLog('Target: ' + target);
 			//check if args[0] is a valid user
-			if (mention.length == 1 && args[0] == mention[0]) {
+			if (mention.length == 1 && args[0] == mention[0].id) {
 				debugLog('args[0] is equal to a valid user');
 				target = mention[0];
 			}/* else if (args[0]) {
