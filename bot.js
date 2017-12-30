@@ -162,16 +162,16 @@ commandDictionary['help'] = {
       var helpUser = new Array();
       var helpDnd = new Array();
     	for (var keyIter in commandDictionary) {
-        if (commandDictionary[keyIter] == 'info') {
+        if (commandDictionary[keyIter].type == 'info') {
           helpInfo.push(keyIter);
         }
-        if (commandDictionary[keyIter] == 'fun') {
+        if (commandDictionary[keyIter].type == 'fun') {
           helpFun.push(keyIter);
         }
-        if (commandDictionary[keyIter] == 'user') {
+        if (commandDictionary[keyIter].type == 'user') {
           helpUser.push(keyIter);
         }
-        if (commandDictionary[keyIter] == 'dnd') {
+        if (commandDictionary[keyIter].type == 'dnd') {
           helpDnd.push(keyIter);
         }
       }
