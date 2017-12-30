@@ -936,33 +936,32 @@ commandDictionary['profile'] = {
 	emoji: ':robot: ',
   error: 'Use the command like this: `profile',
   usage: '**Usage:** `profile',
-  doCommand: function(message, key, args, embedFooter) {
-			//if there is no first argument
-			message.channel.startTyping();
-			debugLog('Starting command');
-			var attachment = '';
-			var mention = message.mentions.users.array();
-			var target = message.author;
-			debugLog('Metions: ' + mention);
-			debugLog('Target: ' + target);
-			debugLog('args[0]: ' + args[0]);
-			//check if args[0] is a valid user
-			if (args[1] != undefined) {
-				errorUsage(message, key, embedFooter)
-				message.channel.stopTyping();
-				return;
-			}
-			if (mention.length == 1 && args[0].replace('!', '') == mention[0]) {
-				debugLog('args[0] (after edit): ' + args[0].replace('!', ''));
-				debugLog('args[0] is equal to a valid user');
-				target = mention[0];
-			} else if (args[0] != undefined) {
-				debugLog('args[0] is NOT equal to a valid user');
-				errorUsage(message, key, embedFooter);
-				message.channel.stopTyping();
-				return;	
-			}
-			debugLog('attempt to generate profile card');
+	doCommand: function(message, key, args, embedFooter) {
+		//if there is no first argument
+		message.channel.startTyping();
+		debugLog('Starting command');
+		var attachment = '';
+		var mention = message.mentions.users.array();
+		var target = message.author;
+		debugLog('Metions: ' + mention);
+		debugLog('Target: ' + target);
+		debugLog('args[0]: ' + args[0]);
+		//check if args[0] is a valid user
+		if (args[1] != undefined) {
+			errorUsage(message, key, embedFooter)
+			message.channel.stopTyping();
+			return;
+		} else if (mention.length == 1 && args[0].replace('!', '') == mention[0]) {
+			debugLog('args[0] (after edit): ' + args[0].replace('!', ''));
+			debugLog('args[0] is equal to a valid user');
+			target = mention[0];
+		} else if (args[0] != undefined) {
+			debugLog('args[0] is NOT equal to a valid user');
+			errorUsage(message, key, embedFooter);
+			message.channel.stopTyping();
+			return;	
+		} else {
+		debugLog('attempt to generate profile card');
 			JIMPFUNCTIONS.profile(jimp, 
 														message, 
 														key, 
@@ -970,7 +969,8 @@ commandDictionary['profile'] = {
 														emoji.dino,
 														attachment,
 														sqldb,
-													 	target);
+														target);	
+		}
 	}
 };
 commandDictionary['tag'] = {
