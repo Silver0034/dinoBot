@@ -286,7 +286,7 @@ commandDictionary['avatar'] = {
   usage: '**Usage:** `avatar [target]',
   doCommand: function(message, key, args) {
     var avatarMention = message.mentions.users.array();
-		debugLog(avatarMention);
+		debugLog(avatarMention)
     var avatarReturn = responseHead(message, key) + '\n'; 
     //if no mentions return sender's avatar  
     if (avatarMention.length < 1) {
