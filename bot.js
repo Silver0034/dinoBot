@@ -947,15 +947,20 @@ commandDictionary['profile'] = {
 			debugLog('Target: ' + target);
 			debugLog('args[0]: ' + args[0]);
 			//check if args[0] is a valid user
+			if (args[1] != undefined) {
+				errorUsage(message, key, embedFooter)
+				message.channel.stopTyping();
+			}
 			if (mention.length == 1 && args[0].replace('!', '') == mention[0]) {
+				debugLog('args[0] (after edit): ' + args[0].replace('!', ''));
 				debugLog('args[0] is equal to a valid user');
 				target = mention[0];
-			}/* else if (args[0]) {
+			} else if (args[0] != undefined) {
 				debugLog('args[0] is NOT equal to a valid user');
 				errorUsage(message, key, embedFooter);
 				message.channel.stopTyping();
-				return;
-		*/
+				return;	
+			}
 			debugLog('attempt to generate profile card');
 			JIMPFUNCTIONS.profile(jimp, 
 														message, 
@@ -965,7 +970,6 @@ commandDictionary['profile'] = {
 														attachment,
 														sqldb,
 													 	target);
-		//}
 	}
 };
 commandDictionary['tag'] = {
