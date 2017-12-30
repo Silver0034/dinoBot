@@ -820,8 +820,8 @@ commandDictionary['image'] = {
 		
 		jimp.read(imagePath, function (err, profileBackground) {
 			try {
-				background.cover(400, 99)
-				profileBackground.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
+				profileBackground.cover(400, 99)
+				.write('./userContent/userBackground/profile-image-' + message.author.id + '.jpg');
 				message.channel.startTyping();
 				
 				sqldb.query("UPDATE user SET userBackground = " + MYSQL.escape('./userContent/userBackground/profile-image-' + message.author.id + '.jpg') + " WHERE userID = " + message.author.id, function (err, results, fields) {
