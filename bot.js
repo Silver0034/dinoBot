@@ -949,12 +949,12 @@ commandDictionary['profile'] = {
 			if (mention.length == 1 && args[0] == mention[0]) {
 				debugLog('args[0] is equal to a valid user');
 				target = mention[0];
-			} else if (args[0]) {
+			}/* else if (args[0]) {
 				debugLog('args[0] is NOT equal to a valid user');
 				errorUsage(message, key, embedFooter);
 				message.channel.stopTyping();
 				return;
-		
+		*/
 			debugLog('attempt to generate profile card');
 			JIMPFUNCTIONS.profile(jimp, 
 														message, 
