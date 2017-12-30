@@ -950,6 +950,7 @@ commandDictionary['profile'] = {
 			if (args[1] != undefined) {
 				errorUsage(message, key, embedFooter)
 				message.channel.stopTyping();
+				return;
 			}
 			if (mention.length == 1 && args[0].replace('!', '') == mention[0]) {
 				debugLog('args[0] (after edit): ' + args[0].replace('!', ''));
