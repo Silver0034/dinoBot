@@ -1073,97 +1073,247 @@ commandDictionary['desc'] = {
 		}
 	}
 }
-   /*
-    switch(args[0]) { 
-      case 'set':
-        if (args[2]) {
-          switch(args[1]) {
-            case '1':
-            case 'one':
-              //save args[2] in nickname slot 1
-              sqldb.query("UPDATE user SET nicknameOne = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
-                  if (err) throw err;
-                  message.channel.send(responseHead(message, key) + '"' + args[2] + '" has been recorded in name slot 1.\nTo toggle between your two saved nicknames use "`name toggle"');
-                });
-              return;
-            case '2':
-            case 'two':
-              //save args[2] in nickname slot 2
-              sqldb.query("UPDATE user SET nicknameTwo = " + MYSQL.escape(message.content.substr(12)) + " WHERE userID = " + message.author.id, function (err, results, fields) {
-                  if (err) throw err;
-                  message.channel.send(responseHead(message, key) + '"' + message.content.substr(12) + '" has been recorded in name slot 2.\nTo toggle between your two saved nicknames use "`name toggle"');
-                });
-              return;
-          }
-          //if there is no nickname given
-          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name set [1 OR 2] [nickname]');
-          return;
-        } else {
-          //if there is no number selected
-          message.channel.send(responseHead(message, key) + 'Please use the command as follows: `name set [1 OR 2] [nickname]');
-        }
-        return;
-      case 'toggle':
-        //Switch between two usernames
-        //Pull toggle number from database
-        sqldb.query("SELECT * FROM user WHERE userID = " + message.author.id, function (err, results, fields) {
-		      var nicknameToggleState = results[0].nicknameToggle;
-          var nickname = ''; 
-          
-          if (nicknameToggleState == 0) {
-            nickname = results[0].nicknameOne;
-            //change the toggle number
-            sqldb.query("UPDATE user SET nicknameToggle = 1 WHERE userID = " + message.author.id, function (err, results, fields) {
-              //console.log('nickname toggled');
-              });
-          } else if (nicknameToggleState == 1) {
-            nickname = results[0].nicknameTwo;
-              //change the toggle number
-            sqldb.query("UPDATE user SET nicknameToggle = 0 WHERE userID = " + message.author.id, function (err, results, fields) {
-              //console.log('nickname toggled');
-            });
-          }
-  
-          //returns message depending on succsess of
-          //if statements below the function
-          function nicknameResult(nicknameResultVar) {
-            if (nicknameResultVar == false) {
-                console.log('a fail return; ' + nicknameResultVar);
-                message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change the nickname of users with a lower rank than me');
-                return;
-              } else {
-                console.log('a succeed return; ' + nicknameResultVar);
-                message.channel.send(responseHead(message, key) + 'Your nickname has been changed to ' + nickname);
-                return;
-              }
-          }
-          if (message.guild) {
-            //check BOT has permissions to change nicknames
-            if (message.guild.members.get(BOT.user.id).hasPermission("MANAGE_NICKNAMES") && message.guild.members.get(BOT.user.id).hasPermission("CHANGE_NICKNAME")) {
-              //change nickname
-              //if error make log
-              var nicknameResultVar = false;
-              message.member.setNickname(nickname).then(function(value) {
-                nicknameResultVar = true;
-                nicknameResult(nicknameResultVar);
-              }, function(reason) {
-                nicknameResultVar = false;
-                nicknameResult(nicknameResultVar);
-              });
-              
-            } else {
-              //If does not have permission
-              message.channel.send(responseHead(message, key) + 'I\'m sorry, I do not have permissions to manage nicknames on this server.');
-            }
-          } else {
-            //not in a server (in a DM)
-            message.channel.send(responseHead(message, key) + 'I\'m sorry, I can only change your nickname in a server.');
-          }
-          return;
-        });
-        
+commandDictionary['monster'] = {
+  timeout: 0,
+  icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/MonsterIcon.png?raw=true',
+	emoji: ':man_dancing: ',
+  error: 'Use the command like this: `monster [monster name]',
+  usage: '**Usage:** `monster [monster name]',
+  doCommand: function(message, key, args, embedFooter) {
+    message.channel.startTyping();
+    const embed = new DISCORD.RichEmbed()
+          .setAuthor(BOT.user.username, BOT.user.avatarURL)
+          .setColor(0x64FFDA)
+          .setThumbnail(commandDictionary[key].icon)
+          .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', commandDictionary[key].icon);
+    //if args not defined
+    if (args == '' || args == undefined || args == null) {
+    //return error message
+      embed
+      .setTitle('Incorrect Format')
+      .setDescription('There was no monster specified')
+      .addField('*Please Specify a Monster*', '```'+ commandDictionary[key].usage + '```')
+      .addField('*Please Note:*', 'This command only works with monsters found in the "basic rules" posted on D&D Beyond');
+      message.channel.stopTyping();
+      message.channel.send({embed});
+    } else {
+      //if args defined
+      //if link valid
+      if () {
+      //post information    
+      } else {
+      embed
+        .setTitle('Monster Not Found')
+        .setDescription('The Monster you searched for is not on D&D Beyond.');
+        message.channel.stopTyping();
+        message.channel.send({embed});
+      }
     }
-    */
+      
+      var scrapeInput = args.join('-');
+      console.log(scrapeInput);
+
+      message.channel.startTyping();          
+
+      var scrapeURL = "https://www.dndbeyond.com/monsters/";
+      scrapeURL = scrapeURL + scrapeInput;        
+
+      SCRAPEIT(scrapeURL, {
+
+        title: ".monster-name",
+        descShort: ".details-item",
+        // Nested list
+        abilityScore: {
+          listItem: ".score"
+        },
+        abilityModifier: {
+          listItem: ".modifier"
+        },
+        quickPrimary: {
+          listItem: ".primary"
+        },
+        quickSecondary: {
+          listItem: ".secondary"
+        },
+        statsTitle: {
+          listItem: ".title",
+        },
+        statsDescription: {
+          listItem: ".description",
+        },
+        strong: {
+          listItem: "strong",
+        },
+        strong: {
+          listItem: "strong",
+        },
+        moreInfoContent: {
+          selector: ".more-info-content",
+          how: "html"
+        },
+        moreInfoPlain: {
+          selector: ".more-info-content"
+        },
+        monsterImage: {
+          selector: ".monster-image",
+          attr: "src"
+        },
+        errorPageTitle: {
+          selector: ".error-page-title",
+          how: "text"
+        },
+    },
+      (err, page) => {
+      //console.log(err);
+
+      if (page.errorPageTitle == 'Page Not Found') {
+        const embed = new DISCORD.RichEmbed()
+          .setTitle('Monster Not Found')
+          .setAuthor(BOT.user.username, BOT.user.avatarURL)
+          .setColor(0x64FFDA)
+          .setDescription('The Monster you searched for is not on D&D Beyond.')
+          .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
+          .setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
+          .setThumbnail(commandDictionary[key].icon);
+        message.channel.stopTyping();
+        message.channel.send({embed});
+        return;
+      }
+
+      var abilityScoreArray = page["abilityScore"];
+      var abilityModifierArray = page["abilityModifier"];
+      var quickPrimaryArray = page["quickPrimary"];
+      var quickSecondaryArray = page["quickSecondary"];
+      var statsTitle = page["statsTitle"];
+      var statsDescription = page["statsDescription"];
+      var strongArray = page["strong"];
+      var moreInfoContent = page["moreInfoContent"] + "";
+
+      var proficiencyValue = '';
+      var featsLoopArray = moreInfoContent.split('Actions\r\n');
+      var featsLoopPlaceholder = featsLoopArray[0];
+      var featsValueArray = [];
+      var featsValueString = '';
+      var actionsValueArray = [];
+      var actionsValueString = '';
+      var monsterImageURL = page.monsterImage;
+
+
+      if (page.monsterImage == undefined) {
+        const embed = new DISCORD.RichEmbed()
+          .setTitle('Monster Not Available')
+          .setAuthor(BOT.user.username, BOT.user.avatarURL)
+          .setColor(0x64FFDA)
+          .setDescription('I only have acsess to monsters defined by the "basic rules"')
+          .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
+          .setThumbnail(commandDictionary[key].icon);
+        message.channel.stopTyping();
+        message.channel.send({embed});
+        return;
+      }
+
+      if (page.monsterImage.includes('https:') == false) {
+        monsterImageURL = 'https:' + page.monsterImage;
+      }
+
+      var quickContent = [];
+
+      for (q = 0; q < page.quickPrimary.length; q++) {
+        if (page.quickSecondary[q]) {
+          quickContent[q] = page.quickPrimary[q] + ' ' + page.quickSecondary[q];
+        } else {
+          quickContent[q] = page.quickPrimary[q];
+        }
+
+      }
+
+      //This is how many fields are defined in the const
+      var fieldCount = 2;
+      const embed = new DISCORD.RichEmbed()
+        .setTitle(page["title"])
+        .setAuthor(BOT.user.username, BOT.user.avatarURL)
+        .setColor(0x64FFDA)
+        .setDescription(page["descShort"])
+        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "commandDictionary[key].icon")
+        .setImage(monsterImageURL)
+        .setThumbnail(commandDictionary[key].icon)
+        .setURL(scrapeURL)
+        //Abilities Section          
+        .addField("__**Abilities**__",
+                  emoji.str + " **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
+                  "  " + emoij.dex + " **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
+                  "  " + emoij.con + " **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
+                  emoij.int + " **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
+                  "  " + emoij.wis + " **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
+                  "  " + emoij.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
+                  , false)
+        //Secondary Information
+        .addField("__**Secondary Stats**__",
+                 "**" + page.statsTitle[6] + "**: " + quickContent[0] + "\n" +
+                 "**" + page.statsTitle[7] + "**: " + quickContent[1] + "\n" +
+                 "**" + page.statsTitle[8] + "**: " + quickContent[2] + "\n" +
+                 "**" + page.statsTitle[9] + "**: " + quickContent[3]
+                 , false);
+
+      //Proficiency Fields
+      for (i = 0; i < page.statsDescription.length; i++) { 
+        z = i + 10;
+        proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
+      }
+      embed.addField("__**Proficiencies**__", proficiencyValue, false);
+      fieldCount++;
+
+
+      //Handles page.moreInfoContent
+      var $ = CHEERIO.load(page.moreInfoContent);
+      var paragraph = '';
+      var lineArray = [];
+      var lineSections = [];
+      loopParagraph:
+        for (i = 0; i < $('p').length; i++) {
+
+          paragraph = $('p').eq(i).html();
+
+          //split each paragraph by line breaks
+          lineArray = paragraph.split('<br>');
+          //for each line in the paragraph
+          loopLine:
+            for (j = 0; j < lineArray.length; j++) {
+              //check field number
+              if (fieldCount > 24) { 
+              embed.addField('More at D&D Beyond', 'There is more to this monster. Go to the link above for all of its information.', false);
+              fieldCount++;
+              break loopParagraph;
+              }
+              if (lineArray[j].includes('</strong>')) {
+                lineSections = lineArray[j].split('</strong>');
+                lineSections[0] = lineSections[0].replace('<strong>', '**').replace('.', ':**');
+                lineSections[1] = '<div class=cheerioLoad>' + lineSections[1] + '</div>';
+                var lineSectionsCheerio = CHEERIO.load(lineSections[1]);
+                lineSections[1] = lineSectionsCheerio('.cheerioLoad').text();
+                lineSections[0] = '<div class=cheerioLoad>' + lineSections[0] + '</div>';
+                lineSectionsCheerio = CHEERIO.load(lineSections[0]);
+                lineSections[0] = lineSectionsCheerio('.cheerioLoad').text();
+                //check to make sure it isn't too long
+                if (lineSections[0].length > 1024) {
+                  lineSections[1] = lineSections[1].substring(1023) + '…';
+                }
+                //make sure nothing went wrong
+                if (lineSections.length == 2) {
+                  //Create Field
+                  embed.addField(lineSections[0], lineSections[1], false);
+                  fieldCount++; 
+                } 
+              }             
+            }
+      }
+      message.channel.stopTyping();
+      message.channel.send({embed});
+      return;
+    });
+  }
+};
+
 
 //Connect to Database
 sqldb.connect(function(err) {
