@@ -812,7 +812,7 @@ commandDictionary['image'] = {
   doCommand: function(message, key, args, embedFooter) {
 		
 		if (args[0] == undefined || args[0] == null || args[0] == '') {
-			errorUsage(message, key, embedFooter, extra);
+			errorUsage(message, key, embedFooter);
 			return;
 		}
 		//`image_
