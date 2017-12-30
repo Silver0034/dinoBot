@@ -833,7 +833,8 @@ commandDictionary['image'] = {
 						.setDescription('Your profile background image has been sucsessfully updated.')
 						.setFooter(embedFooter)
 						.addBlankField(false)
-						.setThumbnail(commandDictionary[key].icon);
+						.setThumbnail(commandDictionary[key].icon)
+						.setImage(imagePath);
 					message.channel.stopTyping();
 					message.channel.send({embed});
 					return;
