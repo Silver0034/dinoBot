@@ -310,7 +310,12 @@ commandDictionary['avatar'] = {
     } else if (avatarMention.length >= 1 && avatarMention.length <= 5) {
         //if mention range between 1-6 return all avatars
         for (var i = 0; i < avatarMention.length; i++) {
-        avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarMention[i].avatarURL + "\n";   
+				//Set default avatar if null
+				var avatarPath = avatarMention[i].avatarURL;
+				if (avatarMention[i].avatarURL == null) {
+					avatarPath = './assets/avatarDefault.png';
+				}
+        avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarPath + "\n";   
       }
       message.channel.send(avatarReturn);
       return;     
