@@ -939,17 +939,23 @@ commandDictionary['profile'] = {
   doCommand: function(message, key, args, embedFooter) {
 			//if there is no first argument
 			message.channel.startTyping();
+			debugLog('Starting command');
 			var attachment = '';
 			var mention = message.mentions.users.array();
 			var target = message.author;
+			debugLog('Metions: ' + mention);
+			debugLog('Target: ' + target);
 			//check if args[0] is a valid user
 			if (mention.length == 1 && args[0] == mention[0]) {
+				debugLog('args[0] is equal to a valid user');
 				target = mention[0];
 			} else if (args[0]) {
+				debugLog('args[0] is NOT equal to a valid user');
 				errorUsage(message, key, embedFooter);
 				message.channel.stopTyping();
 				return;
 		
+			debugLog('attempt to generate profile card');
 			JIMPFUNCTIONS.profile(jimp, 
 														message, 
 														key, 
@@ -960,7 +966,7 @@ commandDictionary['profile'] = {
 													 	target);
 		}
 	}
-}
+};
 commandDictionary['tag'] = {
 	type: 'user',
 	timeout: 0,
