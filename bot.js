@@ -313,7 +313,7 @@ commandDictionary['avatar'] = {
 				//Set default avatar if null
 				var avatarPath = avatarMention[i].avatarURL;
 				if (avatarMention[i].avatarURL == null) {
-					avatarPath = './assets/avatarDefault.png';
+					avatarPath = 'https://github.com/Silver0034/dinoBot/blob/master/assets/avatarDefault.png?raw=true';
 				}
         avatarReturn += avatarMention[i].username + '\'s Avatar: ' + avatarPath + "\n";   
       }
