@@ -958,6 +958,7 @@ commandDictionary['profile'] = {
 														attachment,
 														sqldb,
 													 	target);
+		}
 	}
 }
 commandDictionary['tag'] = {
