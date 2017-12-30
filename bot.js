@@ -960,7 +960,7 @@ commandDictionary['profile'] = {
 			errorUsage(message, key, embedFooter);
 			message.channel.stopTyping();
 			return;	
-		} else {
+		}
 		debugLog('attempt to generate profile card');
 			JIMPFUNCTIONS.profile(jimp, 
 														message, 
@@ -970,7 +970,6 @@ commandDictionary['profile'] = {
 														attachment,
 														sqldb,
 														target);	
-		}
 	}
 };
 commandDictionary['tag'] = {
