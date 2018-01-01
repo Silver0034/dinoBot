@@ -1074,6 +1074,123 @@ commandDictionary['desc'] = {
 	}
 }
 commandDictionary['monster'] = {
+	type: 'dnd',
+	timeout: 0,
+	emoji: emoji.monster,
+	error: 'Use the command like this: `monster',
+	usage: '**Usage** `monster',
+	doCommand: function(message, key, args, embedFooter) {
+		//`monster [search || s]
+		//return list of possible monsters
+		
+		//`monster [search || s] [tag tag tag]
+		//return list of possible monsters with tags
+		
+		//`monster [monster name]
+		//return specific monster information
+		
+		//monster [random || r]
+		//return information for random monster
+		
+		//vars
+		var scrapeURL = "https://www.dndbeyond.com/monsters/";
+		
+		//check for arg
+		if (args[0] == undefined) {
+			//if no args[0] return usageError
+			errorUsage(message, key, embedFooter);
+			retun;
+		} else {
+			//start command
+			message.channel.startTyping();
+			//check what args[0] is
+			switch(args[0]) {
+				case 'search':
+				case 's':
+					//`monster [search || s]
+					//`monster [search || s] [tag tag tag]
+					debugLog('`monster [search || s] detected');
+					message.channel.stopTyping();
+					return;
+				case 'random':
+				case 'r':
+					//monster [random || r]
+					debugLog('`monster [random || r] detected');
+					message.channel.stopTyping();
+					return;
+				
+				//if args[0] is caught by the switch, run it as a monster name
+				//`monster [monster name]
+				//scrape page for information
+				SCRAPEIT(scrapeURL, {
+
+					title: ".monster-name",
+					descShort: ".details-item",
+					// Nested list
+					abilityScore: {
+						listItem: ".score"
+					},
+					abilityModifier: {
+						listItem: ".modifier"
+					},
+					quickPrimary: {
+						listItem: ".primary"
+					},
+					quickSecondary: {
+						listItem: ".secondary"
+					},
+					statsTitle: {
+						listItem: ".title",
+					},
+					statsDescription: {
+						listItem: ".description",
+					},
+					strong: {
+						listItem: "strong",
+					},
+					strong: {
+						listItem: "strong",
+					},
+					moreInfoContent: {
+						selector: ".more-info-content",
+						how: "html"
+					},
+					moreInfoPlain: {
+						selector: ".more-info-content"
+					},
+					monsterImage: {
+						selector: ".monster-image",
+						attr: "src"
+					},
+					errorPageTitle: {
+						selector: ".error-page-title",
+						how: "text"
+					},
+			},
+				(err, page) => {
+				//if there is an error,	
+					if (page.errorPageTitle == 'Page Not Found') {
+						const embed = new DISCORD.RichEmbed()
+							.setTitle('Monster Not Found')
+							.setAuthor(BOT.user.username, BOT.user.avatarURL)
+							.setColor(0x64FFDA)
+							.setDescription('The Monster you searched for is not on D&D Beyond.')
+							.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
+							.setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
+							.setThumbnail(commandDictionary[key].icon);
+						message.channel.stopTyping();
+						message.channel.send({embed});
+						return;
+					}
+					
+				}
+					
+			}
+		}
+		
+	}
+}
+commandDictionary['mon2'] = {
   timeout: 0,
   icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/MonsterIcon.png?raw=true',
 	emoji: ':man_dancing: ',
@@ -1320,13 +1437,13 @@ commandDictionary['monster'] = {
 //Connect to Database
 sqldb.connect(function(err) {
     if (err) throw err;
-    console.log('Connected to the Database');
+    console.log('Connected to the MYSQL Database');
 });
 
 //Connect to Discord
 // only reacts to Discord _after_ ready is emitted
 BOT.on('ready', () => {
-  console.log('Online and connected');
+  console.log('Connected to Discord Severs');
 });
 //try to handle rejections
 process.on('unhandledRejection', console.error);
