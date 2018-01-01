@@ -1099,7 +1099,7 @@ commandDictionary['monster'] = {
 		if (args[0] == undefined) {
 			//if no args[0] return usageError
 			errorUsage(message, key, embedFooter);
-			retun;
+			return;
 		} else {
 			//start command
 			message.channel.startTyping();
