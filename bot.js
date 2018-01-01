@@ -1183,7 +1183,7 @@ commandDictionary['monster'] = {
 						return;
 					}
 					
-				}
+				});
 					
 			}
 		}
