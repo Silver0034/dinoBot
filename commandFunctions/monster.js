@@ -64,7 +64,7 @@ exports.specific = function(message, key, commandDictionary, debugLog, BOT, DISC
 				.setColor(0x64FFDA)
 				.setDescription('The Monster you searched for is not on D&D Beyond.')
 				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™')
-				.setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
+				.setImage('https://static-waterdeep.cursecdn.com/1-0-6565-20267/Skins/Waterdeep/images/errors/404.png')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
 			message.channel.send({embed});
