@@ -1092,9 +1092,6 @@ commandDictionary['monster'] = {
 		//monster [random || r]
 		//return information for random monster
 		
-		//vars
-		var scrapeURL = "https://www.dndbeyond.com/monsters/";
-		
 		//check for arg
 		if (args[0] == undefined) {
 			//if no args[0] return usageError
@@ -1121,6 +1118,12 @@ commandDictionary['monster'] = {
 				
 				//if args[0] is caught by the switch, run it as a monster name
 				//`monster [monster name]
+					
+				//vars
+				var scrapeURL = "https://www.dndbeyond.com/monsters/";
+				var scrapeInput = args.join('-');
+				scrapeURL = scrapeURL + scrapeInput; 
+
 				//scrape page for information
 				SCRAPEIT(scrapeURL, {
 
