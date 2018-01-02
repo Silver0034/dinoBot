@@ -27,10 +27,6 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		statsTitle: {
 			listItem: ".ability-block__heading",
 		},
-		attribute: {
-			selector: ".mon-stat-block__attribute",
-			how: "html",
-		},
 		attributeTitle: {
 			listItem: ".mon-stat-block__attribute-label",
 		},
@@ -116,10 +112,10 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 										"  " + emoji.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
 										, false);
 		fieldCount++;
+		debugLog('FieldCount = ' + fieldCount);
     
 		//Attribute Section
 		//Create Content
-		debugLog('ATTRIVUTE STAT BLOCK' + page.attribute);
 		debugLog('Attribute Generator');
 		for (a = 0; a < page.attributeTitle.length; a++) {
 			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
@@ -135,6 +131,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			embed.addField("__**Attributes**__", attributeField, false);
 			debugLog('Attributes Added');
 			fieldCount++;
+			debugLog('FieldCount = ' + fieldCount);
 		} else {
 			debugLog('No Attributes Found');
 		}
