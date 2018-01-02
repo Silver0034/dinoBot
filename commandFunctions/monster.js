@@ -26,7 +26,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			listItem: ".secondary"
 		},
 		statsTitle: {
-			listItem: ".title",
+			listItem: ".ability-block-heading",
 		},
 		statsDescription: {
 			listItem: ".description",
