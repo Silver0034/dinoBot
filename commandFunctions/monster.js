@@ -10,40 +10,6 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 	
 	//scrape for information
 	SCRAPEIT(monsterURL, {
-		title: ".monster-name",
-		descShort: ".details-item",
-		// Nested list
-		abilityScore: {
-			listItem: ".ability-block__score"
-		},
-		abilityModifier: {
-			listItem: ".ability-block__modifier"
-		},
-		quickPrimary: {
-			listItem: ".primary"
-		},
-		quickSecondary: {
-			listItem: ".secondary"
-		},
-		statsTitle: {
-			listItem: ".ability-block__heading",
-		},
-		statsDescription: {
-			listItem: ".description",
-		},
-		strong: {
-			listItem: "strong",
-		},
-		strong: {
-			listItem: "strong",
-		},
-		moreInfoContent: {
-			selector: ".more-info-content",
-			how: "html"
-		},
-		moreInfoPlain: {
-			selector: ".more-info-content"
-		},
 		monsterImage: {
 			selector: ".monster-image",
 			attr: "src"
@@ -51,7 +17,22 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		errorPageTitle: {
 			selector: ".error-page-title",
 			how: "text"
-		}
+		},
+		abilityScore: {
+			listItem: ".ability-block__score"
+		},
+		abilityModifier: {
+			listItem: ".ability-block__modifier"
+		},
+		statsTitle: {
+			listItem: ".ability-block__heading",
+		},
+		attributeTitle: {
+			listItem: ".mon-stat-block__attribute-label",
+		},
+		attributeContent: {
+			listItem: ".mon-stat-block__attribute-value",
+		},
   },
 	(err, page) => {
 		//catch error / catch error page title
@@ -89,26 +70,11 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		//post information
 		//var for embed
 		debugLog('Establish Variables');
-		var abilityScoreArray = page["abilityScore"];
-		var abilityModifierArray = page["abilityModifier"];
-		var quickPrimaryArray = page["quickPrimary"];
-		var quickSecondaryArray = page["quickSecondary"];
-		var statsTitle = page["statsTitle"];
-		var statsDescription = page["statsDescription"];
-		var strongArray = page["strong"];
-		var moreInfoContent = page["moreInfoContent"] + "";
-
-		var proficiencyValue = '';
-		var featsLoopArray = moreInfoContent.split('Actions\r\n');
-		var featsLoopPlaceholder = featsLoopArray[0];
-		var featsValueArray = [];
-		var featsValueString = '';
-		var actionsValueArray = [];
-		var actionsValueString = '';
 		var monsterImageURL = page.monsterImage;
 		var quickContent = [];
 		var fieldCount = 2;
 		
+		/*
 		//get primary information for monster
 		debugLog('Set primary information');
 		for (q = 0; q < page.quickPrimary.length; q++) {
@@ -118,6 +84,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				quickContent[q] = page.quickPrimary[q];
 			}
 		}
+		*/
 
 		//start generating embed
 		debugLog('Embed Generation Phase 1');
@@ -140,13 +107,12 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
                   "  " + emoji.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
                   , false)
         //Secondary Information
-        .addField("__**Secondary Stats**__",
-                 "**" + page.statsTitle[6] + "**: " + quickContent[0] + "\n" +
-                 "**" + page.statsTitle[7] + "**: " + quickContent[1] + "\n" +
-                 "**" + page.statsTitle[8] + "**: " + quickContent[2] + "\n" +
-                 "**" + page.statsTitle[9] + "**: " + quickContent[3]
-                 , false);
-		debugLog('Phase 1 complete');
+        .addField("__**Attributes**__",
+                 "**" + page.attributeTitle[0] + "**: " + page.attributeContent[0] + "\n" +
+                 "**" + page.attributeTitle[1] + "**: " + page.attributeContent[1] + "\n" +
+                 "**" + page.attributeTitle[2] + "**: " + page.attributeContent[2]
+                 , false)3
+		debugLog('Phase 1 com3lete');
 		
 		/*
 		//Proficiency Fields
