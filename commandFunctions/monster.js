@@ -55,7 +55,7 @@ exports.specific = function(message, key, commandDictionary, debugLog, BOT, DISC
   },
 	(err, page) => {
 		//catch error / catch error page title
-		debugLog(err);
+		debugLog('Errors: ' + err);
 		if (page.errorPageTitle == 'Page Not Found') {
 			const embed = new DISCORD.RichEmbed()
 				.setTitle('Monster Not Found')
