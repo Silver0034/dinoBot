@@ -116,7 +116,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				if (a == label.length) {
 					return;
 				} else {
-					embedGenField += \n;
+					embedGenField += '\n';
 				}
 			}
 			//Embed Field
