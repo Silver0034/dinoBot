@@ -63,7 +63,7 @@ exports.specific = function(message, key, commandDictionary, debugLog, BOT, DISC
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
 				.setDescription('The Monster you searched for is not on D&D Beyond.')
-				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
+				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™')
 				.setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
@@ -77,7 +77,7 @@ exports.specific = function(message, key, commandDictionary, debugLog, BOT, DISC
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
 				.setDescription('I only have acsess to monsters defined by the "basic rules"')
-				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
+				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
 			message.channel.send({embed});
@@ -123,7 +123,7 @@ exports.specific = function(message, key, commandDictionary, debugLog, BOT, DISC
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription(page["descShort"])
-        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username, "commandDictionary[key].icon")
+        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username)
         .setImage(monsterImageURL)
         .setThumbnail(commandDictionary[key].icon)
         .setURL(monsterURL)
