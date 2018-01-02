@@ -73,17 +73,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		var monsterImageURL = page.monsterImage;
 		var quickContent = [];
 		var fieldCount = 0;
-		var attributeField = String;
-		
-		debugLog('Attribute Generator');
-		for (a = 0; a < page.attributeTitle.length; a++) {
-			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
-			if (a == page.attributeTitle.length) {
-				return;
-			} else {
-				attributeField += '\n';
-			}
-		}
+		var attributeField = '';
+
 		
 		/*
 		//get primary information for monster
@@ -122,7 +113,18 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 										, false);
 		fieldCount++;
     
-		//Attribution Information
+		//Attribute Section
+		//Create Content
+		debugLog('Attribute Generator');
+		for (a = 0; a < page.attributeTitle.length; a++) {
+			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
+			if (a == page.attributeTitle.length) {
+				return;
+			} else {
+				attributeField += '\n';
+			}
+		}
+		//Embed Content
 		debugLog('Add Attribute Section');
 		if (attributeField != null) {
 			embed.addField("__**Attributes**__", attributeField, false);
