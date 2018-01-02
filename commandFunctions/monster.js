@@ -152,6 +152,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
    	for (i = 0; i < page.statsDescription.length; i++) { 
    		z = i + 10;
     	proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
+			debugLog('page.statsTitle[z] = ' + page.statsTitle[z]);
+			debugLog('page.statsDescription[i] = ' + page.statsDescription[i]);
    	}
 		debugLog('Add proficiencies field');
 		debugLog('Content = ' + proficiencyValue);
