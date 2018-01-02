@@ -1,4 +1,28 @@
 //monster.js
+function embedFieldGenerator(sectionTitle, label, value) {
+			//create content
+			var embedGenField = '';
+			debugLog('Generate Section for ' + sectionTitle);
+			for (a = 0; a < label.length; a++) {
+				embedGenField += '**' + label[a] + '**: ' + value[a];
+				if (a == label.length) {
+					return;
+				} else {
+					embedGenField += '\n';
+				}
+			}
+			//Embed Field
+			debugLog('Embed Section ' + sectionTitle);
+			if (embedGenField != null) {
+				embed.addField('__**' + sectionTitle + '**__', embedGenField, false);
+				debugLog(sectionTitle + ' Added');
+				fieldCount++;
+				debugLog('FieldCount = ' + fieldCount);
+			} else {
+				debugLog('No ' + sectionTitle + ' Added');
+			}
+			return;
+		}
 
 exports.specific = function(message, key, emoji, commandDictionary, debugLog, BOT, DISCORD, SCRAPEIT, CHEERIO, monsterName) {
 	var monsterURL = 'https://www.dndbeyond.com/monsters/'
@@ -52,7 +76,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
 				.setDescription('The Monster you searched for is not on D&D Beyond.')
-				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™')
+				.setFooter("© 2018 D&D Beyond | Scraped by " + BOT.user.username + '™')
 				.setImage('https://static-waterdeep.cursecdn.com/1-0-6565-20267/Skins/Waterdeep/images/errors/404.png')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
@@ -66,7 +90,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
 				.setDescription('I only have acsess to monsters defined by the "basic rules"')
-				.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™')
+				.setFooter("© 2018 D&D Beyond | Scraped by " + BOT.user.username + '™')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
 			message.channel.send({embed});
@@ -107,66 +131,11 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		fieldCount++;
 		debugLog('FieldCount = ' + fieldCount);
 		
-		function embedFieldGenerator(sectionTitle, label, value) {
-			//create content
-			var embedGenField = '';
-			debugLog('Generate Section for ' + sectionTitle);
-			for (a = 0; a < label.length; a++) {
-				embedGenField += '**' + label[a] + '**: ' + value[a];
-				if (a == label.length) {
-					return;
-				} else {
-					embedGenField += '\n';
-				}
-			}
-			//Embed Field
-			debugLog('Embed Section ' + sectionTitle);
-			if (embedGenField != null) {
-				embed.addField('__**' + sectionTitle + '**__', embedGenField, false);
-				debugLog(sectionTitle + ' Added');
-				fieldCount++;
-				debugLog('FieldCount = ' + fieldCount);
-			} else {
-				debugLog('No ' + sectionTitle + ' Added');
-			}
-			return;
-		}
-		
 		//Attributes
 		embedFieldGenerator('Attributes', page.attributeTitle, page.attributeContent);
 		
 		//tidbits
-		embedFieldGenerator('Tidbits', page.tidbitLabel, page.tidbitData);
-		
-		
-		
-		
-    /*
-		//Attribute Section
-		//Create Attribute Content
-		var attributeField = '';
-		debugLog('Attribute Generator');
-		for (a = 0; a < page.attributeTitle.length; a++) {
-			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
-			if (a == page.attributeTitle.length) {
-				return;
-			} else {
-				attributeField += '\n';
-			}
-		}
-		//Embed Attribute Content
-		debugLog('Add Attribute Section');
-		if (attributeField != null) {
-			embed.addField("__**Attributes**__", attributeField, false);
-			debugLog('Attributes Added');
-			fieldCount++;
-			debugLog('FieldCount = ' + fieldCount);
-		} else {
-			debugLog('No Attributes Found');
-		}
-		*/
-
-		
+		embedFieldGenerator('Tidbits', page.tidbitLabel, page.tidbitData);		
 		
 		/*
 		//Proficiency Fields
