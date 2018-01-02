@@ -28,7 +28,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			listItem: ".ability-block__heading",
 		},
 		attribute: {
-			listItem: ".mon-stat-block__attribute"
+			listItem: ".mon-stat-block__attribute",
+			how: "html",
 		},
 		attributeTitle: {
 			listItem: ".mon-stat-block__attribute-label",
