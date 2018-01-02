@@ -1120,10 +1120,15 @@ commandDictionary['monster'] = {
 						
 			//if args[0] is not caught by the switch, run it as a monster name
 			//`monster [monster name]
+			
+			//set monsterName to be url-usable
 			var monsterName = args.join('-');
 			debugLog('MONSTER NAME IS: ' + monsterName);
-			MONSTER.specific(message, key, SCRAPEIT, monsterName);
-				
+			
+			//scrape info + send embed
+			MONSTER.specific(message, key, SCRAPEIT, CHEERIO, monsterName);
+			message.channel.stopTyping();
+			return;
 				
 		}
 		
