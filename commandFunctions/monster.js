@@ -1,6 +1,7 @@
 //monster.js
 
 exports.specific = function(message, key, emoji, commandDictionary, debugLog, BOT, DISCORD, SCRAPEIT, CHEERIO, monsterName) {
+	var year = new Date().getFullYear();
 	var monsterURL = 'https://www.dndbeyond.com/monsters/'
 	debugLog('var monsterURL = ' + monsterURL);
 	//find a specific monster by name
@@ -52,7 +53,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
 				.setDescription('The Monster you searched for is not on D&D Beyond.')
-				.setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
+				.setFooter('© ' + year + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
 				.setImage('https://static-waterdeep.cursecdn.com/1-0-6565-20267/Skins/Waterdeep/images/errors/404.png')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
@@ -66,7 +67,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
 				.setDescription('I only have acsess to monsters defined by the \'basic rules\'')
-				.setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
+				.setFooter('© ' + year + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
 			message.channel.send({embed});
@@ -89,7 +90,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
         .setColor(0x64FFDA)
         .setDescription(page['descShort'])
-        .setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username)
+        .setFooter('© ' + year + ' D&D Beyond | Scraped by ' + BOT.user.username)
         .setImage(monsterImageURL)
         .setThumbnail(commandDictionary[key].icon)
         .setURL(monsterURL);
