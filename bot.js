@@ -1184,6 +1184,9 @@ commandDictionary['monster'] = {
 					}
 					
 				});
+				//monster found
+				message.channel.send('Monster Found');
+				message.channel.stopTyping();	
 					
 			}
 		}
