@@ -35,6 +35,12 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		attributeContent: {
 			listItem: ".mon-stat-block__attribute-data-value",
 		},
+		tidbitLabel: {
+			listItem: ".mon-stat-block__tidbit-label",
+		},
+		tidbitData: {
+			listItem: ".mon-stat-block__tidbit-data"
+		}
   },
 	(err, page) => {
 		//catch error / catch error page title
@@ -75,21 +81,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		var monsterImageURL = page.monsterImage;
 		var quickContent = [];
 		var fieldCount = 0;
-		var attributeField = '';
-
-		
-		/*
-		//get primary information for monster
-		debugLog('Set primary information');
-		for (q = 0; q < page.quickPrimary.length; q++) {
-			if (page.quickSecondary[q]) {
-				quickContent[q] = page.quickPrimary[q] + ' ' + page.quickSecondary[q];
-			} else {
-				quickContent[q] = page.quickPrimary[q];
-			}
-		}
-		*/
-
+				
 		//start generating embed
 		debugLog('Embed Generation Phase 1');
 		const embed = new DISCORD.RichEmbed()
@@ -101,7 +93,6 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
         .setImage(monsterImageURL)
         .setThumbnail(commandDictionary[key].icon)
         .setURL(monsterURL);
-		
 		
     //Abilities Section
 		debugLog('Add Ability Section');
@@ -115,9 +106,45 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 										, false);
 		fieldCount++;
 		debugLog('FieldCount = ' + fieldCount);
-    
+		
+		function embedFieldGenerator(sectionTitle, label, value) {
+			//create content
+			var embedGenField = '';
+			debugLog('Generate Section for ' + sectionTitle);
+			for (a = 0; a < label.length; a++) {
+				embedGenField += '**' = label[a] + '**: ' + value[a];
+				if (a == label.length) {
+					return;
+				} else {
+					embedGenField += \n;
+				}
+			}
+			//Embed Field
+			debugLog('Embed Section ' + sectionTitle);
+			if (embedGenField != null) {
+				embed.addField('__**' + sectionTitle + '**__', embedGenField, false);
+				debugLog(sectionTitle + ' Added');
+				fieldCount++;
+				debugLog('FieldCount = ' + fieldCount);
+			} else {
+				debugLog('No ' + sectionTitle + ' Added');
+			}
+			return;
+		}
+		
+		//Attributes
+		embedFieldGenerator('Attributes', page.attributeTitle, page.attributeContent);
+		
+		//tidbits
+		embedFieldGenerator('Tidbits', page.tidbitLabel, page.tidbitLabel);
+		
+		
+		
+		
+    /*
 		//Attribute Section
-		//Create Content
+		//Create Attribute Content
+		var attributeField = '';
 		debugLog('Attribute Generator');
 		for (a = 0; a < page.attributeTitle.length; a++) {
 			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
@@ -127,7 +154,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				attributeField += '\n';
 			}
 		}
-		//Embed Content
+		//Embed Attribute Content
 		debugLog('Add Attribute Section');
 		if (attributeField != null) {
 			embed.addField("__**Attributes**__", attributeField, false);
@@ -137,6 +164,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		} else {
 			debugLog('No Attributes Found');
 		}
+		*/
+
 		
 		
 		/*
