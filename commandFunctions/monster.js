@@ -39,8 +39,19 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		tidbitLabel: {
 			listItem: '.mon-stat-block__tidbit-label',
 		},
-		tidbitData: {
-			listItem: '.mon-stat-block__tidbit-data'
+		descBlock: {
+			listItem: '.mon-stat-block__description-block',
+			data: {
+				title: 'strong',
+				content: {
+        	selector: '.mon-stat-block__description-block-content',
+      		how: "html"
+				},
+				heading: {
+					listItem: '.mon-stat-block__description-block-heading'
+				}
+			},
+			
 		}
   },
 	(err, page) => {
@@ -82,6 +93,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		var monsterImageURL = page.monsterImage;
 		var quickContent = [];
 		var fieldCount = 0;
+		
+		debugLog('descBlock Content' + page.descBlock);
 				
 		//start generating embed
 		debugLog('Embed Generation Phase 1');
@@ -109,9 +122,10 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		debugLog('FieldCount = ' + fieldCount);
 		
 		function embedFieldGenerator(sectionTitle, label, value) {
+			debugLog('New Field, ' + sectionTitle);
 			//create content
 			var embedGenField = '';
-			debugLog('Generate Section for ' + sectionTitle);
+			debugLog('        Generate Section ' + sectionTitle);
 			for (a = 0; a < label.length; a++) {
 				embedGenField += '**' + label[a] + '**: ' + value[a];
 				if (a == label.length) {
@@ -121,7 +135,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				}
 			}
 			//Embed Field
-			debugLog('Embed Section ' + sectionTitle);
+			debugLog('        Embed Section ' + sectionTitle);
 			if (embedGenField != null) {
 				embed.addField('__**' + sectionTitle + '**__', embedGenField, false);
 				debugLog(sectionTitle + ' Added');
