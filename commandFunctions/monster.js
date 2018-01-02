@@ -88,6 +88,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
     }
 		//post information
 		//var for embed
+		debugLog('Establish Variables');
 		var abilityScoreArray = page["abilityScore"];
 		var abilityModifierArray = page["abilityModifier"];
 		var quickPrimaryArray = page["quickPrimary"];
@@ -109,6 +110,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		var fieldCount = 2;
 		
 		//get primary information for monster
+		debugLog('Set primary information');
 		for (q = 0; q < page.quickPrimary.length; q++) {
 			if (page.quickSecondary[q]) {
 				quickContent[q] = page.quickPrimary[q] + ' ' + page.quickSecondary[q];
@@ -118,6 +120,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		}
 
 		//start generating embed
+		debugLog('Embed Generation Phase 1');
 		const embed = new DISCORD.RichEmbed()
         .setTitle(page["title"])
         .setAuthor(BOT.user.username, BOT.user.avatarURL)
@@ -127,7 +130,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
         .setImage(monsterImageURL)
         .setThumbnail(commandDictionary[key].icon)
         .setURL(monsterURL)
-        //Abilities Section          
+        //Abilities Section
         .addField("__**Abilities**__",
                   emoji.str + " **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
                   "  " + emoji.dex + " **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
@@ -143,8 +146,9 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
                  "**" + page.statsTitle[8] + "**: " + quickContent[2] + "\n" +
                  "**" + page.statsTitle[9] + "**: " + quickContent[3]
                  , false);
-		
+		debugLog('Phase 1 complete');
 		//Proficiency Fields
+		debugLog('Generate Proficiency Fields');
    	for (i = 0; i < page.statsDescription.length; i++) { 
    		z = i + 10;
     	proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
@@ -153,6 +157,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
    	fieldCount++;
 	
 		//Handles page.moreInfoContent
+		debugLog('Prepare CHEERIO and extra content');
     var $ = CHEERIO.load(page.moreInfoContent);
 		var paragraph = '';
 		var lineArray = [];
@@ -187,6 +192,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
                 //make sure nothing went wrong
                 if (lineSections.length == 2) {
                   //Create Field
+									debugLog('Added Field of Extra Content');
                   embed.addField(lineSections[0], lineSections[1], false);
                   fieldCount++; 
                 } 
