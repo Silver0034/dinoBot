@@ -14,10 +14,10 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		descShort: ".details-item",
 		// Nested list
 		abilityScore: {
-			listItem: ".score"
+			listItem: ".ability-block__score"
 		},
 		abilityModifier: {
-			listItem: ".modifier"
+			listItem: ".ability-block__modifier"
 		},
 		quickPrimary: {
 			listItem: ".primary"
@@ -26,7 +26,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			listItem: ".secondary"
 		},
 		statsTitle: {
-			listItem: ".ability-block-heading",
+			listItem: ".ability-block__heading",
 		},
 		statsDescription: {
 			listItem: ".description",
