@@ -1127,7 +1127,7 @@ commandDictionary['monster'] = {
 			
 			//scrape info + send embed
 			debugLog('Run Funtion MONSTER.specific()');
-			MONSTER.specific(message, key, debugLog, SCRAPEIT, CHEERIO, monsterName);
+			MONSTER.specific(message, key, debugLog, DISCORD, SCRAPEIT, CHEERIO, monsterName);
 			message.channel.stopTyping();
 			return;
 				
