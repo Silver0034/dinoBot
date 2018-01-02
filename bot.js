@@ -20,6 +20,7 @@ const SCRAPEIT = require("scrape-it");
 const ATTACK = require('./commandFunctions/attack.js');
 const BALL = require('./commandFunctions/ball.js');
 const JIMPFUNCTIONS =  require('./commandFunctions/jimp.js');
+const MONSTER = require('./commandFunctions/monster.js');
 const NPC = require('./commandFunctions/npcGenerate.js');
 const PROFANITY = require('./commandFunctions/profanity.js');
 const QUOTE = require('./commandFunctions/quote.js');
@@ -1114,84 +1115,16 @@ commandDictionary['monster'] = {
 					//monster [random || r]
 					debugLog('`monster [random || r] detected');
 					message.channel.stopTyping();
-					return;
-				
-				//if args[0] is caught by the switch, run it as a monster name
-				//`monster [monster name]
-					
-				//vars
-				var scrapeURL = "https://www.dndbeyond.com/monsters/";
-				var scrapeInput = args.join('-');
-				scrapeURL = scrapeURL + scrapeInput; 
-
-				//scrape page for information
-				SCRAPEIT(scrapeURL, {
-
-					title: ".monster-name",
-					descShort: ".details-item",
-					// Nested list
-					abilityScore: {
-						listItem: ".score"
-					},
-					abilityModifier: {
-						listItem: ".modifier"
-					},
-					quickPrimary: {
-						listItem: ".primary"
-					},
-					quickSecondary: {
-						listItem: ".secondary"
-					},
-					statsTitle: {
-						listItem: ".title",
-					},
-					statsDescription: {
-						listItem: ".description",
-					},
-					strong: {
-						listItem: "strong",
-					},
-					strong: {
-						listItem: "strong",
-					},
-					moreInfoContent: {
-						selector: ".more-info-content",
-						how: "html"
-					},
-					moreInfoPlain: {
-						selector: ".more-info-content"
-					},
-					monsterImage: {
-						selector: ".monster-image",
-						attr: "src"
-					},
-					errorPageTitle: {
-						selector: ".error-page-title",
-						how: "text"
-					},
-			},
-				(err, page) => {
-				//if there is an error,	
-					if (page.errorPageTitle == 'Page Not Found') {
-						const embed = new DISCORD.RichEmbed()
-							.setTitle('Monster Not Found')
-							.setAuthor(BOT.user.username, BOT.user.avatarURL)
-							.setColor(0x64FFDA)
-							.setDescription('The Monster you searched for is not on D&D Beyond.')
-							.setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username + '™', "commandDictionary[key].icon")
-							.setImage('https://static-waterdeep.cursecdn.com/1-0-6519-15606/Skins/Waterdeep/images/errors/404.png')
-							.setThumbnail(commandDictionary[key].icon);
-						message.channel.stopTyping();
-						message.channel.send({embed});
-						return;
-					}
-					
-				});
-				//monster found
-				message.channel.send('Monster Found');
-				message.channel.stopTyping();	
-					
+					return;	
 			}
+						
+			//if args[0] is not caught by the switch, run it as a monster name
+			//`monster [monster name]
+			var monsterName = args.join('-');
+			debugLog('MONSTER NAME IS: ' + monsterName);
+			MONSTER.specific(message, key, SCRAPEIT, monsterName);
+				
+				
 		}
 		
 	}
