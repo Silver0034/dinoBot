@@ -149,17 +149,22 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		debugLog('Phase 1 complete');
 		//Proficiency Fields
 		debugLog('Generate Proficiency Fields');
-		debugLog('statsDescription Length = ' + page.statsDescription.length);
-   	for (i = 0; i < page.statsDescription.length; i++) { 
-   		z = i + 10;
-    	proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
-			debugLog('page.statsTitle[z] = ' + page.statsTitle[z]);
-			debugLog('page.statsDescription[i] = ' + page.statsDescription[i]);
-   	}
-		debugLog('Add proficiencies field');
-		debugLog('Content = ' + proficiencyValue);
-   	embed.addField("__**Proficiencies**__", proficiencyValue, false);
-   	fieldCount++;
+		
+		if (page.statsDescription.length > 0) {
+			debugLog('statsDescription Length = ' + page.statsDescription.length);
+			for (i = 0; i < page.statsDescription.length; i++) { 
+				z = i + 10;
+				proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
+				debugLog('page.statsTitle[z] = ' + page.statsTitle[z]);
+				debugLog('page.statsDescription[i] = ' + page.statsDescription[i]);
+			}
+			debugLog('Add proficiencies field');
+			debugLog('Content = ' + proficiencyValue);
+			embed.addField("__**Proficiencies**__", proficiencyValue, false);
+			fieldCount++;	
+		} else {
+			debugLog('No proficiency fields detected');
+		}
 	
 		//Handles page.moreInfoContent
 		debugLog('Prepare CHEERIO and extra content');
