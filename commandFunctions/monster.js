@@ -39,22 +39,18 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		tidbitLabel: {
 			listItem: '.mon-stat-block__tidbit-label',
 		},
-				tidbitData: {
+		tidbitData: {
 			listItem: '.mon-stat-block__tidbit-data',
 		},
-		descBlock: {
-			listItem: '.mon-stat-block__description-block',
-			data: {
-				title: 'strong',
-				content: {
-        	selector: '.mon-stat-block__description-block-content',
-      		how: "html"
-				},
-				heading: {
-					listItem: '.mon-stat-block__description-block-heading'
-				}
-			},
-			
+		descTitle: {
+			listItem: '.mon-stat-block__description-block-heading'
+		},
+		descContent: {
+			listItem: '.mon-stat-block__description-block-content',
+			how: 'html'
+		},
+		strong: {
+			listItem: 'strong'
 		}
   },
 	(err, page) => {
@@ -97,7 +93,9 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		var quickContent = [];
 		var fieldCount = 0;
 		
-		debugLog('descBlock Content' + page.descBlock);
+		debugLog('descBlock Title' + page.descTitle);
+		debugLog('descBlock Content' + page.descContent);
+		debugLog('descBlock Strong' + page.strong);
 				
 		//start generating embed
 		debugLog('Embed Generation Phase 1');
