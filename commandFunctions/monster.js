@@ -149,7 +149,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		debugLog('Phase 1 complete');
 		//Proficiency Fields
 		debugLog('Generate Proficiency Fields');
-		debugLog('statsDescription Length = ' page.statsDescription.length);
+		debugLog('statsDescription Length = ' + page.statsDescription.length);
    	for (i = 0; i < page.statsDescription.length; i++) { 
    		z = i + 10;
     	proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
