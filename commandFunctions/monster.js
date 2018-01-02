@@ -153,6 +153,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
    		z = i + 10;
     	proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
    	}
+		debugLog('Add proficiencies field');
+		debugLog('Content = ' + proficiencyValue);
    	embed.addField("__**Proficiencies**__", proficiencyValue, false);
    	fieldCount++;
 	
