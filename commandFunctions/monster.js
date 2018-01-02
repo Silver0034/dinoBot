@@ -111,7 +111,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
                  "**" + page.attributeTitle[0] + "**: " + page.attributeContent[0] + "\n" +
                  "**" + page.attributeTitle[1] + "**: " + page.attributeContent[1] + "\n" +
                  "**" + page.attributeTitle[2] + "**: " + page.attributeContent[2]
-                 , false)3
+                 , false);
 		debugLog('Phase 1 com3lete');
 		
 		/*
