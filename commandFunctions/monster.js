@@ -1,6 +1,6 @@
 //monster.js
 
-exports.specific = function(message, key, SCRAPEIT, CHEERIO, monsterName) {
+exports.specific = function(message, key, debugLog, SCRAPEIT, CHEERIO, monsterName) {
 	var monsterURL = 'https://www.dndbeyond.com/monsters'
 	debugLog('var monsterURL = ' + monsterURL);
 	//find a specific monster by name
