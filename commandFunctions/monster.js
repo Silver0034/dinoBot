@@ -27,11 +27,14 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		statsTitle: {
 			listItem: ".ability-block__heading",
 		},
+		attribute: {
+			listItem: ".mon-stat-block__attribute"
+		},
 		attributeTitle: {
 			listItem: ".mon-stat-block__attribute-label",
 		},
 		attributeContent: {
-			listItem: ".mon-stat-block__attribute-value",
+			listItem: ".mon-stat-block__attribute-data-value",
 		},
   },
 	(err, page) => {
@@ -115,6 +118,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
     
 		//Attribute Section
 		//Create Content
+		debugLog('ATTRIVUTE STAT BLOCK' + page.attribute);
 		debugLog('Attribute Generator');
 		for (a = 0; a < page.attributeTitle.length; a++) {
 			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
