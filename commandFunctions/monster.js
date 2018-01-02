@@ -72,7 +72,18 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		debugLog('Establish Variables');
 		var monsterImageURL = page.monsterImage;
 		var quickContent = [];
-		var fieldCount = 2;
+		var fieldCount = 0;
+		var attributeField = String;
+		
+		debugLog('Attribute Generator');
+		for (a = 0; a < page.attributeTitle.length; a++) {
+			attributeField += '**' + page.attributeTitle[a] + '**: ' + page.attributeContent[a];
+			if (a == page.attributeTitle.length) {
+				return;
+			} else {
+				attributeField += '\n';
+			}
+		}
 		
 		/*
 		//get primary information for monster
@@ -96,23 +107,31 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
         .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username)
         .setImage(monsterImageURL)
         .setThumbnail(commandDictionary[key].icon)
-        .setURL(monsterURL)
-        //Abilities Section
-        .addField("__**Abilities**__",
-                  emoji.str + " **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
-                  "  " + emoji.dex + " **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
-                  "  " + emoji.con + " **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
-                  emoji.int + " **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
-                  "  " + emoji.wis + " **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
-                  "  " + emoji.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
-                  , false)
-        //Secondary Information
-        .addField("__**Attributes**__",
-                 "**" + page.attributeTitle[0] + "**: " + page.attributeContent[0] + "\n" +
-                 "**" + page.attributeTitle[1] + "**: " + page.attributeContent[1] + "\n" +
-                 "**" + page.attributeTitle[2] + "**: " + page.attributeContent[2]
-                 , false);
-		debugLog('Phase 1 com3lete');
+        .setURL(monsterURL);
+		
+		
+    //Abilities Section
+		debugLog('Add Ability Section');
+    embed.addField("__**Abilities**__",
+										emoji.str + " **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
+										"  " + emoji.dex + " **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
+										"  " + emoji.con + " **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
+										emoji.int + " **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
+										"  " + emoji.wis + " **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
+										"  " + emoji.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
+										, false);
+		fieldCount++;
+    
+		//Attribution Information
+		debugLog('Add Attribute Section');
+		if (attributeField != null) {
+			embed.addField("__**Attributes**__", attributeField, false);
+			debugLog('Attributes Added');
+			fieldCount++;
+		} else {
+			debugLog('No Attributes Found');
+		}
+		
 		
 		/*
 		//Proficiency Fields
