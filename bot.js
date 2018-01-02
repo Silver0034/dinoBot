@@ -1080,7 +1080,7 @@ commandDictionary['monster'] = {
 	emoji: emoji.monster,
 	error: 'Use the command like this: `monster',
 	usage: '**Usage** `monster',
-	icon: 'https://github.com/Silver0034/dinoBot/blob/master/assets/icons/MonsterIcon.png?raw=true',
+	icon: 'https://raw.githubusercontent.com/Silver0034/dinoBot/master/assets/icons/MonsterIcon.png',
 	doCommand: function(message, key, args, embedFooter) {
 		//`monster [search || s]
 		//return list of possible monsters
