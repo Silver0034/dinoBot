@@ -136,7 +136,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		embedFieldGenerator('Attributes', page.attributeTitle, page.attributeContent);
 		
 		//tidbits
-		embedFieldGenerator('Tidbits', page.tidbitLabel, page.tidbitLabel);
+		embedFieldGenerator('Tidbits', page.tidbitLabel, page.tidbitData);
 		
 		
 		
