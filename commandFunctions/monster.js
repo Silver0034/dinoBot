@@ -65,7 +65,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 				.setTitle('Monster Not Available')
 				.setAuthor(BOT.user.username, BOT.user.avatarURL)
 				.setColor(0x64FFDA)
-				.setDescription('I only have acsess to monsters defined by the 'basic rules'')
+				.setDescription('I only have acsess to monsters defined by the \'basic rules\'')
 				.setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
 				.setThumbnail(commandDictionary[key].icon);
 			message.channel.stopTyping();
