@@ -39,6 +39,9 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		tidbitLabel: {
 			listItem: '.mon-stat-block__tidbit-label',
 		},
+				tidbitData: {
+			listItem: '.mon-stat-block__tidbit-data',
+		},
 		descBlock: {
 			listItem: '.mon-stat-block__description-block',
 			data: {
