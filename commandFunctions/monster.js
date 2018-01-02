@@ -10,6 +10,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 	
 	//scrape for information
 	SCRAPEIT(monsterURL, {
+		title: ".monster-name",
 		monsterImage: {
 			selector: ".monster-image",
 			attr: "src"
