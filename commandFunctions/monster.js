@@ -112,7 +112,7 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			var embedGenField = '';
 			debugLog('Generate Section for ' + sectionTitle);
 			for (a = 0; a < label.length; a++) {
-				embedGenField += '**' = label[a] + '**: ' + value[a];
+				embedGenField += '**' + label[a] + '**: ' + value[a];
 				if (a == label.length) {
 					return;
 				} else {
