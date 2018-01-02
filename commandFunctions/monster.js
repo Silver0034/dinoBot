@@ -147,6 +147,8 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
                  "**" + page.statsTitle[9] + "**: " + quickContent[3]
                  , false);
 		debugLog('Phase 1 complete');
+		
+		/*
 		//Proficiency Fields
 		debugLog('Generate Proficiency Fields');
 		
@@ -209,10 +211,11 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
               }             
             }
       }
+			
+			*/
       message.channel.stopTyping();
       message.channel.send({embed});
       return;
-		
 		
 	});
 }
