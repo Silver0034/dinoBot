@@ -1,5 +1,113 @@
 //monster.js
-function embedFieldGenerator(sectionTitle, label, value) {
+
+exports.specific = function(message, key, emoji, commandDictionary, debugLog, BOT, DISCORD, SCRAPEIT, CHEERIO, monsterName) {
+	var monsterURL = 'https://www.dndbeyond.com/monsters/'
+	debugLog('var monsterURL = ' + monsterURL);
+	//find a specific monster by name
+	monsterURL = monsterURL + monsterName;
+	debugLog('monsterURL changed to: ' + monsterURL);
+	
+	
+	//scrape for information
+	SCRAPEIT(monsterURL, {
+		title: '.monster-name',
+		descShort: '.mon-stat-block__meta',
+		monsterImage: {
+			selector: '.monster-image',
+			attr: 'src'
+		},
+		errorPageTitle: {
+			selector: '.error-page-title',
+			how: 'text'
+		},
+		abilityScore: {
+			listItem: '.ability-block__score'
+		},
+		abilityModifier: {
+			listItem: '.ability-block__modifier'
+		},
+		statsTitle: {
+			listItem: '.ability-block__heading',
+		},
+		attributeTitle: {
+			listItem: '.mon-stat-block__attribute-label',
+		},
+		attributeContent: {
+			listItem: '.mon-stat-block__attribute-data-value',
+		},
+		tidbitLabel: {
+			listItem: '.mon-stat-block__tidbit-label',
+		},
+		tidbitData: {
+			listItem: '.mon-stat-block__tidbit-data'
+		}
+  },
+	(err, page) => {
+		//catch error / catch error page title
+		debugLog('Errors: ' + err);
+		debugLog('Icon Address: ' + commandDictionary[key].icon);
+		if (page.errorPageTitle == 'Page Not Found') {
+			const embed = new DISCORD.RichEmbed()
+				.setTitle('Monster Not Found')
+				.setAuthor(BOT.user.username, BOT.user.avatarURL)
+				.setColor(0x64FFDA)
+				.setDescription('The Monster you searched for is not on D&D Beyond.')
+				.setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
+				.setImage('https://static-waterdeep.cursecdn.com/1-0-6565-20267/Skins/Waterdeep/images/errors/404.png')
+				.setThumbnail(commandDictionary[key].icon);
+			message.channel.stopTyping();
+			message.channel.send({embed});
+			return;
+		}
+		//if monster-image is not found
+		if (page.monsterImage == undefined) {
+			const embed = new DISCORD.RichEmbed()
+				.setTitle('Monster Not Available')
+				.setAuthor(BOT.user.username, BOT.user.avatarURL)
+				.setColor(0x64FFDA)
+				.setDescription('I only have acsess to monsters defined by the 'basic rules'')
+				.setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
+				.setThumbnail(commandDictionary[key].icon);
+			message.channel.stopTyping();
+			message.channel.send({embed});
+			return;
+		} else if (page.monsterImage.includes('https:') == false) {
+    	//make sure monsterImageURL is usable by discord
+			monsterImageURL = 'https:' + page.monsterImage;
+    }
+		//post information
+		//var for embed
+		debugLog('Establish Variables');
+		var monsterImageURL = page.monsterImage;
+		var quickContent = [];
+		var fieldCount = 0;
+				
+		//start generating embed
+		debugLog('Embed Generation Phase 1');
+		const embed = new DISCORD.RichEmbed()
+        .setTitle(page['title'])
+        .setAuthor(BOT.user.username, BOT.user.avatarURL)
+        .setColor(0x64FFDA)
+        .setDescription(page['descShort'])
+        .setFooter('© ' + getFullYear() + ' D&D Beyond | Scraped by ' + BOT.user.username)
+        .setImage(monsterImageURL)
+        .setThumbnail(commandDictionary[key].icon)
+        .setURL(monsterURL);
+		
+    //Abilities Section
+		debugLog('Add Ability Section');
+    embed.addField('__**Abilities**__',
+										emoji.str + ' **' + page.statsTitle[0] + '**: ' + page.abilityScore[0] + page.abilityModifier[0] +
+										'  ' + emoji.dex + ' **' + page.statsTitle[1] + '**: ' + page.abilityScore[1] + page.abilityModifier[1] +
+										'  ' + emoji.con + ' **' + page.statsTitle[2] + '**: ' + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
+										emoji.int + ' **' + page.statsTitle[3] + '**: ' + page.abilityScore[3] + page.abilityModifier[3] +
+										'  ' + emoji.wis + ' **' + page.statsTitle[4] + '**: ' + page.abilityScore[4] + page.abilityModifier[4] +
+										'  ' + emoji.cha + ' **' + page.statsTitle[5] + '**: ' + page.abilityScore[5] + page.abilityModifier[5]
+										, false);
+		fieldCount++;
+		debugLog('FieldCount = ' + fieldCount);
+		
+		function embedFieldGenerator(sectionTitle, label, value) {
 			//create content
 			var embedGenField = '';
 			debugLog('Generate Section for ' + sectionTitle);
@@ -23,113 +131,6 @@ function embedFieldGenerator(sectionTitle, label, value) {
 			}
 			return;
 		}
-
-exports.specific = function(message, key, emoji, commandDictionary, debugLog, BOT, DISCORD, SCRAPEIT, CHEERIO, monsterName) {
-	var monsterURL = 'https://www.dndbeyond.com/monsters/'
-	debugLog('var monsterURL = ' + monsterURL);
-	//find a specific monster by name
-	monsterURL = monsterURL + monsterName;
-	debugLog('monsterURL changed to: ' + monsterURL);
-	
-	
-	//scrape for information
-	SCRAPEIT(monsterURL, {
-		title: ".monster-name",
-		descShort: ".mon-stat-block__meta",
-		monsterImage: {
-			selector: ".monster-image",
-			attr: "src"
-		},
-		errorPageTitle: {
-			selector: ".error-page-title",
-			how: "text"
-		},
-		abilityScore: {
-			listItem: ".ability-block__score"
-		},
-		abilityModifier: {
-			listItem: ".ability-block__modifier"
-		},
-		statsTitle: {
-			listItem: ".ability-block__heading",
-		},
-		attributeTitle: {
-			listItem: ".mon-stat-block__attribute-label",
-		},
-		attributeContent: {
-			listItem: ".mon-stat-block__attribute-data-value",
-		},
-		tidbitLabel: {
-			listItem: ".mon-stat-block__tidbit-label",
-		},
-		tidbitData: {
-			listItem: ".mon-stat-block__tidbit-data"
-		}
-  },
-	(err, page) => {
-		//catch error / catch error page title
-		debugLog('Errors: ' + err);
-		debugLog('Icon Address: ' + commandDictionary[key].icon);
-		if (page.errorPageTitle == 'Page Not Found') {
-			const embed = new DISCORD.RichEmbed()
-				.setTitle('Monster Not Found')
-				.setAuthor(BOT.user.username, BOT.user.avatarURL)
-				.setColor(0x64FFDA)
-				.setDescription('The Monster you searched for is not on D&D Beyond.')
-				.setFooter("© 2018 D&D Beyond | Scraped by " + BOT.user.username + '™')
-				.setImage('https://static-waterdeep.cursecdn.com/1-0-6565-20267/Skins/Waterdeep/images/errors/404.png')
-				.setThumbnail(commandDictionary[key].icon);
-			message.channel.stopTyping();
-			message.channel.send({embed});
-			return;
-		}
-		//if monster-image is not found
-		if (page.monsterImage == undefined) {
-			const embed = new DISCORD.RichEmbed()
-				.setTitle('Monster Not Available')
-				.setAuthor(BOT.user.username, BOT.user.avatarURL)
-				.setColor(0x64FFDA)
-				.setDescription('I only have acsess to monsters defined by the "basic rules"')
-				.setFooter("© 2018 D&D Beyond | Scraped by " + BOT.user.username + '™')
-				.setThumbnail(commandDictionary[key].icon);
-			message.channel.stopTyping();
-			message.channel.send({embed});
-			return;
-		} else if (page.monsterImage.includes('https:') == false) {
-    	//make sure monsterImageURL is usable by discord
-			monsterImageURL = 'https:' + page.monsterImage;
-    }
-		//post information
-		//var for embed
-		debugLog('Establish Variables');
-		var monsterImageURL = page.monsterImage;
-		var quickContent = [];
-		var fieldCount = 0;
-				
-		//start generating embed
-		debugLog('Embed Generation Phase 1');
-		const embed = new DISCORD.RichEmbed()
-        .setTitle(page["title"])
-        .setAuthor(BOT.user.username, BOT.user.avatarURL)
-        .setColor(0x64FFDA)
-        .setDescription(page["descShort"])
-        .setFooter("© 2017 D&D Beyond | Scraped by " + BOT.user.username)
-        .setImage(monsterImageURL)
-        .setThumbnail(commandDictionary[key].icon)
-        .setURL(monsterURL);
-		
-    //Abilities Section
-		debugLog('Add Ability Section');
-    embed.addField("__**Abilities**__",
-										emoji.str + " **" + page.statsTitle[0] + "**: " + page.abilityScore[0] + page.abilityModifier[0] +
-										"  " + emoji.dex + " **" + page.statsTitle[1] + "**: " + page.abilityScore[1] + page.abilityModifier[1] +
-										"  " + emoji.con + " **" + page.statsTitle[2] + "**: " + page.abilityScore[2] + page.abilityModifier[2] + '\n' +
-										emoji.int + " **" + page.statsTitle[3] + "**: " + page.abilityScore[3] + page.abilityModifier[3] +
-										"  " + emoji.wis + " **" + page.statsTitle[4] + "**: " + page.abilityScore[4] + page.abilityModifier[4] +
-										"  " + emoji.cha + " **" + page.statsTitle[5] + "**: " + page.abilityScore[5] + page.abilityModifier[5]
-										, false);
-		fieldCount++;
-		debugLog('FieldCount = ' + fieldCount);
 		
 		//Attributes
 		embedFieldGenerator('Attributes', page.attributeTitle, page.attributeContent);
@@ -145,13 +146,13 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			debugLog('statsDescription Length = ' + page.statsDescription.length);
 			for (i = 0; i < page.statsDescription.length; i++) { 
 				z = i + 10;
-				proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + "\n"
+				proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + '\n'
 				debugLog('page.statsTitle[z] = ' + page.statsTitle[z]);
 				debugLog('page.statsDescription[i] = ' + page.statsDescription[i]);
 			}
 			debugLog('Add proficiencies field');
 			debugLog('Content = ' + proficiencyValue);
-			embed.addField("__**Proficiencies**__", proficiencyValue, false);
+			embed.addField('__**Proficiencies**__', proficiencyValue, false);
 			fieldCount++;	
 		} else {
 			debugLog('No proficiency fields detected');
