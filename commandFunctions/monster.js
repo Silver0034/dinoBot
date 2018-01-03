@@ -42,9 +42,6 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		tidbitData: {
 			listItem: '.mon-stat-block__tidbit-data',
 		},
-		descTitle: {
-			listItem: '.mon-stat-block__description-block-heading'
-		},
 		descContent: {
 			listItem: '.mon-stat-block__description-block-content',
 			how: 'html'
@@ -92,10 +89,6 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		var monsterImageURL = page.monsterImage;
 		var quickContent = [];
 		var fieldCount = 0;
-		
-		debugLog('descBlock Title' + page.descTitle);
-		debugLog('descBlock Content' + page.descContent);
-		debugLog('descBlock Strong' + page.strong);
 				
 		//start generating embed
 		debugLog('Embed Generation Phase 1');
@@ -124,10 +117,25 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		
 		function embedFieldGenerator(sectionTitle, label, value) {
 			debugLog('New Field, ' + sectionTitle);
+			//check field count
+			if (fieldCount == 24) {
+				debugLog('Too Many Fields');
+				embed.addField('More at D&D Beyond', 'There is more to this monster. Go to the link above for all of its information.', false);
+        fieldCount++;
+				return;
+			}
 			//create content
 			var embedGenField = '';
 			debugLog('        Generate Section ' + sectionTitle);
 			for (a = 0; a < label.length; a++) {
+				//check length of label
+				if (label.length > 255) {
+					label = label.substr(0,255) + '…';
+				}
+				//check length of value
+				if (value.length > 1023) {
+					value = value.substr(0,1023) + '…';
+				}
 				embedGenField += '**' + label[a] + '**: ' + value[a];
 				if (a == label.length) {
 					return;
@@ -154,26 +162,21 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 		//tidbits
 		embedFieldGenerator('Tidbits', page.tidbitLabel, page.tidbitData);		
 		
+		//description
+		//Block of all content
+		debugLog('descBlock Content' + page.descContent);
+		//just the headers
+		debugLog('descBlock Strong' + page.strong);
+
+		//go per description
+		for (n = 0; n < page.descContent.length; n++) {
+			//split by strong
+			//create embed (strong), content)
+			//work on each content one at a time
+			
+			
+		}	
 		/*
-		//Proficiency Fields
-		debugLog('Generate Proficiency Fields');
-		
-		if (page.statsDescription.length > 0) {
-			debugLog('statsDescription Length = ' + page.statsDescription.length);
-			for (i = 0; i < page.statsDescription.length; i++) { 
-				z = i + 10;
-				proficiencyValue += '**' + page.statsTitle[z] + '**: ' + page.statsDescription[i] + '\n'
-				debugLog('page.statsTitle[z] = ' + page.statsTitle[z]);
-				debugLog('page.statsDescription[i] = ' + page.statsDescription[i]);
-			}
-			debugLog('Add proficiencies field');
-			debugLog('Content = ' + proficiencyValue);
-			embed.addField('__**Proficiencies**__', proficiencyValue, false);
-			fieldCount++;	
-		} else {
-			debugLog('No proficiency fields detected');
-		}
-	
 		//Handles page.moreInfoContent
 		debugLog('Prepare CHEERIO and extra content');
     var $ = CHEERIO.load(page.moreInfoContent);
