@@ -67,22 +67,6 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
 			message.channel.send({embed});
 			return;
 		}
-		//if monster-image is not found
-		if (page.monsterImage == undefined) {
-			const embed = new DISCORD.RichEmbed()
-				.setTitle('Monster Not Available')
-				.setAuthor(BOT.user.username, BOT.user.avatarURL)
-				.setColor(0x64FFDA)
-				.setDescription('I only have acsess to monsters defined by the \'basic rules\'')
-				.setFooter('© ' + year + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
-				.setThumbnail(commandDictionary[key].icon);
-			message.channel.stopTyping();
-			message.channel.send({embed});
-			return;
-		} else if (page.monsterImage.includes('https:') == false) {
-    	//make sure monsterImageURL is usable by discord
-			monsterImageURL = 'https:' + page.monsterImage;
-    }
 		//post information
 		//var for embed
 		debugLog('Establish Variables');
@@ -102,6 +86,22 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
         .setThumbnail(commandDictionary[key].icon);
 		
 		//Monster Image
+		//if monster-image is not found
+		if (page.monsterImage == undefined) {
+			const embed = new DISCORD.RichEmbed()
+				.setTitle('Monster Not Available')
+				.setAuthor(BOT.user.username, BOT.user.avatarURL)
+				.setColor(0x64FFDA)
+				.setDescription('I only have acsess to monsters defined by the \'basic rules\'')
+				.setFooter('© ' + year + ' D&D Beyond | Scraped by ' + BOT.user.username + '™')
+				.setThumbnail(commandDictionary[key].icon);
+			message.channel.stopTyping();
+			message.channel.send({embed});
+			return;
+		} else if (page.monsterImage.includes('https:') == false) {
+    	//make sure monsterImageURL is usable by discord
+			monsterImageURL = 'https:' + page.monsterImage;
+    }
 		try {
 			embed.setURL(monsterURL);
 		} catch(err) {
