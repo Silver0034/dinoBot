@@ -99,8 +99,15 @@ exports.specific = function(message, key, emoji, commandDictionary, debugLog, BO
         .setDescription(page['descShort'])
         .setFooter('© ' + year + ' D&D Beyond | Scraped by ' + BOT.user.username)
         .setImage(monsterImageURL)
-        .setThumbnail(commandDictionary[key].icon)
-        .setURL(monsterURL);
+        .setThumbnail(commandDictionary[key].icon);
+		
+		//Monster Image
+		try {
+			embed.setURL(monsterURL);
+		} catch(err) {
+			debugLog('No Monster Image Found');
+		}
+		
 		
     //Abilities Section
 		debugLog('Add Ability Section');
