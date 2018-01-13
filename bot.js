@@ -1378,7 +1378,79 @@ commandDictionary['mon2'] = {
     }
   }
 };
-
+commandDictionary['roll'] = {
+	type: 'dnd',
+  emoji: ':game_die: ',  //put space after emoji 
+  error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
+  usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
+  doCommand: function (message, key, args) {
+    var rollSign = "";
+    var rollCount;
+    var rollSides;
+    var rollOperator;
+    var rollList = new Array(); // An array of dice roll values.
+    var rollSum = 0; // The sum of all rolls.
+    var rollMessageOutput = ""; // The final message to be printed.        
+    if (args[0]) {
+      if (args[0].includes("+")) {
+        rollSign = "+";
+      }
+      if (args[0].includes("-")) {
+        rollSign = "-";
+      }     
+    }              
+    if (args[0]) {
+      var rollStat = args[0].replace("+","d").replace("-","d").split("d");
+      rollCount = rollStat[0];
+      rollSides = rollStat[1];
+      rollOperator = rollStat[2];
+    } else {
+      errorUsage(message, key, embedFooter);
+    }
+    // If our inputs are invalid, return an error.
+    if (isNaN(rollCount) || isNaN(rollSides) || rollCount <= 0 || rollCount >= 120  || rollSides <= 0 || rollSides >= 120 || rollOperator <= 0 || rollOperator >= 120) {
+      message.channel.send(error(key));
+      return;
+    } else {
+      if (isNaN(rollOperator)) {
+        rollOperator = ""; 
+      }
+      // Base message.
+      var extraContent = '**' + rollCount + 'd' + rollSides + rollSign + rollOperator + '** '; 
+      rollMessageOutput += message.author.username + ',';
+      // Roll each die.
+      for (var i = 0; i < rollCount; i++) {
+        var numGen = Math.floor((Math.random() * rollSides) + 1);
+        rollSum += numGen;
+        rollList.push(numGen);
+      }
+      rollOperator = Number(rollOperator);
+      if (args[0].includes("+")) {
+        rollSum = rollSum + rollOperator;
+      }
+      if (args[0].includes("-")) {
+        rollSum = rollSum - rollOperator;
+        }
+      if (rollCount > 1) {
+        // Print all of our rolls
+        rollMessageOutput += "```" + rollList.toString() + "```";
+      }                            
+      rollMessageOutput += " you rolled a total of **" + rollSum + "**";
+			message.channel.startTyping();
+				const embed = new DISCORD.RichEmbed()
+					.setTitle('Roll')
+					.setAuthor(BOT.user.username, BOT.user.avatarURL)
+					.setColor(0x64FFDA)
+					.setDescription(rollMessageOutput)
+					.setFooter(embedFooter)
+					.addBlankField(false)
+					.setThumbnail(commandDictionary[key].icon);
+				message.channel.stopTyping();
+				message.channel.send({embed});
+      return;
+    }
+  }
+};
 
 //Connect to Database
 sqldb.connect(function(err) {
