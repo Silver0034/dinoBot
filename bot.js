@@ -1383,7 +1383,7 @@ commandDictionary['roll'] = {
   emoji: ':game_die: ',  //put space after emoji 
   error: 'Use the command like this: `roll [count]d[sides]+/-[modifier]',
   usage: '**Usage:** `roll [count]d[sides]+/-[modifier]',
-  doCommand: function (message, key, args) {
+  doCommand: function (message, key, args, embedFooter) {
     var rollSign = "";
     var rollCount;
     var rollSides;
