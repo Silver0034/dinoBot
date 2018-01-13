@@ -1417,7 +1417,6 @@ commandDictionary['roll'] = {
       }
       // Base message.
       var extraContent = '**' + rollCount + 'd' + rollSides + rollSign + rollOperator + '** '; 
-      rollMessageOutput += message.author.username + ',';
       // Roll each die.
       for (var i = 0; i < rollCount; i++) {
         var numGen = Math.floor((Math.random() * rollSides) + 1);
@@ -1435,15 +1434,14 @@ commandDictionary['roll'] = {
         // Print all of our rolls
         rollMessageOutput += "```" + rollList.toString() + "```";
       }                            
-      rollMessageOutput += " you rolled a total of **" + rollSum + "**";
+      rollMessageOutput += "You rolled a total of **" + rollSum + "**";
 			message.channel.startTyping();
 				const embed = new DISCORD.RichEmbed()
-					.setTitle('Roll')
+					.setTitle(message.author.username)
 					.setAuthor(BOT.user.username, BOT.user.avatarURL)
 					.setColor(0x64FFDA)
 					.setDescription(rollMessageOutput)
 					.setFooter(embedFooter)
-					.addBlankField(false)
 					.setThumbnail(commandDictionary[key].icon);
 				message.channel.stopTyping();
 				message.channel.send({embed});
