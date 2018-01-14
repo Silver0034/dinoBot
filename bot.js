@@ -1437,7 +1437,7 @@ commandDictionary['roll'] = {
       rollMessageOutput += "You rolled a total of **" + rollSum + "**";
 			message.channel.startTyping();
 				const embed = new DISCORD.RichEmbed()
-					.setTitle(responseHead())
+					.setTitle(responseHead(message, key, extraContent))
 					.setAuthor(BOT.user.username, BOT.user.avatarURL)
 					.setColor(0x64FFDA)
 					.setDescription(rollMessageOutput)
