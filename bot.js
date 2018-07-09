@@ -1555,3 +1555,4 @@ BOT.on('message', message => {
 
 //define token in the login function
 BOT.login(TOKEN);
+console.log(TOKEN);
