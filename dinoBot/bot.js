@@ -1569,4 +1569,4 @@ BOT.on('message', msg => {
     }
 });
 
-client.login(TOKEN);
+BOT.login(TOKEN);
