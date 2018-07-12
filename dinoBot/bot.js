@@ -1,40 +1,40 @@
-'use strict';
+//'use strict';
 
-// DinoBot™ | Discord.js Bot by Lodes Deisgn
-// Version: 2.0beta
+//// DinoBot™ | Discord.js Bot by Lodes Deisgn
+//// Version: 2.0beta
 
-//debugg mode
-var debug = true;
+////debugg mode
+//var debug = true;
 
-//establish constants
-//discord.js dependencies
-const DISCORD = require('discord.js');
-const BOT = new DISCORD.Client();
-//npm dependencies
-const CHEERIO = require('cheerio');
-const FS = require('fs');
-const HTTP = require('http');
-var jimp = require('jimp');
-const MYSQL = require('mysql');
-const REQUEST = require('request');
-const SCRAPEIT = require("scrape-it");
-// commandFunctions dependencies
-const ATTACK = require('./commandFunctions/attack.js');
-const BALL = require('./commandFunctions/ball.js');
-const JIMPFUNCTIONS = require('./commandFunctions/jimp.js');
-const MONSTER = require('./commandFunctions/monster.js');
-const NPC = require('./commandFunctions/npcGenerate.js');
-const PROFANITY = require('./commandFunctions/profanity.js');
-const QUOTE = require('./commandFunctions/quote.js');
-const ROAR = require('./commandFunctions/roar.js');
-const RPG = require('./commandFunctions/rpg.js');
-const RPS = require('./commandFunctions/rps.js');
-const TASTE = require('./commandFunctions/taste.js');
-const TOKENRETURN = require('./token.js');
+////establish constants
+////discord.js dependencies
+//const DISCORD = require('discord.js');
+//const BOT = new DISCORD.Client();
+////npm dependencies
+//const CHEERIO = require('cheerio');
+//const FS = require('fs');
+//const HTTP = require('http');
+//var jimp = require('jimp');
+//const MYSQL = require('mysql');
+//const REQUEST = require('request');
+//const SCRAPEIT = require("scrape-it");
+//// commandFunctions dependencies
+//const ATTACK = require('./commandFunctions/attack.js');
+//const BALL = require('./commandFunctions/ball.js');
+//const JIMPFUNCTIONS = require('./commandFunctions/jimp.js');
+//const MONSTER = require('./commandFunctions/monster.js');
+//const NPC = require('./commandFunctions/npcGenerate.js');
+//const PROFANITY = require('./commandFunctions/profanity.js');
+//const QUOTE = require('./commandFunctions/quote.js');
+//const ROAR = require('./commandFunctions/roar.js');
+//const RPG = require('./commandFunctions/rpg.js');
+//const RPS = require('./commandFunctions/rps.js');
+//const TASTE = require('./commandFunctions/taste.js');
+//const TOKENRETURN = require('./token.js');
 
-//establish global variables and constants
-const TOKEN = TOKENRETURN.return();
-const MYSQLCRED = TOKENRETURN.sqlCredentials;
+////establish global variables and constants
+//const TOKEN = TOKENRETURN.return();
+//const MYSQLCRED = TOKENRETURN.sqlCredentials;
 
 ////make sure to put a space after. Ex:':smile: '
 //var timedOutUsers = new Array();
@@ -1559,14 +1559,17 @@ const MYSQLCRED = TOKENRETURN.sqlCredentials;
 ////define token in the login function
 //BOT.login(TOKEN);
 
-BOT.on('ready', () => {
-    console.log(`Logged in as ${BOT.user.tag}!`);
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
 });
 
-BOT.on('message', msg => {
+client.on('message', msg => {
     if (msg.content === 'ping') {
         msg.reply('pong');
     }
 });
 
-BOT.login(TOKEN);
+client.login('token');
